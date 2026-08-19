@@ -82,12 +82,6 @@
   --fs-display-2: clamp(2.25rem, 4.5vw + 0.5rem, 4.75rem);
   --fs-display-3: clamp(2.25rem, 3vw + 0.5rem, 3.25rem); /* floor raised: a didone under ~36px stops being drawn */
 
-  /* Logo masks live in variables, not hard-coded url()s, because CSS is the one
-     place Next cannot rewrite a path for us. On the GitHub Pages preview the site
-     is served from a subdirectory and these files move with it; app/layout.tsx
-     redefines both with the right prefix. The defaults below are the root-hosted
-     paths, which is what dev and any normal deployment use. */
-  --mask-logo: url("/logo.svg");
 }
 
 @theme inline {
@@ -325,73 +319,6 @@ body::after {
    reliably override the `animation` shorthand, so pin it here. */
 [aria-label="Brands we carry"]:hover .animate-marquee {
   animation-play-state: paused;
-}
-
-/* ============================================================
-   Shimmer wordmark — clean light-sweep treatment for the logo,
-   after 21st.dev "shimmer-text" (tom_ui / spell.sh). The technique:
-   a soft base color with a brighter highlight band swept through via
-   animated background-position. The reference clips to text; the
-   wordmark is a custom SVG, so the same two-layer background is
-   clipped with the logo silhouette mask instead.
-
-   ⚠️ PLACEHOLDER MARK. The client's logo is still being drawn. Until it
-   lands, /logo.svg is the name set in outlines (Inter, semibold, .16em
-   tracking) so nothing here depends on a font being available to the mask
-   renderer. Swapping in the real logo is one file plus the aspect-ratio
-   below — no component changes.
-   Tunable via --wm-base / --wm-shimmer and the band stops below.
-   ============================================================ */
-.shimmer-wordmark {
-  /* Platinum wordmark (#c6ccd2 base) lit by a cold shine: a bright core
-     (#ffffff) edged by thin steel fringes (#dfe4e9). The band is narrow and
-     the base is neutral, so it reads as light moving across brushed metal —
-     not as a gold wash. */
-  position: relative;
-  /* Matches /logo.svg's viewBox. The mark is the DISPLAY face — Bodoni Moda —
-     but cut at optical size 14, not 96. That is what the opsz axis is for: at
-     small optical sizes a didone's hairlines are drawn thicker on purpose, so
-     the logotype survives the 23px it renders at in the masthead while keeping
-     the high contrast in the hero. The display cut (opsz 96) washed out there;
-     this one was checked at both sizes before it shipped. */
-  aspect-ratio: 13522.2 / 1558.4;
-  background-image: linear-gradient(
-      90deg,
-      transparent 43%,
-      #dfe4e9 48%,
-      #ffffff 50%,
-      #dfe4e9 52%,
-      transparent 57%
-    ),
-    linear-gradient(#c6ccd2, #c6ccd2);
-  background-repeat: no-repeat;
-  background-size: 250% 100%, auto;
-  background-position: 100% center;
-  -webkit-mask-image: var(--mask-logo);
-  mask-image: var(--mask-logo);
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  /* lifts the wordmark off bright video frames */
-  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.5));
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .shimmer-wordmark {
-    animation: wordmark-shimmer 4s linear infinite;
-  }
-}
-
-@keyframes wordmark-shimmer {
-  0% {
-    background-position: 100% center;
-  }
-  100% {
-    background-position: 0% center;
-  }
 }
 
 /* Marble background utility — uses public/marble.jpg, falls back to a

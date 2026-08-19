@@ -3,9 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { ShimmerWordmark } from "@/components/ui/ShimmerWordmark";
 import { asset } from "@/lib/asset";
 import { BRAND } from "@/lib/showroom";
 
@@ -141,10 +140,19 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
           middle of the screen. */}
       <Container className="relative flex h-full flex-col justify-end pb-20 md:pb-24">
         <div className="flex flex-col items-start gap-5 md:gap-6">
-          {/* Shimmer wordmark: the logo silhouette masks a soft silver base
-              with a highlight that loops across (see .shimmer-wordmark in
-              globals.css). Replaces the flat inverted-white logo. */}
-          <ShimmerWordmark className="w-[clamp(260px,38vw,560px)]" />
+          {/* The client's logo, rendered as artwork rather than as a mask.
+              The placeholder wordmark used to be a CSS mask driving a metal
+              shimmer, and a mask keeps alpha and throws colour away — it would
+              have flattened this lockup's blue-to-purple gradient into one
+              silver silhouette. The shimmer went with it. */}
+          <Image
+            src="/logo.svg"
+            alt={BRAND.name}
+            width={184}
+            height={61}
+            priority
+            className="h-auto w-[clamp(200px,26vw,380px)]"
+          />
 
           {/* The line under the mark, then what the house actually does.
               The strapline is theirs and stays; the sentence beneath it is the
@@ -172,8 +180,8 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
                   className={c.primary ? HERO_BUTTON_PRIMARY : HERO_BUTTON_SECONDARY}
                 >
                   {c.label}
-                  <ArrowUpRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  <ChevronRight
+                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                     strokeWidth={1.75}
                   />
                 </Link>

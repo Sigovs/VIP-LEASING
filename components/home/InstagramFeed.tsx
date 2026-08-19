@@ -1,4 +1,4 @@
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
@@ -34,8 +34,8 @@ export function InstagramFeed() {
         >
           <InstagramIcon className="h-4 w-4" strokeWidth={1.75} />
           Follow
-          <ArrowUpRight
-            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          <ChevronRight
+            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
             strokeWidth={1.75}
           />
         </a>

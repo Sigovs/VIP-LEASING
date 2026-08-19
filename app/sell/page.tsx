@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ChevronRight, Plus } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
@@ -155,8 +155,8 @@ export default function SellPage() {
                 className="group mt-9 inline-flex rounded-pill h-14 w-fit items-center gap-3 border border-accent/50 px-9 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] text-accent-on-chrome transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-bg"
               >
                 Start an offer
-                <ArrowUpRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                <ChevronRight
+                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                   strokeWidth={1.5}
                 />
               </a>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
@@ -74,8 +74,8 @@ export default function ServicePage() {
               className="group mt-14 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-text-1 transition-colors hover:text-accent md:mt-20"
             >
               Talk to us
-              <ArrowUpRight
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              <ChevronRight
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 strokeWidth={1.75}
               />
             </Link>

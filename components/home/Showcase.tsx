@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import type { ShowcaseCar } from "@/lib/showcase";
 
 type Props = { cars: ShowcaseCar[] };
@@ -39,8 +39,8 @@ export function Showcase({ cars }: Props) {
                   {car.photos.length} {car.photos.length === 1 ? "photo" : "photos"}
                 </p>
               </div>
-              <ArrowUpRight
-                className="h-5 w-5 text-white shrink-0 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              <ChevronRight
+                className="h-5 w-5 text-white shrink-0 transition-transform duration-300 group-hover:translate-x-1"
                 strokeWidth={1.5}
               />
             </div>

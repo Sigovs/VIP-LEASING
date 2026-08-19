@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 
 type Variant = "accent" | "solid" | "outline" | "ghost";
 type Size = "default" | "lg";
@@ -38,8 +38,8 @@ const sizes: Record<Size, string> = {
 
 function Arrow() {
   return (
-    <ArrowUpRight
-      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+    <ChevronRight
+      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
       strokeWidth={1.25}
     />
   );

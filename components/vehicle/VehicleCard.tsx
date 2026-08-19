@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Armchair, Camera, Cog, Gauge, Palette } from "lucide-react";
+import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette } from "lucide-react";
 import type { Vehicle } from "@/types/vehicle";
 import { formatMileage, formatPrice } from "@/lib/utils";
 import { cn } from "@/lib/utils";
@@ -80,8 +80,8 @@ export function VehicleCard({
           )}
           <span className="inline-flex items-center gap-1.5 font-accent text-[0.6rem] uppercase tracking-[0.24em] text-text-3 transition-colors group-hover:text-accent">
             View
-            <ArrowUpRight
-              className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            <ChevronRight
+              className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1"
               strokeWidth={1.75}
             />
           </span>
@@ -227,9 +227,9 @@ export function VehicleCard({
             </p>
           </div>
         ) : (
-          <ArrowUpRight
+          <ChevronRight
             aria-hidden
-            className="h-5 w-5 shrink-0 text-text-3 transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="h-5 w-5 shrink-0 text-text-3 transition-all duration-300 group-hover:text-accent group-hover:translate-x-1"
             strokeWidth={1.5}
           />
         )}

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { FeaturedSpotlight } from "@/components/home/FeaturedSpotlight";
@@ -87,8 +87,8 @@ export default function HomePage() {
                 className="group hidden sm:inline-flex items-center gap-2 pb-1 text-xs font-accent tracking-[0.16em] text-text-2 hover:text-accent transition-colors"
               >
                 All Inventory
-                <ArrowUpRight
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                <ChevronRight
+                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
                   strokeWidth={1.75}
                 />
               </Link>
@@ -191,8 +191,8 @@ export default function HomePage() {
               className="group mt-9 inline-flex rounded-pill w-fit items-center gap-3.5 border border-white/25 bg-white/[0.06] px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-colors duration-300 hover:bg-white/[0.12]"
             >
               Step inside the showroom
-              <ArrowUpRight
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              <ChevronRight
+                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                 strokeWidth={1.75}
               />
             </Link>
@@ -314,8 +314,8 @@ export default function HomePage() {
                     className="group relative inline-flex rounded-pill items-center gap-3 px-9 md:px-11 py-4 md:py-[1.15rem] font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 border border-text-1/80 hover:bg-text-1 hover:text-bg transition-all duration-300"
                   >
                     Book a Viewing
-                    <ArrowUpRight
-                      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    <ChevronRight
+                      className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
                       strokeWidth={1.75}
                     />
                   </Link>

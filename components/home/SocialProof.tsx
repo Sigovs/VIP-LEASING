@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { SHOWROOM } from "@/lib/showroom";
@@ -35,8 +35,8 @@ export function SocialProof() {
             className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-text-1 hover:text-accent transition-colors"
           >
             Our story
-            <ArrowUpRight
-              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            <ChevronRight
+              className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
               strokeWidth={1.75}
             />
           </Link>

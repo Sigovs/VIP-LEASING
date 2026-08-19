@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
@@ -34,8 +34,8 @@ export function RecentlySold() {
             className="group hidden sm:inline-flex items-center gap-2 pb-1 text-xs font-accent tracking-[0.16em] text-text-2 hover:text-accent transition-colors"
           >
             View Sold
-            <ArrowUpRight
-              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            <ChevronRight
+              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
               strokeWidth={1.75}
             />
           </Link>

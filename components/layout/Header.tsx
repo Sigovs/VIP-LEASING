@@ -78,15 +78,20 @@ export function Header() {
           <Image
             src="/logo.svg"
             alt="VIP Leasing"
-            width={1041}
-            height={120}
+            width={184}
+            height={61}
             priority
-            className="h-auto w-[150px] md:w-[190px] [filter:invert(1)]"
+            className="h-10 w-auto md:h-12"
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-10">
-          <nav className="flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6">
+          {/* Nav items are pills, like every other control on the site
+              (DESIGN.md §3b — actions are soft). The hover fill sits behind the
+              label rather than under it, so nothing about the link's box moves
+              on hover: the padding is always there, only the background
+              arrives. The active item keeps its pill filled. */}
+          <nav className="flex items-center gap-1">
             {NAV.map((item) => {
               const active = isActive(item.href);
               return (
@@ -94,18 +99,14 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   aria-current={active ? "page" : undefined}
-                  className="group relative py-1 text-[0.78rem] uppercase tracking-[0.14em] font-semibold text-text-1"
+                  className={cn(
+                    "rounded-pill px-3.5 py-2 text-[0.78rem] font-semibold uppercase tracking-[0.14em] transition-colors duration-200",
+                    active
+                      ? "bg-white/[0.12] text-text-1"
+                      : "text-text-1 hover:bg-white/[0.08]"
+                  )}
                 >
                   {item.label}
-                  {/* Gold hairline: persistent when active, wipes in from the
-                      left on hover (scaleX = GPU-friendly, no layout shift). */}
-                  <span
-                    aria-hidden
-                    className={cn(
-                      "absolute inset-x-0 -bottom-0.5 h-px origin-left bg-accent transition-transform duration-300 ease-out",
-                      active ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    )}
-                  />
                 </Link>
               );
             })}

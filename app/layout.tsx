@@ -6,7 +6,6 @@ import { PageTransition } from "@/components/layout/PageTransition";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SHOWROOM, SITE_URL } from "@/lib/showroom";
-import { BASE_PATH } from "@/lib/asset";
 
 // Three faces, three jobs, and none of them the reference site's.
 //
@@ -92,17 +91,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${sans.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text-1">
-        {/* CSS is the one place Next cannot rewrite a path for us, and two logo
-            masks in globals.css point at files in /public. When the site is served
-            from a subdirectory (the GitHub Pages preview), repoint them. Empty
-            string on every normal deployment, so this renders nothing. */}
-        {BASE_PATH && (
-          <style
-            dangerouslySetInnerHTML={{
-              __html: `:root{--mask-logo:url("${BASE_PATH}/logo.svg")}`,
-            }}
-          />
-        )}
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-bg focus:px-4 focus:py-2 focus:text-text-1 focus:ring-2 focus:ring-accent"

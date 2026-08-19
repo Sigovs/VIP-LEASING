@@ -49,9 +49,9 @@ export function Footer() {
             <Image
               src="/logo.svg"
               alt={BRAND.name}
-              width={1041}
-              height={120}
-              className="h-auto w-[200px] object-contain [filter:invert(1)] md:w-[240px]"
+              width={184}
+              height={61}
+              className="h-12 w-auto object-contain md:h-14"
             />
           </Link>
           <p className="font-accent text-[0.85rem] uppercase tracking-[0.24em] text-text-2">

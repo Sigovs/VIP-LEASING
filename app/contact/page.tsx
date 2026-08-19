@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
@@ -172,7 +172,7 @@ export default function ContactPage() {
                   >
                     <InstagramIcon size={15} strokeWidth={1.5} />@
                     {INSTAGRAM_HANDLE}
-                    <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.75} />
                   </a>
                 </div>
               </div>
@@ -208,8 +208,8 @@ export default function ContactPage() {
                 className="group mt-7 inline-flex items-center gap-2 font-accent text-[0.72rem] uppercase tracking-[0.2em] text-text-1 transition-colors hover:text-accent"
               >
                 Get directions
-                <ArrowUpRight
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                <ChevronRight
+                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
                   strokeWidth={1.75}
                 />
               </a>

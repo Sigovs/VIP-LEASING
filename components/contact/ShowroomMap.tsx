@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { HAS_ADDRESS, SHOWROOM, DIRECTIONS_URL } from "@/lib/showroom";
 
 // Showroom map tile — Mapbox static when a token is present, keyless Google
@@ -80,7 +80,7 @@ export function ShowroomMap({
         )}
         <span className="absolute bottom-4 right-4 inline-flex rounded-pill items-center gap-2 border border-border bg-bg/90 px-4 py-2 text-xs font-accent tracking-[0.16em] text-text-1 backdrop-blur-sm transition-colors group-hover:text-accent">
           Get Directions
-          <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+          <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.75} />
         </span>
       </a>
     </div>
