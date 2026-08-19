@@ -9,13 +9,12 @@ import { ShimmerWordmark } from "@/components/ui/ShimmerWordmark";
 import { asset } from "@/lib/asset";
 import { BRAND } from "@/lib/showroom";
 
-// The reference build carries these three in the hero. They were previously
-// split — one here, three in a strip below — which pushed every section on the
-// page down by the strip's height.
+// The reference build carries three actions here; "Get Financing" is dropped at
+// the client's request, so this hero runs two. Financing is still reachable from
+// the nav, the mid-page band and the footer.
 const HERO_CTAS: { label: string; href: string }[] = [
   { label: "View Inventory", href: "/inventory" },
   { label: "Sell Your Car", href: "/sell" },
-  { label: "Get Financing", href: "/financing" },
 ];
 
 // Glass button over photographic ground — the shared idiom (DESIGN.md §6).

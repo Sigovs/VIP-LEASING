@@ -2,7 +2,7 @@
 //
 // On a normal deployment the site is served from the domain root and this is the
 // empty string, so every path below is unchanged. On the GitHub Pages preview the
-// site lives at sigovs.github.io/aan_gta_version/, and every file under /public
+// site lives at sigovs.github.io/vip-leasing-preview/, and every file under /public
 // has to carry that prefix or it 404s.
 //
 // Next rewrites <Link href> and its own /_next/* assets for you. It does NOT

@@ -5,18 +5,18 @@ import type { NextConfig } from "next";
 //
 //   1. No image optimizer. There is no server to run one, so <Image> has to be
 //      told to serve the files as they are (`unoptimized`).
-//   2. The site is served from a subdirectory — sigovs.github.io/aan_gta_version
+//   2. The site is served from a subdirectory — sigovs.github.io/vip-leasing-preview
 //      — not from a domain root, so every asset and link needs that prefix or it
 //      404s.
 //
 // Both are gated behind GITHUB_PAGES so they only apply to the preview build.
 // `npm run dev` and any real deployment keep the optimizer and the root path.
-// The preview lives in its OWN public repo (aan_gta_preview) so this one can
+// The preview lives in its OWN public repo (vip-leasing-preview) so this one can
 // stay private: GitHub Pages on a free plan only serves public repos, and this
 // repo carries the working notes and the session transcript. PAGES_BASE lets the
 // deploy script point the build at whatever path the preview host serves from.
 const isPages = process.env.GITHUB_PAGES === "true";
-const repo = process.env.PAGES_BASE ?? "/aan_gta_preview";
+const repo = process.env.PAGES_BASE ?? "/vip-leasing-preview";
 // A subpath deploy needs the prefix everywhere; a root deploy (PAGES_BASE="" or
 // "/") must have NO prefix — Next errors on an empty basePath, and every asset
 // would 404 with a stray one. So the prefix is applied only when repo names a
