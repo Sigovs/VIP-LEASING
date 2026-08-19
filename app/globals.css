@@ -62,13 +62,15 @@
      it now uses the bright tone: 3.8:1.
      Nothing is left in the deep tone as ink: the .title-mark bar moved to
      platinum once it grew from a full stop into a block. */
-  /* The title mark's blue. It is the one blue in the system and it is
-     decorative only — it carries no information, so it answers to no contrast
-     minimum. Kept as its own token rather than borrowed from accent or signal
-     precisely because it belongs to one element: change it here and every
-     heading on the site follows. */
-  --mark: #3b5ba5;
-  --mark-hover: #4a6cbd;
+  /* Brand blue, taken from the logo rather than invented.
+     The mark's gradient runs #0011A6 -> #9A01C5. Neither stop works as a solid
+     element on this ground — they measure 1.5:1 and 3.0:1 — and their midpoint
+     (#4d09b5) is worse at 1.9:1: a 2px bar in it disappears. So the solid tone
+     is the gradient's own hue (264°) lifted to where it actually reads: 3.5:1
+     against the page, and white on it still clears AA at 5.5:1.
+     The gradient itself is kept whole for the one primary action per screen. */
+  --mark: #823cec;
+  --mark-hover: #9a5cf2;
 
   --signal: #96252d;
   --signal-bright: #c33c46;
@@ -220,6 +222,17 @@ body::after {
 .title-mark.text-center::after,
 .text-center .title-mark::after {
   margin-inline: auto;
+}
+
+/* The logo's own gradient, filling the single primary action on a screen.
+   Literal hexes, not var()s: Lightning CSS silently drops a var() inside a
+   gradient (DESIGN.md §7) and the fill would vanish. Angle echoes the logo's
+   own, which runs down and to the right. */
+.bg-brand-gradient {
+  background-image: linear-gradient(125deg, #0011a6 0%, #9a01c5 100%);
+}
+.bg-brand-gradient:hover {
+  background-image: linear-gradient(125deg, #0a1cc4 0%, #b31ade 100%);
 }
 
 /* Editorial hairline. Lay one between sections without an extra wrapper. */

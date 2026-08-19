@@ -113,7 +113,7 @@ export default function FinancingPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
-              <span aria-hidden className="block h-px w-12 bg-accent" />
+              <span aria-hidden className="block h-0.5 w-12 bg-mark" />
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Financing
               </h1>
@@ -248,7 +248,7 @@ export default function FinancingPage() {
             <div className="flex flex-col gap-10 lg:col-span-5">
               {PATHS.map((p, i) => (
                 <Reveal key={p.title} delay={i * 0.06}>
-                  <span aria-hidden className="block h-px w-10 bg-accent" />
+                  <span aria-hidden className="block h-0.5 w-10 bg-mark" />
                   <h3 className="title-mark mt-5 font-sans text-2xl font-bold text-text-1 md:text-3xl">
                     {p.title}
                   </h3>
@@ -345,7 +345,7 @@ export default function FinancingPage() {
         <Container className="relative w-full">
           <div className="mx-auto flex max-w-[46rem] flex-col items-center text-center">
             <Reveal y={18}>
-              <span aria-hidden className="mx-auto block h-px w-12 bg-accent" />
+              <span aria-hidden className="mx-auto block h-0.5 w-12 bg-mark" />
               <h2 className="title-mark mt-7 text-balance font-title text-display-2 font-bold leading-[1.03] text-chrome-text-1">
                 Drive It Home Your Way
               </h2>

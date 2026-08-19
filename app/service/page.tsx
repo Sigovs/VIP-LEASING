@@ -37,7 +37,7 @@ export default function ServicePage() {
     <>
       <header className="border-b border-border pb-6 pt-24 md:pb-8 md:pt-32">
         <Container>
-          <span aria-hidden className="mb-5 block h-px w-12 bg-accent md:mb-6" />
+          <span aria-hidden className="mb-5 block h-0.5 w-12 bg-mark md:mb-6" />
           <h1 className="title-mark font-title text-5xl font-bold leading-[1.0] text-text-1 md:text-7xl">
             Service
           </h1>

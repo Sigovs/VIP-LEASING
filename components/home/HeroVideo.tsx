@@ -28,11 +28,11 @@ const HERO_CTAS: { label: string; href: string; primary?: boolean }[] = [
 const HERO_BUTTON_BASE =
   "group relative inline-flex rounded-pill items-center justify-center gap-3 px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] transition-all duration-300 md:px-10 md:py-[1.15rem] md:text-[0.8rem]";
 
-// PRIMARY — solid --mark blue, the same colour as the title mark, so the one
-// filled control on the page belongs to the site's own signature rather than
-// borrowing the metal every hairline already uses.
+// PRIMARY — filled with the LOGO'S OWN GRADIENT, not a flat approximation of
+// it. One primary action per screen, so the gradient stays a single event on
+// the page and the solid --mark tone carries everything else.
 const HERO_BUTTON_PRIMARY =
-  `${HERO_BUTTON_BASE} border border-mark bg-mark text-white hover:border-mark-hover hover:bg-mark-hover`;
+  `${HERO_BUTTON_BASE} bg-brand-gradient border border-transparent text-white`;
 
 // SECONDARY — the glass idiom (DESIGN.md §6): visible over photography without
 // competing with the primary.

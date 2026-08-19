@@ -683,7 +683,7 @@ function RailItem({
         // relying on a hairline, so the current marque is readable at a glance.
         "group/rail relative shrink-0 whitespace-nowrap rounded-pill border px-4 py-2 text-[0.8rem] font-medium font-accent uppercase tracking-[0.05em] transition-colors",
         active
-          ? "border-text-1 bg-text-1 text-bg"
+          ? "border-mark bg-mark text-white"
           : "border-border text-text-2 hover:border-text-2 hover:text-text-1"
       )}
     >
@@ -691,9 +691,9 @@ function RailItem({
       <span
         className={cn(
           "ml-1.5 tabular-nums text-[0.72rem] font-medium",
-          // Platinum would vanish on the light pill, so the active count sits
-          // in the pill's own ground colour at reduced strength.
-          active ? "text-bg/55" : "text-text-3"
+          // The selected pill is now a solid blue, so its tally sits in white
+          // at reduced strength rather than in the ground colour.
+          active ? "text-white/60" : "text-text-3"
         )}
       >
         {count}

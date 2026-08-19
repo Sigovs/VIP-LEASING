@@ -35,7 +35,7 @@ export function ShowroomMap({
         className={`relative w-full overflow-hidden rounded-md border border-border bg-surface ${className}`}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 p-10 text-center">
-          <span aria-hidden className="block h-px w-12 bg-accent" />
+          <span aria-hidden className="block h-0.5 w-12 bg-mark" />
           <p className="font-accent text-[0.8rem] uppercase tracking-[0.2em] text-text-2">
             {SHOWROOM.market}
           </p>

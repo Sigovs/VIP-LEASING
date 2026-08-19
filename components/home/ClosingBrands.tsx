@@ -84,7 +84,7 @@ export function ClosingBrands() {
         <span className="block text-xs font-accent tracking-[0.24em] text-chrome-text-2">
           What We Carry
         </span>
-        <span aria-hidden className="mx-auto mt-6 block h-px w-12 bg-accent" />
+        <span aria-hidden className="mx-auto mt-6 block h-0.5 w-12 bg-mark" />
         <h2 className="mt-7 font-title text-3xl font-bold tracking-[-0.02em] text-chrome-text-1 drop-shadow-[0_2px_20px_rgba(0,0,0,0.6)] md:text-5xl">
           The marques on the floor
         </h2>

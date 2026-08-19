@@ -108,7 +108,7 @@ export function FinancingBand() {
       <Container className="relative w-full">
         <div className="mx-auto flex max-w-[54rem] flex-col items-center text-center">
           <Reveal y={18}>
-            <span aria-hidden className="mx-auto block h-px w-14 bg-accent" />
+            <span aria-hidden className="mx-auto block h-0.5 w-14 bg-mark" />
             {/* display-2, not display-1: this is a statement band, and it now sits
                 on the same step as its two siblings ("The cars worth owning" and
                 "Ready to part with yours?"). display-1 is reserved for the closing

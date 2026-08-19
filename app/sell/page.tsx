@@ -136,7 +136,7 @@ export default function SellPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
-              <span aria-hidden className="block h-px w-12 bg-accent" />
+              <span aria-hidden className="block h-0.5 w-12 bg-mark" />
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Sell Your Car
               </h1>
@@ -228,7 +228,7 @@ export default function SellPage() {
         <Container>
           <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
-              <span aria-hidden className="block h-px w-12 bg-accent mb-7" />
+              <span aria-hidden className="block h-0.5 w-12 bg-mark mb-7" />
               <h2 className="title-mark font-title text-4xl font-bold leading-[1.05] text-text-1 md:text-5xl">
                 Start with the Details
               </h2>
@@ -283,7 +283,7 @@ export default function SellPage() {
           <div className="grid grid-cols-1 gap-x-14 gap-y-12 sm:grid-cols-2 lg:gap-x-20">
             {REASONS.map((r, i) => (
               <Reveal key={r.title} delay={(i % 2) * 0.06}>
-                <span aria-hidden className="block h-px w-10 bg-accent" />
+                <span aria-hidden className="block h-0.5 w-10 bg-mark" />
                 <h3 className="mt-6 text-xl font-semibold tracking-[-0.018em] text-text-1 md:text-2xl">
                   {r.title}
                 </h3>
