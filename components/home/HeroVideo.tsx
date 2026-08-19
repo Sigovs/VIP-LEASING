@@ -12,14 +12,29 @@ import { BRAND } from "@/lib/showroom";
 // The reference build carries three actions here; "Get Financing" is dropped at
 // the client's request, so this hero runs two. Financing is still reachable from
 // the nav, the mid-page band and the footer.
-const HERO_CTAS: { label: string; href: string }[] = [
-  { label: "View Inventory", href: "/inventory" },
+//
+// The two are NOT peers. Both were the same glass pill, which made the hero ask
+// two questions at once and answer neither. Browsing the cars is what almost
+// everyone arrived to do, so it takes the solid button; selling is the minority
+// errand and keeps the glass one. One primary per screen — a second solid
+// button would put the hierarchy straight back to flat.
+const HERO_CTAS: { label: string; href: string; primary?: boolean }[] = [
+  { label: "View Inventory", href: "/inventory", primary: true },
   { label: "Sell Your Car", href: "/sell" },
 ];
 
-// Glass button over photographic ground — the shared idiom (DESIGN.md §6).
-const HERO_BUTTON =
-  "group relative inline-flex rounded-pill items-center justify-center gap-3 border border-white/25 bg-white/[0.06] px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-all duration-300 hover:border-white/55 hover:bg-white/[0.12] md:px-10 md:py-[1.15rem] md:text-[0.8rem]";
+const HERO_BUTTON_BASE =
+  "group relative inline-flex rounded-pill items-center justify-center gap-3 px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] transition-all duration-300 md:px-10 md:py-[1.15rem] md:text-[0.8rem]";
+
+// PRIMARY — solid platinum, ink label. The one block of flat light on a
+// photographic hero, which is exactly why it reads first.
+const HERO_BUTTON_PRIMARY =
+  `${HERO_BUTTON_BASE} border border-accent bg-accent text-bg hover:border-accent-hover hover:bg-accent-hover`;
+
+// SECONDARY — the glass idiom (DESIGN.md §6): visible over photography without
+// competing with the primary.
+const HERO_BUTTON_SECONDARY =
+  `${HERO_BUTTON_BASE} border border-white/25 bg-white/[0.06] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md hover:border-white/55 hover:bg-white/[0.12]`;
 
 // Hero video. Connection-aware: skips video on save-data / 2g and on
 // prefers-reduced-motion. Poster image is the visible LCP element while video
@@ -108,19 +123,33 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
               globals.css). Replaces the flat inverted-white logo. */}
           <ShimmerWordmark className="w-[clamp(320px,52vw,720px)]" />
 
-          {/* The line under the mark. The reference build sets its partner name
-              in this slot; this house has its own line already written, so the
-              slot keeps its job — one quiet, widely-tracked strapline holding
-              the space between the mark and the actions. */}
-          <p className="-mt-2 font-accent text-[0.85rem] uppercase tracking-[0.34em] text-white/75 [text-shadow:0_1px_12px_rgba(0,0,0,0.6)] md:text-[0.95rem]">
-            {BRAND.tagline}
-          </p>
+          {/* The line under the mark, then what the house actually does.
+              The strapline is theirs and stays; the sentence beneath it is the
+              one place on the first screen that answers "what is this". They
+              are grouped tighter to each other than to the buttons, so the eye
+              reads mark → claim → action rather than three separate things.
+
+              NOT IN-HOUSE: the wording says terms are arranged through lending
+              partners, and may never imply the house lends its own money. */}
+          <div className="flex flex-col items-center gap-4">
+            <p className="-mt-2 font-accent text-[0.85rem] uppercase tracking-[0.34em] text-white/75 [text-shadow:0_1px_12px_rgba(0,0,0,0.6)] md:text-[0.95rem]">
+              {BRAND.tagline}
+            </p>
+            <p className="max-w-[52ch] text-balance text-center text-[1rem] leading-relaxed text-white/85 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] md:text-[1.1rem]">
+              Luxury and exotic cars, delivered anywhere in Florida. Lease or
+              finance any of them — terms arranged through our lending partners.
+            </p>
+          </div>
 
           {/* Three actions, in the hero itself — matching the live reference,
               which carries them here rather than in a strip below. */}
           <div className="flex flex-col items-stretch gap-4 sm:flex-row sm:items-center sm:gap-5">
             {HERO_CTAS.map((c) => (
-              <Link key={c.label} href={c.href} className={HERO_BUTTON}>
+              <Link
+                key={c.label}
+                href={c.href}
+                className={c.primary ? HERO_BUTTON_PRIMARY : HERO_BUTTON_SECONDARY}
+              >
                 {c.label}
                 <ArrowUpRight
                   className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
