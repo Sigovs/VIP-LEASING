@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 // ships in near-black, so we recolor its fills to off-white for the dark card
 // (satori has no `filter: invert()`). Rendered once at build time.
 
-export const alt = "VIP Leasing — Exotic & Performance Cars, South Florida";
+export const alt = "VIP Leasing | Luxury and Exotic Vehicles | Miami, FL";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

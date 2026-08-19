@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   // pointed at this Vercel project.
   metadataBase: new URL("https://thevipleasing.com"),
   title: {
-    default: "VIP Leasing — Exotic & Performance Cars, South Florida",
+    default: "VIP Leasing | Luxury and Exotic Vehicles | Miami, FL",
     template: "%s · VIP Leasing",
   },
   description:

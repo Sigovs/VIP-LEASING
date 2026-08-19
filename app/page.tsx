@@ -35,11 +35,6 @@ import { ShowroomMap } from "@/components/contact/ShowroomMap";
 const HERO_VIDEO = "/hero.mp4";
 const HERO_POSTER = "/hero-poster.jpg";
 
-const PRIMARY_CTAS: { label: string; href: string }[] = [
-  { label: "Sell Your Car", href: "/sell" },
-  { label: "Get Financing", href: "/financing" },
-  { label: "Book a Viewing", href: "/contact?intent=viewing" },
-];
 
 // Cinematic positioning images — Lookbook frames of the matte-black Senna,
 // art-directed per breakpoint. The wide side profile reads best on desktop; on
@@ -64,37 +59,6 @@ export default function HomePage() {
   return (
     <>
       <HeroVideo src={HERO_VIDEO} poster={HERO_POSTER} />
-
-      {/* Primary CTA strip — secondary actions under the hero. Hairline grid
-          comes from gap-px over a border-colored track (handles the stacked
-          mobile and 1x3 desktop dividers automatically). Hover is a restrained
-          gold accent (soft wash + gold arrow + underline wipe), not a solid
-          flood. */}
-      <section aria-label="Primary actions" className="border-y border-border">
-        <ul className="grid grid-cols-1 md:grid-cols-3 gap-px bg-border">
-          {PRIMARY_CTAS.map((c) => (
-            <li key={c.label} className="bg-surface">
-              <Link
-                href={c.href}
-                className="group relative flex h-full items-center justify-center gap-3 px-6 md:px-10 py-7 md:py-9 text-text-1 transition-colors duration-300 hover:bg-accent-soft"
-              >
-                <span className="font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem]">
-                  {c.label}
-                </span>
-                <ArrowUpRight
-                  className="h-5 w-5 shrink-0 text-text-3 transition-all duration-300 group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  strokeWidth={1.5}
-                />
-                {/* gold hairline wipes in from the left on hover */}
-                <span
-                  aria-hidden
-                  className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100"
-                />
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
 
       {/* Featured — the spotlight car */}
       <Section id="inventory" spacing="tight">

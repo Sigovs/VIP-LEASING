@@ -17,7 +17,7 @@ import { SHOWROOM, DIRECTIONS_URL } from "@/lib/showroom";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Visit the VIP Leasing showroom in South Florida or get in touch — private viewings by appointment.",
+    "Visit the VIP Leasing showroom in Miami or get in touch — private viewings by appointment.",
 };
 
 // McLaren Senna frames — matte-black carbon reads as discreet and premium, the
