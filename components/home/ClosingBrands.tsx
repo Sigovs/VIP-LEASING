@@ -150,7 +150,7 @@ export function ClosingBrands() {
                 // Rendered in its resting state and only then hidden by the effect
                 // above — fail open, exactly like Reveal. No JS, no animation, but
                 // the marks are always there.
-                className="group relative flex h-16 items-center justify-center md:h-[var(--h)]"
+                className="group relative flex h-16 w-full items-center justify-center md:h-[var(--h)]"
                 style={{ willChange: "transform, opacity, filter" }}
               >
                 {/* base: quiet grey. The scale is optical, not decorative — see the
