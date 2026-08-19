@@ -26,31 +26,40 @@ import { BRANDS, BRAND_REST, BRAND_LIT, logoSrc } from "@/lib/brands";
 // Sizes vary with it. A field where everything is the same size is a grid with
 // the alignment taken away; varying the weight is what makes it read as objects
 // at different distances.
+//
+// ── Why the field is so tall ─────────────────────────────────────────────────
+// One-by-one is a question of DISTANCE, not of easing. Ten marks inside a
+// 1180px field sit within a single 900px viewport, so they all cross their
+// threshold within a few hundred pixels of scroll and arrive as a block no
+// matter how the stagger is tuned. The field is 3000px now and the marks are
+// spread across the whole of it — roughly 250px of scroll between one and the
+// next, which is what actually makes them arrive one at a time. The sticky
+// background underneath is what makes that length feel like an effect rather
+// than an empty section.
 type Placement = { x: number; y: number; h: number };
 
 // x / y are percentages of the field, positioning each mark by its CENTRE.
 // h is the mark's height at md+, in px. Order matches BRANDS.
 const FIELD: Placement[] = [
-  { x: 15, y: 4, h: 132 }, // Ferrari — opens the field, largest
-  { x: 47, y: 13, h: 92 }, // Porsche
-  { x: 79, y: 5, h: 108 }, // Lamborghini
-  { x: 24, y: 25, h: 88 }, // Rolls-Royce
-  { x: 63, y: 31, h: 120 }, // Maserati
-  { x: 86, y: 22, h: 84 }, // Mercedes-AMG
-  { x: 38, y: 44, h: 100 }, // Bugatti
-  { x: 72, y: 52, h: 128 }, // McLaren — wordmark, carries width
-  { x: 17, y: 56, h: 96 }, // Aston Martin
-  { x: 52, y: 68, h: 112 }, // Bentley
+  { x: 18, y: 3, h: 132 }, // Ferrari — opens the field, largest
+  { x: 62, y: 11, h: 92 }, // Porsche
+  { x: 34, y: 20, h: 108 }, // Lamborghini
+  { x: 80, y: 28, h: 88 }, // Rolls-Royce
+  { x: 22, y: 37, h: 120 }, // Maserati
+  { x: 58, y: 45, h: 84 }, // Mercedes-AMG
+  { x: 84, y: 54, h: 100 }, // Bugatti
+  { x: 30, y: 63, h: 128 }, // McLaren — wordmark, carries width
+  { x: 66, y: 72, h: 96 }, // Aston Martin
+  { x: 44, y: 82, h: 112 }, // Bentley
 ];
 
-// A small residual offset so two marks at a similar height still do not arrive
-// together. The layout does most of this work now, so these are much smaller
-// than the old sequence.
-const SCATTER = [0, 60, 20, 90, 30, 70, 10, 80, 40, 50];
+// A small residual offset only. The vertical spacing is what sequences them
+// now — see the note on the field height below.
+const SCATTER = [0, 30, 10, 40, 20, 45, 15, 35, 25, 50];
 
 const TRAVEL = 70; // px it climbs
 const BLUR = 8; // px it surfaces from
-const SPAN = 0.5; // fraction of the viewport a mark takes to fully arrive
+const SPAN = 0.34; // fraction of the viewport a mark takes to fully arrive
 
 export function ClosingBrands() {
   const refs = useRef<(HTMLDivElement | null)[]>([]);

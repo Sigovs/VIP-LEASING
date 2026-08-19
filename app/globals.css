@@ -295,7 +295,9 @@ body::after {
   .brand-field {
     position: relative;
     display: block;
-    height: 1180px;
+    /* Long on purpose — see the note in ClosingBrands.tsx. This is the scroll
+       distance the marks need to arrive one at a time instead of as a block. */
+    height: 3000px;
   }
 
   .brand-field .brand-mark {
