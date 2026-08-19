@@ -249,7 +249,7 @@ export default function FinancingPage() {
               {PATHS.map((p, i) => (
                 <Reveal key={p.title} delay={i * 0.06}>
                   <span aria-hidden className="block h-px w-10 bg-accent" />
-                  <h3 className="title-mark mt-5 font-title text-2xl font-bold text-text-1 md:text-3xl">
+                  <h3 className="title-mark mt-5 font-sans text-2xl font-bold text-text-1 md:text-3xl">
                     {p.title}
                   </h3>
                   <p className="mt-3.5 max-w-[46ch] text-[0.95rem] leading-relaxed text-text-2">

@@ -57,7 +57,7 @@ export default function ServicePage() {
             {SLOTS.map((s, i) => (
               <Reveal key={s.title} delay={i * 0.06}>
                 <div className="h-full bg-surface p-8 md:p-10">
-                  <h2 className="font-title text-xl font-bold text-text-1 md:text-2xl">
+                  <h2 className="font-sans text-xl font-bold text-text-1 md:text-2xl">
                     {s.title}
                   </h2>
                   <p className="mt-4 text-[0.95rem] leading-relaxed text-text-2">

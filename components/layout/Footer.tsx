@@ -49,7 +49,7 @@ export function Footer() {
             <Image
               src="/logo.svg"
               alt={BRAND.name}
-              width={956}
+              width={1043}
               height={120}
               className="h-auto w-[200px] object-contain [filter:invert(1)] md:w-[240px]"
             />

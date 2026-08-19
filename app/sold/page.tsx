@@ -45,7 +45,7 @@ export default function SoldPage() {
             </div>
           ) : (
             <div className="border border-border bg-surface px-8 py-20 text-center">
-              <p className="font-title text-2xl md:text-3xl font-bold text-text-1">
+              <p className="font-sans text-2xl md:text-3xl font-bold text-text-1">
                 The first placements are in motion.
               </p>
               <p className="mx-auto mt-3 max-w-[44ch] text-text-2 leading-relaxed">

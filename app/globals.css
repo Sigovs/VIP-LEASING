@@ -9,11 +9,13 @@
    rare, deliberate, roughly 5% of the ink on any screen (price, SOLD, focus,
    the period after a title). A dealership floor is lit; it isn't gilded.
 
-   Type system (two faces, each with a distinct role):
-   - Inter Tight (display + body) — one grotesk carries titles, body and UI.
-                            Sentence case; caps live only on eyebrows.
-   - Oswald     (condensed)  — ALL-CAPS data texture: eyebrows, ceremonial
-                            labels, phone / address, spec keys.
+   Type system (three faces, each with a distinct role):
+   - Archivo     (grotesk)   — body, nav, UI, numerics, and every heading below
+                            display size. Sentence case.
+   - Bodoni Moda (didone)    — display only, 40px and up. Below that a didone's
+                            hairlines stop being drawn.
+   - IBM Plex Mono (mono)    — data texture: eyebrows, labels, phone / address,
+                            spec keys.
    ============================================================ */
 
 :root {
@@ -78,7 +80,7 @@
      scale read bloated once the small-caps face came out. */
   --fs-display-1: clamp(2.75rem, 6vw + 1rem, 7rem);
   --fs-display-2: clamp(2.25rem, 4.5vw + 0.5rem, 4.75rem);
-  --fs-display-3: clamp(1.75rem, 3vw + 0.5rem, 3.25rem);
+  --fs-display-3: clamp(2.25rem, 3vw + 0.5rem, 3.25rem); /* floor raised: a didone under ~36px stops being drawn */
 
   /* Logo masks live in variables, not hard-coded url()s, because CSS is the one
      place Next cannot rewrite a path for us. On the GitHub Pages preview the site
@@ -120,12 +122,13 @@
   --color-signal-soft: var(--signal-soft);
 
   /* Each role resolves to its own next/font CSS var with platform fallbacks.
-     Title and body share Inter Tight; the accent + mono roles both resolve to
-     Oswald, which is the site's single condensed data texture. */
-  --font-sans: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
-  --font-title: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
-  --font-accent: var(--font-oswald), "Arial Narrow", ui-sans-serif, sans-serif;
-  --font-mono: var(--font-oswald), "Arial Narrow", ui-sans-serif, sans-serif;
+     Body and title are now DIFFERENT faces: Archivo does the reading, Bodoni
+     Moda does the display, and the accent + mono roles share IBM Plex Mono as
+     the site's data texture. */
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-title: var(--font-bodoni), ui-serif, Georgia, serif;
+  --font-accent: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, monospace;
 
   /* ── Corner language ──────────────────────────────────────────────────────
      The reference build is razor-edged everywhere; this is where this site
@@ -345,10 +348,11 @@ body::after {
      the base is neutral, so it reads as light moving across brushed metal —
      not as a gold wash. */
   position: relative;
-  /* Matches /logo.svg's viewBox. The mark is set solid — no tracking — which
-     took it from ~10:1 to ~8:1; the box has to follow the asset or
-     mask-size:contain letterboxes it. */
-  aspect-ratio: 12245 / 1537;
+  /* Matches /logo.svg's viewBox. The mark is set in the BODY face, not the
+     display one: at the 23px it renders in the masthead a didone's hairlines
+     fall under a pixel and the logotype washes out. Same reason the sub-display
+     headings moved off the display face. */
+  aspect-ratio: 6169 / 710;
   background-image: linear-gradient(
       90deg,
       transparent 43%,

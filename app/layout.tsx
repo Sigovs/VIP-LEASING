@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Oswald } from "next/font/google";
+import { Archivo, Bodoni_Moda, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/motion/LenisProvider";
 import { PageTransition } from "@/components/layout/PageTransition";
@@ -8,23 +8,37 @@ import { Footer } from "@/components/layout/Footer";
 import { SHOWROOM, SITE_URL } from "@/lib/showroom";
 import { BASE_PATH } from "@/lib/asset";
 
-// Inter Tight carries the whole voice — display headlines, body, nav, UI and
-// numerics. One grotesk, worked hard across the weight range, reads as a house
-// style; a stack of four faces reads as a font sampler.
-const sans = Inter_Tight({
-  variable: "--font-inter-tight",
+// Three faces, three jobs, and none of them the reference site's.
+//
+// Archivo carries the voice — body, nav, UI, numerics and every heading below
+// display size. A grotesk with a real weight range, worked hard, reads as a
+// house style.
+const sans = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Oswald — the single condensed voice, ALL-CAPS only: eyebrows, ceremonial
-// labels, phone / address, spec keys. It is the site's data texture, and the
-// only face allowed to shout.
-const condensed = Oswald({
-  variable: "--font-oswald",
+// Bodoni Moda is the display cut and NOTHING ELSE. A didone's hairlines stop
+// being drawn below roughly 40px, so it is barred from anything smaller —
+// subheads that used to sit on the title face were moved to Archivo for exactly
+// this reason. The optical-size axis is what makes it a display face rather
+// than a body face enlarged.
+const display = Bodoni_Moda({
+  variable: "--font-bodoni",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "600"],
+  weight: ["500", "600", "700"],
+});
+
+// IBM Plex Mono is the data texture: eyebrows, ceremonial labels, phone,
+// address, spec keys. It replaces the reference site's condensed caps, which
+// were the single most recognisable thing about it.
+const mono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500"],
 });
 
 // One description, one URL, one phone — every consumer of them reads these, so
@@ -75,7 +89,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang="en"
-      className={`${sans.variable} ${condensed.variable} h-full antialiased`}
+      className={`${sans.variable} ${display.variable} ${mono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-bg text-text-1">
         {/* CSS is the one place Next cannot rewrite a path for us, and two logo
