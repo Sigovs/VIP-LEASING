@@ -78,7 +78,7 @@ export function Header() {
           <Image
             src="/logo.svg"
             alt="VIP Leasing"
-            width={1212}
+            width={956}
             height={120}
             priority
             className="h-auto w-[150px] md:w-[190px] [filter:invert(1)]"

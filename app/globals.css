@@ -66,6 +66,7 @@
      precisely because it belongs to one element: change it here and every
      heading on the site follows. */
   --mark: #3b5ba5;
+  --mark-hover: #4a6cbd;
 
   --signal: #96252d;
   --signal-bright: #c33c46;
@@ -113,6 +114,7 @@
   --color-accent-on-chrome: var(--accent-on-chrome);
 
   --color-mark: var(--mark);
+  --color-mark-hover: var(--mark-hover);
   --color-signal: var(--signal);
   --color-signal-bright: var(--signal-bright);
   --color-signal-soft: var(--signal-soft);
@@ -343,10 +345,10 @@ body::after {
      the base is neutral, so it reads as light moving across brushed metal —
      not as a gold wash. */
   position: relative;
-  /* Matches /logo.svg's viewBox. The placeholder wordmark is one long line
-     (~10:1) where the old lockup was 3.5:1 — the box has to follow the asset
-     or mask-size:contain letterboxes it. */
-  aspect-ratio: 15521.8 / 1537;
+  /* Matches /logo.svg's viewBox. The mark is set solid — no tracking — which
+     took it from ~10:1 to ~8:1; the box has to follow the asset or
+     mask-size:contain letterboxes it. */
+  aspect-ratio: 12245 / 1537;
   background-image: linear-gradient(
       90deg,
       transparent 43%,
