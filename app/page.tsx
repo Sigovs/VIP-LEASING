@@ -75,7 +75,7 @@ export default function HomePage() {
       {/* Available Now — the lineup, priced-free; price lives on the detail page.
           Trim the top padding on mobile (the financing band above already leaves
           breathing room); desktop keeps the full tight rhythm. */}
-      <Section spacing="tight" className="pt-8 md:pt-24">
+      <Section spacing="tight" className="atmosphere pt-8 md:pt-24">
         <Container>
           <div>
             <div className="mb-10 md:mb-14 flex items-end justify-between gap-6 border-b border-border pb-5 md:pb-6">
@@ -211,7 +211,7 @@ export default function HomePage() {
           section verbatim if the band is wanted back. */}
 
       {/* Social proof — positioning + testimonials */}
-      <Section spacing="tight">
+      <Section spacing="tight" className="atmosphere atmosphere-right">
         <SocialProof />
       </Section>
 

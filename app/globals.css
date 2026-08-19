@@ -217,11 +217,22 @@ body::after {
   height: 0.1em;
   margin-top: 0.34em;
   background: var(--mark);
+  /* The bar draws itself in from zero as the heading arrives; the tween lives
+     in components/motion/TitleMarks.tsx and drives --mark-grow on the heading.
+     scaleX rather than width, so growing it never reflows the line above it.
+     The default of 1 is what makes it fail open: no JS, no animation, bar
+     still there at full width. */
+  transform: scaleX(var(--mark-grow, 1));
+  transform-origin: left center;
+  will-change: transform;
 }
 
 .title-mark.text-center::after,
 .text-center .title-mark::after {
   margin-inline: auto;
+  /* A centred mark has to grow from its middle, or it creeps sideways as it
+     draws — the one thing a centred composition cannot do. */
+  transform-origin: center;
 }
 
 /* The logo's own gradient, filling the single primary action on a screen.
@@ -233,6 +244,43 @@ body::after {
 }
 .bg-brand-gradient:hover {
   background-image: linear-gradient(125deg, #0a1cc4 0%, #b31ade 100%);
+}
+
+/* Atmosphere — a very low wash of the logo gradient's two ends, thrown
+   off-centre and stretched into an ellipse. Deliberately NOT a circle and not
+   centred: a centred circle reads as a spotlight somebody forgot to switch off,
+   while an off-axis ellipse reads as light in a room.
+
+   It sits behind content in its own stacking context and is barred from
+   touching legibility — the strongest stop is 0.16 alpha over the page ground,
+   and it fades out well before the reading column. Two variants so the sections
+   that carry it do not mirror each other. */
+.atmosphere {
+  position: relative;
+  isolation: isolate;
+}
+
+.atmosphere::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    112% 58% at 16% 26%,
+    rgba(0, 17, 166, 0.16) 0%,
+    rgba(0, 17, 166, 0.06) 38%,
+    rgba(0, 17, 166, 0) 72%
+  );
+}
+
+.atmosphere-right::before {
+  background: radial-gradient(
+    94% 72% at 84% 64%,
+    rgba(154, 1, 197, 0.14) 0%,
+    rgba(154, 1, 197, 0.05) 40%,
+    rgba(154, 1, 197, 0) 74%
+  );
 }
 
 /* Editorial hairline. Lay one between sections without an extra wrapper. */

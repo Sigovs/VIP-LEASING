@@ -3,6 +3,7 @@ import { Archivo, Bodoni_Moda, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { LenisProvider } from "@/components/motion/LenisProvider";
 import { PageTransition } from "@/components/layout/PageTransition";
+import { TitleMarks } from "@/components/motion/TitleMarks";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SHOWROOM, SITE_URL } from "@/lib/showroom";
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <LenisProvider>
+          <TitleMarks />
           <Header />
           <PageTransition>
             <main id="main" className="flex-1">
