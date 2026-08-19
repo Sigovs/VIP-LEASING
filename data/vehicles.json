@@ -1,0 +1,1182 @@
+[
+  {
+    "slug": "2004-porsche-carrera-gt",
+    "year": 2004,
+    "make": "Porsche",
+    "model": "Carrera GT",
+    "trim": "6-Speed Manual",
+    "price": 1750000,
+    "mileage": 4860,
+    "exteriorColor": "GT Silver Metallic",
+    "interiorColor": "Dark Grey Leather with Yellow Seatbelts",
+    "vin": "WP0CA29874L001XXX",
+    "transmission": "6-Speed Manual",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "5.7L Naturally Aspirated V10",
+    "horsepower": 603,
+    "torque": 435,
+    "zeroToSixty": 3.5,
+    "topSpeed": 205,
+    "weight": 3042,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Carbon Fiber Monocoque and Subframe",
+          "Removable Targa Roof Panels",
+          "Magnesium Alloy Wheels",
+          "Fixed Rear Wing with Active Deployment",
+          "GT Silver Metallic Paint"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Dark Grey Leather Interior",
+          "Yellow Seatbelts",
+          "Carbon Fiber Bucket Seats",
+          "Beechwood Gear Knob",
+          "Carrera GT Sill Plates"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Ceramic Composite Clutch",
+          "Carbon-Ceramic Brakes",
+          "Pushrod Suspension with Inboard Dampers",
+          "Naturally Aspirated V10 Derived from Le Mans Prototype"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Bose Sound System",
+          "Traction Control (Defeatable)",
+          "Original Fitted Luggage Set"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2004-09-02",
+        "event": "First Owner Delivery",
+        "description": "One of 644 cars delivered to the United States. Sold new through an authorized Porsche dealer and kept in a climate-controlled collection from the outset."
+      },
+      {
+        "date": "2019-05-21",
+        "event": "Clutch Service",
+        "description": "Ceramic composite clutch inspected and replaced by a Porsche Classic specialist; all documentation retained."
+      },
+      {
+        "date": "2026-05-06",
+        "event": "Acquired by VIP Leasing",
+        "description": "Three owners from new, under 5,000 miles, complete books, tools, both keys and the original fitted luggage."
+      }
+    ],
+    "story": "Porsche built a Le Mans engine, could not race it, and put it in a road car instead — 5.7 litres, ten cylinders, 8,400 rpm, and a ceramic clutch the size of a dinner plate. No turbos, no paddles, no driver aids worth the name: six speeds, three pedals, and a beechwood knob. Six hundred and forty-four came to America. This is one of them, in GT Silver over dark grey, under five thousand miles.",
+    "heroImage": "/showcase/porsche-carrera-gt/02.webp",
+    "gallery": [
+      "/showcase/porsche-carrera-gt/02.webp",
+      "/showcase/porsche-carrera-gt/04.webp",
+      "/showcase/porsche-carrera-gt/05.webp",
+      "/showcase/porsche-carrera-gt/06.webp",
+      "/showcase/porsche-carrera-gt/07.webp",
+      "/showcase/porsche-carrera-gt/08.webp",
+      "/showcase/porsche-carrera-gt/09.webp",
+      "/showcase/porsche-carrera-gt/11.webp"
+    ],
+    "isSold": false,
+    "isFeatured": true,
+    "isSpotlight": true,
+    "acquiredDate": "2026-05-06"
+  },
+  {
+    "slug": "2024-ferrari-sf90-spider",
+    "year": 2024,
+    "make": "Ferrari",
+    "model": "SF90 Spider",
+    "trim": "Assetto Fiorano",
+    "price": 749000,
+    "mileage": 1180,
+    "exteriorColor": "Bianco Avus with Giallo Modena Stripe",
+    "interiorColor": "Nero Alcantara with Yellow Stitching",
+    "vin": "ZFF95NLA9R0300XXX",
+    "transmission": "8-Speed F1 DCT",
+    "drivetrain": "All-Wheel Drive",
+    "engine": "4.0L Twin-Turbo V8 with Three Electric Motors",
+    "horsepower": 986,
+    "torque": 590,
+    "zeroToSixty": 2.5,
+    "topSpeed": 211,
+    "weight": 3560,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Assetto Fiorano Package",
+          "Giallo Modena Racing Stripe",
+          "Carbon Fiber Front Splitter",
+          "20\" Forged Carbon Wheels",
+          "Titanium Exhaust"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Full Alcantara Cabin",
+          "Carbon Fiber Racing Seats",
+          "Yellow Rev Counter",
+          "Carbon Fiber Driver Zone",
+          "Suede Steering Wheel"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Multimatic Shock Absorbers",
+          "Titanium Springs",
+          "Carbon-Ceramic Brakes",
+          "eManettino Drive Modes",
+          "Electronic Side Slip Control 8.0"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Ferrari Passenger Display",
+          "Wireless Apple CarPlay",
+          "Front Suspension Lifter",
+          "Premium HiFi System"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-04-18",
+        "event": "First Owner Delivery",
+        "description": "Delivered new through Ferrari of Fort Lauderdale to a South Florida collector. Full front-end paint protection film applied prior to delivery."
+      },
+      {
+        "date": "2025-06-02",
+        "event": "Annual Service",
+        "description": "Completed at authorized Ferrari dealer. Hybrid system diagnostics clear, no advisories raised."
+      },
+      {
+        "date": "2026-03-14",
+        "event": "Acquired by VIP Leasing",
+        "description": "Single owner, garage kept, never tracked. Books, tools, both keys and the original window sticker are present."
+      }
+    ],
+    "story": "Ferrari's first series-production plug-in hybrid, and still the most powerful road car they have ever built. This one is Assetto Fiorano — the lightweight package with Multimatic dampers and titanium springs — finished in Bianco Avus with the Giallo Modena racing stripe. The retractable hardtop drops in fourteen seconds without costing a single horsepower.",
+    "heroImage": "/ilusso/sf90-spider.jpg",
+    "gallery": [
+      "/ilusso/sf90-spider.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": true,
+    "acquiredDate": "2026-03-14"
+  },
+  {
+    "slug": "2025-ferrari-296-gts",
+    "year": 2025,
+    "make": "Ferrari",
+    "model": "296 GTS",
+    "trim": "Assetto Fiorano",
+    "price": 459000,
+    "mileage": 2340,
+    "exteriorColor": "Bianco Cervino",
+    "interiorColor": "Nero with Rosso Stitching",
+    "vin": "ZFF01SMA5S0305XXX",
+    "transmission": "8-Speed F1 DCT",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "3.0L Twin-Turbo V6 with Electric Motor",
+    "horsepower": 819,
+    "torque": 546,
+    "zeroToSixty": 2.8,
+    "topSpeed": 205,
+    "weight": 3400,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Assetto Fiorano Package",
+          "Carbon Fiber Rear Diffuser",
+          "Lexan Rear Screen",
+          "20\" Forged Wheels in Gloss Black",
+          "Yellow Brake Calipers"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Carbon Fiber Racing Seats",
+          "Full Electric Seats",
+          "Carbon Fiber Central Bridge",
+          "Alcantara Headlining",
+          "Rosso Stitching Throughout"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Multimatic Dampers",
+          "Carbon-Ceramic Brakes",
+          "eManettino with eDrive Modes",
+          "Titanium Springs",
+          "Michelin Cup 2R Tires"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Ferrari Passenger Display",
+          "Apple CarPlay",
+          "Front Suspension Lifter",
+          "Advanced Driver Assistance Pack"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-02-09",
+        "event": "First Owner Delivery",
+        "description": "Delivered new to a Palm Beach collection. Ceramic coating and full-body PPF applied within the first week."
+      },
+      {
+        "date": "2025-11-27",
+        "event": "Annual Service",
+        "description": "Performed on schedule at an authorized Ferrari dealer; no items outstanding."
+      },
+      {
+        "date": "2026-02-20",
+        "event": "Acquired by VIP Leasing",
+        "description": "Two-owner car, both known to us. Complete with tools, both keys, and the factory car cover."
+      }
+    ],
+    "story": "The V6 that convinced the purists. Ferrari's 120-degree twin-turbo six, hybridised to 819 horsepower, in the open-top GTS body with the Assetto Fiorano package. Bianco Cervino over Nero — the quiet spec, on the loudest mid-engined Ferrari of the decade.",
+    "heroImage": "/ilusso/ferrari-296-gts.jpg",
+    "gallery": [
+      "/ilusso/ferrari-296-gts.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": true,
+    "acquiredDate": "2026-02-20"
+  },
+  {
+    "slug": "2021-ferrari-f8-tributo",
+    "year": 2021,
+    "make": "Ferrari",
+    "model": "F8 Tributo",
+    "trim": "Carbon Package",
+    "price": 329000,
+    "mileage": 4120,
+    "exteriorColor": "Azzurro Dino",
+    "interiorColor": "Cuoio with Blue Stitching",
+    "vin": "ZFF92LLA7M0264XXX",
+    "transmission": "7-Speed F1 DCT",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "3.9L Twin-Turbo V8",
+    "horsepower": 710,
+    "torque": 568,
+    "zeroToSixty": 2.9,
+    "topSpeed": 211,
+    "weight": 3164,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Carbon Fiber Exterior Package",
+          "Carbon Fiber Rear Spoiler",
+          "20\" Forged Diamond Wheels",
+          "Scuderia Ferrari Shields",
+          "Blue Brake Calipers"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Cuoio Leather Interior",
+          "Carbon Fiber Racing Seats",
+          "Carbon Fiber Driver Zone",
+          "Alcantara Headlining",
+          "Blue Stitching and Piping"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Ferrari Dynamic Enhancer +",
+          "Side Slip Control 6.1",
+          "Sport Exhaust System"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Apple CarPlay",
+          "Passenger Touchscreen Display",
+          "Front Suspension Lifter",
+          "Premium HiFi System",
+          "Rear Parking Camera"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2021-07-30",
+        "event": "First Owner Delivery",
+        "description": "Delivered new in Azzurro Dino, a factory-order spec, to a collector in Naples, Florida."
+      },
+      {
+        "date": "2024-05-16",
+        "event": "Major Service",
+        "description": "Three-year service completed at an authorized Ferrari dealer. New tires fitted at the same time."
+      },
+      {
+        "date": "2026-01-22",
+        "event": "Acquired by VIP Leasing",
+        "description": "Two owners from new, both Florida. Original window sticker, books, tools and both keys included."
+      }
+    ],
+    "story": "The last of the line — the final Ferrari to use the twin-turbo V8 that won International Engine of the Year four times running, before hybridisation changed the recipe for good. Finished in Azzurro Dino over Cuoio, which is the sort of spec you order when you have owned several and stopped ordering red.",
+    "heroImage": "/ilusso/ferrari-f8.jpg",
+    "gallery": [
+      "/ilusso/ferrari-f8.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": true,
+    "acquiredDate": "2026-01-22"
+  },
+  {
+    "slug": "2024-aston-martin-db12",
+    "year": 2024,
+    "make": "Aston Martin",
+    "model": "DB12",
+    "trim": "Coupe",
+    "price": 289000,
+    "mileage": 3260,
+    "exteriorColor": "Onyx Black",
+    "interiorColor": "Obsidian Black with Bronze Stitching",
+    "vin": "SCFRMFAW8RGL05XXX",
+    "transmission": "8-Speed ZF Automatic",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "4.0L Twin-Turbo V8",
+    "horsepower": 671,
+    "torque": 590,
+    "zeroToSixty": 3.5,
+    "topSpeed": 202,
+    "weight": 3968,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Bronze Forged 21\" Wheels",
+          "Carbon Fiber Roof Panel",
+          "Gloss Black Exterior Pack",
+          "Sports Exhaust with Black Tips"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Obsidian Black Leather",
+          "Bronze Contrast Stitching",
+          "Sports Plus Seats",
+          "Carbon Fiber Interior Trim",
+          "Alcantara Headlining"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Adaptive Damping System",
+          "Electronic Rear Differential",
+          "Michelin Pilot Sport 5S Tires"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Bowers & Wilkins Surround Sound",
+          "Wireless Apple CarPlay",
+          "360-Degree Camera",
+          "Aston Martin Connected Services"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2024-06-11",
+        "event": "First Owner Delivery",
+        "description": "Delivered new through Aston Martin Palm Beach. PPF applied to the full front end."
+      },
+      {
+        "date": "2025-08-04",
+        "event": "Annual Service",
+        "description": "Completed at an authorized dealer with no advisories."
+      },
+      {
+        "date": "2026-01-08",
+        "event": "Acquired by VIP Leasing",
+        "description": "One owner from new, garage kept, non-smoker. Full books and both keys."
+      }
+    ],
+    "story": "Aston Martin call it a super tourer, and for once the marketing is honest: 671 horsepower, a chassis stiffened seven per cent over the DB11, and an interior that finally answers the one complaint anybody ever had. Onyx Black on bronze wheels — the spec that makes it look like it is doing 90 standing still.",
+    "heroImage": "/ilusso/db12.jpg",
+    "gallery": [
+      "/ilusso/db12.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": true,
+    "acquiredDate": "2026-01-08"
+  },
+  {
+    "slug": "2023-lamborghini-urus-performante",
+    "year": 2023,
+    "make": "Lamborghini",
+    "model": "Urus",
+    "trim": "Performante",
+    "price": 279000,
+    "mileage": 6840,
+    "exteriorColor": "Nero Noctis",
+    "interiorColor": "Nero Ade with Rosso Alala Stitching",
+    "vin": "ZPBUA1ZL8PLA20XXX",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "All-Wheel Drive",
+    "engine": "4.0L Twin-Turbo V8",
+    "horsepower": 657,
+    "torque": 627,
+    "zeroToSixty": 3.3,
+    "topSpeed": 190,
+    "weight": 4850,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Carbon Fiber Hood",
+          "Carbon Fiber Roof",
+          "23\" Gloss Black Wheels",
+          "Titanium Sport Exhaust",
+          "Red Brake Calipers"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Nero Ade Leather with Alcantara",
+          "Carbon Fiber Interior Package",
+          "Sports Seats with Q-Citura Stitching",
+          "Rosso Alala Contrast Stitching"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Torque Vectoring Rear Differential",
+          "Rally Drive Mode",
+          "Steel Spring Suspension with Adaptive Dampers"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Bang & Olufsen 3D Sound",
+          "Head-Up Display",
+          "360-Degree Camera",
+          "Apple CarPlay"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2023-05-22",
+        "event": "First Owner Delivery",
+        "description": "Delivered new through Lamborghini Broward to its first and only owner."
+      },
+      {
+        "date": "2024-09-30",
+        "event": "Scheduled Service",
+        "description": "Completed on schedule; brake fluid and tires replaced at the same visit."
+      },
+      {
+        "date": "2025-12-05",
+        "event": "Acquired by VIP Leasing",
+        "description": "Single owner, service history complete, both keys present."
+      }
+    ],
+    "story": "Forty-seven kilos lighter than the standard Urus, twenty millimetres lower, and fitted with a titanium exhaust that makes a two-and-a-half tonne SUV sound like it has a grudge. Nero Noctis over Nero Ade with red stitching — and it still holds the production SUV record at Pikes Peak.",
+    "heroImage": "/ilusso/urus-performante.jpg",
+    "gallery": [
+      "/ilusso/urus-performante.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": true,
+    "acquiredDate": "2025-12-05"
+  },
+  {
+    "slug": "2019-porsche-911-gt2-rs",
+    "year": 2019,
+    "make": "Porsche",
+    "model": "911 GT2 RS",
+    "trim": "Weissach Package",
+    "price": 429000,
+    "mileage": 3980,
+    "exteriorColor": "White",
+    "interiorColor": "Black Alcantara with Red Accents",
+    "vin": "WP0AE2A96KS185XXX",
+    "transmission": "7-Speed PDK",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "3.8L Twin-Turbo Flat-6",
+    "horsepower": 700,
+    "torque": 553,
+    "zeroToSixty": 2.7,
+    "topSpeed": 211,
+    "weight": 3241,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Weissach Package",
+          "Magnesium Wheels in Gold",
+          "Carbon Fiber Roof",
+          "Carbon Fiber Anti-Roll Bars",
+          "Titanium Roll Cage"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Full Bucket Seats in Carbon Fiber",
+          "Black Alcantara Package",
+          "Red Accent Stitching",
+          "Chrono Package",
+          "Fire Extinguisher"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "PCCB Ceramic Brakes",
+          "Rear-Axle Steering",
+          "Sport Chrono Package",
+          "Michelin Cup 2 R Tires"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Bose Surround Sound",
+          "Track Telemetry App",
+          "Front Axle Lift System"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2019-03-08",
+        "event": "First Owner Delivery",
+        "description": "One of the Weissach cars delivered new to a Florida collector; never registered for track use."
+      },
+      {
+        "date": "2023-04-19",
+        "event": "Major Service",
+        "description": "Completed at an authorized Porsche dealer, including a full fluid change and new Cup 2 R tires."
+      },
+      {
+        "date": "2025-11-18",
+        "event": "Acquired by VIP Leasing",
+        "description": "Two owners, both known to us. Books, tools, both keys and the original window sticker retained."
+      }
+    ],
+    "story": "The widowmaker, rehabilitated: 700 horsepower through the rear wheels, a Nürburgring record when it launched, and the Weissach Package's magnesium wheels to shave the last of the weight. White over black Alcantara, gold wheels — the way the factory photographed it.",
+    "heroImage": "/ilusso/porsche-gt2-rs.jpg",
+    "gallery": [
+      "/ilusso/porsche-gt2-rs.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": false,
+    "acquiredDate": "2025-11-18"
+  },
+  {
+    "slug": "2023-porsche-911-gt3-rs",
+    "year": 2023,
+    "make": "Porsche",
+    "model": "911 GT3 RS",
+    "trim": "Weissach Package",
+    "price": 359000,
+    "mileage": 1240,
+    "exteriorColor": "Black",
+    "interiorColor": "Black Race-Tex with Red Stitching",
+    "vin": "WP0AF2A92PS280XXX",
+    "transmission": "7-Speed PDK",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "4.0L Naturally Aspirated Flat-6",
+    "horsepower": 518,
+    "torque": 343,
+    "zeroToSixty": 3.0,
+    "topSpeed": 184,
+    "weight": 3268,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Weissach Package",
+          "Magnesium Wheels in Gold",
+          "Carbon Fiber Roof",
+          "Front Axle Lift System",
+          "Center-Lock Wheels"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Full Bucket Seats in Carbon Fiber",
+          "Extended Race-Tex Package",
+          "Roll Cage in Red",
+          "Six-Point Harness",
+          "Chrono Package"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "PCCB Ceramic Brakes",
+          "Rear-Axle Steering",
+          "DRS-Equipped Rear Wing",
+          "Adjustable Differential",
+          "Track Telemetry App"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Bose Surround Sound",
+          "Apple CarPlay",
+          "Lane Change Assist",
+          "Adaptive Cruise Control"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2023-08-12",
+        "event": "First Owner Delivery",
+        "description": "Delivered new to a Florida-based collector via Champion Porsche. PPF applied prior to delivery, original window sticker and build sheet retained."
+      },
+      {
+        "date": "2024-03-04",
+        "event": "1,000 Mile Service",
+        "description": "Completed at an authorized Porsche dealer. All fluids inspected, no service items reported."
+      },
+      {
+        "date": "2025-10-20",
+        "event": "Acquired by VIP Leasing",
+        "description": "Single-owner, garage-kept, smoke-free. Books, tools, accessories and the original tonneau included."
+      }
+    ],
+    "story": "A road car with a DRS wing. The 992 GT3 RS moved the goalposts so far that Porsche had to explain the aerodynamics in a press briefing — 860 kilos of downforce at 177 mph, and a naturally aspirated flat-six that revs to 9,000. Black on gold magnesium wheels, Weissach spec.",
+    "heroImage": "/ilusso/porsche-gt3-rs.jpg",
+    "gallery": [
+      "/ilusso/porsche-gt3-rs.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": false,
+    "acquiredDate": "2025-10-20"
+  },
+  {
+    "slug": "2018-lamborghini-aventador-s",
+    "year": 2018,
+    "make": "Lamborghini",
+    "model": "Aventador S",
+    "trim": "Coupe",
+    "price": 379000,
+    "mileage": 5620,
+    "exteriorColor": "Bianco Icarus",
+    "interiorColor": "Nero Ade with Carbon Fiber Trim",
+    "vin": "ZHWUC4ZD1JLA07XXX",
+    "transmission": "7-Speed ISR",
+    "drivetrain": "All-Wheel Drive",
+    "engine": "6.5L Naturally Aspirated V12",
+    "horsepower": 730,
+    "torque": 509,
+    "zeroToSixty": 2.9,
+    "topSpeed": 217,
+    "weight": 3921,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Full Carbon Fiber Exterior Package",
+          "Carbon Fiber Engine Bonnet",
+          "20\"/21\" Dianthus Forged Wheels",
+          "Transparent Engine Bonnet",
+          "Sports Exhaust System"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Nero Ade Leather with Alcantara",
+          "Carbon Fiber Sport Seats",
+          "Carbon Fiber Interior Package",
+          "Branding Package"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Rear-Wheel Steering",
+          "Magnetorheological Suspension",
+          "Lamborghini Dynamic Steering",
+          "EGO Drive Mode"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Sensonum Audio System",
+          "Rear Parking Camera",
+          "Front Lifting System",
+          "Apple CarPlay"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2018-09-14",
+        "event": "First Owner Delivery",
+        "description": "Delivered new through Lamborghini Miami in a factory-order Bianco Icarus specification."
+      },
+      {
+        "date": "2022-06-08",
+        "event": "Major Service",
+        "description": "Full service at an authorized dealer including clutch inspection — no wear items flagged."
+      },
+      {
+        "date": "2025-09-12",
+        "event": "Acquired by VIP Leasing",
+        "description": "Two owners from new. Books, tools, both keys and the fitted car cover included."
+      }
+    ],
+    "story": "Six and a half litres, twelve cylinders, no turbochargers and no apology. The S brought rear-wheel steering and the EGO drive mode to the Aventador, and it remains one of the last naturally aspirated V12s anyone will sell you. Bianco Icarus with the full carbon exterior package.",
+    "heroImage": "/ilusso/aventador-s.jpg",
+    "gallery": [
+      "/ilusso/aventador-s.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": false,
+    "acquiredDate": "2025-09-12"
+  },
+  {
+    "slug": "2016-ferrari-488-gtb",
+    "year": 2016,
+    "make": "Ferrari",
+    "model": "488 GTB",
+    "trim": "Carbon Package",
+    "price": 279000,
+    "mileage": 8940,
+    "exteriorColor": "Rosso Corsa",
+    "interiorColor": "Nero with Rosso Stitching",
+    "vin": "ZFF79ALA5G0219XXX",
+    "transmission": "7-Speed F1 DCT",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "3.9L Twin-Turbo V8",
+    "horsepower": 661,
+    "torque": 561,
+    "zeroToSixty": 3.0,
+    "topSpeed": 205,
+    "weight": 3252,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Carbon Fiber Exterior Package",
+          "20\" Forged Wheels in Grigio",
+          "Scuderia Ferrari Shields",
+          "Carbon Fiber Rear Diffuser"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Nero Leather with Rosso Stitching",
+          "Carbon Fiber Racing Seats",
+          "Carbon Fiber Driver Zone with LEDs",
+          "Alcantara Headlining"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Side Slip Control 2",
+          "Sport Exhaust System",
+          "Magnetorheological Dampers"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Passenger Touchscreen Display",
+          "Premium HiFi System",
+          "Front Suspension Lifter",
+          "Rear Parking Camera"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2016-05-03",
+        "event": "First Owner Delivery",
+        "description": "Delivered new through Ferrari of Fort Lauderdale."
+      },
+      {
+        "date": "2021-02-17",
+        "event": "Major Service",
+        "description": "Full major service completed at an authorized Ferrari dealer, including all belts and fluids."
+      },
+      {
+        "date": "2025-08-26",
+        "event": "Acquired by VIP Leasing",
+        "description": "Three owners, complete Ferrari service history, books, tools and both keys present."
+      }
+    ],
+    "story": "The car that proved a turbocharged Ferrari could still be a Ferrari. 661 horsepower, a throttle map that hides the turbos so well the engine feels naturally aspirated all the way to 8,000 rpm, and the classic answer to the classic question: Rosso Corsa over Nero.",
+    "heroImage": "/ilusso/ferrari-488-gtb.jpg",
+    "gallery": [
+      "/ilusso/ferrari-488-gtb.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": false,
+    "acquiredDate": "2025-08-26"
+  },
+  {
+    "slug": "2026-rolls-royce-cullinan",
+    "year": 2026,
+    "make": "Rolls-Royce",
+    "model": "Cullinan",
+    "trim": "Series II Bespoke",
+    "price": 459000,
+    "mileage": 890,
+    "exteriorColor": "Tempest Grey Bespoke",
+    "interiorColor": "Charles Blue and Arctic White",
+    "vin": "SLA6R2C0XSUX20XXX",
+    "transmission": "8-Speed Automatic",
+    "drivetrain": "All-Wheel Drive",
+    "engine": "6.75L Twin-Turbo V12",
+    "horsepower": 563,
+    "torque": 627,
+    "zeroToSixty": 4.9,
+    "topSpeed": 155,
+    "weight": 6069,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Bespoke Widebody Treatment",
+          "Whitewall Tires on 24\" Forged Wheels",
+          "Illuminated Spirit of Ecstasy",
+          "Bespoke Coachline",
+          "Panoramic Glass Roof"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Charles Blue and Arctic White Two-Tone Leather",
+          "Starlight Headliner",
+          "Bespoke Audio System",
+          "Picnic Tables with Rear Theatre Configuration",
+          "Lambswool Floor Mats"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Planar Suspension System",
+          "All-Wheel Steering",
+          "Self-Levelling Air Suspension"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Bespoke Audio 18-Speaker System",
+          "Rear Theatre Configuration",
+          "Head-Up Display",
+          "Night Vision with Pedestrian Warning"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2025-11-02",
+        "event": "Bespoke Commission Delivered",
+        "description": "Commissioned new through Rolls-Royce Motor Cars and delivered to its first owner in South Florida."
+      },
+      {
+        "date": "2026-04-16",
+        "event": "Acquired by VIP Leasing",
+        "description": "Effectively a new car — under a thousand miles, full bespoke documentation, both keys and all delivery accessories."
+      }
+    ],
+    "story": "Bespoke through and through: a Series II Cullinan commissioned in Tempest Grey with a coachbuilt widebody treatment and whitewall tires, on a car that already weighs as much as two 911s. The 6.75-litre V12 does not so much accelerate as relocate you.",
+    "heroImage": "/ilusso/cullinan.jpg",
+    "gallery": [
+      "/ilusso/cullinan.jpg"
+    ],
+    "isSold": false,
+    "isFeatured": false,
+    "acquiredDate": "2026-04-16"
+  },
+  {
+    "slug": "2015-ferrari-458-italia",
+    "year": 2015,
+    "make": "Ferrari",
+    "model": "458 Italia",
+    "trim": "Coupe",
+    "price": 269000,
+    "mileage": 12400,
+    "exteriorColor": "Blu Tour de France",
+    "interiorColor": "Cuoio with Blue Stitching",
+    "vin": "ZFF67NFA0F0210XXX",
+    "transmission": "7-Speed F1 DCT",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "4.5L Naturally Aspirated V8",
+    "horsepower": 562,
+    "torque": 398,
+    "zeroToSixty": 3.3,
+    "topSpeed": 202,
+    "weight": 3153,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Carbon Fiber Front Flaps",
+          "20\" Forged Diamond Wheels",
+          "Scuderia Ferrari Shields",
+          "Yellow Brake Calipers"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Cuoio Leather with Blue Stitching",
+          "Carbon Fiber Racing Seats",
+          "Carbon Fiber Driver Zone with LEDs",
+          "Alcantara Headlining"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Sport Exhaust System",
+          "Magnetorheological Dampers"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Premium HiFi System",
+          "Navigation System",
+          "Rear Parking Camera"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2015-04-20",
+        "event": "First Owner Delivery",
+        "description": "Delivered new in a factory-order Blu Tour de France specification."
+      },
+      {
+        "date": "2023-07-11",
+        "event": "Major Service",
+        "description": "Full major service completed at an authorized Ferrari dealer."
+      },
+      {
+        "date": "2025-06-30",
+        "event": "Sold by VIP Leasing",
+        "description": "Sold to a collector in Atlanta, Georgia."
+      }
+    ],
+    "story": "The last naturally aspirated mid-engined V8 Ferrari, and the reason values have only gone one direction. 9,000 rpm, no turbochargers, and a spec — Blu Tour de France over Cuoio — that looks better every year that passes.",
+    "heroImage": "/ilusso/458-italia.jpg",
+    "gallery": [
+      "/ilusso/458-italia.jpg"
+    ],
+    "isSold": true,
+    "isFeatured": false,
+    "acquiredDate": "2025-04-10"
+  },
+  {
+    "slug": "2016-ferrari-california-t",
+    "year": 2016,
+    "make": "Ferrari",
+    "model": "California T",
+    "trim": "Handling Speciale",
+    "price": 139000,
+    "mileage": 18600,
+    "exteriorColor": "Nero Daytona",
+    "interiorColor": "Cuoio with Nero Stitching",
+    "vin": "ZFF77XJA1G0217XXX",
+    "transmission": "7-Speed F1 DCT",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "3.9L Twin-Turbo V8",
+    "horsepower": 553,
+    "torque": 557,
+    "zeroToSixty": 3.6,
+    "topSpeed": 196,
+    "weight": 3814,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Handling Speciale Package",
+          "20\" Forged Wheels in Gloss Black",
+          "Retractable Hardtop",
+          "Scuderia Ferrari Shields"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Cuoio Leather Interior",
+          "Daytona-Style Seats",
+          "Carbon Fiber Interior Trim",
+          "Magneride Dual-Mode Suspension"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Handling Speciale Dampers",
+          "Sport Exhaust System"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Turbo Performance Engineer Display",
+          "Premium HiFi System",
+          "Rear Parking Camera",
+          "Navigation System"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2016-08-15",
+        "event": "First Owner Delivery",
+        "description": "Delivered new through an authorized Ferrari dealer in Florida."
+      },
+      {
+        "date": "2022-10-09",
+        "event": "Annual Service",
+        "description": "Completed at an authorized dealer; no advisories."
+      },
+      {
+        "date": "2026-01-16",
+        "event": "Sold by VIP Leasing",
+        "description": "Sold to a returning client in Fort Lauderdale."
+      }
+    ],
+    "story": "The one you actually drive. Retractable hardtop, 553 horsepower, and the Handling Speciale package to sharpen the dampers and shorten the shift times — a genuine grand tourer that happens to run to 196 mph. Nero Daytona over Cuoio.",
+    "heroImage": "/ilusso/california.jpg",
+    "gallery": [
+      "/ilusso/california.jpg"
+    ],
+    "isSold": true,
+    "isFeatured": false,
+    "acquiredDate": "2025-08-01"
+  },
+  {
+    "slug": "2023-ferrari-portofino-m",
+    "year": 2023,
+    "make": "Ferrari",
+    "model": "Portofino M",
+    "trim": "Coupe-Convertible",
+    "price": 239000,
+    "mileage": 5140,
+    "exteriorColor": "Rosso Portofino",
+    "interiorColor": "Beige Tradizione with Rosso Stitching",
+    "vin": "ZFF89FPA9P0290XXX",
+    "transmission": "8-Speed F1 DCT",
+    "drivetrain": "Rear-Wheel Drive",
+    "engine": "3.9L Twin-Turbo V8",
+    "horsepower": 612,
+    "torque": 561,
+    "zeroToSixty": 3.4,
+    "topSpeed": 199,
+    "weight": 3668,
+    "options": [
+      {
+        "category": "Exterior",
+        "items": [
+          "Retractable Hardtop",
+          "20\" Forged Diamond Wheels",
+          "Scuderia Ferrari Shields",
+          "Carbon Fiber Front Spoiler"
+        ]
+      },
+      {
+        "category": "Interior",
+        "items": [
+          "Beige Tradizione Leather",
+          "Magneride Dual-Mode Suspension",
+          "Carbon Fiber Driver Zone",
+          "Rosso Contrast Stitching"
+        ]
+      },
+      {
+        "category": "Performance",
+        "items": [
+          "Carbon-Ceramic Brakes",
+          "Five-Position Manettino with Race Mode",
+          "Sport Exhaust System"
+        ]
+      },
+      {
+        "category": "Technology",
+        "items": [
+          "Apple CarPlay",
+          "Passenger Touchscreen Display",
+          "Premium HiFi System",
+          "360-Degree Parking Camera"
+        ]
+      }
+    ],
+    "history": [
+      {
+        "date": "2023-03-27",
+        "event": "First Owner Delivery",
+        "description": "Delivered new through Ferrari of Fort Lauderdale."
+      },
+      {
+        "date": "2025-05-14",
+        "event": "Annual Service",
+        "description": "Completed on schedule at an authorized Ferrari dealer."
+      },
+      {
+        "date": "2026-04-08",
+        "event": "Sold by VIP Leasing",
+        "description": "Sold to a client in Boca Raton, Florida."
+      }
+    ],
+    "story": "M for Modificata: an eight-speed gearbox, a five-position manettino with a genuine Race mode, and 612 horsepower under a folding hardtop. The Portofino M is the Ferrari you can use on a Tuesday, and this one is in the colour it was named after.",
+    "heroImage": "/ilusso/portofino.jpg",
+    "gallery": [
+      "/ilusso/portofino.jpg"
+    ],
+    "isSold": true,
+    "isFeatured": false,
+    "acquiredDate": "2025-12-01"
+  }
+]

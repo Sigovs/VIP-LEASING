@@ -1,0 +1,54 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Placeholder photography and video carried over from the reference build.
+# It is third-party material (another dealership's shoot), it is due to be
+# replaced with this client's own imagery, and this repo is public — so it
+# stays out of version control. The files remain on disk so the site runs
+# locally; see PLAN.md.
+/public/showcase/
+/public/ilusso/
+/public/inventory/
+/public/*.mp4
+/public/hero-poster.jpg
+/public/closing-poster.jpg
+/public/closing-bg.webp
