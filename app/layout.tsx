@@ -5,7 +5,7 @@ import { LenisProvider } from "@/components/motion/LenisProvider";
 import { PageTransition } from "@/components/layout/PageTransition";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SHOWROOM } from "@/lib/showroom";
+import { SHOWROOM, SITE_URL } from "@/lib/showroom";
 import { BASE_PATH } from "@/lib/asset";
 
 // Inter Tight carries the whole voice — display headlines, body, nav, UI and
@@ -27,17 +27,23 @@ const condensed = Oswald({
   weight: ["300", "400", "500", "600"],
 });
 
+// One description, one URL, one phone — every consumer of them reads these, so
+// none of them can drift out of sync with lib/showroom.ts the way the hardcoded
+// "Fort Lauderdale" and the 954 number did.
+const SITE_DESCRIPTION = `Porsche, Ferrari, McLaren, Lamborghini. ${SHOWROOM.city}, ${SHOWROOM.region}. By appointment.`;
+// schema.org wants a dialable string, which is exactly what the tel: href holds.
+const SITE_PHONE = SHOWROOM.phoneHref.replace("tel:", "");
+
 export const metadata: Metadata = {
   // Point at the live deployment so social link previews (og:image, og:url)
   // resolve today. Switch to https://thevipleasing.com once that domain is
   // pointed at this Vercel project.
-  metadataBase: new URL("https://thevipleasing.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "VIP Leasing | Luxury and Exotic Vehicles | Miami, FL",
     template: "%s · VIP Leasing",
   },
-  description:
-    "Porsche, Ferrari, McLaren, Lamborghini. Fort Lauderdale, FL. By appointment.",
+  description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
     siteName: "VIP Leasing",
@@ -50,10 +56,9 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "AutoDealer",
   name: "VIP Leasing",
-  description:
-    "Porsche, Ferrari, McLaren, Lamborghini. Fort Lauderdale, FL.",
-  url: "https://thevipleasing.com",
-  telephone: "+1-954-000-0000",
+  description: SITE_DESCRIPTION,
+  url: SITE_URL,
+  telephone: SITE_PHONE,
   email: SHOWROOM.email,
   address: {
     "@type": "PostalAddress",

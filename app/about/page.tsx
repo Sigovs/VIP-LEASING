@@ -13,7 +13,7 @@ import { SHOWROOM } from "@/lib/showroom";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Luxury and exotic cars, leased, financed, and delivered across South Florida.",
+    `Luxury and exotic cars, leased, financed, and delivered across ${SHOWROOM.market}.`,
 };
 
 // Ferrari F50 golden-hour frames — the heritage register for the story page.
@@ -104,8 +104,8 @@ export default function AboutPage() {
 
             <Reveal delay={0.1} y={22}>
               <p className="mt-6 max-w-[46ch] text-pretty text-[1.05rem] leading-relaxed text-white/85 md:text-[1.15rem]">
-                Two showrooms, one standard — from the Greater Toronto Area to
-                South Florida.
+                One showroom, one standard — luxury and exotic cars in{" "}
+                {SHOWROOM.market}.
               </p>
             </Reveal>
 
@@ -147,7 +147,7 @@ export default function AboutPage() {
                   client's history yet and will not invent one — this says what
                   the house does until they tell us where it came from. */}
               <p className="text-text-2 leading-relaxed text-[1.05rem] md:text-[1.1rem]">
-                Luxury and exotic cars, across South Florida. No volume targets —
+                Luxury and exotic cars, across {SHOWROOM.market}. No volume targets —
                 just the discipline of only taking on cars we&apos;d want to own
                 ourselves.
               </p>

@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/showroom";
 import type { MetadataRoute } from "next";
 import { getAllVehicles } from "@/lib/vehicles";
 
@@ -6,7 +7,7 @@ import { getAllVehicles } from "@/lib/vehicles";
 // preview) emit it as a file instead of refusing to build.
 export const dynamic = "force-static";
 
-const BASE = "https://thevipleasing.com";
+const BASE = SITE_URL;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [

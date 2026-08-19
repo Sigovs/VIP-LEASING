@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
+import { SHOWROOM } from "@/lib/showroom";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
 import { Button, ButtonLink } from "@/components/ui/Button";
@@ -66,7 +67,7 @@ export default function StyleguidePage() {
             <p className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3">
               Vehicle prices &amp; specs — sans, tabular numerals
             </p>
-            <p className="font-mono text-sm text-text-1 pt-4">+1 (954) 000-0000</p>
+            <p className="font-mono text-sm text-text-1 pt-4">{SHOWROOM.phoneDisplay}</p>
             <p className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3">
               Mono — contact &amp; data textures only
             </p>

@@ -17,7 +17,7 @@ import {
   getSimilarVehicles,
   getVehicleBySlug,
 } from "@/lib/vehicles";
-import { SHOWROOM } from "@/lib/showroom";
+import { SHOWROOM, SITE_URL } from "@/lib/showroom";
 import { formatNumber } from "@/lib/utils";
 
 interface Params {
@@ -63,7 +63,7 @@ export default async function VehiclePage({ params }: Params) {
   const similar = getSimilarVehicles(slug, 3);
 
   // Canonical base — matches app/layout.tsx metadataBase.
-  const SITE_URL = "https://thevipleasing.com";
+
   const name = `${vehicle.year} ${vehicle.make} ${vehicle.model}`;
 
   const jsonLd = {

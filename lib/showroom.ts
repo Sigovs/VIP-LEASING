@@ -56,6 +56,10 @@ export const SHOWROOM = {
  *  comparison unreachable) and keeps it working if the value ever goes back. */
 export const HAS_ADDRESS: boolean = (SHOWROOM.street as string) !== "TBD";
 
+/** Canonical origin. Every sitemap entry, robots directive and JSON-LD url
+ *  reads this, so the domain cannot drift file to file. */
+export const SITE_URL = `https://${BRAND.domain}`;
+
 export const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
   `${SHOWROOM.name}, ${SHOWROOM.street}, ${SHOWROOM.cityStateZip}`
 )}`;

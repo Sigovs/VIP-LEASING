@@ -2,10 +2,12 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { SHOWROOM } from "@/lib/showroom";
 import { TESTIMONIALS } from "@/lib/testimonials";
 
-// Social proof: sister-dealership story (the Toronto operation this
-// Fort Lauderdale showroom is built off of) + a 3-up testimonial grid.
+// Social proof: a positioning statement + a 3-up testimonial grid. The
+// reference build runs a sister-dealership story in the left column; this house
+// has one location and no group, so the column states what it does instead.
 // Quotes are placeholder until real client copy is collected.
 export function SocialProof() {
   return (
@@ -24,7 +26,7 @@ export function SocialProof() {
             <span className="title-dot">Live VIP</span>
           </h2>
           <p className="mt-6 md:mt-8 max-w-[44ch] text-text-2 leading-relaxed text-[1.05rem] md:text-[1.1rem]">
-            Luxury and exotic cars, sourced and delivered across South Florida.
+            Luxury and exotic cars, sourced and delivered across {SHOWROOM.market}.
             Lease it, finance it, or buy it outright — the car is yours to
             choose, and the terms are built to fit.
           </p>

@@ -3,15 +3,16 @@ import { Suspense } from "react";
 import { Container } from "@/components/ui/Container";
 import { InventoryGrid } from "@/components/inventory/InventoryGrid";
 import { getActiveVehicles } from "@/lib/vehicles";
+import { SHOWROOM, SITE_URL } from "@/lib/showroom";
 
 export const metadata: Metadata = {
   title: "Inventory",
   description:
-    "Hand-curated Porsche, Ferrari, McLaren, and Lamborghini in South Florida. By appointment.",
+    `Hand-curated Porsche, Ferrari, McLaren, and Lamborghini in ${SHOWROOM.market}. By appointment.`,
 };
 
 // Canonical base — matches app/layout.tsx metadataBase.
-const SITE_URL = "https://thevipleasing.com";
+
 
 export default function InventoryPage() {
   const vehicles = getActiveVehicles();
@@ -29,7 +30,7 @@ export default function InventoryPage() {
         "@type": "CollectionPage",
         name: "Inventory",
         description:
-          "Hand-curated Porsche, Ferrari, McLaren, and Lamborghini in South Florida. By appointment.",
+          `Hand-curated Porsche, Ferrari, McLaren, and Lamborghini in ${SHOWROOM.market}. By appointment.`,
         url: `${SITE_URL}/inventory`,
       },
       {
