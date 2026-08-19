@@ -58,7 +58,7 @@ export function SellYourCar() {
         <div className="md:ml-auto md:max-w-[34rem]">
           <Reveal y={18}>
             <span aria-hidden className="block h-px w-12 bg-accent" />
-            <h2 className="title-dot mt-7 max-w-[20ch] text-balance font-title font-bold text-display-2 leading-[1.03] text-chrome-text-1">
+            <h2 className="title-mark mt-7 max-w-[20ch] text-balance font-title font-bold text-display-2 leading-[1.03] text-chrome-text-1">
               Ready to part with yours?
             </h2>
           </Reveal>

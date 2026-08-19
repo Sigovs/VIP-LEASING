@@ -98,7 +98,7 @@ export default function InventoryPage() {
               Now" / "Lookbook") and the VDP section headings. The car count is
               omitted here: it is already shown in the marque rail ("All 10")
               and the toolbar ("10 of 10"). */}
-          <h1 className="title-dot font-title text-5xl md:text-7xl font-bold text-text-1 leading-[1.0]">
+          <h1 className="title-mark font-title text-5xl md:text-7xl font-bold text-text-1 leading-[1.0]">
             Inventory
           </h1>
         </Container>

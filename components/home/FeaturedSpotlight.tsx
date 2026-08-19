@@ -23,7 +23,7 @@ export function FeaturedSpotlight({ vehicle }: { vehicle: Vehicle }) {
     <div>
       {/* Section header — mirrors the Recent header below for a consistent idiom */}
       <div className="mb-8 md:mb-10 border-b border-border pb-5 md:pb-6">
-        <h2 className="title-dot font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.0]">
+        <h2 className="title-mark font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.0]">
           Featured
         </h2>
       </div>

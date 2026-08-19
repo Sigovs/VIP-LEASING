@@ -53,7 +53,7 @@ const PRACTICE = [
 function SectionHeader({ title }: { title: string }) {
   return (
     <div className="mb-10 md:mb-14 border-b border-border pb-5 md:pb-6">
-      <h2 className="title-dot font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.0]">
+      <h2 className="title-mark font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.0]">
         {title}
       </h2>
     </div>
@@ -97,7 +97,7 @@ export default function AboutPage() {
           <div className="max-w-[44rem]">
             <Reveal y={18}>
               <span aria-hidden className="block h-px w-12 bg-accent" />
-              <h1 className="title-dot mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
+              <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 About
               </h1>
             </Reveal>
@@ -135,7 +135,7 @@ export default function AboutPage() {
               <h2 className="font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.08]">
                 Built on Referrals,
                 <br />
-                <span className="title-dot">and Cars Worth Keeping</span>
+                <span className="title-mark">and Cars Worth Keeping</span>
               </h2>
             </Reveal>
             <Reveal
@@ -261,7 +261,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-5">
               <span aria-hidden className="block h-px w-12 bg-accent mb-7" />
-              <h2 className="title-dot font-title text-4xl md:text-5xl font-bold text-text-1 leading-[1.05]">
+              <h2 className="title-mark font-title text-4xl md:text-5xl font-bold text-text-1 leading-[1.05]">
                 Come See the Floor
               </h2>
               <p className="mt-6 max-w-[44ch] text-text-2 leading-relaxed text-[1.05rem]">

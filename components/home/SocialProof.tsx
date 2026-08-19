@@ -23,7 +23,7 @@ export function SocialProof() {
           <h2 className="font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.15]">
             Drive Luxury.
             <br />
-            <span className="title-dot">Live VIP</span>
+            <span className="title-mark">Live VIP</span>
           </h2>
           <p className="mt-6 md:mt-8 max-w-[44ch] text-text-2 leading-relaxed text-[1.05rem] md:text-[1.1rem]">
             Luxury and exotic cars, sourced and delivered across {SHOWROOM.market}.

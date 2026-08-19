@@ -63,7 +63,7 @@ Where oxblood lives (and nowhere else):
   being laid over any photograph, and on the white studio cyclorama the old
   tinted-text-on-black-scrim version simply vanished.
 - **Keyboard focus ring.**
-- **The `.title-dot` period** that closes a section title — the one place it
+- **The `.title-mark` period** that closes a section title — the one place it
   appears in running type, and it is literally a full stop.
 
 Never: an oxblood hover, an oxblood fill on a whole element, oxblood as a

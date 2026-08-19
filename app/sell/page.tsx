@@ -92,7 +92,7 @@ const FAQS = [
 function SectionHeader({ title }: { title: string }) {
   return (
     <div className="mb-10 md:mb-14 border-b border-border pb-5 md:pb-6">
-      <h2 className="title-dot font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.0]">
+      <h2 className="title-mark font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.0]">
         {title}
       </h2>
     </div>
@@ -137,7 +137,7 @@ export default function SellPage() {
           <div className="max-w-[44rem]">
             <Reveal y={18}>
               <span aria-hidden className="block h-px w-12 bg-accent" />
-              <h1 className="title-dot mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
+              <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Sell Your Car
               </h1>
             </Reveal>
@@ -184,7 +184,7 @@ export default function SellPage() {
                 >
                   <span
                     aria-hidden
-                    className="title-dot w-10 shrink-0 font-title text-4xl font-bold leading-[0.85] text-text-3 md:w-14 md:text-5xl"
+                    className="title-mark w-10 shrink-0 font-title text-4xl font-bold leading-[0.85] text-text-3 md:w-14 md:text-5xl"
                   >
                     {i + 1}
                   </span>
@@ -229,7 +229,7 @@ export default function SellPage() {
           <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
               <span aria-hidden className="block h-px w-12 bg-accent mb-7" />
-              <h2 className="title-dot font-title text-4xl font-bold leading-[1.05] text-text-1 md:text-5xl">
+              <h2 className="title-mark font-title text-4xl font-bold leading-[1.05] text-text-1 md:text-5xl">
                 Start with the Details
               </h2>
               <p className="mt-6 max-w-[46ch] text-[1.05rem] leading-relaxed text-text-2">

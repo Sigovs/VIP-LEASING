@@ -66,7 +66,7 @@ const STEPS = [
 function SectionHead({ title, sub }: { title: string; sub?: string }) {
   return (
     <div className="mb-10 border-b border-border pb-5 md:mb-14 md:pb-6">
-      <h2 className="title-dot font-title text-3xl font-bold leading-[1.0] text-text-1 md:text-5xl">
+      <h2 className="title-mark font-title text-3xl font-bold leading-[1.0] text-text-1 md:text-5xl">
         {title}
       </h2>
       {sub && (
@@ -114,7 +114,7 @@ export default function FinancingPage() {
           <div className="max-w-[44rem]">
             <Reveal y={18}>
               <span aria-hidden className="block h-px w-12 bg-accent" />
-              <h1 className="title-dot mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
+              <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Financing
               </h1>
             </Reveal>
@@ -170,7 +170,7 @@ export default function FinancingPage() {
                 className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/15"
               />
               <div className="relative">
-                <h3 className="title-dot font-title text-4xl font-bold leading-[1.0] text-white md:text-5xl">
+                <h3 className="title-mark font-title text-4xl font-bold leading-[1.0] text-white md:text-5xl">
                   Lease
                 </h3>
                 <p className="mt-6 max-w-[38ch] text-[1.02rem] leading-relaxed text-white/85 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
@@ -209,7 +209,7 @@ export default function FinancingPage() {
                 className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/15"
               />
               <div className="relative">
-                <h3 className="title-dot font-title text-4xl font-bold leading-[1.0] text-white md:text-5xl">
+                <h3 className="title-mark font-title text-4xl font-bold leading-[1.0] text-white md:text-5xl">
                   Finance
                 </h3>
                 <p className="mt-6 max-w-[40ch] text-[1.02rem] leading-relaxed text-white/85 [text-shadow:0_1px_10px_rgba(0,0,0,0.45)]">
@@ -249,7 +249,7 @@ export default function FinancingPage() {
               {PATHS.map((p, i) => (
                 <Reveal key={p.title} delay={i * 0.06}>
                   <span aria-hidden className="block h-px w-10 bg-accent" />
-                  <h3 className="title-dot mt-5 font-title text-2xl font-bold text-text-1 md:text-3xl">
+                  <h3 className="title-mark mt-5 font-title text-2xl font-bold text-text-1 md:text-3xl">
                     {p.title}
                   </h3>
                   <p className="mt-3.5 max-w-[46ch] text-[0.95rem] leading-relaxed text-text-2">
@@ -269,7 +269,7 @@ export default function FinancingPage() {
                 >
                   <span
                     aria-hidden
-                    className="title-dot w-9 shrink-0 font-title text-4xl font-bold leading-[0.85] text-text-3 md:w-12 md:text-5xl"
+                    className="title-mark w-9 shrink-0 font-title text-4xl font-bold leading-[0.85] text-text-3 md:w-12 md:text-5xl"
                   >
                     {i + 1}
                   </span>
@@ -346,7 +346,7 @@ export default function FinancingPage() {
           <div className="mx-auto flex max-w-[46rem] flex-col items-center text-center">
             <Reveal y={18}>
               <span aria-hidden className="mx-auto block h-px w-12 bg-accent" />
-              <h2 className="title-dot mt-7 text-balance font-title text-display-2 font-bold leading-[1.03] text-chrome-text-1">
+              <h2 className="title-mark mt-7 text-balance font-title text-display-2 font-bold leading-[1.03] text-chrome-text-1">
                 Drive It Home Your Way
               </h2>
             </Reveal>

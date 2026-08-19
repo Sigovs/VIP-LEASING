@@ -79,7 +79,7 @@ export default function HomePage() {
         <Container>
           <div>
             <div className="mb-10 md:mb-14 flex items-end justify-between gap-6 border-b border-border pb-5 md:pb-6">
-              <h2 className="title-dot font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.0]">
+              <h2 className="title-mark font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.0]">
                 Available Now
               </h2>
               <Link
@@ -169,11 +169,11 @@ export default function HomePage() {
         <Container className="relative w-full">
           {/* Headline → subhead → action, revealed as a slow stagger (one
               motivated motion per element). Gold lives only on the hairline +
-              title-dot; the glass CTA stays neutral, per the "gold off the
+              title-mark; the glass CTA stays neutral, per the "gold off the
               over-photo button" rule in DESIGN.md. */}
           <Reveal y={18}>
             <span aria-hidden className="block h-px w-12 bg-accent" />
-            <h2 className="title-dot mt-7 max-w-[17ch] text-balance font-title font-bold text-display-2 leading-[1.03] text-chrome-text-1">
+            <h2 className="title-mark mt-7 max-w-[17ch] text-balance font-title font-bold text-display-2 leading-[1.03] text-chrome-text-1">
               The cars worth owning, in one showroom
             </h2>
           </Reveal>
@@ -224,7 +224,7 @@ export default function HomePage() {
         <Section spacing="tight" className="bg-paper">
           <Container>
             <div className="mb-6 md:mb-8">
-              <h2 className="title-dot font-title text-3xl md:text-5xl font-bold text-text-1">
+              <h2 className="title-mark font-title text-3xl md:text-5xl font-bold text-text-1">
                 Lookbook
               </h2>
             </div>
@@ -252,7 +252,7 @@ export default function HomePage() {
               <div className="flex flex-col justify-between gap-10 md:gap-12 w-full">
                 <div className="space-y-6 md:space-y-8">
                   <span aria-hidden className="block h-px w-12 bg-accent" />
-                  <h2 className="title-dot font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.05]">
+                  <h2 className="title-mark font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.05]">
                     {SHOWROOM.market}
                   </h2>
                   <p className="max-w-[48ch] text-text-2 leading-relaxed text-[1.05rem] md:text-[1.1rem]">

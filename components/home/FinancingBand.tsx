@@ -114,7 +114,7 @@ export function FinancingBand() {
                 "Ready to part with yours?"). display-1 is reserved for the closing
                 "Find yours" — a page gets one loudest voice, and spending it here,
                 mid-scroll, on the financing partner leaves nothing for the ending. */}
-            <h2 className="title-dot mt-8 text-balance font-title text-display-2 font-bold leading-[1.0] text-chrome-text-1">
+            <h2 className="title-mark mt-8 text-balance font-title text-display-2 font-bold leading-[1.0] text-chrome-text-1">
               Lease it or finance it
             </h2>
           </Reveal>

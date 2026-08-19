@@ -58,8 +58,8 @@
      2.4:1 against the ground — below AA even at display sizes — so a price set in
      it was the most important number on the page, and the hardest to read. As ink
      it now uses the bright tone: 3.8:1.
-     The only oxblood ink left in the deep tone is the .title-dot period, which is
-     decoration, carries no information, and is allowed to sit dark. */
+     Nothing is left in the deep tone as ink: the .title-mark bar moved to
+     platinum once it grew from a full stop into a block. */
   --signal: #96252d;
   --signal-bright: #c33c46;
   --signal-soft: rgba(150, 37, 45, 0.14);
@@ -184,12 +184,35 @@ body::after {
   color: var(--signal-bright);
 }
 
-/* Site signature: the period that closes a title carrying .title-dot. It is
-   the one place oxblood appears in running type — a full stop, in the literal
-   sense. The period lives in CSS so headlines stay clean in the markup. */
-.title-dot::after {
-  content: ".";
-  color: var(--signal);
+/* Site signature: the oxblood mark that closes a title carrying .title-mark.
+   It was a full stop set after the last word; it is now a solid bar under the
+   line — the same signal colour doing the same job with more presence.
+
+   PLATINUM, not oxblood. The full stop it replaced was allowed to sit in the
+   signal colour because it was a few pixels of decoration. A 108×6 bar repeated
+   on ten headings is not — oxblood is the signal here and the palette holds it
+   to roughly 5% of the ink on a screen, which a block that size breaks. Platinum
+   is what every other rule and hairline on the site is already drawn in.
+
+   Sized in em, not px, so one rule serves every heading on the site: the mark
+   grows with the type it belongs to instead of needing a value per size. At the
+   60px section titles that lands at 108×6; at the 102px closing title, 184×10.
+
+   The mark is a block, so it drops onto its own line. Block boxes ignore
+   text-align, which is why the centred contexts get their own rule below —
+   without it, centred headings would carry a left-aligned mark. */
+.title-mark::after {
+  content: "";
+  display: block;
+  width: 1.8em;
+  height: 0.1em;
+  margin-top: 0.34em;
+  background: var(--accent);
+}
+
+.title-mark.text-center::after,
+.text-center .title-mark::after {
+  margin-inline: auto;
 }
 
 /* Editorial hairline. Lay one between sections without an extra wrapper. */

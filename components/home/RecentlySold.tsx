@@ -26,7 +26,7 @@ export function RecentlySold() {
     <Section spacing="tight" className="bg-paper">
       <Container>
         <div className="mb-10 md:mb-14 flex items-end justify-between gap-6 border-b border-border pb-5 md:pb-6">
-          <h2 className="title-dot font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.0]">
+          <h2 className="title-mark font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.0]">
             Recently Sold
           </h2>
           <Link

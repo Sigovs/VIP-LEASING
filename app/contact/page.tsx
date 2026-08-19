@@ -69,7 +69,7 @@ export default function ContactPage() {
           <div className="max-w-[44rem]">
             <Reveal y={18}>
               <span aria-hidden className="block h-px w-12 bg-accent" />
-              <h1 className="title-dot mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
+              <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Contact
               </h1>
             </Reveal>
@@ -189,7 +189,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-4">
               <span aria-hidden className="block h-px w-12 bg-accent mb-7" />
-              <h2 className="title-dot font-title text-4xl md:text-5xl font-bold text-text-1 leading-[1.05]">
+              <h2 className="title-mark font-title text-4xl md:text-5xl font-bold text-text-1 leading-[1.05]">
                 Visit the Showroom
               </h2>
               <p className="mt-6 font-mono text-[0.95rem] leading-relaxed text-text-1">
