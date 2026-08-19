@@ -78,3 +78,16 @@ missing until real assets land.
 ```bash
 npm run build
 ```
+
+## Client preview
+
+```bash
+npm run preview
+```
+
+Builds a static export and force-pushes it to this repo's `gh-pages` branch,
+which GitHub Pages serves at **https://sigovs.github.io/VIP-LEASING/**. The
+branch is a publishing target, not a history — it is replaced each time.
+
+Note that the preview publishes the placeholder photography that is git-ignored
+on `main`; a static export has to carry its own images.
