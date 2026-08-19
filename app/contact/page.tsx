@@ -172,7 +172,7 @@ export default function ContactPage() {
                   >
                     <InstagramIcon size={15} strokeWidth={1.5} />@
                     {INSTAGRAM_HANDLE}
-                    <ChevronRight className="h-3.5 w-3.5" strokeWidth={1.75} />
+                    <ChevronRight className="h-3.5 w-3.5 transition-colors duration-300 group-hover:text-mark" strokeWidth={1.75} />
                   </a>
                 </div>
               </div>
@@ -209,7 +209,7 @@ export default function ContactPage() {
               >
                 Get directions
                 <ChevronRight
-                  className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                  className="h-3.5 w-3.5 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                   strokeWidth={1.75}
                 />
               </a>

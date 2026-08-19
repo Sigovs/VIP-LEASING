@@ -35,7 +35,7 @@ export function RecentlySold() {
           >
             View Sold
             <ChevronRight
-              className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+              className="h-3.5 w-3.5 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
               strokeWidth={1.75}
             />
           </Link>

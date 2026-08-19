@@ -136,7 +136,7 @@ export function FinancingBand() {
               >
                 Explore financing
                 <ChevronRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                   strokeWidth={1.75}
                 />
               </Link>

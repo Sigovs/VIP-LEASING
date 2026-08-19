@@ -133,7 +133,7 @@ export default function FinancingPage() {
               >
                 Start the conversation
                 <ChevronRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                   strokeWidth={1.5}
                 />
               </Link>
@@ -184,7 +184,7 @@ export default function FinancingPage() {
                 >
                   Browse the lineup
                   <ChevronRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                     strokeWidth={1.5}
                   />
                 </Link>
@@ -223,7 +223,7 @@ export default function FinancingPage() {
                 >
                   Start the conversation
                   <ChevronRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                     strokeWidth={1.5}
                   />
                 </Link>
@@ -358,7 +358,7 @@ export default function FinancingPage() {
                 >
                   Start the conversation
                   <ChevronRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                     strokeWidth={1.75}
                   />
                 </Link>

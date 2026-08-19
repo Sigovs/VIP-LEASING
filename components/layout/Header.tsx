@@ -103,7 +103,7 @@ export function Header() {
                     "rounded-pill px-3.5 py-2 text-[0.78rem] font-semibold uppercase tracking-[0.14em] transition-colors duration-200",
                     active
                       ? "bg-mark text-white"
-                      : "text-text-1 hover:bg-white/[0.08]"
+                      : "text-text-1 hover:bg-white/[0.12]"
                   )}
                 >
                   {item.label}

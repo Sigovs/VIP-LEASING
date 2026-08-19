@@ -180,8 +180,14 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
                   className={c.primary ? HERO_BUTTON_PRIMARY : HERO_BUTTON_SECONDARY}
                 >
                   {c.label}
+                  {/* The primary is filled with the brand gradient, so its
+                      chevron stays white — blue on blue is an invisible icon. */}
                   <ChevronRight
-                    className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                    className={
+                      c.primary
+                        ? "h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                        : "h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
+                    }
                     strokeWidth={1.75}
                   />
                 </Link>

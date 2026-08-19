@@ -12,11 +12,41 @@ import { BRANDS, BRAND_REST, BRAND_LIT, logoSrc } from "@/lib/brands";
 // position in the viewport to its own transform: scroll slowly and they rise
 // slowly, stop and they stop.
 //
-// The offsets below are deliberately SHUFFLED rather than sequential. A rising
-// stagger down a row reads as a wave — the templated look we are avoiding.
-// Scattered, the marks surface as individuals, at unrelated moments, the way
-// objects appear out of a fade rather than the way a list animates.
-const SCATTER = [40, 260, 120, 300, 30, 200, 90, 280, 150, 60, 240, 110];
+// ── The arrangement ──────────────────────────────────────────────────────────
+// It used to be four across in even rows. That is a logo wall, it is what the
+// reference site does, and it fought the motion: marks sharing a row share an
+// arrival, so ten individual reveals still read as three grouped ones.
+//
+// They are placed as a CONSTELLATION instead — every mark on its own x and its
+// own y, no two sharing either, drifting loosely from upper-left to lower-right
+// so the field has a direction rather than being noise. Because each one sits at
+// a different height, each one crosses the viewport threshold at a different
+// moment on its own: the scatter is now in the layout, not bolted on afterwards.
+//
+// Sizes vary with it. A field where everything is the same size is a grid with
+// the alignment taken away; varying the weight is what makes it read as objects
+// at different distances.
+type Placement = { x: number; y: number; h: number };
+
+// x / y are percentages of the field, positioning each mark by its CENTRE.
+// h is the mark's height at md+, in px. Order matches BRANDS.
+const FIELD: Placement[] = [
+  { x: 15, y: 4, h: 132 }, // Ferrari — opens the field, largest
+  { x: 47, y: 13, h: 92 }, // Porsche
+  { x: 79, y: 5, h: 108 }, // Lamborghini
+  { x: 24, y: 25, h: 88 }, // Rolls-Royce
+  { x: 63, y: 31, h: 120 }, // Maserati
+  { x: 86, y: 22, h: 84 }, // Mercedes-AMG
+  { x: 38, y: 44, h: 100 }, // Bugatti
+  { x: 72, y: 52, h: 128 }, // McLaren — wordmark, carries width
+  { x: 17, y: 56, h: 96 }, // Aston Martin
+  { x: 52, y: 68, h: 112 }, // Bentley
+];
+
+// A small residual offset so two marks at a similar height still do not arrive
+// together. The layout does most of this work now, so these are much smaller
+// than the old sequence.
+const SCATTER = [0, 60, 20, 90, 30, 70, 10, 80, 40, 50];
 
 const TRAVEL = 70; // px it climbs
 const BLUR = 8; // px it surfaces from
@@ -90,45 +120,63 @@ export function ClosingBrands() {
         </h2>
       </div>
 
-      {/* Four across, and flex rather than grid so a short final row CENTRES
-          instead of hanging off the left edge. 96px of vertical air between rows:
-          the marks need room to arrive in, or the scatter has nothing to read
-          against. */}
-      <div className="mx-auto flex max-w-[1040px] flex-wrap items-center justify-center gap-x-10 gap-y-16 md:gap-x-8 md:gap-y-24">
-        {BRANDS.map((b, i) => (
-          <div
-            key={b.name}
-            ref={(el) => {
-              refs.current[i] = el;
-            }}
-            // Rendered in its resting state and only then hidden by the effect
-            // above — fail open, exactly like Reveal. No JS, no animation, but
-            // the marks are always there.
-            className="group relative flex h-14 w-[calc(50%-1.25rem)] items-center justify-center sm:w-[calc(33.333%-1.75rem)] md:h-[4.5rem] md:w-[calc(25%-1.5rem)]"
-            style={{ willChange: "transform, opacity, filter" }}
-          >
-            {/* base: quiet grey. The scale is optical, not decorative — see the
-                note in lib/brands.ts. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={logoSrc(b, BRAND_REST)}
-              alt={b.name}
-              loading="lazy"
-              style={{ transform: `scale(${b.scale ?? 1})` }}
-              className="block max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-0"
-            />
-            {/* hover: lights to platinum */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={logoSrc(b, BRAND_LIT)}
-              alt=""
-              aria-hidden
-              loading="lazy"
-              style={{ transform: `scale(${b.scale ?? 1})` }}
-              className="absolute inset-0 m-auto block max-h-full w-auto max-w-full object-contain opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-            />
-          </div>
-        ))}
+      {/* One markup, two arrangements. Below md the marks flow as a staggered
+          two-column list — a constellation on a phone is just overlap. From md
+          the .brand-field rule takes over and each mark jumps to its own point
+          (see globals.css); the positions ride in as custom properties because
+          inline styles cannot be made responsive. */}
+      <div className="brand-field mx-auto flex max-w-[1080px] flex-wrap items-center justify-center gap-x-8 gap-y-14">
+        {BRANDS.map((b, i) => {
+          const p = FIELD[i % FIELD.length];
+          return (
+            <div
+              key={b.name}
+              className="brand-mark flex w-[calc(50%-1rem)] items-center justify-center"
+              style={
+                {
+                  "--x": `${p.x}%`,
+                  "--y": `${p.y}%`,
+                  "--h": `${p.h}px`,
+                } as React.CSSProperties
+              }
+            >
+              {/* The positioning lives on the wrapper and the ANIMATION on this
+                  node. They cannot share an element: the effect writes
+                  `transform` every frame and would wipe the centring translate. */}
+              <div
+                ref={(el) => {
+                  refs.current[i] = el;
+                }}
+                // Rendered in its resting state and only then hidden by the effect
+                // above — fail open, exactly like Reveal. No JS, no animation, but
+                // the marks are always there.
+                className="group relative flex h-16 items-center justify-center md:h-[var(--h)]"
+                style={{ willChange: "transform, opacity, filter" }}
+              >
+                {/* base: quiet grey. The scale is optical, not decorative — see the
+                    note in lib/brands.ts. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logoSrc(b, BRAND_REST)}
+                  alt={b.name}
+                  loading="lazy"
+                  style={{ transform: `scale(${b.scale ?? 1})` }}
+                  className="block max-h-full w-auto max-w-full object-contain opacity-70 transition-opacity duration-500 group-hover:opacity-0"
+                />
+                {/* hover: lights to platinum */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={logoSrc(b, BRAND_LIT)}
+                  alt=""
+                  aria-hidden
+                  loading="lazy"
+                  style={{ transform: `scale(${b.scale ?? 1})` }}
+                  className="absolute inset-0 m-auto block max-h-full w-auto max-w-full object-contain opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                />
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* The hold. After the last mark settles the page does nothing for four

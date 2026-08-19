@@ -283,6 +283,30 @@ body::after {
   );
 }
 
+/* The marque constellation. Below md the marks flow as a staggered two-column
+   list — scattering ten logos across a phone is just overlap. From md the field
+   becomes a positioned canvas and every mark jumps to its own point.
+
+   The coordinates arrive as custom properties from the component because inline
+   styles cannot carry a breakpoint, and each mark is placed by its CENTRE so a
+   wide wordmark and a tall crest sit on the same reading line rather than being
+   flush-left together. */
+@media (min-width: 768px) {
+  .brand-field {
+    position: relative;
+    display: block;
+    height: 1180px;
+  }
+
+  .brand-field .brand-mark {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: auto;
+    transform: translate(-50%, -50%);
+  }
+}
+
 /* Editorial hairline. Lay one between sections without an extra wrapper. */
 .rule {
   border-top: 1px solid var(--border);

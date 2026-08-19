@@ -81,7 +81,7 @@ export function VehicleCard({
           <span className="inline-flex items-center gap-1.5 font-accent text-[0.6rem] uppercase tracking-[0.24em] text-text-3 transition-colors group-hover:text-accent">
             View
             <ChevronRight
-              className="h-3 w-3 transition-transform duration-300 group-hover:translate-x-1"
+              className="h-3 w-3 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
               strokeWidth={1.75}
             />
           </span>
@@ -229,7 +229,7 @@ export function VehicleCard({
         ) : (
           <ChevronRight
             aria-hidden
-            className="h-5 w-5 shrink-0 text-text-3 transition-all duration-300 group-hover:text-accent group-hover:translate-x-1"
+            className="h-5 w-5 shrink-0 text-text-3 transition-all duration-300 group-hover:text-mark group-hover:translate-x-1"
             strokeWidth={1.5}
           />
         )}

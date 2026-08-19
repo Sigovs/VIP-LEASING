@@ -116,7 +116,7 @@ export default function AboutPage() {
               >
                 See the inventory
                 <ChevronRight
-                  className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                  className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                   strokeWidth={1.5}
                 />
               </Link>
@@ -185,7 +185,7 @@ export default function AboutPage() {
                   <span className="mt-auto inline-flex items-center gap-2 pt-8 font-accent text-[0.7rem] uppercase tracking-[0.2em] text-text-3 transition-colors group-hover:text-accent">
                     {p.label}
                     <ChevronRight
-                      className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+                      className="h-3.5 w-3.5 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                       strokeWidth={1.75}
                     />
                   </span>
