@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 import { HeroVideo } from "@/components/home/HeroVideo";
 import { FeaturedSpotlight } from "@/components/home/FeaturedSpotlight";
-// import { FinancingBand } from "@/components/home/FinancingBand"; // hidden — see the band below
+import { FinancingBand } from "@/components/home/FinancingBand";
 import { Showcase } from "@/components/home/Showcase";
 import { SocialProof } from "@/components/home/SocialProof";
 import { SellYourCar } from "@/components/home/SellYourCar";
@@ -67,16 +67,10 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      {/* Leasing & financing band — HIDDEN AT THE CLIENT'S REQUEST.
-          A mid-inventory statement band so buyers know every car can be leased
-          or financed, right as they move from the featured car into the full
-          lineup. The reference build carries it here.
-
-          To restore: uncomment the line below AND the FinancingBand import at
-          the top of this file. The component itself is untouched.
-
-          <FinancingBand />
-      */}
+      {/* Leasing & financing — a mid-inventory statement band so buyers know
+          every car can be leased or financed, right as they move from the
+          featured car into the full lineup. Not in-house: see FinancingBand. */}
+      <FinancingBand />
 
       {/* Available Now — the lineup, priced-free; price lives on the detail page.
           Trim the top padding on mobile (the financing band above already leaves
