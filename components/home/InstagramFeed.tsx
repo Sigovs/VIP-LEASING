@@ -30,7 +30,7 @@ export function InstagramFeed() {
           href={INSTAGRAM_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-3 px-7 md:px-9 py-3.5 md:py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 border border-text-1/80 hover:bg-text-1 hover:text-bg transition-all duration-300 self-start md:self-auto"
+          className="group inline-flex rounded-pill items-center gap-3 px-7 md:px-9 py-3.5 md:py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 border border-text-1/80 hover:bg-text-1 hover:text-bg transition-all duration-300 self-start md:self-auto"
         >
           <InstagramIcon className="h-4 w-4" strokeWidth={1.75} />
           Follow
@@ -48,7 +48,7 @@ export function InstagramFeed() {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative block aspect-[16/10] overflow-hidden bg-paper"
+              className="group relative block aspect-[16/10] overflow-hidden rounded-md bg-paper"
               aria-label={`Instagram — ${t.alt}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}

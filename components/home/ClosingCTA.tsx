@@ -182,7 +182,7 @@ export function ClosingCTA() {
             </h2>
             <Link
               href="/inventory"
-              className="group mt-10 inline-flex items-center gap-3 border border-white/35 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:px-11"
+              className="group mt-10 inline-flex rounded-pill items-center gap-3 border border-white/35 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:px-11"
             >
               View the inventory
               <ArrowUpRight

@@ -336,7 +336,7 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
           <Container>
             <nav
               aria-label="Filter by make"
-              className="flex items-center gap-x-7 md:gap-x-9 overflow-x-auto no-scrollbar -mb-px"
+              className="flex items-center gap-2 overflow-x-auto no-scrollbar py-3.5"
             >
               <RailItem
                 active={activeMake == null}
@@ -647,7 +647,7 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
                 <button
                   type="button"
                   onClick={() => setFiltersOpen(false)}
-                  className="text-[0.7rem] font-accent uppercase tracking-[0.08em] text-bg bg-accent hover:bg-text-1 px-5 py-2.5 transition-colors"
+                  className="rounded-pill text-[0.7rem] font-accent uppercase tracking-[0.08em] text-bg bg-accent hover:bg-text-1 px-5 py-2.5 transition-colors"
                 >
                   View {filtered.length} cars
                 </button>
@@ -677,27 +677,28 @@ function RailItem({
       onClick={onClick}
       aria-pressed={active}
       className={cn(
-        "group/rail relative shrink-0 whitespace-nowrap py-4 text-[0.8rem] font-medium font-accent uppercase tracking-[0.05em] transition-colors",
-        active ? "text-text-1" : "text-text-2 hover:text-text-1"
+        // Pill, not a tab. The reference build runs an underlined rail here;
+        // a filter is a control you toggle, and in this system controls are
+        // round. Selected inverts to the ink-on-light state rather than
+        // relying on a hairline, so the current marque is readable at a glance.
+        "group/rail relative shrink-0 whitespace-nowrap rounded-pill border px-4 py-2 text-[0.8rem] font-medium font-accent uppercase tracking-[0.05em] transition-colors",
+        active
+          ? "border-text-1 bg-text-1 text-bg"
+          : "border-border text-text-2 hover:border-text-2 hover:text-text-1"
       )}
     >
       {label}
       <span
         className={cn(
           "ml-1.5 tabular-nums text-[0.72rem] font-medium",
-          active ? "text-accent" : "text-text-3"
+          // Platinum would vanish on the light pill, so the active count sits
+          // in the pill's own ground colour at reduced strength.
+          active ? "text-bg/55" : "text-text-3"
         )}
       >
         {count}
       </span>
-      {/* gold underline — persistent when active, wipes in on hover otherwise */}
-      <span
-        aria-hidden
-        className={cn(
-          "absolute inset-x-0 -bottom-px h-px origin-left bg-accent transition-transform duration-300 ease-out",
-          active ? "scale-x-100" : "scale-x-0 group-hover/rail:scale-x-100"
-        )}
-      />
+
     </button>
   );
 }
@@ -707,7 +708,7 @@ function ActiveChip({ label, onRemove }: { label: string; onRemove: () => void }
     <button
       type="button"
       onClick={onRemove}
-      className="inline-flex items-center gap-2 text-[0.7rem] font-accent uppercase tracking-[0.08em] text-accent bg-accent-soft border border-accent/40 px-3 py-1.5 hover:bg-accent hover:text-bg transition-colors"
+      className="inline-flex rounded-pill items-center gap-2 text-[0.7rem] font-accent uppercase tracking-[0.08em] text-accent bg-accent-soft border border-accent/40 px-3 py-1.5 hover:bg-accent hover:text-bg transition-colors"
     >
       {label}
       <X size={12} strokeWidth={1.5} />

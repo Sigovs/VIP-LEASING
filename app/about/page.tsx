@@ -112,7 +112,7 @@ export default function AboutPage() {
             <Reveal delay={0.18} y={22}>
               <Link
                 href="/inventory"
-                className="group mt-9 inline-flex h-14 w-fit items-center gap-3 border border-accent/50 px-9 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] text-accent-on-chrome transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-bg"
+                className="group mt-9 inline-flex rounded-pill h-14 w-fit items-center gap-3 border border-accent/50 px-9 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] text-accent-on-chrome transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-bg"
               >
                 See the inventory
                 <ArrowUpRight

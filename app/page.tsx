@@ -188,7 +188,7 @@ export default function HomePage() {
           <Reveal delay={0.18} y={22}>
             <Link
               href="/inventory"
-              className="group mt-9 inline-flex w-fit items-center gap-3.5 border border-white/25 bg-white/[0.06] px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-colors duration-300 hover:bg-white/[0.12]"
+              className="group mt-9 inline-flex rounded-pill w-fit items-center gap-3.5 border border-white/25 bg-white/[0.06] px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-colors duration-300 hover:bg-white/[0.12]"
             >
               Step inside the showroom
               <ArrowUpRight
@@ -311,7 +311,7 @@ export default function HomePage() {
                 <div>
                   <Link
                     href="/contact"
-                    className="group relative inline-flex items-center gap-3 px-9 md:px-11 py-4 md:py-[1.15rem] font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 border border-text-1/80 hover:bg-text-1 hover:text-bg transition-all duration-300"
+                    className="group relative inline-flex rounded-pill items-center gap-3 px-9 md:px-11 py-4 md:py-[1.15rem] font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 border border-text-1/80 hover:bg-text-1 hover:text-bg transition-all duration-300"
                   >
                     Book a Viewing
                     <ArrowUpRight

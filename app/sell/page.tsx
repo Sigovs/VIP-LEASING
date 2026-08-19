@@ -152,7 +152,7 @@ export default function SellPage() {
             <Reveal delay={0.18} y={22}>
               <a
                 href="#offer-form"
-                className="group mt-9 inline-flex h-14 w-fit items-center gap-3 border border-accent/50 px-9 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] text-accent-on-chrome transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-bg"
+                className="group mt-9 inline-flex rounded-pill h-14 w-fit items-center gap-3 border border-accent/50 px-9 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] text-accent-on-chrome transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-bg"
               >
                 Start an offer
                 <ArrowUpRight
@@ -251,7 +251,7 @@ export default function SellPage() {
                   {SHOWROOM.email}
                 </a>
               </p>
-              <div className="relative mt-10 hidden aspect-[4/3] overflow-hidden border border-border lg:block">
+              <div className="relative mt-10 hidden aspect-[4/3] overflow-hidden rounded-md border border-border lg:block">
                 <Image
                   src={DETAIL_IMAGE}
                   alt="Yellow seatbelt detail inside a Porsche Carrera GT"

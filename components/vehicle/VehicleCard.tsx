@@ -99,7 +99,7 @@ export function VehicleCard({
     ];
 
     return (
-      <article className="group relative flex flex-col overflow-hidden bg-surface ring-1 ring-inset ring-white/[0.07] transition-colors duration-300 hover:ring-white/[0.16]">
+      <article className="group relative flex flex-col overflow-hidden rounded-md bg-surface ring-1 ring-inset ring-white/[0.07] transition-colors duration-300 hover:ring-white/[0.16]">
         <Link
           href={`/inventory/${vehicle.slug}`}
           className="flex flex-1 flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-accent"
@@ -117,7 +117,7 @@ export function VehicleCard({
               className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
             />
             {vehicle.isSold && (
-              <span className="absolute left-3 top-3 font-accent text-[0.62rem] uppercase tracking-[0.3em] bg-signal text-white px-3 py-1.5">
+              <span className="absolute left-3 top-3 rounded-pill font-accent text-[0.62rem] uppercase tracking-[0.3em] bg-signal text-white px-3 py-1.5">
                 Sold
               </span>
             )}
@@ -167,7 +167,7 @@ export function VehicleCard({
       className="group block focus:outline-none"
       aria-label={`${vehicle.year} ${vehicle.make} ${vehicle.model}${showPrice ? ` — ${formatPrice(vehicle.price)}` : ""}`}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-chrome-surface ring-1 ring-inset ring-white/[0.06]">
+      <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-chrome-surface ring-1 ring-inset ring-white/[0.06]">
         <Image
           src={vehicle.heroImage}
           alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
@@ -182,7 +182,7 @@ export function VehicleCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-chrome-bg/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         {vehicle.isSold && (
-          <span className="absolute top-4 left-4 font-accent text-[0.65rem] md:text-xs uppercase tracking-[0.32em] bg-signal text-white px-3 py-1.5">
+          <span className="absolute top-4 left-4 rounded-pill font-accent text-[0.65rem] md:text-xs uppercase tracking-[0.32em] bg-signal text-white px-3 py-1.5">
             Sold
           </span>
         )}

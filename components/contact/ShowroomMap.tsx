@@ -32,7 +32,7 @@ export function ShowroomMap({
   if (!HAS_ADDRESS) {
     return (
       <div
-        className={`relative w-full overflow-hidden border border-border bg-surface ${className}`}
+        className={`relative w-full overflow-hidden rounded-md border border-border bg-surface ${className}`}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-5 p-10 text-center">
           <span aria-hidden className="block h-px w-12 bg-accent" />
@@ -50,7 +50,7 @@ export function ShowroomMap({
 
   return (
     <div
-      className={`relative w-full overflow-hidden bg-surface border border-border ${className}`}
+      className={`relative w-full overflow-hidden rounded-md bg-surface border border-border ${className}`}
     >
       <a
         href={DIRECTIONS_URL}
@@ -78,7 +78,7 @@ export function ShowroomMap({
             className="pointer-events-none absolute inset-0 h-full w-full border-0 [filter:invert(0.92)_hue-rotate(180deg)_saturate(0.8)_brightness(0.9)]"
           />
         )}
-        <span className="absolute bottom-4 right-4 inline-flex items-center gap-2 border border-border bg-bg/90 px-4 py-2 text-xs font-accent tracking-[0.16em] text-text-1 backdrop-blur-sm transition-colors group-hover:text-accent">
+        <span className="absolute bottom-4 right-4 inline-flex rounded-pill items-center gap-2 border border-border bg-bg/90 px-4 py-2 text-xs font-accent tracking-[0.16em] text-text-1 backdrop-blur-sm transition-colors group-hover:text-accent">
           Get Directions
           <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.75} />
         </span>

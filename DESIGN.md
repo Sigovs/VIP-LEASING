@@ -69,6 +69,43 @@ Where oxblood lives (and nowhere else):
 Never: an oxblood hover, an oxblood fill on a whole element, oxblood as a
 background. A red hover on every link turns the page into a warning label.
 
+## 3b. The corner language
+
+This is where the site stops being a copy of the build it was forked from. That
+one is razor-edged everywhere; here corners carry meaning, and the meaning is a
+division of labour rather than a decoration:
+
+| | Radius | What takes it |
+|---|---|---|
+| **Actions are soft** | `rounded-pill` (9999px) | Buttons, CTAs, filter chips, the SOLD badge, the map's "Get Directions" tag |
+| **Surfaces are eased** | `rounded-md` (12px) | Vehicle cards, media frames, lookbook and Instagram tiles, the map |
+| **Small surfaces** | `rounded-sm` (8px) | Gallery thumbnails, lightbox strips |
+| **Structure stays sharp** | none | Hairline grids, section rules, full-bleed photo bands, the page edges |
+
+Three values, no others. A fourth radius is how a system starts drifting.
+
+**Why the split.** A pill reads as a control at a glance, before the label is
+read — that is the whole point of rounding an action. Surfaces get a *small*
+radius on purpose: a large radius on a large dark panel reads consumer-app, and
+this is an editorial page. And structure keeps its corners because rounding it
+would round the page itself — a `gap-px` hairline grid with rounded cells breaks
+at every corner, and the grid is the architecture, not a component.
+
+**Consequences worth knowing:**
+
+- A pill needs more horizontal padding than a rectangle. The round ends eat into
+  the optical padding, so `Button`'s sizes went `px-7 → px-8` and `px-9 → px-10`.
+- `:focus-visible` must not set its own `border-radius`. It used to pin 2px onto
+  whatever was focused — harmless while everything was square, and it would now
+  flatten a pill the moment it took keyboard focus. `outline` follows the
+  element's own radius, so the ring hugs a pill correctly with nothing declared.
+- An active pill inverts (`bg-text-1 text-bg`) rather than relying on a hairline.
+  Anything *inside* it that was set in platinum has to change too — on the light
+  ground platinum disappears. The inventory rail's tally uses `text-bg/55` when
+  selected for exactly this reason.
+- A card that clips its image needs the radius on the clipping parent, not on the
+  image; `overflow-hidden` on the shell does the rest.
+
 ## 4. Type system
 
 Two faces, each with one job (registered in `app/layout.tsx`, configured in

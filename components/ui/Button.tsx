@@ -19,7 +19,7 @@ interface BaseProps {
 // Oswald in caps), which is what made the page feel assembled rather than
 // designed.
 const base =
-  "group inline-flex items-center justify-center gap-3 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+  "group inline-flex items-center justify-center gap-3 rounded-pill font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
 const variants: Record<Variant, string> = {
   accent:
@@ -32,8 +32,8 @@ const variants: Record<Variant, string> = {
 };
 
 const sizes: Record<Size, string> = {
-  default: "h-12 px-7",
-  lg: "h-14 px-9 text-[0.8125rem]",
+  default: "h-12 px-8",
+  lg: "h-14 px-10 text-[0.8125rem]",
 };
 
 function Arrow() {

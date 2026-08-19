@@ -38,7 +38,7 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
 
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
           {/* Primary image — stretches to the panel's height on desktop */}
-          <div className="relative aspect-[3/2] min-h-[320px] overflow-hidden bg-surface ring-1 ring-inset ring-white/[0.06] lg:col-span-7 lg:aspect-auto">
+          <div className="relative aspect-[3/2] min-h-[320px] overflow-hidden rounded-md bg-surface ring-1 ring-inset ring-white/[0.06] lg:col-span-7 lg:aspect-auto">
             <Image
               src={vehicle.heroImage}
               alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}

@@ -116,6 +116,30 @@
   --font-title: var(--font-inter-tight), ui-sans-serif, system-ui, sans-serif;
   --font-accent: var(--font-oswald), "Arial Narrow", ui-sans-serif, sans-serif;
   --font-mono: var(--font-oswald), "Arial Narrow", ui-sans-serif, sans-serif;
+
+  /* ── Corner language ──────────────────────────────────────────────────────
+     The reference build is razor-edged everywhere; this is where this site
+     stops being a copy of it. The rule is not "round things off" — it is a
+     division of labour, and it holds everywhere:
+
+       ACTIONS ARE SOFT   — anything you click is a pill. Buttons, chips,
+                            badges, the tags on a card. Fully round, so the
+                            shape reads as a control at a glance, not as a
+                            rectangle that happens to be clickable.
+       SURFACES ARE EASED — cards, media, panels, form fields take one small
+                            radius. Small on purpose: a big radius on a large
+                            dark surface reads consumer-app, and this page is
+                            an editorial one.
+       STRUCTURE STAYS SHARP — hairline grids, section rules, full-bleed image
+                            bands and the page edges keep their corners. They
+                            are the architecture; rounding them would round the
+                            page itself, and the 1px grid gaps would break at
+                            every corner.
+
+     Three values, no others. A fourth radius is how a system starts drifting. */
+  --radius-pill: 9999px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
 }
 
 html {
@@ -236,11 +260,15 @@ body::after {
   }
 }
 
-/* Keyboard focus is a signal, not decoration — it gets the oxblood. */
+/* Keyboard focus is a signal, not decoration — it gets the oxblood.
+
+   No border-radius here. It used to force 2px onto whatever was focused, which
+   was harmless while everything was square and would now flatten a pill the
+   moment it took keyboard focus. `outline` follows the element's own radius, so
+   the ring hugs a pill, a card or a sharp edge correctly on its own. */
 :focus-visible {
   outline: 2px solid var(--signal-bright);
   outline-offset: 3px;
-  border-radius: 2px;
 }
 
 .chrome :focus-visible {

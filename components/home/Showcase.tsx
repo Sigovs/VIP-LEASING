@@ -19,7 +19,7 @@ export function Showcase({ cars }: Props) {
             key={car.slug}
             type="button"
             onClick={() => setOpenIndex(i)}
-            className="group relative aspect-[3/2] overflow-hidden bg-paper text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+            className="group relative aspect-[3/2] overflow-hidden rounded-md bg-paper text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
             aria-label={`Open ${car.name} gallery (${car.photos.length} photos)`}
           >
             <Image
@@ -188,7 +188,7 @@ function Lightbox({
                 onClick={() => setPhotoIndex(i)}
                 aria-label={`Go to photo ${i + 1}`}
                 aria-current={i === photoIndex ? "true" : undefined}
-                className={`relative h-14 md:h-16 aspect-[3/2] shrink-0 overflow-hidden bg-paper transition-opacity ${
+                className={`relative h-14 md:h-16 aspect-[3/2] shrink-0 overflow-hidden rounded-sm bg-paper transition-opacity ${
                   i === photoIndex
                     ? "opacity-100 ring-2 ring-accent"
                     : "opacity-50 hover:opacity-100"

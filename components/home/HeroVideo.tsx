@@ -19,7 +19,7 @@ const HERO_CTAS: { label: string; href: string }[] = [
 
 // Glass button over photographic ground — the shared idiom (DESIGN.md §6).
 const HERO_BUTTON =
-  "group relative inline-flex items-center justify-center gap-3 border border-white/25 bg-white/[0.06] px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-all duration-300 hover:border-white/55 hover:bg-white/[0.12] md:px-10 md:py-[1.15rem] md:text-[0.8rem]";
+  "group relative inline-flex rounded-pill items-center justify-center gap-3 border border-white/25 bg-white/[0.06] px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-all duration-300 hover:border-white/55 hover:bg-white/[0.12] md:px-10 md:py-[1.15rem] md:text-[0.8rem]";
 
 // Hero video. Connection-aware: skips video on save-data / 2g and on
 // prefers-reduced-motion. Poster image is the visible LCP element while video

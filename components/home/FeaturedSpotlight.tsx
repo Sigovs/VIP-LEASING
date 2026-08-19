@@ -33,7 +33,7 @@ export function FeaturedSpotlight({ vehicle }: { vehicle: Vehicle }) {
         <div className="lg:col-span-7">
           {/* Main image is the gallery viewer; thumbnails below cross-fade it.
               All frames are stacked and toggled by opacity so swaps are instant. */}
-          <div className="relative aspect-[16/10] overflow-hidden bg-chrome-surface ring-1 ring-inset ring-white/[0.06]">
+          <div className="relative aspect-[16/10] overflow-hidden rounded-md bg-chrome-surface ring-1 ring-inset ring-white/[0.06]">
             {images.map((src, i) => (
               <Image
                 key={src}
@@ -66,7 +66,7 @@ export function FeaturedSpotlight({ vehicle }: { vehicle: Vehicle }) {
                   aria-label={`Show photo ${i + 1} of ${images.length}`}
                   aria-current={i === active}
                   className={cn(
-                    "relative aspect-[16/10] w-20 shrink-0 overflow-hidden ring-1 ring-inset transition-all duration-300 md:w-auto md:flex-1",
+                    "relative aspect-[16/10] w-20 shrink-0 overflow-hidden rounded-sm ring-1 ring-inset transition-all duration-300 md:w-auto md:flex-1",
                     i === active
                       ? "opacity-100 ring-accent"
                       : "opacity-50 ring-white/[0.08] hover:opacity-90"
@@ -101,7 +101,7 @@ export function FeaturedSpotlight({ vehicle }: { vehicle: Vehicle }) {
 
           <Link
             href={href}
-            className="group relative mt-8 inline-flex items-center gap-3 border border-text-1/80 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 transition-all duration-300 hover:bg-text-1 hover:text-bg md:px-11 md:py-[1.15rem]"
+            className="group relative mt-8 inline-flex rounded-pill items-center gap-3 border border-text-1/80 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 transition-all duration-300 hover:bg-text-1 hover:text-bg md:px-11 md:py-[1.15rem]"
           >
             View This Car
             <ArrowUpRight
