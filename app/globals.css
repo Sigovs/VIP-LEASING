@@ -348,11 +348,13 @@ body::after {
      the base is neutral, so it reads as light moving across brushed metal —
      not as a gold wash. */
   position: relative;
-  /* Matches /logo.svg's viewBox. The mark is set in the BODY face, not the
-     display one: at the 23px it renders in the masthead a didone's hairlines
-     fall under a pixel and the logotype washes out. Same reason the sub-display
-     headings moved off the display face. */
-  aspect-ratio: 6169 / 710;
+  /* Matches /logo.svg's viewBox. The mark is the DISPLAY face — Bodoni Moda —
+     but cut at optical size 14, not 96. That is what the opsz axis is for: at
+     small optical sizes a didone's hairlines are drawn thicker on purpose, so
+     the logotype survives the 23px it renders at in the masthead while keeping
+     the high contrast in the hero. The display cut (opsz 96) washed out there;
+     this one was checked at both sizes before it shipped. */
+  aspect-ratio: 13522.2 / 1558.4;
   background-image: linear-gradient(
       90deg,
       transparent 43%,
