@@ -27,7 +27,7 @@ const FIN_IMAGE = "/site/band-garage.jpg";
 
 export function FinancingBand() {
   return (
-    <section className="chrome relative flex w-full items-center overflow-hidden bg-chrome-bg py-16 md:min-h-[720px] md:py-0 lg:min-h-[800px]">
+    <section className="chrome relative flex w-full items-center overflow-hidden bg-chrome-bg py-16 md:min-h-[820px] md:py-0 lg:min-h-[900px]">
       <div className="absolute inset-0">
         {/* mobile: static (parallax adds little on a tall crop) */}
         <Image

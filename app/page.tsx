@@ -18,7 +18,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
 import { ParallaxImage } from "@/components/motion/ParallaxImage";
 import { VehicleCard } from "@/components/vehicle/VehicleCard";
-import { getRecentlyAcquired, getSpotlightVehicle } from "@/lib/vehicles";
+import { getRecentlyAcquired, getSpotlightLineup } from "@/lib/vehicles";
 import { getShowcase } from "@/lib/showcase";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/social";
 import { HAS_ADDRESS, SHOWROOM } from "@/lib/showroom";
@@ -46,12 +46,14 @@ const SIGNATURE_IMAGE_MOBILE = "/site/band-transport.jpg"; // mobile
 // Showroom facts live in lib/showroom.ts (shared with contact/about/footer).
 
 export default function HomePage() {
-  // One hero car gets the spotlight (set via the `isSpotlight` flag in the
-  // data); the rest fill the "Available Now" lineup below (most-recently
-  // acquired first, spotlight excluded so it never repeats).
-  const spotlight = getSpotlightVehicle();
+  // Featured runs a small carousel: the spotlight car (the `isSpotlight` flag
+  // in the data) first, then the rest of the featured ones. "Available Now"
+  // below is most-recently-acquired first, with the spotlight held out so the
+  // page does not open on the same car twice; the other featured cars do
+  // appear in both, which is how the reference site reads too.
+  const lineup = getSpotlightLineup();
   const recent = getRecentlyAcquired(12)
-    .filter((v) => v.slug !== spotlight?.slug)
+    .filter((v) => v.slug !== lineup[0]?.slug)
     .slice(0, 9);
   const showcase = getShowcase();
 
@@ -62,7 +64,7 @@ export default function HomePage() {
       {/* Featured — the spotlight car */}
       <Section id="inventory" spacing="tight">
         <Container>
-          {spotlight && <FeaturedSpotlight vehicle={spotlight} />}
+          <FeaturedSpotlight vehicles={lineup} />
         </Container>
       </Section>
 
@@ -135,12 +137,15 @@ export default function HomePage() {
           matte-black exotic carries the frame while an editorial statement
           reads over a left-weighted scrim (shared CinematicScrim). The image is
           a non-cover Lookbook frame (see SIGNATURE_IMAGE). */}
-      {/* THE PINNED BAND. One frame on this page is held while the words travel
-          across it, and this is it.
+      {/* A PINNED BAND. The frame is held while the words travel across it.
 
           Why here: three full-bleed photo bands ran the same treatment, which
           made the middle of the page its flattest stretch. This one carries the
-          claim about the house's standard, so it is the one worth stopping on.
+          claim about the house's standard, so it is the first worth stopping on.
+
+          The Sell band now runs the same hold (on Alex's call — it was once per
+          page before). The financing band between them stays an ordinary
+          scrolling band on purpose, so the three do not read as a set.
 
           Why it does not repeat the close: the closing pins a frame and
           DISSOLVES it to black while the marques rise out of it. Here nothing

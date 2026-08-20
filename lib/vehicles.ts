@@ -26,6 +26,15 @@ export function getSpotlightVehicle(): Vehicle | undefined {
   );
 }
 
+// The Featured carousel's roster: the spotlight car first, then the rest of
+// the featured ones. One entry is a valid answer — the component simply drops
+// its strip and controls and reads as the single spotlight it used to be.
+export function getSpotlightLineup(): Vehicle[] {
+  const spotlight = getSpotlightVehicle();
+  const rest = getFeaturedVehicles().filter((v) => v.slug !== spotlight?.slug);
+  return spotlight ? [spotlight, ...rest] : rest;
+}
+
 export function getRecentlyAcquired(limit = 4): Vehicle[] {
   return [...vehicles]
     .filter((v) => !v.isSold)

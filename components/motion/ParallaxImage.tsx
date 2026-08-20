@@ -20,15 +20,21 @@ if (typeof window !== "undefined") {
 // photograph moved 74px across an entire screen of scrolling, which is to say it
 // didn't. The inner now overhangs 20% a side, which is the room the movement
 // needs; anything more than that and the frame's edges show through.
-const OVERHANG = 0.2; // fraction of the frame the image hangs past each edge
+// Default fraction of the frame the image hangs past each edge. It is also
+// what decides how much of the photograph you SEE: the image covers the
+// overhung inner, not the frame, so a bigger overhang scales the picture up
+// and crops it harder. Callers that want more of the frame in view pass less.
+const OVERHANG = 0.2;
 
 export function ParallaxImage({
   children,
   amount = 140,
+  overhang = OVERHANG,
   className,
 }: {
   children: React.ReactNode;
   amount?: number;
+  overhang?: number;
   className?: string;
 }) {
   const wrap = useRef<HTMLDivElement>(null);
@@ -45,7 +51,7 @@ export function ParallaxImage({
     if (!w || !i) return;
 
     // Never travel further than the overhang, or the bare frame shows at the edge.
-    const ceiling = w.offsetHeight * OVERHANG * 2;
+    const ceiling = w.offsetHeight * overhang * 2;
     const travel = Math.min(amount, ceiling);
 
     const move = gsap.fromTo(
@@ -93,13 +99,14 @@ export function ParallaxImage({
       focus?.scrollTrigger?.kill();
       focus?.kill();
     };
-  }, [amount]);
+  }, [amount, overhang]);
 
   return (
     <div ref={wrap} className={`relative overflow-hidden ${className ?? ""}`}>
       <div
         ref={inner}
-        className="absolute inset-0 -top-[20%] -bottom-[20%] will-change-transform"
+        className="absolute inset-x-0 will-change-transform"
+        style={{ top: `-${overhang * 100}%`, bottom: `-${overhang * 100}%` }}
       >
         {children}
       </div>
