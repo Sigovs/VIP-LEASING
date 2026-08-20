@@ -1,0 +1,45 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>VIP Leasing — preview</title>
+<style>
+  :root { color-scheme: dark }
+  body { margin:0; min-height:100vh; display:grid; place-items:center;
+         background:#0c0d0f; color:#eceef0;
+         font:400 16px/1.6 ui-sans-serif,system-ui,sans-serif }
+  .card { width:min(560px,88vw); padding:44px 40px }
+  h1 { margin:0; font-size:26px; letter-spacing:-.02em }
+  h1 b { display:block; width:64px; height:6px; margin-top:14px; background:#823cec }
+  p { color:#9a9ea4; margin:20px 0 30px }
+  a { display:flex; align-items:center; justify-content:space-between; gap:16px;
+      margin-bottom:12px; padding:16px 22px; border-radius:9999px;
+      text-decoration:none; color:#eceef0; border:1px solid #2a333b;
+      transition:border-color .2s, background .2s }
+  a:hover { border-color:#823cec; background:#ffffff0f }
+  a.primary { border-color:transparent; color:#fff;
+              background-image:linear-gradient(125deg,#0011a6,#9a01c5) }
+  span { font:500 12px/1 ui-monospace,monospace; letter-spacing:.14em;
+         text-transform:uppercase; color:#9a9ea4 }
+  a.primary span { color:#ffffffb3 }
+  small { display:block; margin-top:26px; color:#7a8089; font-size:13px }
+  code { font:400 12px/1.6 ui-monospace,monospace; color:#9a9ea4 }
+</style>
+<div class="card">
+  <h1>VIP Leasing<b></b></h1>
+  <p>Where to look at it.</p>
+
+  <a class="primary" href="https://sigovs.github.io/VIP-LEASING/">
+    Live preview <span>always up</span>
+  </a>
+  <a href="http://localhost:3000/">
+    Local <span>needs the dev server</span>
+  </a>
+  <a href="https://github.com/Sigovs/VIP-LEASING">
+    Repository <span>github</span>
+  </a>
+
+  <small>
+    The local link only answers while the dev server is running.
+    Start it by double-clicking <code>preview.command</code> (mac) or
+    <code>preview.bat</code> (windows) — both open the browser for you.
+  </small>
+</div>
