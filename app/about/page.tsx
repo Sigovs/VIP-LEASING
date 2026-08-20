@@ -71,7 +71,7 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE_MOBILE}
-            alt="A red Ferrari F50 in side profile on an open country road at dusk"
+            alt="A car on a bridge above the city at night"
             fill
             priority
             quality={85}
@@ -81,7 +81,7 @@ export default function AboutPage() {
           <ParallaxImage amount={150} className="hidden h-full w-full md:block">
             <Image
               src={HERO_IMAGE}
-              alt="A red Ferrari F50 in front three-quarter view on a country road at golden hour"
+              alt="A car on a bridge above the city at night"
               fill
               priority
               quality={85}
