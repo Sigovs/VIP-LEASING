@@ -20,6 +20,11 @@ import { BRANDS, BRAND_REST, BRAND_LIT, logoSrc, type Brand } from "@/lib/brands
 //
 // components/home/v2/ClosingBrands.tsx and ClosingCTA.tsx are untouched —
 // restoring that pair puts the whole pinned scene back.
+//
+// Kept deliberately lean. The cards are 16:9 inside a capped grid rather than
+// full-width 16:10, and every interval around them is a step down from the
+// page's ordinary rhythm — this is the last thing before the footer, and a
+// close that sprawls stops reading as a close.
 
 // ── Why six cards and not nine ───────────────────────────────────────────────
 // Because six marque photographs exist. A 3×3 wall would need three more, and
@@ -99,16 +104,20 @@ export function ClosingMarques() {
   const rest = BRANDS.filter((b) => !PICTURED.has(b.name));
 
   return (
-    <section className="chrome relative border-t border-border bg-chrome-bg py-24 md:py-32">
+    <section className="chrome relative border-t border-border bg-chrome-bg py-16 md:py-20">
       <Container>
+        {/* The whole coda runs in a narrow column. It is the last thing
+            before the footer and it is secondary — a decorative sign-off, not
+            a claim — so it sits well inside the measure the page argues at. */}
+        <div className="mx-auto max-w-[860px]">
         {/* Eyebrow, then the headline carrying the site signature. The eyebrow
             gets no rule of its own — the title-mark below is the rule, and the
             two together is the same piece of furniture twice. */}
         <Reveal className="text-center">
-          <span className="block font-accent text-xs tracking-[0.24em] text-chrome-text-2">
+          <span className="block font-accent text-[0.68rem] tracking-[0.24em] text-chrome-text-2">
             What We Carry
           </span>
-          <h2 className="title-mark mt-7 font-title text-4xl font-bold leading-[1.0] tracking-[-0.02em] text-chrome-text-1 md:text-6xl">
+          <h2 className="title-mark mt-5 font-title text-2xl font-bold leading-[1.05] tracking-[-0.02em] text-chrome-text-1 md:text-4xl">
             Find yours
           </h2>
         </Reveal>
@@ -116,10 +125,10 @@ export function ClosingMarques() {
         {/* The six with a car of their own. The scrim is what the mark is read
             against, and it lifts on hover along with the mark — one gesture,
             the card coming up to meet you rather than two things animating. */}
-        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-20 md:gap-6 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-3 md:mt-12 md:gap-4 lg:grid-cols-3">
           {CARDS.map((c, i) => (
             <Reveal key={c.brand} delay={(i % 3) * 0.06}>
-              <figure className="group relative aspect-[16/10] overflow-hidden rounded-md ring-1 ring-inset ring-white/[0.08]">
+              <figure className="group relative aspect-[16/9] overflow-hidden rounded-md ring-1 ring-inset ring-white/[0.08]">
                 <Image
                   src={c.src}
                   alt={c.alt}
@@ -129,8 +138,8 @@ export function ClosingMarques() {
                   className="object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-black/45 transition-colors duration-500 group-hover:bg-black/30" />
-                <figcaption className="absolute inset-x-0 top-[16%] flex justify-center px-5">
-                  <span className="relative flex h-14 w-[min(52vw,190px)] items-center justify-center md:h-16">
+                <figcaption className="absolute inset-x-0 top-[13%] flex justify-center px-3">
+                  <span className="relative flex h-8 w-[min(34vw,110px)] items-center justify-center md:h-10">
                     <Mark brand={byName(c.brand)} className="opacity-90 group-hover:opacity-0" />
                   </span>
                 </figcaption>
@@ -145,7 +154,7 @@ export function ClosingMarques() {
         {rest.length > 0 && (
           <Reveal
             delay={0.08}
-            className="mx-auto mt-14 grid max-w-[860px] grid-cols-2 items-center gap-x-10 gap-y-10 border-t border-white/10 pt-12 sm:grid-cols-4 md:mt-16 md:gap-x-16 md:pt-14"
+            className="mx-auto mt-9 grid max-w-[600px] grid-cols-4 items-center gap-x-8 gap-y-6 border-t border-white/10 pt-8 md:mt-10 md:gap-x-12 md:pt-9"
           >
             {/* Two by two on a phone, one row of four from sm up. Flowing them
                 as a wrapping row left the fourth mark alone on a line of its
@@ -155,7 +164,7 @@ export function ClosingMarques() {
               <span
                 key={b.name}
                 title={b.name}
-                className="group relative flex h-11 items-center justify-center md:h-14"
+                className="group relative flex h-8 items-center justify-center md:h-9"
               >
                 <Mark brand={b} className="opacity-60 group-hover:opacity-0" />
               </span>
@@ -163,10 +172,10 @@ export function ClosingMarques() {
           </Reveal>
         )}
 
-        <Reveal delay={0.1} className="mt-16 text-center md:mt-20">
+        <Reveal delay={0.1} className="mt-10 text-center md:mt-12">
           <Link
             href="/inventory"
-            className="group inline-flex rounded-pill items-center gap-3 border border-white/35 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:px-11 md:text-[0.8rem]"
+            className="group inline-flex rounded-pill items-center gap-3 border border-white/30 px-8 py-3.5 font-accent text-[0.7rem] font-medium tracking-[0.22em] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:px-9 md:text-[0.75rem]"
           >
             Explore Inventory
             <ChevronRight
@@ -175,6 +184,7 @@ export function ClosingMarques() {
             />
           </Link>
         </Reveal>
+        </div>
       </Container>
     </section>
   );
