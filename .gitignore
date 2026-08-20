@@ -40,15 +40,13 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Placeholder photography and video carried over from the reference build.
-# It is third-party material (another dealership's shoot), it is due to be
-# replaced with this client's own imagery, and this repo is public — so it
-# stays out of version control. The files remain on disk so the site runs
-# locally; see PLAN.md.
-/public/showcase/
+# Photography the client did NOT supply stays out of version control. This repo
+# is public, and /ilusso and /inventory are still another dealership's shoot —
+# they remain on disk so the site runs locally, and they go the day real
+# inventory photography arrives.
+#
+# /public/site and /public/showcase are NOT ignored any more: both now hold the
+# client's own frames, so a fresh clone has to be able to build the hero, the
+# bands and the Lookbook.
 /public/ilusso/
 /public/inventory/
-/public/*.mp4
-/public/hero-poster.jpg
-/public/closing-poster.jpg
-/public/closing-bg.webp
