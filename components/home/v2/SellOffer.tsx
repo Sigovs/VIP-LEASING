@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
+import { Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { QuickOfferForm } from "@/components/home/v2/QuickOfferForm";
@@ -95,18 +94,6 @@ export function SellOffer() {
             ))}
           </div>
 
-          <Reveal delay={0.2}>
-            <Link
-              href="/sell"
-              className="group mt-9 inline-flex items-center gap-2 font-accent text-xs uppercase tracking-[0.16em] text-text-1 transition-colors hover:text-mark md:mt-10"
-            >
-              How selling works
-              <ChevronRight
-                className="h-3.5 w-3.5 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
-                strokeWidth={1.75}
-              />
-            </Link>
-          </Reveal>
         </div>
 
         {/* The way in. Raised off the ground on the surface tone so it reads as
@@ -125,15 +112,24 @@ export function SellOffer() {
             </div>
           </div>
 
-          <p className="mt-6 text-[0.95rem] leading-relaxed text-text-3">
-            Prefer to talk it through?{" "}
-            <a
-              href={SHOWROOM.phoneHref}
-              className="font-mono text-text-1 transition-colors hover:text-accent"
-            >
+          {/* The other way in, centred under the card it belongs to. Wraps to
+              two lines rather than shrinking when the card gets narrow. */}
+          <a
+            href={SHOWROOM.phoneHref}
+            className="group mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[0.95rem] text-text-2 transition-colors hover:text-text-1"
+          >
+            <span className="inline-flex items-center gap-2.5">
+              <Phone
+                className="h-4 w-4 shrink-0 transition-colors group-hover:text-mark"
+                strokeWidth={1.75}
+                aria-hidden
+              />
+              Speak with a Specialist
+            </span>
+            <span className="font-mono text-text-1">
               {SHOWROOM.phoneDisplay}
-            </a>
-          </p>
+            </span>
+          </a>
         </Reveal>
       </div>
     </Container>
