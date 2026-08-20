@@ -25,8 +25,13 @@ export const metadata: Metadata = {
 // the silver Carrera GT on Sell). Desktop: side profile against the dark brick
 // wall, its shadowed left giving the copy a clean field. Mobile: the doors-up
 // front three-quarter fills a dramatic portrait crop.
-const HERO_IMAGE = "/site/loft-skyline.jpg";
-const HERO_IMAGE_MOBILE = "/site/loft-skyline.jpg";
+// The lit room at the end of the corridor — a car standing in smoke, waiting to
+// be walked up to. It is the arrival frame, which is what a contact page is for,
+// and it went spare when the closing section stopped opening on a photograph.
+// Symmetric and head-on, so the portrait crop is the same picture rather than a
+// slice of one; both breakpoints take it.
+const HERO_IMAGE = "/site/closing-tunnel.jpg";
+const HERO_IMAGE_MOBILE = "/site/closing-tunnel.jpg";
 
 // The ?intent= presets moved to components/contact/IntentContactForm.tsx, where
 // they are read on the client. Reading searchParams here made this page dynamic
@@ -43,7 +48,7 @@ export default function ContactPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE_MOBILE}
-            alt="A car lit in a loft space above a city skyline at night"
+            alt="A car standing in a lit, smoke-filled room at the end of a dark corridor"
             fill
             priority
             quality={85}
@@ -53,7 +58,7 @@ export default function ContactPage() {
           <ParallaxImage amount={150} className="hidden h-full w-full md:block">
             <Image
               src={HERO_IMAGE}
-              alt="A car lit in a loft space above a city skyline at night"
+              alt="A car standing in a lit, smoke-filled room at the end of a dark corridor"
               fill
               priority
               quality={85}

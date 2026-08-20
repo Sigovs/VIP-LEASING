@@ -265,9 +265,21 @@ export default function FinancingPage() {
                   delay={i * 0.06}
                   className="flex gap-6 border-t border-border py-7 first:border-t-0 first:pt-0 md:gap-10 md:py-8"
                 >
+                  {/* The ordinal. It carried .title-mark — the site signature, a bar 1.8em
+                      wide drawn under a heading. On a numeral in a column this narrow the
+                      bar overhung its own box and ran straight through the step title
+                      beside it. It was the wrong element for it anyway: a list ordinal is
+                      not a heading, and a signature repeated three times a page stops
+                      reading as one — which is the very thing the note on .title-mark
+                      warns about.
+                  
+                      So the accent moves INTO the figure instead of hanging off it. The
+                      numeral is the violet, large and quiet in the display face, right
+                      aligned so the titles beside it hang on one clean axis. The row
+                      already has a hairline; it never needed a second one. */}
                   <span
                     aria-hidden
-                    className="title-mark w-9 shrink-0 font-title text-4xl font-bold leading-[0.85] text-text-3 md:w-12 md:text-5xl"
+                    className="w-9 shrink-0 text-right font-title text-5xl font-bold leading-[0.8] tabular-nums text-mark/50 md:w-12 md:text-6xl"
                   >
                     {i + 1}
                   </span>

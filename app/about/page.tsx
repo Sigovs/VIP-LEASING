@@ -17,12 +17,19 @@ export const metadata: Metadata = {
 };
 
 // Ferrari F50 golden-hour frames — the heritage register for the story page.
-// Hero desktop: front three-quarter on an open road; hero mobile: the side
-// profile fills a portrait crop against the dusk sky. Band: the backlit rear
-// three-quarter — a warmer, moodier counterpoint to the front-lit hero, used
-// as the silent cinematic breath before the visit close.
-const HERO_IMAGE = "/site/loft-skyline.jpg";
-const HERO_IMAGE_MOBILE = "/site/bridge-night.jpg";
+// The hero is the handover on the showroom floor — two people and a car being
+// given away, which is the only frame in the library with a PERSON in it and
+// therefore the only one that belongs on the page about the house rather than
+// about the metal. It also frees this page from the loft frame, which the home
+// page already spends and which Contact was also using: three places, one
+// photograph, and no reason for any of them to be the same.
+//
+// One frame at both breakpoints. The old pairing put a loft on desktop and a
+// bridge at night on the phone, which is not a crop of the same idea — it is a
+// different page depending on what you are holding. This one is shot square-on
+// and deep, so a portrait crop takes the middle of it without losing the story.
+const HERO_IMAGE = "/site/service-handover.jpg";
+const HERO_IMAGE_MOBILE = "/site/service-handover.jpg";
 const BAND_IMAGE = "/site/band-transport.jpg";
 
 // What the house actually does — acquisition, sales, financing. Sales copy
@@ -71,22 +78,22 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE_MOBILE}
-            alt="A car on a bridge above the city at night"
+            alt="A salesperson handing a car over to its buyer on the showroom floor"
             fill
             priority
             quality={85}
             sizes="100vw"
-            className="object-cover object-[50%_45%] md:hidden"
+            className="object-cover object-[54%_42%] md:hidden"
           />
           <ParallaxImage amount={150} className="hidden h-full w-full md:block">
             <Image
               src={HERO_IMAGE}
-              alt="A car on a bridge above the city at night"
+              alt="A salesperson handing a car over to its buyer on the showroom floor"
               fill
               priority
               quality={85}
               sizes="100vw"
-              className="object-cover object-[52%_58%]"
+              className="object-cover object-[50%_46%]"
             />
           </ParallaxImage>
         </div>

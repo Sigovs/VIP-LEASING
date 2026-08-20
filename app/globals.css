@@ -292,28 +292,6 @@ body::after {
    wide wordmark and a tall crest sit on the same reading line rather than being
    flush-left together. */
 @media (min-width: 768px) {
-  .brand-field {
-    position: relative;
-    display: block;
-    /* Long on purpose — see the note in ClosingBrands.tsx. This is the scroll
-       distance the marks need to arrive one at a time instead of as a block. */
-    height: 3000px;
-  }
-
-  .brand-field .brand-mark {
-    position: absolute;
-    left: var(--x);
-    top: var(--y);
-    /* An EXPLICIT width, and it is load-bearing. Absolutely positioned boxes
-       shrink to fit their content, while the marks inside are max-w-full — so
-       the box waits on the image and the image waits on the box, and both
-       resolve to zero. That is exactly what happened: 0x132 boxes holding 0x0
-       logos. The old percentage grid gave the width for free; a positioned
-       field has to state it. 190px also keeps neighbouring marks from
-       colliding at the closest x-pair in the layout. */
-    width: 190px;
-    transform: translate(-50%, -50%);
-  }
 }
 
 /* Editorial hairline. Lay one between sections without an extra wrapper. */
