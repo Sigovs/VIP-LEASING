@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/Button";
+import { clearSellPrefill, readSellPrefill } from "@/lib/sellPrefill";
 
 const schema = z.object({
   year: z.string().min(4),
@@ -57,7 +58,25 @@ export function SellForm() {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
+    setValue,
   } = useForm<Values>({ resolver: zodResolver(schema) });
+
+  // Pick up whatever the homepage's short starter collected (v2). Runs after
+  // mount rather than as defaultValues, because sessionStorage does not exist
+  // during the static export.
+  //
+  // The entry is read but NOT consumed: this form gets remounted about a
+  // second into the route transition, and an entry deleted on first read left
+  // the second mount with empty fields. It is cleared on submit, and expires
+  // on its own (see lib/sellPrefill.ts).
+  useEffect(() => {
+    const stashed = readSellPrefill();
+    if (!stashed) return;
+    (["year", "make", "model", "mileage"] as const).forEach((k) => {
+      const v = stashed[k];
+      if (v) setValue(k, v);
+    });
+  }, [setValue]);
 
   const onSubmit = async (v: Values) => {
     // Placeholder. AAN wires real backend.
@@ -65,6 +84,8 @@ export function SellForm() {
     await new Promise((r) => setTimeout(r, 600));
     setSent(true);
     reset();
+    // The car has been submitted; nothing left to carry over.
+    clearSellPrefill();
   };
 
   if (sent) {

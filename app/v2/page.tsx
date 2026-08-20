@@ -21,7 +21,7 @@ import { HeroVideo } from "@/components/home/v2/HeroVideo";
 import { FeaturedSpotlight } from "@/components/home/v2/FeaturedSpotlight";
 import { FinancingBand } from "@/components/home/v2/FinancingBand";
 import { SocialProof } from "@/components/home/v2/SocialProof";
-import { SellYourCar } from "@/components/home/v2/SellYourCar";
+import { SellOffer } from "@/components/home/v2/SellOffer";
 import { ClosingCTA } from "@/components/home/v2/ClosingCTA";
 import { CinematicScrim } from "@/components/home/v2/CinematicScrim";
 import { RecentlySold } from "@/components/home/v2/RecentlySold";
@@ -81,6 +81,19 @@ export default function HomeV2Page() {
         <Container>
           <FeaturedSpotlight vehicles={lineup} />
         </Container>
+      </Section>
+
+      {/* Sell Your Car — moved up from the bottom of the page at the client's
+          request, and rebuilt as a working surface rather than the pinned
+          cinematic band it used to be. See SellOffer.tsx for why.
+
+          The interval is deliberate: this runs the wide spacing while both
+          neighbours run the tight rhythm, and it sits a shade lower on
+          bg-paper. Featured above is a photograph, the leasing band below is
+          cinema — three propositions in a row only work if they are three
+          different kinds of thing, with air between them. */}
+      <Section spacing="default" className="border-t border-border bg-paper">
+        <SellOffer />
       </Section>
 
       {/* Leasing & financing — a mid-inventory statement band so buyers know
@@ -256,9 +269,18 @@ export default function HomeV2Page() {
         <SocialProof />
       </Section>
 
-      {/* Sell Your Car — the lower cinematic pillar; the other half of the
-          business (we buy too). Counterweight to the browse CTAs above. */}
-      <SellYourCar />
+      {/* "Ready to part with yours?" stood here — a pinned cinematic band,
+          1733px, the second of two on the page. Removed at the client's
+          request; the offer it made now opens the page instead (see the
+          SellOffer section above the leasing band).
+
+          Two things came back with it. The positioning band up the page is
+          once again the page's only held frame, which is what made that device
+          worth using in the first place. And the run from the reviews to the
+          footer lost its heaviest mass, so the close arrives sooner.
+
+          components/home/v2/SellYourCar.tsx is untouched — restore this line
+          and its import to put the band back. */}
 
       {/* The Lookbook stood here — four photo sets, 1302px, opening a lightbox.
           Removed at the client's request.
