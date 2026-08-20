@@ -26,6 +26,11 @@ for (const root of SRC) {
   for (const file of walk(root)) {
     const text = readFileSync(file, "utf-8");
     for (const m of text.matchAll(RE)) {
+      // Skip interpolated paths — `/inventory/${slug}` is a ROUTE, and
+      // `/showcase/${slug}/${file}` is built at runtime from what is on disk.
+      // Neither can be resolved by reading the source, and both were the only
+      // things this check got wrong on its first run.
+      if (m[1].includes("${")) continue;
       if (!existsSync(join("public", m[1]))) missing.push({ file, path: m[1] });
     }
   }
