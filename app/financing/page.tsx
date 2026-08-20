@@ -88,7 +88,7 @@ export default function FinancingPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE_MOBILE}
-            alt="A Ferrari F50 and LaFerrari facing forward on an open road"
+            alt="A car under bright overhead light in a tunnel"
             fill
             priority
             quality={85}
@@ -291,7 +291,7 @@ export default function FinancingPage() {
         <div className="absolute inset-0">
           <Image
             src={BAND_IMAGE_MOBILE}
-            alt="A Ferrari F50 and LaFerrari facing forward on an open road"
+            alt="A car under bright overhead light in a tunnel"
             fill
             quality={85}
             sizes="100vw"

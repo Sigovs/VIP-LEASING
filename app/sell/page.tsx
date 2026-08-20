@@ -111,7 +111,7 @@ export default function SellPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE_MOBILE}
-            alt="A silver Porsche Carrera GT, front head-on, against a dark brick wall"
+            alt="A car on wet ground in an industrial yard at night"
             fill
             priority
             quality={85}
@@ -205,7 +205,7 @@ export default function SellPage() {
             >
               <Image
                 src={PROCESS_IMAGE}
-                alt="The engine bay of a silver Porsche Carrera GT"
+                alt="A dealer handing over keys to a client beside a car"
                 fill
                 quality={82}
                 sizes="(min-width: 1024px) 40vw, 100vw"
@@ -252,7 +252,7 @@ export default function SellPage() {
               <div className="relative mt-10 hidden aspect-[4/3] overflow-hidden rounded-md border border-border lg:block">
                 <Image
                   src={DETAIL_IMAGE}
-                  alt="Yellow seatbelt detail inside a Porsche Carrera GT"
+                  alt="A car on a studio cyclorama"
                   fill
                   quality={82}
                   sizes="(min-width: 1024px) 38vw, 0px"

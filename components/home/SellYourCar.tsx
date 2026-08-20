@@ -27,7 +27,7 @@ export function SellYourCar() {
             adds little on a tall crop) */}
         <Image
           src={SELL_IMAGE_MOBILE}
-          alt="A silver Porsche Carrera GT, front head-on, against a dark brick wall"
+          alt="A car on wet ground in an industrial yard at night"
           fill
           quality={85}
           sizes="100vw"
