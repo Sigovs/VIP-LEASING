@@ -84,7 +84,7 @@ function Mark({ brand, className }: { brand: Brand; className?: string }) {
         alt={brand.name}
         loading="lazy"
         style={style}
-        className={`block max-h-full w-auto max-w-full object-contain transition-opacity duration-500 ${className ?? ""}`}
+        className={`block max-h-full w-auto max-w-full object-contain [filter:drop-shadow(0_0_14px_rgba(0,0,0,0.85))] transition-opacity duration-500 ${className ?? ""}`}
       />
       {/* aria-hidden: the resting mark above already carries the name. */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -94,7 +94,7 @@ function Mark({ brand, className }: { brand: Brand; className?: string }) {
         aria-hidden
         loading="lazy"
         style={style}
-        className="absolute block max-h-full w-auto max-w-full object-contain opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        className="absolute block max-h-full w-auto max-w-full object-contain opacity-0 [filter:drop-shadow(0_0_14px_rgba(0,0,0,0.85))] transition-opacity duration-500 group-hover:opacity-100"
       />
     </>
   );
@@ -122,25 +122,29 @@ export function ClosingMarques() {
           </h2>
         </Reveal>
 
-        {/* The six with a car of their own. The scrim is what the mark is read
-            against, and it lifts on hover along with the mark — one gesture,
-            the card coming up to meet you rather than two things animating. */}
+        {/* The six with a car of their own.
+            Hover is one gesture with three parts moving together: the scrim
+            pulls back so the car lights up, the frame pushes in slightly, and
+            the mark goes to white. Separately each is too quiet to notice on a
+            picture this dark; together the card reads as coming up to meet
+            you. The scrim sits deeper at rest than it needs to for exactly
+            that reason — the lift has to come from somewhere. */}
         <div className="mt-10 grid grid-cols-2 gap-3 md:mt-12 md:gap-4 lg:grid-cols-3">
           {CARDS.map((c, i) => (
             <Reveal key={c.brand} delay={(i % 3) * 0.06}>
-              <figure className="group relative aspect-[16/9] overflow-hidden rounded-md ring-1 ring-inset ring-white/[0.08]">
+              <figure className="group relative aspect-[16/9] overflow-hidden rounded-md ring-1 ring-inset ring-white/[0.08] transition-shadow duration-500 hover:ring-white/25">
                 <Image
                   src={c.src}
                   alt={c.alt}
                   fill
                   quality={78}
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover object-center"
+                  className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.06]"
                 />
-                <div className="absolute inset-0 bg-black/45 transition-colors duration-500 group-hover:bg-black/30" />
+                <div className="absolute inset-0 bg-black/50 transition-colors duration-500 group-hover:bg-black/15" />
                 <figcaption className="absolute inset-x-0 top-[13%] flex justify-center px-3">
-                  <span className="relative flex h-8 w-[min(34vw,110px)] items-center justify-center md:h-10">
-                    <Mark brand={byName(c.brand)} className="opacity-90 group-hover:opacity-0" />
+                  <span className="relative flex h-11 w-[min(44vw,150px)] items-center justify-center md:h-14">
+                    <Mark brand={byName(c.brand)} className="group-hover:opacity-0" />
                   </span>
                 </figcaption>
               </figure>
@@ -164,9 +168,9 @@ export function ClosingMarques() {
               <span
                 key={b.name}
                 title={b.name}
-                className="group relative flex h-8 items-center justify-center md:h-9"
+                className="group relative flex h-10 items-center justify-center md:h-12"
               >
-                <Mark brand={b} className="opacity-60 group-hover:opacity-0" />
+                <Mark brand={b} className="opacity-80 group-hover:opacity-0" />
               </span>
             ))}
           </Reveal>
