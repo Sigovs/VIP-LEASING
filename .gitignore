@@ -51,9 +51,14 @@ next-env.d.ts
 /public/ilusso/
 /public/inventory/
 
-# The hero master. 140MB — over GitHub's own 100MB per-file limit, so it cannot
-# be pushed even by accident, and it does not need to be: the page loads
-# video_resize.mp4 (2.3MB, silent, faststart), which IS tracked. Same reasoning
-# as source-images/ — the master stays on the machine that made it.
-/public/video/video.mp4
-/public/video/video_test_mian.png
+# The hero master and its test frame. 134MB is over GitHub's own 100MB
+# per-file limit, so it can never be pushed — but ignoring it was not enough:
+#  copies the WHOLE of public/ into out/, and the preview deploy
+# commits out/ wholesale, so the master went out with the static export and the
+# gh-pages push was rejected by the remote. Anything that must not ship simply
+# cannot live under public/. It sits beside source-images/ now, on the same
+# reasoning: the master stays on the machine that made it.
+#
+# What the page actually loads is public/video/video_resize.mp4 — 2.3MB, silent,
+# faststart — and that one is tracked.
+/source-video/

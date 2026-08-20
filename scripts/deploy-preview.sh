@@ -26,7 +26,12 @@ cd "$ROOT"
 
 echo "▸ building static export (basePath ${BASE})"
 rm -rf out
-GITHUB_PAGES=true PAGES_BASE="$BASE" npm run build
+# MSYS_NO_PATHCONV is for Git Bash on Windows, which rewrites anything shaped
+# like a unix path before a native program sees it — PAGES_BASE=/VIP-LEASING
+# reached node as C:/Program Files/Git/VIP-LEASING and the build refused it.
+# Scoped to this one command on purpose: exported, it breaks the git calls
+# further down, which need their /c/... paths converted.
+MSYS_NO_PATHCONV=1 GITHUB_PAGES=true PAGES_BASE="$BASE" npm run build
 
 # Pages runs the output through Jekyll otherwise, and Jekyll ignores every
 # directory starting with an underscore — including _next, i.e. all of the CSS
@@ -36,8 +41,23 @@ touch out/.nojekyll
 echo "▸ sanity check: every referenced image exists"
 node scripts/check-assets.mjs
 
+# Nothing in out/ may exceed what the remote will accept. The export copies the
+# whole of public/, so one oversized file dropped in there sails through the
+# build and is only refused at the far end, after the push — which is exactly
+# how a 134MB video master got this far once. Catch it here instead.
+echo "▸ sanity check: no file too large for the remote"
+BIG="$(find out -type f -size +90M -printf "%p (%sB)
+" 2>/dev/null || true)"
+if [ -n "$BIG" ]; then
+  echo "  ✗ over GitHub's 100MB per-file limit:"
+  echo "$BIG"
+  echo "    Move it out of public/ — ignoring it is not enough, the export copies it."
+  exit 1
+fi
+echo "  ✓ clean"
+
 echo "▸ sanity check: no unprefixed assets"
-if grep -rqE '(src|href|poster)="/(ilusso|showcase|brands|closing|hero|logo)' out; then
+if grep -rqE '(src|href|poster)="/(ilusso|showcase|site|video|brands|closing|hero|logo)' out; then
   echo "  ✗ found asset paths without the ${BASE} prefix — they will 404 on the preview."
   echo "    Route them through lib/asset.ts (see docs/session/SESSION.md)."
   exit 1
