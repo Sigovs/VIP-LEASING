@@ -1,13 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { ClosingBrands } from "@/components/home/ClosingBrands";
-import { asset } from "@/lib/asset";
 
 // Closing crescendo — the page's final beat, and the only pinned moment on it.
 //
@@ -27,8 +26,7 @@ import { asset } from "@/lib/asset";
 // rgba literals only — a var() inside a gradient is silently dropped by
 // Lightning CSS (DESIGN.md §7).
 
-const CLOSING_VIDEO = "/closing.mp4";
-const CLOSING_POSTER = "/closing-poster.jpg";
+const CLOSING_POSTER = "/site/closing-tunnel.jpg";
 
 const FADE_MAX = 0.82; // how dark the car gets, at most
 const FADE_START = 0.06; // fraction of the band scrolled before it begins to go
@@ -41,25 +39,9 @@ const FADE_START = 0.06; // fraction of the band scrolled before it begins to go
 // takes a screen and a tenth to go, whatever else moves around it.
 const FADE_SCREENS = 1.1;
 
-type ConnectionLike = { saveData?: boolean; effectiveType?: string };
-type NavigatorWithConnection = Navigator & { connection?: ConnectionLike };
-
 export function ClosingCTA() {
-  const [showVideo, setShowVideo] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const fadeRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const conn = (navigator as NavigatorWithConnection).connection;
-    const slow =
-      conn?.saveData ||
-      conn?.effectiveType === "2g" ||
-      conn?.effectiveType === "slow-2g";
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // One-time client capability check on mount — it can't be derived during SSR.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (!slow && !reduced) setShowVideo(true);
-  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -122,22 +104,6 @@ export function ClosingCTA() {
           sizes="100vw"
           className="object-cover object-center"
         />
-        {showVideo && (
-          // asset(): a raw <video> is not Next markup, so nothing prefixes its
-          // src or poster for the subdirectory-hosted preview build.
-          <video
-            src={asset(CLOSING_VIDEO)}
-            poster={asset(CLOSING_POSTER)}
-            muted
-            autoPlay
-            loop
-            playsInline
-            preload="metadata"
-            aria-hidden="true"
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-        )}
-
         {/* Baseline tint — the footage runs bright and the headline sits on it. */}
         <div aria-hidden className="absolute inset-0 bg-black/40" />
         {/* Pool behind the centred copy. */}

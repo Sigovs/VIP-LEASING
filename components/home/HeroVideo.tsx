@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { asset } from "@/lib/asset";
 import { BRAND } from "@/lib/showroom";
 
 // The reference build carries three actions here; "Get Financing" is dropped at
@@ -39,35 +37,13 @@ const HERO_BUTTON_PRIMARY =
 const HERO_BUTTON_SECONDARY =
   `${HERO_BUTTON_BASE} border border-white/25 bg-white/[0.06] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md hover:border-white/55 hover:bg-white/[0.12]`;
 
-// Hero video. Connection-aware: skips video on save-data / 2g and on
-// prefers-reduced-motion. Poster image is the visible LCP element while video
-// buffers. Accepts a single src + poster — swap to client-supplied assets
-// without modifying any other code.
-type ConnectionLike = {
-  saveData?: boolean;
-  effectiveType?: string;
-};
+// Hero. A still, not footage: the photography the client supplied is stills,
+// and the clip that used to run here belongs to the reference build — a
+// borrowed film under a new photograph is two art directions in one frame.
+// The name stays because the call sites and the WordPress port both know it;
+// a hero film comes back the day they shoot one.
 
-type NavigatorWithConnection = Navigator & { connection?: ConnectionLike };
-
-export function HeroVideo({ src, poster }: { src: string; poster: string }) {
-  const ref = useRef<HTMLVideoElement>(null);
-  const [showVideo, setShowVideo] = useState(false);
-
-  useEffect(() => {
-    const nav = navigator as NavigatorWithConnection;
-    const conn = nav.connection;
-    const slow =
-      conn?.saveData ||
-      conn?.effectiveType === "2g" ||
-      conn?.effectiveType === "slow-2g";
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    // One-time client capability check on mount — it can't be derived during SSR,
-    // so a single setState here is intentional (not a cascading-render concern).
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (!slow && !reduced) setShowVideo(true);
-  }, []);
-
+export function HeroVideo({ poster }: { poster: string }) {
   return (
     <section className="chrome relative h-[100svh] min-h-[680px] w-full overflow-hidden bg-chrome-bg">
       <Image
@@ -78,22 +54,6 @@ export function HeroVideo({ src, poster }: { src: string; poster: string }) {
         sizes="100vw"
         className="object-cover"
       />
-      {showVideo && (
-        // asset(): a raw <video> is not Next markup, so nothing prefixes its src
-        // or poster for the subdirectory-hosted preview build.
-        <video
-          ref={ref}
-          src={asset(src)}
-          poster={asset(poster)}
-          muted
-          autoPlay
-          loop
-          playsInline
-          preload="metadata"
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-      )}
       {/* Layered overlays for legibility + cinematic depth.
           0) Flat baseline tint — anchors the dark mood and keeps text legible
              over bright (daytime) footage, not just dark clips.

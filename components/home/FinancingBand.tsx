@@ -23,7 +23,7 @@ import { ParallaxImage } from "@/components/motion/ParallaxImage";
 // made literal. Their gap sits dead-center, so centered copy lands on the road
 // between them and both cars stay clear. Portrait source fills a tall mobile
 // frame cleanly too (desktop gets subtle parallax).
-const FIN_IMAGE = "/showcase/f50-laferrari/02.webp";
+const FIN_IMAGE = "/site/band-garage.jpg";
 
 export function FinancingBand() {
   return (

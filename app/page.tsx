@@ -32,8 +32,7 @@ import { ShowroomMap } from "@/components/contact/ShowroomMap";
 //   ffmpeg -ss 1 -i public/hero.mp4 -frames:v 1 -q:v 5 public/hero-poster.jpg
 // (raise -crf for a smaller file, lower it for more quality; pick a poster
 //  timestamp on a strong full-car frame.)
-const HERO_VIDEO = "/hero.mp4";
-const HERO_POSTER = "/hero-poster.jpg";
+const HERO_POSTER = "/site/hero-villa.jpg";
 
 
 // Cinematic positioning images — Lookbook frames of the matte-black Senna,
@@ -41,8 +40,8 @@ const HERO_POSTER = "/hero-poster.jpg";
 // a narrow mobile portrait crop a side profile collapses into an unrecognizable
 // sliver, so phones get the symmetric head-on (doors up) shot, which fills a
 // tall frame cleanly. Swap freely.
-const SIGNATURE_IMAGE = "/showcase/mclaren-senna/14.webp"; // desktop (wide)
-const SIGNATURE_IMAGE_MOBILE = "/showcase/mclaren-senna/11.webp"; // mobile (portrait)
+const SIGNATURE_IMAGE = "/site/band-transport.jpg"; // desktop (wide)
+const SIGNATURE_IMAGE_MOBILE = "/site/band-transport.jpg"; // mobile
 
 // Showroom facts live in lib/showroom.ts (shared with contact/about/footer).
 
@@ -58,7 +57,7 @@ export default function HomePage() {
 
   return (
     <>
-      <HeroVideo src={HERO_VIDEO} poster={HERO_POSTER} />
+      <HeroVideo poster={HERO_POSTER} />
 
       {/* Featured — the spotlight car */}
       <Section id="inventory" spacing="tight">

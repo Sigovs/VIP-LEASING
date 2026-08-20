@@ -16,8 +16,8 @@ import { CinematicScrim } from "@/components/home/CinematicScrim";
 // scrim seats the copy. A distinct silhouette from the Senna up top. Mobile: a
 // side profile collapses on a tall portrait crop, so phones get the symmetric
 // front head-on, which fills the frame cleanly.
-const SELL_IMAGE = "/showcase/porsche-carrera-gt/04.webp"; // desktop (side profile)
-const SELL_IMAGE_MOBILE = "/showcase/porsche-carrera-gt/01.webp"; // mobile (head-on)
+const SELL_IMAGE = "/site/band-yard.jpg"; // desktop
+const SELL_IMAGE_MOBILE = "/site/band-yard.jpg"; // mobile
 
 export function SellYourCar() {
   return (
