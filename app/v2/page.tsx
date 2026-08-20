@@ -20,7 +20,6 @@ import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 import { HeroVideo } from "@/components/home/v2/HeroVideo";
 import { FeaturedSpotlight } from "@/components/home/v2/FeaturedSpotlight";
 import { FinancingBand } from "@/components/home/v2/FinancingBand";
-import { Showcase } from "@/components/home/v2/Showcase";
 import { SocialProof } from "@/components/home/v2/SocialProof";
 import { SellYourCar } from "@/components/home/v2/SellYourCar";
 import { ClosingCTA } from "@/components/home/v2/ClosingCTA";
@@ -34,7 +33,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { ParallaxImage } from "@/components/motion/ParallaxImage";
 import { VehicleCard } from "@/components/vehicle/VehicleCard";
 import { getRecentlyAcquired, getSpotlightLineup } from "@/lib/vehicles";
-import { getShowcase } from "@/lib/showcase";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/social";
 import { HAS_ADDRESS, SHOWROOM } from "@/lib/showroom";
 import { ShowroomMap } from "@/components/contact/ShowroomMap";
@@ -73,7 +71,6 @@ export default function HomeV2Page() {
   const recent = getRecentlyAcquired(12)
     .filter((v) => v.slug !== lineup[0]?.slug)
     .slice(0, 3);
-  const showcase = getShowcase();
 
   return (
     <>
@@ -263,19 +260,18 @@ export default function HomeV2Page() {
           business (we buy too). Counterweight to the browse CTAs above. */}
       <SellYourCar />
 
-      {/* Selected work — click a car to open the full photo set */}
-      {showcase.length > 0 && (
-        <Section spacing="tight" className="bg-paper">
-          <Container>
-            <div className="mb-6 md:mb-8">
-              <h2 className="title-mark font-title text-3xl md:text-5xl font-bold text-text-1">
-                Lookbook
-              </h2>
-            </div>
-            <Showcase cars={showcase} />
-          </Container>
-        </Section>
-      )}
+      {/* The Lookbook stood here — four photo sets, 1302px, opening a lightbox.
+          Removed at the client's request.
+
+          Worth knowing what left with it: it was the only mass on this page
+          that sold nothing. It said how the house photographs rather than what
+          is for sale, and it was the one pause between offers. The page is now
+          a continuous run of propositions from the hero to the footer, and the
+          Instagram strip below is what is left carrying any atmosphere at all.
+
+          To restore: put back this section, the Showcase import, and the
+          getShowcase() call at the top. components/home/v2/Showcase.tsx and the
+          photo sets under public/showcase are untouched. */}
 
       {/* Instagram feed — slim follow strip */}
       <Section spacing="tight" className="py-12 md:py-16">
