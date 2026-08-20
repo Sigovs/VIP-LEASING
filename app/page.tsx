@@ -24,14 +24,9 @@ import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/social";
 import { HAS_ADDRESS, SHOWROOM } from "@/lib/showroom";
 import { ShowroomMap } from "@/components/contact/ShowroomMap";
 
-// VIDEO-SWAP: currently a test clip. Replace with the client-supplied final
-// hero asset (~15–25s) when ready. Optimize it for the web the same way before
-// dropping it in (1080p, audio stripped, faststart for progressive load):
-//   ffmpeg -i raw.mp4 -an -c:v libx264 -profile:v high -pix_fmt yuv420p \
-//     -crf 28 -preset slow -movflags +faststart public/hero.mp4
-//   ffmpeg -ss 1 -i public/hero.mp4 -frames:v 1 -q:v 5 public/hero-poster.jpg
-// (raise -crf for a smaller file, lower it for more quality; pick a poster
-//  timestamp on a strong full-car frame.)
+// The hero runs the client's own clip now — public/video/video_resize.mp4,
+// wired inside HeroVideo. This still stays the poster and the fallback: it is
+// what paints first and what a metered or reduced-motion visitor keeps.
 const HERO_POSTER = "/site/hero-villa.jpg";
 
 

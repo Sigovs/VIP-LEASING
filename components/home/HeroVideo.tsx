@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { BRAND } from "@/lib/showroom";
+import { asset } from "@/lib/asset";
 
 // The reference build carries three actions here; "Get Financing" is dropped at
 // the client's request, so this hero runs two. Financing is still reachable from
@@ -37,13 +39,52 @@ const HERO_BUTTON_PRIMARY =
 const HERO_BUTTON_SECONDARY =
   `${HERO_BUTTON_BASE} border border-white/25 bg-white/[0.06] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md hover:border-white/55 hover:bg-white/[0.12]`;
 
-// Hero. A still, not footage: the photography the client supplied is stills,
-// and the clip that used to run here belongs to the reference build — a
-// borrowed film under a new photograph is two art directions in one frame.
-// The name stays because the call sites and the WordPress port both know it;
-// a hero film comes back the day they shoot one.
+// Hero. Footage again — the client supplied a clip of their own, so the reason
+// the film came out (a borrowed reel from the reference build sitting under
+// new photography, two art directions in one frame) no longer applies.
+//
+// The still is not a fallback bolted on: it is the FIRST layer, always
+// rendered, and the film fades in over it only once it can actually play. So
+// the hero is composed and legible at first paint, and a visitor on a metered
+// connection, a slow one, or with reduced motion asked for simply never gets
+// the second layer. Nothing about the copy or the buttons depends on it.
+//
+// Two clips shipped: video.mp4 at 140MB is the master and has no business on a
+// page; video_resize.mp4 is 2.3MB, ten seconds, silent, already faststart. It
+// is the one that loads.
+//
+// asset() because a raw <video src> gets no basePath help from Next — one of
+// exactly three places that need it (see lib/asset.ts).
+const HERO_CLIP = "/video/video_resize.mp4";
 
 export function HeroVideo({ poster }: { poster: string }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [playing, setPlaying] = useState(false);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+
+    // Three ways to decline the film, and the poster answers all of them.
+    const nav = navigator as Navigator & {
+      connection?: { saveData?: boolean; effectiveType?: string };
+    };
+    const conn = nav.connection;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduced || conn?.saveData || /2g/.test(conn?.effectiveType ?? "")) return;
+
+    el.src = asset(HERO_CLIP);
+    // Fade in on canplay, not on load: swapping the moment the file arrives
+      // shows a frame of undecoded video over a composed still.
+    const onReady = () => setPlaying(true);
+    el.addEventListener("canplay", onReady, { once: true });
+    const started = el.play();
+    if (started) started.catch(() => {});
+    return () => el.removeEventListener("canplay", onReady);
+  }, []);
+
   return (
     <section className="chrome relative h-[100svh] min-h-[680px] w-full overflow-hidden bg-chrome-bg">
       {/* Anchored low and scaled up a touch, so the cars sit clear of the base
@@ -59,6 +100,21 @@ export function HeroVideo({ poster }: { poster: string }) {
         priority
         sizes="100vw"
         className="scale-[1.06] object-cover object-[50%_88%]"
+      />
+      {/* The film, on the still's own framing so the swap moves nothing. No
+          src until the effect decides there should be one — a src in the markup
+          would start the download before the decision is made. */}
+      <video
+        ref={videoRef}
+        aria-hidden
+        muted
+        loop
+        playsInline
+        preload="none"
+        className={
+          "absolute inset-0 h-full w-full scale-[1.06] object-cover object-[50%_88%] transition-opacity duration-1000 ease-out " +
+          (playing ? "opacity-100" : "opacity-0")
+        }
       />
       {/* Layered overlays for legibility + cinematic depth.
           0) Flat baseline tint — anchors the dark mood and keeps text legible

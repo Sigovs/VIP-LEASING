@@ -50,3 +50,10 @@ next-env.d.ts
 # bands and the Lookbook.
 /public/ilusso/
 /public/inventory/
+
+# The hero master. 140MB — over GitHub's own 100MB per-file limit, so it cannot
+# be pushed even by accident, and it does not need to be: the page loads
+# video_resize.mp4 (2.3MB, silent, faststart), which IS tracked. Same reasoning
+# as source-images/ — the master stays on the machine that made it.
+/public/video/video.mp4
+/public/video/video_test_mian.png
