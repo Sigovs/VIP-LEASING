@@ -21,10 +21,10 @@ export const metadata: Metadata = {
 // cleanly. Process: the engine bay adds a mechanical counterpoint to the three
 // step columns. Detail: the yellow seatbelt — the page's one warm accent, its
 // ochre echoing the champagne gold beside the form.
-const HERO_IMAGE = "/showcase/porsche-carrera-gt/05.webp";
-const HERO_IMAGE_MOBILE = "/showcase/porsche-carrera-gt/35.webp";
-const PROCESS_IMAGE = "/showcase/porsche-carrera-gt/22.webp";
-const DETAIL_IMAGE = "/showcase/porsche-carrera-gt/30.webp";
+const HERO_IMAGE = "/site/smoke-mclaren.jpg";
+const HERO_IMAGE_MOBILE = "/site/smoke-mclaren.jpg";
+const PROCESS_IMAGE = "/site/service-handover.jpg";
+const DETAIL_IMAGE = "/site/studio-white.jpg";
 
 const STEPS = [
   {
@@ -136,7 +136,6 @@ export default function SellPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
-              <span aria-hidden className="block h-0.5 w-12 bg-mark" />
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Sell Your Car
               </h1>
@@ -228,7 +227,6 @@ export default function SellPage() {
         <Container>
           <div className="grid grid-cols-1 items-start gap-14 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-5 lg:sticky lg:top-28">
-              <span aria-hidden className="block h-0.5 w-12 bg-mark mb-7" />
               <h2 className="title-mark font-title text-4xl font-bold leading-[1.05] text-text-1 md:text-5xl">
                 Start with the Details
               </h2>

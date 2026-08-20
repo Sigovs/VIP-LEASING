@@ -46,13 +46,19 @@ const HERO_BUTTON_SECONDARY =
 export function HeroVideo({ poster }: { poster: string }) {
   return (
     <section className="chrome relative h-[100svh] min-h-[680px] w-full overflow-hidden bg-chrome-bg">
+      {/* Anchored low and scaled up a touch, so the cars sit clear of the base
+          instead of running along it. object-cover on its own centres the frame
+          and, at this aspect, barely crops at all — the cars stayed pinned to
+          the bottom edge. Anchoring at 88% crops sky rather than foreground,
+          which is what lifts them; the 1.06 scale buys the crop something to
+          take. */}
       <Image
         src={poster}
         alt=""
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className="scale-[1.06] object-cover object-[50%_88%]"
       />
       {/* Layered overlays for legibility + cinematic depth.
           0) Flat baseline tint — anchors the dark mood and keeps text legible
@@ -77,7 +83,7 @@ export function HeroVideo({ poster }: { poster: string }) {
       />
       <div className="absolute inset-x-0 top-0 h-[32%] bg-gradient-to-b from-black/65 via-black/25 to-transparent" />
       <div className="absolute inset-x-0 bottom-0 h-[46%] bg-gradient-to-t from-chrome-bg via-chrome-bg/55 to-transparent" />
-      <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-b from-transparent via-bg/60 to-bg pointer-events-none" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-b from-transparent via-bg/70 to-bg" />
       {/* Reading-zone scrim, bottom-left. The copy now sits in a corner of a
           MOVING picture — the frame under it changes every second, so a scrim
           tuned to the poster would fail on the bright frames. This one is

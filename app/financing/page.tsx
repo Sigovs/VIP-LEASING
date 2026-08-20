@@ -20,16 +20,16 @@ export const metadata: Metadata = {
 // carries across the page without repeating a frame. Hero desktop: the pair
 // front three-quarter, filling the frame; hero mobile: the head-on fills a
 // portrait crop. Band: doors up, side by side.
-const HERO_IMAGE = "/showcase/f50-laferrari/12.webp";
-const HERO_IMAGE_MOBILE = "/showcase/f50-laferrari/25.webp";
-const BAND_IMAGE = "/showcase/f50-laferrari/36.webp";
-const BAND_IMAGE_MOBILE = "/showcase/f50-laferrari/20.webp";
+const HERO_IMAGE = "/site/tunnel-orange.jpg";
+const HERO_IMAGE_MOBILE = "/site/tunnel-orange.jpg";
+const BAND_IMAGE = "/site/band-garage.jpg";
+const BAND_IMAGE_MOBILE = "/site/band-garage.jpg";
 
 // The partnership split — a dark McLaren Senna carries across both panels so the
 // showroom and its financing partner read as one seamless world: the same car,
 // two views, on either side of the signature.
-const SHOWROOM_IMAGE = "/showcase/mclaren-senna/03.webp";
-const PARTNER_IMAGE = "/showcase/mclaren-senna/18.webp";
+const SHOWROOM_IMAGE = "/site/band-transport.jpg";
+const PARTNER_IMAGE = "/site/smoke-mclaren.jpg";
 
 // No term lengths, APRs, or mileage figures anywhere on this page — the client
 // has published none, so we invent none. And nothing here may read as in-house
@@ -113,7 +113,6 @@ export default function FinancingPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
-              <span aria-hidden className="block h-0.5 w-12 bg-mark" />
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Financing
               </h1>
@@ -248,7 +247,6 @@ export default function FinancingPage() {
             <div className="flex flex-col gap-10 lg:col-span-5">
               {PATHS.map((p, i) => (
                 <Reveal key={p.title} delay={i * 0.06}>
-                  <span aria-hidden className="block h-0.5 w-10 bg-mark" />
                   <h3 className="title-mark mt-5 font-sans text-2xl font-bold text-text-1 md:text-3xl">
                     {p.title}
                   </h3>
@@ -345,7 +343,6 @@ export default function FinancingPage() {
         <Container className="relative w-full">
           <div className="mx-auto flex max-w-[46rem] flex-col items-center text-center">
             <Reveal y={18}>
-              <span aria-hidden className="mx-auto block h-0.5 w-12 bg-mark" />
               <h2 className="title-mark mt-7 text-balance font-title text-display-2 font-bold leading-[1.03] text-chrome-text-1">
                 Drive It Home Your Way
               </h2>

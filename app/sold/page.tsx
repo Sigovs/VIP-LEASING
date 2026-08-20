@@ -24,7 +24,6 @@ export default function SoldPage() {
     <>
       <header className="pt-24 md:pt-32 pb-6 md:pb-8 border-b border-border">
         <Container>
-          <span aria-hidden className="block h-0.5 w-12 bg-mark mb-5 md:mb-6" />
           <h1 className="title-mark font-title text-5xl md:text-7xl font-bold text-text-1 leading-[1.0]">
             Recently Sold
           </h1>

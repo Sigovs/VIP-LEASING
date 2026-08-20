@@ -171,7 +171,6 @@ export default function HomePage() {
               title-mark; the glass CTA stays neutral, per the "gold off the
               over-photo button" rule in DESIGN.md. */}
           <Reveal y={18}>
-            <span aria-hidden className="block h-0.5 w-12 bg-mark" />
             <h2 className="title-mark mt-7 max-w-[17ch] text-balance font-title font-bold text-display-2 leading-[1.03] text-chrome-text-1">
               The cars worth owning, in one showroom
             </h2>
@@ -250,7 +249,6 @@ export default function HomePage() {
             <Reveal delay={0.08} className="lg:col-span-5 flex">
               <div className="flex flex-col justify-between gap-10 md:gap-12 w-full">
                 <div className="space-y-6 md:space-y-8">
-                  <span aria-hidden className="block h-0.5 w-12 bg-mark" />
                   <h2 className="title-mark font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.05]">
                     {SHOWROOM.market}
                   </h2>

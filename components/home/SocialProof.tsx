@@ -19,7 +19,6 @@ export function SocialProof() {
             the client's own line, which is the one piece of voice they have
             already written for themselves. */}
         <Reveal className="lg:col-span-5">
-          <span aria-hidden className="block h-0.5 w-12 bg-mark mb-8" />
           <h2 className="font-title text-3xl md:text-5xl font-bold text-text-1 leading-[1.15]">
             Drive Luxury.
             <br />

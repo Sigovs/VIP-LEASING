@@ -10,17 +10,18 @@ export type ShowcaseCar = {
 // Add a car: create /public/showcase/<slug>/ and drop photos in (any
 // filenames — they're returned in lexical order, so 01.jpg, 02.jpg, ...
 // gives you explicit control). First photo becomes the home-page tile.
-// The Carrera GT appears twice on the home page by design: it leads the Featured
-// spotlight (eight frames in the filmstrip) and it keeps its Lookbook tile, which
-// opens the full forty-frame set. The two do different jobs — Featured says "this
-// one is for sale", the Lookbook says "and this is how we photograph a car" — so
-// the repeat reads as depth rather than as thin inventory. Drop the slug from
-// this list if it ever starts to read as padding.
+// The sets are grouped by SETTING rather than by car — after dark, under light,
+// on the cyclorama, on location. That is what a lookbook is for: it says how the
+// house photographs, not what is in stock, and it means the grouping survives
+// the roster changing underneath it.
+//
+// Frames repeat across the site while this is a mockup. Once the client shoots
+// their own, each set gets its own take and the repeats go.
 const CARS: { slug: string; name: string }[] = [
-  { slug: "f50-laferrari", name: "Ferrari F50 & LaFerrari" },
-  { slug: "ferrari-f50", name: "Ferrari F50" },
-  { slug: "porsche-carrera-gt", name: "Porsche Carrera GT" },
-  { slug: "mclaren-senna", name: "McLaren Senna" },
+  { slug: "after-dark", name: "After Dark" },
+  { slug: "under-light", name: "Under Light" },
+  { slug: "on-the-cyclorama", name: "On the Cyclorama" },
+  { slug: "on-location", name: "On Location" },
 ];
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|avif)$/i;

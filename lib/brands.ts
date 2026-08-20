@@ -30,12 +30,12 @@ export type Brand = {
   scale?: number;
 };
 
-// Marks rest in quiet grey and light to PLATINUM on hover — the site's working
-// metal, the same one the nav, the CTA strip and the cards reach for. (They used
-// to warm to champagne gold; that was the old palette, and Mercedes was the last
-// logo on the site still doing it.)
+// Marks rest in quiet grey and light to WHITE on hover. Platinum was the site's
+// working metal, but against a photograph at the close it was too near the rest
+// state to register as a change — white is the only value that reads as the
+// mark switching on.
 export const BRAND_REST = "9a9ea4"; // --text-2
-export const BRAND_LIT = "c6ccd2"; // --accent, platinum
+export const BRAND_LIT = "ffffff"; // pure white on hover
 
 export const BRANDS: Brand[] = [
   // Crests — ink runs the full height of the canvas, so they scale DOWN to sit

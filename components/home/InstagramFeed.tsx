@@ -12,10 +12,10 @@ import { asset } from "@/lib/asset";
 // imagery pulled from the showcase folder.
 
 const PLACEHOLDER_TILES: { src: string; alt: string }[] = [
-  { src: "/showcase/porsche-carrera-gt/06.webp", alt: "Recent post" },
-  { src: "/showcase/mclaren-senna/04.webp", alt: "Recent post" },
-  { src: "/showcase/ferrari-f50/05.webp", alt: "Recent post" },
-  { src: "/showcase/f50-laferrari/05.webp", alt: "Recent post" },
+  { src: "/site/bridge-night.jpg", alt: "Recent post" },
+  { src: "/site/smoke-mclaren.jpg", alt: "Recent post" },
+  { src: "/site/loft-skyline.jpg", alt: "Recent post" },
+  { src: "/site/tunnel-orange.jpg", alt: "Recent post" },
 ];
 
 export function InstagramFeed() {

@@ -18,8 +18,10 @@ import { BRANDS, BRAND_REST, BRAND_LIT, logoSrc } from "@/lib/brands";
 // arrival, so ten individual reveals still read as three grouped ones.
 //
 // They are placed as a CONSTELLATION instead — every mark on its own x and its
-// own y, no two sharing either, drifting loosely from upper-left to lower-right
-// so the field has a direction rather than being noise. Because each one sits at
+// own y, no two sharing either. The horizontal spread is deliberately NARROW,
+// 30-66% of the field: spread to the edges they stop being a group and start
+// being decoration parked in the corners. Kept in a loose central column they
+// read as one body of marks that happens to breathe. Because each one sits at
 // a different height, each one crosses the viewport threshold at a different
 // moment on its own: the scatter is now in the layout, not bolted on afterwards.
 //
@@ -41,16 +43,16 @@ type Placement = { x: number; y: number; h: number };
 // x / y are percentages of the field, positioning each mark by its CENTRE.
 // h is the mark's height at md+, in px. Order matches BRANDS.
 const FIELD: Placement[] = [
-  { x: 18, y: 3, h: 132 }, // Ferrari — opens the field, largest
-  { x: 62, y: 11, h: 92 }, // Porsche
-  { x: 34, y: 20, h: 108 }, // Lamborghini
-  { x: 80, y: 28, h: 88 }, // Rolls-Royce
-  { x: 22, y: 37, h: 120 }, // Maserati
-  { x: 58, y: 45, h: 84 }, // Mercedes-AMG
-  { x: 84, y: 54, h: 100 }, // Bugatti
-  { x: 30, y: 63, h: 128 }, // McLaren — wordmark, carries width
-  { x: 66, y: 72, h: 96 }, // Aston Martin
-  { x: 44, y: 82, h: 112 }, // Bentley
+  { x: 38, y: 3, h: 132 }, // Ferrari — opens the field, largest
+  { x: 60, y: 11, h: 92 }, // Porsche
+  { x: 30, y: 20, h: 108 }, // Lamborghini
+  { x: 66, y: 28, h: 88 }, // Rolls-Royce
+  { x: 44, y: 37, h: 120 }, // Maserati
+  { x: 56, y: 45, h: 84 }, // Mercedes-AMG
+  { x: 34, y: 54, h: 100 }, // Bugatti
+  { x: 62, y: 63, h: 128 }, // McLaren — wordmark, carries width
+  { x: 40, y: 72, h: 96 }, // Aston Martin
+  { x: 52, y: 82, h: 112 }, // Bentley
 ];
 
 // A small residual offset only. The vertical spacing is what sequences them

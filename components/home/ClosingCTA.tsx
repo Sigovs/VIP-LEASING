@@ -142,7 +142,6 @@ export function ClosingCTA() {
             below it, was what made the ending drag. */}
         <Container className="flex min-h-[84svh] flex-col items-center justify-center py-16 text-center">
           <Reveal>
-            <span aria-hidden className="mx-auto block h-0.5 w-12 bg-mark" />
             <h2 className="title-mark mx-auto mt-8 max-w-[14ch] text-balance font-title font-bold text-display-1 leading-[1.0] text-chrome-text-1">
               Find yours
             </h2>

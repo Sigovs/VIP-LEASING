@@ -21,9 +21,9 @@ export const metadata: Metadata = {
 // profile fills a portrait crop against the dusk sky. Band: the backlit rear
 // three-quarter — a warmer, moodier counterpoint to the front-lit hero, used
 // as the silent cinematic breath before the visit close.
-const HERO_IMAGE = "/showcase/ferrari-f50/05.webp";
-const HERO_IMAGE_MOBILE = "/showcase/ferrari-f50/35.webp";
-const BAND_IMAGE = "/showcase/ferrari-f50/18.webp";
+const HERO_IMAGE = "/site/loft-skyline.jpg";
+const HERO_IMAGE_MOBILE = "/site/bridge-night.jpg";
+const BAND_IMAGE = "/site/band-transport.jpg";
 
 // What the house actually does — acquisition, sales, financing. Sales copy
 // stays on the "bought outright / curated" story (never consignment).
@@ -96,7 +96,6 @@ export default function AboutPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
-              <span aria-hidden className="block h-0.5 w-12 bg-mark" />
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 About
               </h1>
@@ -131,7 +130,6 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-0">
             <Reveal className="lg:col-span-6 lg:pr-16">
-              <span aria-hidden className="block h-0.5 w-12 bg-mark mb-7" />
               <h2 className="font-title text-4xl md:text-6xl font-bold text-text-1 leading-[1.08]">
                 Built on Referrals,
                 <br />
@@ -260,7 +258,6 @@ export default function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12 lg:gap-20">
             <Reveal className="lg:col-span-5">
-              <span aria-hidden className="block h-0.5 w-12 bg-mark mb-7" />
               <h2 className="title-mark font-title text-4xl md:text-5xl font-bold text-text-1 leading-[1.05]">
                 Come See the Floor
               </h2>

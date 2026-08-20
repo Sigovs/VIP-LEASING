@@ -25,8 +25,8 @@ export const metadata: Metadata = {
 // the silver Carrera GT on Sell). Desktop: side profile against the dark brick
 // wall, its shadowed left giving the copy a clean field. Mobile: the doors-up
 // front three-quarter fills a dramatic portrait crop.
-const HERO_IMAGE = "/showcase/mclaren-senna/05.webp";
-const HERO_IMAGE_MOBILE = "/showcase/mclaren-senna/20.webp";
+const HERO_IMAGE = "/site/loft-skyline.jpg";
+const HERO_IMAGE_MOBILE = "/site/loft-skyline.jpg";
 
 // The ?intent= presets moved to components/contact/IntentContactForm.tsx, where
 // they are read on the client. Reading searchParams here made this page dynamic
@@ -68,7 +68,6 @@ export default function ContactPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
-              <span aria-hidden className="block h-0.5 w-12 bg-mark" />
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Contact
               </h1>
@@ -188,7 +187,6 @@ export default function ContactPage() {
         <Container>
           <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-4">
-              <span aria-hidden className="block h-0.5 w-12 bg-mark mb-7" />
               <h2 className="title-mark font-title text-4xl md:text-5xl font-bold text-text-1 leading-[1.05]">
                 Visit the Showroom
               </h2>

@@ -92,7 +92,6 @@ export default function InventoryPage() {
       />
       <header className="pt-24 md:pt-32 pb-6 md:pb-8">
         <Container>
-          <span aria-hidden className="block h-0.5 w-12 bg-mark mb-5 md:mb-6" />
           {/* Heading uses the shared display/title face (Inter Tight) —
               same idiom as the home section titles ("Featured" / "Available
               Now" / "Lookbook") and the VDP section headings. The car count is
