@@ -10,6 +10,10 @@
   h1 { margin:0; font-size:26px; letter-spacing:-.02em }
   h1 b { display:block; width:64px; height:6px; margin-top:14px; background:#823cec }
   p { color:#9a9ea4; margin:20px 0 30px }
+  em { font-style:normal }
+  .group { margin:0 0 8px; font:500 11px/1 ui-monospace,monospace;
+           letter-spacing:.18em; text-transform:uppercase; color:#7a8089 }
+  .group:not(:first-of-type) { margin-top:26px }
   a { display:flex; align-items:center; justify-content:space-between; gap:16px;
       margin-bottom:12px; padding:16px 22px; border-radius:9999px;
       text-decoration:none; color:#eceef0; border:1px solid #2a333b;
@@ -25,22 +29,26 @@
 </style>
 <div class="card">
   <h1>VIP Leasing<b></b></h1>
-  <p>Where to look at it.</p>
+  <p>Two versions live side by side. Version&nbsp;1 is frozen; the client's changes go into version&nbsp;2.</p>
 
-  <a class="primary" href="https://sigovs.github.io/VIP-LEASING/">
-    Live — version 1 <span>current</span>
+  <div class="group">Live — send these</div>
+
+  <a href="https://sigovs.github.io/VIP-LEASING/">
+    <em>Live — version 1</em> <span>shipped</span>
   </a>
   <a class="primary" href="https://sigovs.github.io/VIP-LEASING/v2/">
-    Live — version 2 <span>client changes</span>
+    <em>Live — version 2</em> <span>client changes</span>
   </a>
+  <div class="group">Local — current code</div>
   <a href="http://localhost:3000/">
-    Local — version 1 <span>needs the dev server</span>
+    <em>Local — version 1</em> <span>dev server</span>
   </a>
   <a href="http://localhost:3000/v2">
-    Local — version 2 <span>needs the dev server</span>
+    <em>Local — version 2</em> <span>dev server</span>
   </a>
+  <div class="group">Source</div>
   <a href="https://github.com/Sigovs/VIP-LEASING">
-    Repository <span>github</span>
+    <em>Repository</em> <span>github</span>
   </a>
 
   <small>
