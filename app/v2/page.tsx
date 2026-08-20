@@ -22,7 +22,7 @@ import { FeaturedSpotlight } from "@/components/home/v2/FeaturedSpotlight";
 import { FinancingBand } from "@/components/home/v2/FinancingBand";
 import { SocialProof } from "@/components/home/v2/SocialProof";
 import { SellOffer } from "@/components/home/v2/SellOffer";
-import { ClosingCTA } from "@/components/home/v2/ClosingCTA";
+import { ClosingMarques } from "@/components/home/v2/ClosingMarques";
 import { CinematicScrim } from "@/components/home/v2/CinematicScrim";
 import { RecentlySold } from "@/components/home/v2/RecentlySold";
 import { InstagramFeed } from "@/components/home/v2/InstagramFeed";
@@ -387,8 +387,12 @@ export default function HomeV2Page() {
         </Container>
       </Section>
 
-      {/* Closing crescendo — final beat into the footer */}
-      <ClosingCTA />
+      {/* The close. Was a 4321px pinned scene — statement rising into a fixed
+          title, six marques each with their own car, then the whole floor.
+          Made static at the client's request; see ClosingMarques.tsx for what
+          survived and what did not. components/home/v2/ClosingCTA.tsx and
+          ClosingBrands.tsx are untouched if the scene is ever wanted back. */}
+      <ClosingMarques />
     </>
   );
 }
