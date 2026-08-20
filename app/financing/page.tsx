@@ -98,7 +98,7 @@ export default function FinancingPage() {
           <ParallaxImage amount={150} className="hidden h-full w-full md:block">
             <Image
               src={HERO_IMAGE}
-              alt="A Ferrari F50 beside a LaFerrari, front three-quarter, under a dramatic sky"
+              alt="A car under bright overhead light in a tunnel"
               fill
               priority
               quality={85}
@@ -158,7 +158,7 @@ export default function FinancingPage() {
             <Reveal className="relative flex min-h-[460px] flex-col justify-end overflow-hidden p-10 md:min-h-[560px] md:p-14 lg:p-16">
               <Image
                 src={SHOWROOM_IMAGE}
-                alt="A black McLaren Senna in the showroom"
+                alt="A car being loaded into an enclosed transporter beside a lit showroom"
                 fill
                 quality={84}
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -197,7 +197,7 @@ export default function FinancingPage() {
             >
               <Image
                 src={PARTNER_IMAGE}
-                alt="A black McLaren Senna with its doors raised"
+                alt="A dark supercar under low light in a smoke-filled structure"
                 fill
                 quality={84}
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -300,7 +300,7 @@ export default function FinancingPage() {
           <ParallaxImage amount={180} className="hidden h-full w-full md:block">
             <Image
               src={BAND_IMAGE}
-              alt="A Ferrari F50 beside a LaFerrari with its doors raised, on an open road under a dramatic sky"
+              alt="A car in a dark garage"
               fill
               quality={85}
               sizes="100vw"

@@ -37,7 +37,7 @@ export function SellYourCar() {
         <ParallaxImage amount={180} className="hidden h-full w-full md:block">
           <Image
             src={SELL_IMAGE}
-            alt="A silver Porsche Carrera GT in side profile against a dark brick wall"
+            alt="A car on wet ground in an industrial yard at night"
             fill
             quality={85}
             sizes="100vw"

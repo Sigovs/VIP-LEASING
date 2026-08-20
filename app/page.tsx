@@ -135,13 +135,30 @@ export default function HomePage() {
           matte-black exotic carries the frame while an editorial statement
           reads over a left-weighted scrim (shared CinematicScrim). The image is
           a non-cover Lookbook frame (see SIGNATURE_IMAGE). */}
-      <section className="chrome relative flex min-h-[600px] w-full items-center overflow-hidden bg-chrome-bg md:min-h-[700px] lg:min-h-[760px]">
+      {/* THE PINNED BAND. One frame on this page is held while the words travel
+          across it, and this is it.
+
+          Why here: three full-bleed photo bands ran the same treatment, which
+          made the middle of the page its flattest stretch. This one carries the
+          claim about the house's standard, so it is the one worth stopping on.
+
+          Why it does not repeat the close: the closing pins a frame and
+          DISSOLVES it to black while the marques rise out of it. Here nothing
+          fades — the picture simply refuses to move while the sentence crosses
+          it. One temporal idea each, which is what keeps two pinned moments on
+          one page from reading as the same trick twice.
+
+          The shell is 190svh; the frame inside is sticky at 100svh and the copy
+          block is pulled back over it with a negative margin, so the copy owns
+          the scroll and the picture owns the screen. */}
+      <section className="chrome relative w-full bg-chrome-bg">
+        <div className="sticky top-0 h-[100svh] w-full overflow-hidden">
         <div className="absolute inset-0">
           {/* mobile: symmetric head-on, doors up — fills a portrait frame
               (static; parallax adds little on a tall crop) */}
           <Image
             src={SIGNATURE_IMAGE_MOBILE}
-            alt="Matte-black McLaren Senna, front three-quarter view with its dihedral doors raised, against a dark brick wall"
+            alt="A car being loaded into an enclosed transporter beside a lit showroom"
             fill
             quality={85}
             sizes="100vw"
@@ -151,7 +168,7 @@ export default function HomePage() {
           <ParallaxImage amount={180} className="hidden h-full w-full md:block">
             <Image
               src={SIGNATURE_IMAGE}
-              alt="Matte-black McLaren Senna in side profile with its dihedral doors raised, against a dark brick wall"
+              alt="A car being loaded into an enclosed transporter beside a lit showroom"
               fill
               quality={85}
               sizes="100vw"
@@ -164,7 +181,12 @@ export default function HomePage() {
             bands fade identically; side="left" seats the dark field under the
             left-weighted text here. */}
         <CinematicScrim side="left" />
+        </div>
 
+        {/* The copy rides over the held frame. justify-center puts it mid-block,
+            so it enters from below, crosses the picture and leaves at the top —
+            one pass, no repeat. */}
+        <div className="relative z-10 -mt-[100svh] flex h-[190svh] flex-col justify-center">
         <Container className="relative w-full">
           {/* Headline → subhead → action, revealed as a slow stagger (one
               motivated motion per element). Gold lives only on the hairline +
@@ -196,6 +218,7 @@ export default function HomePage() {
             </Link>
           </Reveal>
         </Container>
+        </div>
       </section>
 
       {/* Recently sold — hidden when no sold vehicles in data */}

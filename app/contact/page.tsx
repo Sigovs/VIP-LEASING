@@ -43,7 +43,7 @@ export default function ContactPage() {
         <div className="absolute inset-0">
           <Image
             src={HERO_IMAGE_MOBILE}
-            alt="A matte black McLaren Senna with its doors raised, against a dark brick wall"
+            alt="A car lit in a loft space above a city skyline at night"
             fill
             priority
             quality={85}
@@ -53,7 +53,7 @@ export default function ContactPage() {
           <ParallaxImage amount={150} className="hidden h-full w-full md:block">
             <Image
               src={HERO_IMAGE}
-              alt="A matte black McLaren Senna in side profile against a dark brick wall"
+              alt="A car lit in a loft space above a city skyline at night"
               fill
               priority
               quality={85}

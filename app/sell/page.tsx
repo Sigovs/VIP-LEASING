@@ -121,7 +121,7 @@ export default function SellPage() {
           <ParallaxImage amount={150} className="hidden h-full w-full md:block">
             <Image
               src={HERO_IMAGE}
-              alt="A silver Porsche Carrera GT in rear three-quarter view against a dark brick wall"
+              alt="A dark supercar under low light in a smoke-filled structure"
               fill
               priority
               quality={85}

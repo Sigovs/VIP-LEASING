@@ -32,7 +32,7 @@ export function FinancingBand() {
         {/* mobile: static (parallax adds little on a tall crop) */}
         <Image
           src={FIN_IMAGE}
-          alt="A red Ferrari LaFerrari and Ferrari F50 parked nose to nose on an open road beneath a dramatic sky"
+          alt="A dark car parked in a low-lit concrete garage"
           fill
           quality={85}
           sizes="100vw"
@@ -48,7 +48,7 @@ export function FinancingBand() {
         <ParallaxImage amount={300} className="hidden h-full w-full md:block">
           <Image
             src={FIN_IMAGE}
-            alt="A red Ferrari LaFerrari and Ferrari F50 parked nose to nose on an open road beneath a dramatic sky"
+            alt="A dark car parked in a low-lit concrete garage"
             fill
             quality={85}
             sizes="100vw"
