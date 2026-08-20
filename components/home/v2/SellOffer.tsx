@@ -115,13 +115,14 @@ export function SellOffer() {
         <Reveal delay={0.1} className="lg:col-span-5 lg:col-start-8">
           <div className="rounded-md border border-border bg-surface p-7 md:p-9">
             <p className="border-b border-border pb-4 font-accent text-[0.72rem] uppercase tracking-[0.3em] text-text-1">
-              Start an offer
+              Get an Offer
             </p>
-            <p className="mt-5 mb-8 text-[0.95rem] leading-relaxed text-text-2">
-              Four details is enough to open the conversation. The rest is on
-              the next page.
-            </p>
-            <QuickOfferForm />
+            {/* No line of explanation under the rule. The four labelled fields
+                say what is being asked, and a sentence telling you the form is
+                short is longer than the form. */}
+            <div className="mt-8">
+              <QuickOfferForm />
+            </div>
           </div>
 
           <p className="mt-6 text-[0.95rem] leading-relaxed text-text-3">

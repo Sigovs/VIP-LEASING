@@ -74,8 +74,12 @@ export function QuickOfferForm() {
         </Field>
       </div>
 
+      {/* "Continue", not "Get an offer" — the card is already headed that, and
+          the same words twice in one small card read as a stutter. It is also
+          the truer label: this button does not produce an offer, it carries
+          what has been typed through to the rest of the questions. */}
       <Button type="submit" variant="accent" size="lg" withArrow disabled={busy} className="w-full">
-        Get an offer
+        Continue
       </Button>
     </form>
   );
