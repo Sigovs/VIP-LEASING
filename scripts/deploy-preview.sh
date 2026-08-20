@@ -33,6 +33,9 @@ GITHUB_PAGES=true PAGES_BASE="$BASE" npm run build
 # and JavaScript.
 touch out/.nojekyll
 
+echo "▸ sanity check: every referenced image exists"
+node scripts/check-assets.mjs
+
 echo "▸ sanity check: no unprefixed assets"
 if grep -rqE '(src|href|poster)="/(ilusso|showcase|brands|closing|hero|logo)' out; then
   echo "  ✗ found asset paths without the ${BASE} prefix — they will 404 on the preview."

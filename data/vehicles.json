@@ -1,97 +1,5 @@
 [
   {
-    "slug": "2004-porsche-carrera-gt",
-    "year": 2004,
-    "make": "Porsche",
-    "model": "Carrera GT",
-    "trim": "6-Speed Manual",
-    "price": 1750000,
-    "mileage": 4860,
-    "exteriorColor": "GT Silver Metallic",
-    "interiorColor": "Dark Grey Leather with Yellow Seatbelts",
-    "vin": "WP0CA29874L001XXX",
-    "transmission": "6-Speed Manual",
-    "drivetrain": "Rear-Wheel Drive",
-    "engine": "5.7L Naturally Aspirated V10",
-    "horsepower": 603,
-    "torque": 435,
-    "zeroToSixty": 3.5,
-    "topSpeed": 205,
-    "weight": 3042,
-    "options": [
-      {
-        "category": "Exterior",
-        "items": [
-          "Carbon Fiber Monocoque and Subframe",
-          "Removable Targa Roof Panels",
-          "Magnesium Alloy Wheels",
-          "Fixed Rear Wing with Active Deployment",
-          "GT Silver Metallic Paint"
-        ]
-      },
-      {
-        "category": "Interior",
-        "items": [
-          "Dark Grey Leather Interior",
-          "Yellow Seatbelts",
-          "Carbon Fiber Bucket Seats",
-          "Beechwood Gear Knob",
-          "Carrera GT Sill Plates"
-        ]
-      },
-      {
-        "category": "Performance",
-        "items": [
-          "Ceramic Composite Clutch",
-          "Carbon-Ceramic Brakes",
-          "Pushrod Suspension with Inboard Dampers",
-          "Naturally Aspirated V10 Derived from Le Mans Prototype"
-        ]
-      },
-      {
-        "category": "Technology",
-        "items": [
-          "Bose Sound System",
-          "Traction Control (Defeatable)",
-          "Original Fitted Luggage Set"
-        ]
-      }
-    ],
-    "history": [
-      {
-        "date": "2004-09-02",
-        "event": "First Owner Delivery",
-        "description": "One of 644 cars delivered to the United States. Sold new through an authorized Porsche dealer and kept in a climate-controlled collection from the outset."
-      },
-      {
-        "date": "2019-05-21",
-        "event": "Clutch Service",
-        "description": "Ceramic composite clutch inspected and replaced by a Porsche Classic specialist; all documentation retained."
-      },
-      {
-        "date": "2026-05-06",
-        "event": "Acquired by VIP Leasing",
-        "description": "Three owners from new, under 5,000 miles, complete books, tools, both keys and the original fitted luggage."
-      }
-    ],
-    "story": "Porsche built a Le Mans engine, could not race it, and put it in a road car instead — 5.7 litres, ten cylinders, 8,400 rpm, and a ceramic clutch the size of a dinner plate. No turbos, no paddles, no driver aids worth the name: six speeds, three pedals, and a beechwood knob. Six hundred and forty-four came to America. This is one of them, in GT Silver over dark grey, under five thousand miles.",
-    "heroImage": "/showcase/porsche-carrera-gt/02.webp",
-    "gallery": [
-      "/showcase/porsche-carrera-gt/02.webp",
-      "/showcase/porsche-carrera-gt/04.webp",
-      "/showcase/porsche-carrera-gt/05.webp",
-      "/showcase/porsche-carrera-gt/06.webp",
-      "/showcase/porsche-carrera-gt/07.webp",
-      "/showcase/porsche-carrera-gt/08.webp",
-      "/showcase/porsche-carrera-gt/09.webp",
-      "/showcase/porsche-carrera-gt/11.webp"
-    ],
-    "isSold": false,
-    "isFeatured": true,
-    "isSpotlight": true,
-    "acquiredDate": "2026-05-06"
-  },
-  {
     "slug": "2024-ferrari-sf90-spider",
     "year": 2024,
     "make": "Ferrari",
@@ -932,7 +840,8 @@
     ],
     "isSold": false,
     "isFeatured": false,
-    "acquiredDate": "2026-04-16"
+    "acquiredDate": "2026-04-16",
+    "isSpotlight": true
   },
   {
     "slug": "2015-ferrari-458-italia",
