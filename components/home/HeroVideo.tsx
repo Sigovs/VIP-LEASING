@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
@@ -59,13 +59,13 @@ const HERO_CLIP = "/video/video_resize.mp4";
 
 export function HeroVideo({ poster }: { poster: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     const el = videoRef.current;
     if (!el) return;
 
-    // Three ways to decline the film, and the poster answers all of them.
+    // Three ways to decline the film. The poster answers all of them, and it is
+    // a frame of the film itself, so declining costs the scene nothing.
     const nav = navigator as Navigator & {
       connection?: { saveData?: boolean; effectiveType?: string };
     };
@@ -75,35 +75,31 @@ export function HeroVideo({ poster }: { poster: string }) {
     ).matches;
     if (reduced || conn?.saveData || /2g/.test(conn?.effectiveType ?? "")) return;
 
+    // No cross-fade any more: the poster IS the film's first frame, so playback
+    // starts on the picture already on screen and there is nothing to fade.
     el.src = asset(HERO_CLIP);
-    // Fade in on canplay, not on load: swapping the moment the file arrives
-      // shows a frame of undecoded video over a composed still.
-    const onReady = () => setPlaying(true);
-    el.addEventListener("canplay", onReady, { once: true });
     const started = el.play();
     if (started) started.catch(() => {});
-    return () => el.removeEventListener("canplay", onReady);
   }, []);
 
   return (
     <section className="chrome relative h-[100svh] min-h-[680px] w-full overflow-hidden bg-chrome-bg">
-      {/* Anchored low and scaled up a touch, so the cars sit clear of the base
-          instead of running along it. object-cover on its own centres the frame
-          and, at this aspect, barely crops at all — the cars stayed pinned to
-          the bottom edge. Anchoring at 88% crops sky rather than foreground,
-          which is what lifts them; the 1.06 scale buys the crop something to
-          take. */}
-      <Image
-        src={poster}
-        alt=""
-        fill
-        priority
-        sizes="100vw"
-        className="scale-[1.06] object-cover object-[50%_88%]"
-      />
-      {/* The film, on the still's own framing so the swap moves nothing. No
-          src until the effect decides there should be one — a src in the markup
-          would start the download before the decision is made. */}
+      {/* THE FILM, and nothing behind it. There used to be a photograph on this
+          layer — a villa frame from the stills library — with the clip fading in
+          over it. Two different compositions in one hero: the still showed one
+          scene, the film another, and the swap was visible.
+
+          What replaced it is not "no fallback". It is the video's OWN first
+          frame, pulled from the clip at 1.2s, served as the poster attribute. So
+          the hero still paints instantly, still holds a composed picture if the
+          film never plays, and a visitor who has asked for reduced motion — or
+          is on Save-Data or 2g — sees the same scene held still rather than a
+          black box. One picture, one composition, moving or not.
+
+          Anchored low and scaled a touch: object-cover centres the frame and at
+          this aspect barely crops, which left the cars pinned to the bottom
+          edge. 88% crops sky instead of foreground, and the 1.06 gives the crop
+          something to take. */}
       <video
         ref={videoRef}
         aria-hidden
@@ -111,10 +107,8 @@ export function HeroVideo({ poster }: { poster: string }) {
         loop
         playsInline
         preload="none"
-        className={
-          "absolute inset-0 h-full w-full scale-[1.06] object-cover object-[50%_88%] transition-opacity duration-1000 ease-out " +
-          (playing ? "opacity-100" : "opacity-0")
-        }
+        poster={asset(poster)}
+        className="absolute inset-0 h-full w-full scale-[1.06] object-cover object-[50%_88%]"
       />
       {/* Layered overlays for legibility + cinematic depth.
           0) Flat baseline tint — anchors the dark mood and keeps text legible

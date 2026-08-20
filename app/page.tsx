@@ -24,10 +24,15 @@ import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/social";
 import { HAS_ADDRESS, SHOWROOM } from "@/lib/showroom";
 import { ShowroomMap } from "@/components/contact/ShowroomMap";
 
-// The hero runs the client's own clip now — public/video/video_resize.mp4,
-// wired inside HeroVideo. This still stays the poster and the fallback: it is
-// what paints first and what a metered or reduced-motion visitor keeps.
-const HERO_POSTER = "/site/hero-villa.jpg";
+// The hero is the client's clip and only the clip — video_resize.mp4, wired
+// inside HeroVideo. The poster below is not a photograph from the stills library
+// any more; it is a frame OF that clip, cut at 1.2s. So there is no second
+// composition in the hero, and there is still something composed on screen
+// before the film plays — or if it never does.
+//
+//   ffmpeg -ss 1.2 -i public/video/video_resize.mp4 -frames:v 1 -q:v 4 \
+//     public/video/hero-poster.jpg
+const HERO_POSTER = "/video/hero-poster.jpg";
 
 
 // Cinematic positioning images — Lookbook frames of the matte-black Senna,
