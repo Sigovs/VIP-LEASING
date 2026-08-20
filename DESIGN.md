@@ -197,3 +197,51 @@ shows huge **blank** regions — the content is fine, it just never triggered. D
 NOT read that as a broken page (the VDP looks empty this way). To verify a long
 page, scroll each section into view (`scrollIntoView`) and capture the viewport,
 or temporarily force-reveal. The blank-capture is expected behaviour, not a bug.
+
+## 9. Two rules this page learned the hard way
+
+Both were promoted into the DNA (`design_dna` — TASTE.md §2c and
+`content-provenance` CP7). They are repeated here because this is the page that
+broke on them, and the next edit to it can break the same way.
+
+### 9a. Read the page's asks, not just its intervals
+
+Every section already differs on ground, type, borders, image treatment and
+motion. That is not enough. Write down what each one **wants from the visitor**
+— *nothing · read · browse · act* — and read the column down the page.
+
+The homepage got to `featured car → sell us yours → lease it → the lineup`:
+four masses, four asks in a row. Nothing in the section-by-section review
+caught it, because each section was fine and the run was the problem. It reads
+as a sales floor.
+
+**Interval does not fix it.** More air between three offers spaces them; the
+third is still the third thing wanting something. What separates them is being
+a different *kind* of mass, so the change of register is the pause:
+
+| section | kind | ask |
+|---|---|---|
+| Featured | photograph | browse |
+| Sell Your Car | working surface — flat `paper` ground, type + form, no picture | act |
+| Lease it or finance it | cinema — full-bleed photo band | read |
+
+That is why `SellOffer` has no photograph and sits a tone lower than its
+neighbours. Putting an image in it would collapse it back into the run.
+
+### 9b. A slot with no asset of its own is a composition problem
+
+Do not move a photograph under a name it does not belong to. It looks like
+reuse and it is the same lie as inventing content, told with a real file. The
+tell is that **the slot came first**.
+
+It has cost this repo twice:
+
+- A Carrera GT shipped over a photograph that was not it, after
+  `public/showcase/` was deleted and orphaned the only car pointing there. Fixed
+  by removing the entry, not by finding a lookalike. `scripts/check-assets.mjs`
+  exists because of this.
+- The closing marque wall was asked for as 3×3. Six `public/site/marque-*.jpg`
+  exist, so it was built 3×2 with the remaining four marques as marks — and
+  later as marks only.
+
+If a grid wants nine and six exist, the grid is wrong. Change the composition.
