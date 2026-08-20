@@ -67,9 +67,12 @@ export default function HomeV2Page() {
   // page does not open on the same car twice; the other featured cars do
   // appear in both, which is how the reference site reads too.
   const lineup = getSpotlightLineup();
+  // ONE ROW, not a 3x3 wall. Nine cards made this the heaviest mass on the page
+  // and turned the homepage into a second catalogue — the catalogue is
+  // /inventory, and it is one click away. Three is a taste of the floor.
   const recent = getRecentlyAcquired(12)
     .filter((v) => v.slug !== lineup[0]?.slug)
-    .slice(0, 9);
+    .slice(0, 3);
   const showcase = getShowcase();
 
   return (
@@ -100,7 +103,7 @@ export default function HomeV2Page() {
               </h2>
               <Link
                 href="/inventory"
-                className="group hidden sm:inline-flex items-center gap-2 pb-1 text-xs font-accent tracking-[0.16em] text-text-2 hover:text-accent transition-colors"
+                className="group hidden sm:inline-flex items-center gap-2 pb-1 font-accent text-xs tracking-[0.16em] text-text-1 transition-colors hover:text-mark"
               >
                 All Inventory
                 <ChevronRight
@@ -110,7 +113,7 @@ export default function HomeV2Page() {
               </Link>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 md:gap-x-10 md:gap-y-16">
+            <div className="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 md:gap-x-10 lg:grid-cols-3">
               {recent.map((v, i) => (
                 <Reveal key={v.slug} delay={(i % 3) * 0.05}>
                   <VehicleCard vehicle={v} showPrice={false} />
