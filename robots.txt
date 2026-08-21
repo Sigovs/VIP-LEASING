@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /styleguide
+
+Sitemap: https://thevipleasing.com/sitemap.xml
