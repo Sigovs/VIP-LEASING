@@ -5,6 +5,22 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/Button";
+import { SelectShell } from "@/components/ui/SelectShell";
+import {
+  labelCls,
+  inputCls,
+  selectCls,
+  optionCls,
+  placeholderOptionCls,
+} from "@/lib/formStyles";
+import {
+  YEARS,
+  MAKES_HOUSE,
+  MAKES_OTHER,
+  MAKE_FALLBACK,
+  MILEAGE_BANDS,
+  CONDITIONS,
+} from "@/lib/vehicleOptions";
 import { clearSellPrefill, readSellPrefill } from "@/lib/sellPrefill";
 
 const schema = z.object({
@@ -22,9 +38,6 @@ const schema = z.object({
 });
 type Values = z.infer<typeof schema>;
 
-const inputCls =
-  "w-full bg-transparent border-0 border-b border-border focus:border-text-1 focus:outline-none py-3 text-text-1 placeholder:text-text-3 transition-colors";
-
 function Field({
   label,
   children,
@@ -38,7 +51,7 @@ function Field({
 }) {
   return (
     <label className={`block ${className ?? ""}`}>
-      <span className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3 block mb-2">
+      <span className={labelCls}>
         {label}
       </span>
       {children}
@@ -111,29 +124,81 @@ export function SellForm() {
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           <Field label="Year" error={errors.year?.message}>
-            <input {...register("year")} className={inputCls} placeholder="2023" />
+            <SelectShell>
+              <select {...register("year")} defaultValue="" className={selectCls()}>
+                <option value="" className={placeholderOptionCls()}>
+                  Select
+                </option>
+                {YEARS.map((y) => (
+                  <option key={y} value={y} className={optionCls}>
+                    {y}
+                  </option>
+                ))}
+              </select>
+            </SelectShell>
           </Field>
           <Field label="Make" error={errors.make?.message}>
-            <input {...register("make")} className={inputCls} placeholder="Porsche" />
+            <SelectShell>
+              <select {...register("make")} defaultValue="" className={selectCls()}>
+                <option value="" className={placeholderOptionCls()}>
+                  Select
+                </option>
+                <optgroup label="We carry">
+                  {MAKES_HOUSE.map((m) => (
+                    <option key={m} value={m} className={optionCls}>
+                      {m}
+                    </option>
+                  ))}
+                </optgroup>
+                <optgroup label="Other marques">
+                  {MAKES_OTHER.map((m) => (
+                    <option key={m} value={m} className={optionCls}>
+                      {m}
+                    </option>
+                  ))}
+                  <option value={MAKE_FALLBACK} className={optionCls}>
+                    {MAKE_FALLBACK}
+                  </option>
+                </optgroup>
+              </select>
+            </SelectShell>
           </Field>
           <Field label="Model" error={errors.model?.message} className="col-span-2 md:col-span-2">
-            <input {...register("model")} className={inputCls} placeholder="911 GT3 Touring" />
+            <input {...register("model")} className={inputCls()} placeholder="911 GT3 Touring" />
           </Field>
           <Field label="Mileage" error={errors.mileage?.message}>
-            <input {...register("mileage")} className={inputCls} placeholder="6,200" />
+            <SelectShell>
+              <select {...register("mileage")} defaultValue="" className={selectCls()}>
+                <option value="" className={placeholderOptionCls()}>
+                  Select
+                </option>
+                {MILEAGE_BANDS.map((m) => (
+                  <option key={m} value={m} className={optionCls}>
+                    {m}
+                  </option>
+                ))}
+              </select>
+            </SelectShell>
           </Field>
           <Field label="VIN (optional)">
-            <input {...register("vin")} className={inputCls} />
+            <input {...register("vin")} className={inputCls()} />
           </Field>
           <Field label="Condition" error={errors.condition?.message}>
-            <input
-              {...register("condition")}
-              className={inputCls}
-              placeholder="Excellent"
-            />
+            <SelectShell>
+              <select {...register("condition")} defaultValue="" className={selectCls()}>
+                <option value="" className={placeholderOptionCls()}>
+                  Select
+                </option>
+                {CONDITIONS.map((c) => (
+                  <option key={c} value={c} className={optionCls}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </SelectShell>
           </Field>
           <Field label="Asking (optional)">
-            <input {...register("asking")} className={inputCls} placeholder="$285,000" />
+            <input {...register("asking")} className={inputCls()} placeholder="$285,000" />
           </Field>
         </div>
       </div>
@@ -144,13 +209,13 @@ export function SellForm() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <Field label="Name" error={errors.name?.message}>
-            <input {...register("name")} className={inputCls} autoComplete="name" />
+            <input {...register("name")} className={inputCls()} autoComplete="name" />
           </Field>
           <Field label="Email" error={errors.email?.message}>
             <input
               {...register("email")}
               type="email"
-              className={inputCls}
+              className={inputCls()}
               autoComplete="email"
             />
           </Field>
@@ -158,7 +223,7 @@ export function SellForm() {
             <input
               {...register("phone")}
               type="tel"
-              className={inputCls}
+              className={inputCls()}
               autoComplete="tel"
             />
           </Field>

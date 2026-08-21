@@ -3,6 +3,22 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
+import { SelectShell } from "@/components/ui/SelectShell";
+import {
+  labelCls,
+  inputCls,
+  selectCls,
+  optionCls,
+  placeholderOptionCls,
+  type FormTone,
+} from "@/lib/formStyles";
+import {
+  YEARS,
+  MAKES_HOUSE,
+  MAKES_OTHER,
+  MAKE_FALLBACK,
+  MILEAGE_BANDS,
+} from "@/lib/vehicleOptions";
 import { writeSellPrefill } from "@/lib/sellPrefill";
 
 // The four-field starter. Deliberately NOT the /sell form in miniature: the
@@ -11,34 +27,33 @@ import { writeSellPrefill } from "@/lib/sellPrefill";
 // homepage. This one asks what identifies a car and then gets out of the way —
 // the rest is asked on the page it hands off to.
 //
+// Three of the four are now menus. A make typed by hand arrives as "Mercedes",
+// "Mercedes-Benz" and "mercedes benz"; a mileage typed by hand implies a
+// precision nobody has while standing in a car park. Only the model has to stay
+// open, because no list can hold every one. See lib/vehicleOptions.ts.
+//
 // It never blocks. There is no validation and no required field, so the button
-// works as a plain "Get an offer" for anyone who ignores the inputs, and
-// whatever WAS typed travels with them. A starter form that refuses you is a
-// worse door than no door.
-
-const inputCls =
-  "w-full border-0 border-b border-border bg-transparent py-3 text-text-1 transition-colors placeholder:text-text-3 focus:border-text-1 focus:outline-none";
+// works as a plain "Continue" for anyone who ignores the menus, and whatever
+// WAS chosen travels with them. A starter form that refuses you is a worse door
+// than no door.
 
 function Field({
   label,
   children,
-  className,
 }: {
   label: string;
   children: React.ReactNode;
-  className?: string;
 }) {
   return (
-    <label className={`block ${className ?? ""}`}>
-      <span className="mb-2 block font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3">
-        {label}
-      </span>
+    <label className="block">
+      <span className={labelCls}>{label}</span>
       {children}
     </label>
   );
 }
 
-export function QuickOfferForm() {
+export function QuickOfferForm({ onChrome = false }: { onChrome?: boolean }) {
+  const tone: FormTone = onChrome ? "chrome" : "page";
   const router = useRouter();
   const [busy, setBusy] = useState(false);
 
@@ -58,27 +73,83 @@ export function QuickOfferForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="space-y-7" noValidate>
-      <div className="grid grid-cols-2 gap-x-6 gap-y-5">
+    <form onSubmit={onSubmit} className="space-y-6" noValidate>
+      <div className="grid grid-cols-2 gap-x-5 gap-y-4">
         <Field label="Year">
-          <input name="year" inputMode="numeric" autoComplete="off" className={inputCls} placeholder="2023" />
+          <SelectShell tone={tone}>
+            <select name="year" defaultValue="" className={selectCls(tone)}>
+              <option value="" className={placeholderOptionCls(tone)}>
+                Select
+              </option>
+              {YEARS.map((y) => (
+                <option key={y} value={y} className={optionCls}>
+                  {y}
+                </option>
+              ))}
+            </select>
+          </SelectShell>
         </Field>
+
         <Field label="Make">
-          <input name="make" autoComplete="off" className={inputCls} placeholder="Porsche" />
+          <SelectShell tone={tone}>
+            <select name="make" defaultValue="" className={selectCls(tone)}>
+              <option value="" className={placeholderOptionCls(tone)}>
+                Select
+              </option>
+              <optgroup label="We carry">
+                {MAKES_HOUSE.map((m) => (
+                  <option key={m} value={m} className={optionCls}>
+                    {m}
+                  </option>
+                ))}
+              </optgroup>
+              <optgroup label="Other marques">
+                {MAKES_OTHER.map((m) => (
+                  <option key={m} value={m} className={optionCls}>
+                    {m}
+                  </option>
+                ))}
+                <option value={MAKE_FALLBACK} className={optionCls}>
+                  {MAKE_FALLBACK}
+                </option>
+              </optgroup>
+            </select>
+          </SelectShell>
         </Field>
+
         <Field label="Model">
-          <input name="model" autoComplete="off" className={inputCls} placeholder="911 Turbo S" />
+          <input
+            name="model"
+            autoComplete="off"
+            className={inputCls(tone)}
+            placeholder="911 Turbo S"
+          />
         </Field>
+
         <Field label="Mileage">
-          <input name="mileage" inputMode="numeric" autoComplete="off" className={inputCls} placeholder="12,400" />
+          <SelectShell tone={tone}>
+            <select name="mileage" defaultValue="" className={selectCls(tone)}>
+              <option value="" className={placeholderOptionCls(tone)}>
+                Select
+              </option>
+              {MILEAGE_BANDS.map((m) => (
+                <option key={m} value={m} className={optionCls}>
+                  {m}
+                </option>
+              ))}
+            </select>
+          </SelectShell>
         </Field>
       </div>
 
-      {/* "Continue", not "Get an offer" — the card is already headed that, and
-          the same words twice in one small card read as a stutter. It is also
-          the truer label: this button does not produce an offer, it carries
-          what has been typed through to the rest of the questions. */}
-      <Button type="submit" variant="accent" size="lg" withArrow disabled={busy} className="w-full">
+      <Button
+        type="submit"
+        variant="accent"
+        size="lg"
+        withArrow
+        disabled={busy}
+        className="w-full"
+      >
         Continue
       </Button>
     </form>

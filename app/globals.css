@@ -71,6 +71,12 @@
      The gradient itself is kept whole for the one primary action per screen. */
   --mark: #823cec;
   --mark-hover: #9a5cf2;
+  /* The mark, lightened until it is legible as TYPE rather than as a bar.
+     Form labels are set at 0.65rem, and small text needs 4.5:1 — --mark scores
+     3.2–3.6:1 on every ground the site has (paper, surface, chrome-surface-2)
+     and --mark-hover still misses on the chrome card at 4.39:1. This clears all
+     three at 5.5–6.1:1. Use it wherever the accent has to be read, not seen. */
+  --mark-soft: #a874f5;
 
   --signal: #96252d;
   --signal-bright: #c33c46;
@@ -113,6 +119,7 @@
 
   --color-mark: var(--mark);
   --color-mark-hover: var(--mark-hover);
+  --color-mark-soft: var(--mark-soft);
   --color-signal: var(--signal);
   --color-signal-bright: var(--signal-bright);
   --color-signal-soft: var(--signal-soft);

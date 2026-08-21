@@ -6,6 +6,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/ui/Button";
 import { DisplayHeading } from "@/components/ui/DisplayHeading";
+import { labelCls, inputCls } from "@/lib/formStyles";
 
 const schema = z.object({
   name: z.string().min(2),
@@ -15,8 +16,6 @@ const schema = z.object({
 });
 type Values = z.infer<typeof schema>;
 
-const inputCls =
-  "w-full bg-transparent border-0 border-b border-border focus:border-text-1 focus:outline-none py-3 text-text-1 placeholder:text-text-3 transition-colors";
 
 export function ContactForm({
   heading = "Tell us what you're looking for.",
@@ -64,10 +63,10 @@ export function ContactForm({
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6" noValidate>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <label>
-              <span className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3 block mb-2">
+              <span className={labelCls}>
                 Name
               </span>
-              <input {...register("name")} className={inputCls} autoComplete="name" />
+              <input {...register("name")} className={inputCls()} autoComplete="name" />
               {errors.name && (
                 <span className="block mt-1.5 font-accent text-[0.7rem] uppercase tracking-[0.16em] text-text-2">
                   {errors.name.message}
@@ -75,10 +74,10 @@ export function ContactForm({
               )}
             </label>
             <label>
-              <span className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3 block mb-2">
+              <span className={labelCls}>
                 Email
               </span>
-              <input {...register("email")} type="email" className={inputCls} autoComplete="email" />
+              <input {...register("email")} type="email" className={inputCls()} autoComplete="email" />
               {errors.email && (
                 <span className="block mt-1.5 font-accent text-[0.7rem] uppercase tracking-[0.16em] text-text-2">
                   {errors.email.message}
@@ -87,13 +86,13 @@ export function ContactForm({
             </label>
           </div>
           <label className="block">
-            <span className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3 block mb-2">
+            <span className={labelCls}>
               Phone
             </span>
-            <input {...register("phone")} type="tel" className={inputCls} autoComplete="tel" />
+            <input {...register("phone")} type="tel" className={inputCls()} autoComplete="tel" />
           </label>
           <label className="block">
-            <span className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3 block mb-2">
+            <span className={labelCls}>
               Message
             </span>
             <textarea {...register("message")} rows={5} className={`${inputCls} resize-none`} />

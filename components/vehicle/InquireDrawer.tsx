@@ -8,6 +8,7 @@ import { X } from "lucide-react";
 import type { Vehicle } from "@/types/vehicle";
 import { Button } from "@/components/ui/Button";
 import { formatPrice } from "@/lib/utils";
+import { labelCls, inputCls } from "@/lib/formStyles";
 
 const schema = z.object({
   name: z.string().min(2, "Required"),
@@ -117,7 +118,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
             </div>
 
             <div className="px-8 py-8">
-              <p className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3 mb-2">
+              <p className={labelCls}>
                 {vehicle.year}
               </p>
               <h3 className="text-3xl font-semibold tracking-[-0.02em] text-text-1 mb-1">
@@ -156,7 +157,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
                       {...register("name")}
                       type="text"
                       autoComplete="name"
-                      className={inputCls}
+                      className={inputCls()}
                     />
                   </Field>
                   <Field label="Email" error={errors.email?.message}>
@@ -164,7 +165,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
                       {...register("email")}
                       type="email"
                       autoComplete="email"
-                      className={inputCls}
+                      className={inputCls()}
                     />
                   </Field>
                   <Field label="Phone" error={errors.phone?.message}>
@@ -172,7 +173,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
                       {...register("phone")}
                       type="tel"
                       autoComplete="tel"
-                      className={inputCls}
+                      className={inputCls()}
                     />
                   </Field>
                   <Field label="Message" error={errors.message?.message}>
@@ -203,8 +204,6 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
   );
 }
 
-const inputCls =
-  "w-full bg-transparent border-0 border-b border-border focus:border-text-1 focus:outline-none py-3 text-text-1 placeholder:text-text-3 transition-colors";
 
 function Field({
   label,
@@ -217,7 +216,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="font-accent text-[0.65rem] uppercase tracking-[0.22em] text-text-3 block mb-2">
+      <span className={labelCls}>
         {label}
       </span>
       {children}
