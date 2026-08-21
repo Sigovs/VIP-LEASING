@@ -40,6 +40,14 @@ import { SHOWROOM } from "@/lib/showroom";
 // texture with a car somewhere in it. The image now runs at full strength and
 // the scrim alone decides how much of it survives, which is the only way to
 // tune the two ends independently.
+//
+// And the scrim DIPS rather than ramps. A straight left-to-right ramp is
+// thinnest at the right edge, which is exactly where the form card sits — the
+// one element that most needs a settled field behind it was standing on the
+// brightest part of the picture. So the gradient opens at the gutter between
+// the two columns, which is where the car is and where the picture is allowed
+// to be a picture, then closes again under the card. The photograph gets its
+// moment in the one strip of the frame that carries no content.
 const SELL_IMAGE = "/site/band-transport.jpg";
 
 const STEPS = [
@@ -78,7 +86,7 @@ export function SellOffer() {
           className="absolute inset-0 hidden md:block"
           style={{
             background:
-              "linear-gradient(100deg, rgba(8,9,10,0.95) 0%, rgba(8,9,10,0.86) 30%, rgba(8,9,10,0.58) 54%, rgba(8,9,10,0.34) 100%)",
+              "linear-gradient(100deg, rgba(8,9,10,0.95) 0%, rgba(8,9,10,0.88) 30%, rgba(8,9,10,0.46) 50%, rgba(8,9,10,0.62) 62%, rgba(8,9,10,0.76) 100%)",
           }}
         />
         {/* Mobile: even, and heavier. One column means every line of type
@@ -162,10 +170,23 @@ export function SellOffer() {
 
             {/* The way in. A solid plate on the scene — the one thing here you
                 can act on, and the only element allowed to sit fully opaque over
-                the picture. */}
+                the picture.
+
+                It has to be LIGHTER than what it sits on, not darker. The first
+                pass used chrome-surface at 95%, which is below the photograph's
+                mid tones: over the lit half the card read as a hole punched in
+                the picture, and over the dark trailer its edges disappeared
+                altogether — the same plate failing in two opposite ways in one
+                frame. chrome-surface-2 at full opacity sits above the scrimmed
+                photograph everywhere, so the edge is an edge wherever it falls.
+
+                The rest is what makes a raised object read as raised: a border
+                with enough weight to survive a busy ground, a hairline of light
+                along the top where a lit plane would catch it, and a shadow deep
+                and wide enough to be a shadow rather than a soft edge. */}
             <Reveal delay={0.1} className="lg:col-span-5 lg:col-start-8">
-              <div className="rounded-md border border-white/12 bg-chrome-surface/95 p-7 shadow-[0_24px_60px_-24px_rgba(0,0,0,0.9)] backdrop-blur-md md:p-9">
-                <p className="border-b border-white/12 pb-4 font-accent text-[0.72rem] uppercase tracking-[0.3em] text-chrome-text-1">
+              <div className="rounded-md border border-white/20 bg-chrome-surface-2 p-7 shadow-[0_2px_0_rgba(255,255,255,0.06)_inset,0_40px_80px_-32px_rgba(0,0,0,0.95),0_8px_24px_-12px_rgba(0,0,0,0.8)] md:p-9">
+                <p className="border-b border-white/15 pb-4 font-accent text-[0.72rem] uppercase tracking-[0.3em] text-chrome-text-1">
                   Get an Offer
                 </p>
                 {/* No line of explanation under the rule. The four labelled
