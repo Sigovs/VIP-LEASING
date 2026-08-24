@@ -34,6 +34,42 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
+  // The header is one component for the whole site, and every homepage version
+  // shares it. v4 is the only version allowed to differ, so the difference is
+  // derived from the route rather than edited into the shared arrays — v1, v2
+  // and v3 keep rendering byte for byte what the client already reviewed.
+  //
+  // Two things change on /v4, and only there:
+  //   · the fourth tab reads "Consignment" (the client asked for the label; the
+  //     route, the page and every other link to it are untouched);
+  //   · the desktop nav appears at xl instead of md.
+  //
+  // The second is not cosmetic. Eight tabs, a phone number and the mark never
+  // fitted a 768px row — the row overflowed and "Contact" plus the phone were
+  // cut off the right edge on any laptop under about 1150px. That has always
+  // been true here; "Consignment" is 76px wider than "Sell", which is what made
+  // it impossible to miss. The older versions keep the old breakpoint because
+  // they keep the short label and, more to the point, because they are frozen.
+  const onV4 = pathname === "/v4" || pathname.startsWith("/v4/");
+  const nav = onV4
+    ? NAV.map((item) =>
+        item.href === "/sell" ? { ...item, label: "Consignment" } : item,
+      )
+    : NAV;
+
+  // Full literal strings on both sides: Tailwind only emits classes it can see
+  // written out, so a breakpoint assembled by concatenation would compile to
+  // nothing.
+  const deskCls = onV4
+    ? "hidden xl:flex items-center gap-6"
+    : "hidden md:flex items-center gap-6";
+  const burgerCls = onV4
+    ? "xl:hidden p-2 -mr-2 text-text-1"
+    : "md:hidden p-2 -mr-2 text-text-1";
+  const drawerCls = onV4
+    ? "xl:hidden bg-bg border-t border-border"
+    : "md:hidden bg-bg border-t border-border";
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
@@ -85,14 +121,14 @@ export function Header() {
           />
         </Link>
 
-        <div className="hidden md:flex items-center gap-6">
+        <div className={deskCls}>
           {/* Nav items are pills, like every other control on the site
               (DESIGN.md §3b — actions are soft). The hover fill sits behind the
               label rather than under it, so nothing about the link's box moves
               on hover: the padding is always there, only the background
               arrives. The active item keeps its pill filled. */}
           <nav className="flex items-center gap-1">
-            {NAV.map((item) => {
+            {nav.map((item) => {
               const active = isActive(item.href);
               return (
                 <Link
@@ -134,17 +170,17 @@ export function Header() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="md:hidden p-2 -mr-2 text-text-1"
+          className={burgerCls}
         >
           {open ? <X size={22} strokeWidth={1.25} /> : <Menu size={22} strokeWidth={1.25} />}
         </button>
       </Container>
 
       {open && (
-        <div className="md:hidden bg-bg border-t border-border">
+        <div className={drawerCls}>
           <Container className="py-8">
             <nav className="flex flex-col gap-6">
-              {NAV.map((item) => {
+              {nav.map((item) => {
                 const active = isActive(item.href);
                 return (
                   <Link
