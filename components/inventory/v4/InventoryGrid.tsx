@@ -615,8 +615,17 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
             <div className="lg:sticky lg:top-28">
               {/* A panel, not a bare column. Contained, it reads as one
                   instrument standing beside the catalogue rather than as loose
-                  controls floating next to it. */}
-              <div className="rounded-md border border-border bg-surface p-6">
+                  controls floating next to it.
+
+                  It needs a real value step to be seen. The first pass used
+                  --surface on the page ground: #131417 against #0c0d0f, seven
+                  units per channel, which on a dark screen is nothing — Alex
+                  looked straight at it and asked where the card was. So the
+                  panel sits on chrome-surface-2 with a white hairline and a
+                  line of light along its top edge, the same recipe that made
+                  the offer card read over a photograph. A border alone does
+                  not lift anything; the ground has to move. */}
+              <div className="rounded-md border border-white/[0.12] bg-chrome-surface-2 p-6 shadow-[0_2px_0_rgba(255,255,255,0.05)_inset,0_28px_60px_-34px_rgba(0,0,0,0.95)]">
               {searchField}
 
               <nav aria-label="Filter by make" className="mt-8">
