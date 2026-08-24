@@ -60,7 +60,11 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
 
           {/* Buy panel */}
           <aside className="flex flex-col lg:col-span-5">
-            <h1 className="text-3xl md:text-4xl font-semibold leading-[1.06] tracking-[-0.02em] text-text-1">
+            {/* The display face, like the name on the card that brought you here.
+                A car was called one thing in Bodoni on the catalogue and
+                another in the UI face on its own page — the two are the same
+                object and should be said in the same voice. */}
+            <h1 className="font-title text-[2rem] font-bold leading-[1.06] tracking-[-0.02em] text-text-1 md:text-[2.5rem]">
               {vehicle.year} {vehicle.make} {vehicle.model}
             </h1>
             {vehicle.trim && (

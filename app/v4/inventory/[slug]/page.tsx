@@ -45,14 +45,22 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
+// Section headings, in the house face.
+//
+// They used to be a gold hairline and a mono micro-label — a heading system
+// belonging to no other page on this site, and the last piece of the reference
+// build's furniture on the VDP. Everywhere else a section is announced in
+// Bodoni.
+//
+// NOT with the title-mark, though, and not at homepage scale. This page has six
+// sections; the signature bar drawn six times down one page stops reading as a
+// signature and starts reading as a rule. Same face, lower rank, no ceremony —
+// which is what a chapter heading inside one document should be.
 function SectionEyebrow({ label }: { label: string }) {
   return (
-    <div className="mb-8 flex items-center gap-3">
-      <span aria-hidden className="h-px w-8 bg-accent" />
-      <span className="font-accent text-[0.75rem] uppercase tracking-[0.24em] text-text-3">
-        {label}
-      </span>
-    </div>
+    <h2 className="mb-9 font-title text-2xl font-bold leading-[1.1] tracking-[-0.015em] text-text-1 md:text-3xl">
+      {label}
+    </h2>
   );
 }
 
