@@ -4,7 +4,7 @@ import { formatNumber } from "@/lib/utils";
 function Row({ label, value }: { label: string; value: string }) {
   return (
     <div className="grid grid-cols-[1fr_1.2fr] gap-6 py-5 border-b border-border last:border-b-0">
-      <dt className="font-accent text-[0.7rem] uppercase tracking-[0.22em] text-text-3">
+      <dt className="font-accent text-[0.8125rem] uppercase tracking-[0.16em] text-text-2">
         {label}
       </dt>
       <dd className="text-base text-text-1 tabular-nums">{value}</dd>

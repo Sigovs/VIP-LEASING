@@ -111,21 +111,75 @@ at every corner, and the grid is the architecture, not a component.
 Two faces, each with one job (registered in `app/layout.tsx`, configured in
 `app/globals.css`):
 
-| Role         | Face            | Use                                             |
-| ------------ | --------------- | ----------------------------------------------- |
-| Display / titles / body / UI | Inter Tight | section titles, display headings, body copy, nav, buttons, labels, **numerics** — set in sentence case, tracked tight (`-0.02em`) at display sizes |
-| Condensed caps | Oswald        | ALL-CAPS only: eyebrows, ceremonial labels, phone / address, spec keys. The site's single data texture — and the only face allowed to shout. |
+| Token | Face | Use |
+| --- | --- | --- |
+| `--font-sans` | **Archivo** | The voice. Body, nav, UI, numerics, and every heading below display rank. Sentence case, tracked tight (`-0.02em`) where it goes large. |
+| `--font-title` | **Bodoni Moda** | The display cut and nothing else. A didone's hairlines vanish below about 28px, so subheads belong to Archivo. |
+| `--font-accent` / `--font-mono` | **IBM Plex Mono** | The data texture: eyebrows, ceremonial labels, phone, address, spec keys, figures that want a machine voice. |
 
-Retired this build: **Cardo, Cinzel, Manrope, JetBrains Mono**. A classical
-small-caps serif over a warm-gold dark theme is the house style of every
-"premium" template on the internet; four faces on one marketing site reads as a
-font sampler, not a house style. One grotesk worked hard across its weight
-range, with a single condensed voice for caps, is the harder and better system.
+⚠️ This table was wrong for months — it still named **Inter Tight and Oswald**,
+which the build stopped using when the display face changed. If you are reading
+it to answer a question, check `app/layout.tsx` too: a stale system document is
+worse than none, because it looks authoritative.
+
+Retired along the way: **Cardo, Cinzel, Manrope, JetBrains Mono, Inter Tight,
+Oswald**. A classical small-caps serif over a warm-gold dark theme is the house
+style of every "premium" template on the internet, and four faces on one
+marketing site reads as a font sampler.
 
 Rule: **vehicle prices, mileage, and specs are set in Inter Tight with the
 `tabular-nums` utility** — figures align in columns without a monospace texture.
 Oswald survives only as the ALL-CAPS data texture (phone, address, eyebrows,
 spec keys) — never on a price value.
+
+### 4a. The size floor — 14px, and 12px for tracked caps
+
+**Nothing that carries meaning is set below 14px. Nothing at all is set below
+12px.**
+
+Two sizes, and the reason they differ:
+
+- **14px (`text-sm`) is the floor for anything a person reads to decide** —
+  field labels, spec labels, spec values, engine lines, prices, body copy,
+  control labels. If losing the words would cost the reader something, it is at
+  least 14px.
+- **12px (`text-[0.75rem]`) is the absolute floor, and only tracked uppercase
+  micro-labels may use it** — "VIEW", "SOLD", a breadcrumb, a section eyebrow.
+  Caps at wide tracking read a size smaller than their number suggests, and
+  these are labels you glance at rather than read.
+
+**Why this is written down.** The inventory surfaces had drifted to 9.6px on the
+listing card and 9.9px on the vehicle page — a spec label at 9.9px standing next
+to its own value at 28px, a ratio of 1 : 2.8. Contrast passed AA on paper
+(4.6–4.9:1), which is exactly the trap: AA is defined for 14px and up, so a
+passing number on nine-pixel type guarantees nothing. Alex caught it from a
+screenshot; the audit found twenty-five instances across five files.
+
+The cause was never one careless value. It was that `text-[0.6rem]` and
+`text-[0.62rem]` and `text-[0.65rem]` all looked reasonable in isolation, in
+five different files, with no floor written anywhere to measure them against.
+
+**How to check.** In the console on any page:
+
+```js
+[...document.querySelectorAll('body *')]
+  .filter(e => e.children.length === 0 && e.textContent.trim().length > 1
+            && parseFloat(getComputedStyle(e).fontSize) < 12)
+```
+
+An empty array is the passing result.
+
+**What went with it.** Two content faults surfaced in the same pass and are
+recorded here because they are the same species — furniture that survived
+because nobody measured it:
+
+- The card's **photo counter** read "1" on all ten cards, because every gallery
+  holds one image. Ten cards in a row telling a buyer we have one photograph of
+  each car. Removed until real galleries arrive.
+- Both **colour names were clipped on every card** — "Bianco Avus with Giallo
+  Modena Stripe" became "Bianco Avus with Gi…". On an exotic the colour name is
+  not a label, it is the spec the buyer came for. The tidy 2×2 grid became two
+  short facts on one row and a full width row for each colour.
 
 ## 5. Motion principles
 

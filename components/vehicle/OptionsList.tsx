@@ -7,7 +7,7 @@ export function OptionsList({ options }: { options: VehicleOptionGroup[] }) {
     <div className="space-y-14">
       {options.map((group) => (
         <div key={group.category}>
-          <h4 className="font-accent text-[0.7rem] uppercase tracking-[0.22em] text-text-3 mb-5 pb-3 border-b border-border">
+          <h4 className="font-accent text-[0.8125rem] uppercase tracking-[0.16em] text-text-2 mb-5 pb-3 border-b border-border">
             {group.category}
           </h4>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12">

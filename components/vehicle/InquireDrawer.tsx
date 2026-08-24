@@ -221,7 +221,7 @@ function Field({
       </span>
       {children}
       {error && (
-        <span className="block mt-1.5 font-accent text-[0.7rem] uppercase tracking-[0.16em] text-text-2">
+        <span className="block mt-1.5 font-accent text-[0.8125rem] uppercase tracking-[0.14em] text-text-2">
           {error}
         </span>
       )}

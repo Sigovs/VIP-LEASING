@@ -17,7 +17,7 @@ export function HistoryTimeline({ events }: { events: VehicleHistoryEvent[] }) {
           className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-3 md:gap-12 py-8 border-b border-border last:border-b-0"
         >
           <div>
-            <p className="font-accent text-[0.7rem] uppercase tracking-[0.22em] text-text-3">
+            <p className="font-accent text-[0.8125rem] uppercase tracking-[0.16em] text-text-3">
               {formatDate(e.date)}
             </p>
           </div>

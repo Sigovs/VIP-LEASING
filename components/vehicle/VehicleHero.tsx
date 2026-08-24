@@ -29,7 +29,7 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
       <Container>
         <nav
           aria-label="Breadcrumb"
-          className="mb-7 flex items-center gap-2 font-accent text-[0.68rem] uppercase tracking-[0.24em] text-text-3"
+          className="mb-7 flex items-center gap-2 font-accent text-[0.75rem] uppercase tracking-[0.2em] text-text-3"
         >
           <Link href="/inventory" className="hover:text-accent transition-colors">
             Inventory
@@ -52,7 +52,7 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
               className="object-cover"
             />
             {vehicle.isSold && (
-              <span className="absolute left-4 top-4 font-accent text-[0.62rem] uppercase tracking-[0.3em] bg-signal text-white px-3 py-1.5">
+              <span className="absolute left-4 top-4 font-accent text-[0.75rem] uppercase tracking-[0.24em] bg-signal text-white px-3 py-1.5">
                 Sold
               </span>
             )}
@@ -91,7 +91,7 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
                   key={k}
                   className="grid grid-cols-[118px_1fr] gap-5 border-b border-border py-4"
                 >
-                  <dt className="font-accent text-[0.75rem] uppercase tracking-[0.14em] text-text-2 pt-px">
+                  <dt className="font-accent text-[0.8125rem] uppercase tracking-[0.12em] text-text-2 pt-px">
                     {k}
                   </dt>
                   <dd className="text-[0.95rem] text-text-1 tabular-nums">{v}</dd>

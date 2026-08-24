@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette } from "lucide-react";
+import { ChevronRight, Armchair, Cog, Gauge, Palette } from "lucide-react";
 import type { Vehicle } from "@/types/vehicle";
 import { formatMileage, formatPrice } from "@/lib/utils";
 import { carfaxReportUrl } from "@/lib/vehicles";
@@ -56,7 +56,6 @@ export function VehicleCard({
   // that lives on the detail page. Gold stays a verb (hover only), per DESIGN.md.
   if (isPlate) {
     const carfax = carfaxReportUrl(vehicle);
-    const photoCount = vehicle.gallery?.length ?? 0;
     const perfLine = [vehicle.engine, vehicle.horsepower ? `${vehicle.horsepower} hp` : null]
       .filter(Boolean)
       .join("  ·  ");
@@ -75,13 +74,12 @@ export function VehicleCard({
           {price}
         </span>
         <span className="inline-flex items-center gap-3.5">
-          {photoCount > 0 && (
-            <span className="inline-flex items-center gap-1 tabular-nums text-[0.6rem] tracking-[0.06em] text-text-3">
-              <Camera className="h-3 w-3" strokeWidth={1.5} aria-hidden />
-              {photoCount}
-            </span>
-          )}
-          <span className="inline-flex items-center gap-1.5 font-accent text-[0.6rem] uppercase tracking-[0.24em] text-text-3 transition-colors group-hover:text-accent">
+          {/* The photo count stood here and is gone. Every gallery holds one
+              image, so every card in the grid announced "1" — ten cards telling
+              a buyer in a row that we have a single photograph of each car.
+              Put it back when real galleries arrive; until then it is a
+              weakness with a camera icon next to it. */}
+          <span className="inline-flex items-center gap-1.5 font-accent text-[0.75rem] uppercase tracking-[0.2em] text-text-3 transition-colors group-hover:text-accent">
             View
             <ChevronRight
               className="h-3 w-3 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
@@ -94,11 +92,24 @@ export function VehicleCard({
 
     // Left column mechanical, right column colorways — mirrors the exotic-listing
     // convention. Icons gold-muted, values sans (tabular for the mileage figure).
-    const specs: { icon: typeof Gauge; value: string; nums?: boolean }[] = [
+    // Two short facts share a row; the two colours each get the whole width.
+    //
+    // They used to be a neat 2x2, and both colours were clipped on every single
+    // card — "Bianco Avus with Giallo Modena Stripe" became "Bianco Avus with
+    // Gi...", "Nero Alcantara with Yellow Stitching" became "Nero Alcantara
+    // with ...". On an exotic the colour name is not a label, it is the spec a
+    // buyer came to read, and half a card is not enough room to say one. The
+    // grid was tidier; it was also eating the content.
+    const specs: {
+      icon: typeof Gauge;
+      value: string;
+      nums?: boolean;
+      wide?: boolean;
+    }[] = [
       { icon: Gauge, value: formatMileage(vehicle.mileage), nums: true },
-      { icon: Palette, value: vehicle.exteriorColor },
       { icon: Cog, value: shortDrivetrain(vehicle.drivetrain) },
-      { icon: Armchair, value: vehicle.interiorColor },
+      { icon: Palette, value: vehicle.exteriorColor, wide: true },
+      { icon: Armchair, value: vehicle.interiorColor, wide: true },
     ];
 
     return (
@@ -166,7 +177,7 @@ export function VehicleCard({
               className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
             />
             {vehicle.isSold && (
-              <span className="absolute left-3 top-3 rounded-pill font-accent text-[0.62rem] uppercase tracking-[0.3em] bg-signal text-white px-3 py-1.5">
+              <span className="absolute left-3 top-3 rounded-pill font-accent text-[0.75rem] uppercase tracking-[0.24em] bg-signal text-white px-3 py-1.5">
                 Sold
               </span>
             )}
@@ -181,19 +192,32 @@ export function VehicleCard({
             <h3 className="text-lg font-semibold tracking-[-0.018em] text-text-1 transition-colors group-hover:text-accent truncate">
               {fullName}
             </h3>
-            <p className="mt-1 text-[0.8rem] text-text-2 truncate">{perfLine}</p>
+            {/* Two lines, not one. "4.0L Twin-Turbo V8 with Three Electric
+                Motors · 986 hp" does not fit a card at a readable size, and the
+                horsepower is the half that was being cut. Clamped at two so a
+                long engine name cannot push the specs out of line with the
+                cards beside it. */}
+            <p className="mt-1.5 line-clamp-2 min-h-[2.5rem] text-sm leading-[1.25rem] text-text-2">
+              {perfLine}
+            </p>
 
             <dl className="mt-4 grid grid-cols-2 gap-x-5 gap-y-3">
-              {specs.map(({ icon: Icon, value, nums }, i) => (
-                <div key={i} className="flex items-center gap-2 min-w-0">
+              {specs.map(({ icon: Icon, value, nums, wide }, i) => (
+                <div
+                  key={i}
+                  className={cn(
+                    "flex min-w-0 items-center gap-2",
+                    wide && "col-span-2"
+                  )}
+                >
                   <Icon
-                    className="h-3.5 w-3.5 shrink-0 text-text-3"
+                    className="h-4 w-4 shrink-0 text-text-3"
                     strokeWidth={1.5}
                     aria-hidden
                   />
                   <dd
                     className={cn(
-                      "min-w-0 truncate text-[0.82rem] text-text-1",
+                      "min-w-0 truncate text-sm text-text-1",
                       nums && "tabular-nums"
                     )}
                   >
@@ -231,7 +255,7 @@ export function VehicleCard({
         />
         <div className="absolute inset-0 bg-gradient-to-t from-chrome-bg/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         {vehicle.isSold && (
-          <span className="absolute top-4 left-4 rounded-pill font-accent text-[0.65rem] md:text-xs uppercase tracking-[0.32em] bg-signal text-white px-3 py-1.5">
+          <span className="absolute top-4 left-4 rounded-pill font-accent text-[0.75rem] uppercase tracking-[0.26em] bg-signal text-white px-3 py-1.5">
             Sold
           </span>
         )}
@@ -263,7 +287,7 @@ export function VehicleCard({
             <p className="text-sm text-text-2 mt-1.5 truncate">{vehicle.trim}</p>
           )}
           {acquired && (
-            <p className="text-xs text-text-3 mt-2">Acquired {acquired}</p>
+            <p className="mt-2 text-[0.8125rem] text-text-3">Acquired {acquired}</p>
           )}
         </div>
         {showPrice ? (
@@ -271,7 +295,7 @@ export function VehicleCard({
             <p className="tabular-nums text-base md:text-lg font-semibold tracking-[-0.01em] text-text-1">
               {formatPrice(vehicle.price)}
             </p>
-            <p className="tabular-nums text-xs text-text-2 mt-1.5">
+            <p className="mt-1.5 tabular-nums text-[0.8125rem] text-text-2">
               {formatMileage(vehicle.mileage)}
             </p>
           </div>

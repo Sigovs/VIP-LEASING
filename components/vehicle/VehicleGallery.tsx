@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Image from "next/image";
+import { ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Horizontal scroll-snap gallery with varying aspect ratios for cinematic pacing.
@@ -12,10 +13,34 @@ import { cn } from "@/lib/utils";
 export function VehicleGallery({
   images,
   alt,
+  minFrames = 6,
 }: {
   images: string[];
   alt: string;
+  /** Pad the rail out to this many frames with empty slots. Every car in the
+   *  demo data holds a single photograph, so the gallery was a rail with one
+   *  thing on it and nothing to scroll — you could not tell the component
+   *  worked, let alone judge it.
+   *
+   *  The slots are EMPTY ON PURPOSE. The obvious shortcut was to borrow
+   *  photographs of other cars sitting unused in /public/ilusso — an SVJ, a
+   *  Ford GT, a Revuelto — and drop them into whichever gallery needed filling.
+   *  That is putting one marque's car under another's name, which is the exact
+   *  fault DESIGN.md §9b was written about after it cost us a Carrera GT.
+   *  Cropping the car's own frame was the other candidate and the source is
+   *  767x512, so six crops of it would be six soft rectangles.
+   *
+   *  An empty slot says the true thing instead: this is where a photograph
+   *  goes, and the client owes us one. Set it to 0 to switch the padding off,
+   *  and it disappears on its own as real galleries arrive. */
+  minFrames?: number;
 }) {
+  // Real frames first, then empty slots up to minFrames. null is a slot.
+  const slots: (string | null)[] = [
+    ...images,
+    ...Array.from({ length: Math.max(0, minFrames - images.length) }, () => null),
+  ];
+
   const ratios = ["aspect-[4/3]", "aspect-[16/10]", "aspect-[3/2]", "aspect-[2/3]", "aspect-[16/9]", "aspect-[1/1]"];
 
   const rail = useRef<HTMLDivElement>(null);
@@ -82,17 +107,42 @@ export function VehicleGallery({
         ref={track}
         className="flex snap-x snap-mandatory gap-4 px-6 md:gap-6 md:px-12"
       >
-        {images.map((src, i) => {
+        {slots.map((src, i) => {
           const ratio = ratios[i % ratios.length];
           const isTall = ratio === "aspect-[2/3]";
+          const frameCls = cn(
+            "relative shrink-0 snap-start overflow-hidden bg-paper",
+            ratio,
+            isTall ? "h-[70vh] max-h-[760px]" : "h-[60vh] max-h-[640px]"
+          );
+
+          if (!src) {
+            return (
+              <div
+                key={`slot-${i}`}
+                className={cn(frameCls, "ring-1 ring-inset ring-white/[0.07]")}
+              >
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
+                  <ImageIcon
+                    className="h-7 w-7 text-text-3/60"
+                    strokeWidth={1.25}
+                    aria-hidden
+                  />
+                  <p className="font-accent text-[0.8125rem] uppercase tracking-[0.22em] text-text-3">
+                    Frame {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="max-w-[24ch] text-sm leading-relaxed text-text-3">
+                    Awaiting photography
+                  </p>
+                </div>
+              </div>
+            );
+          }
+
           return (
             <div
               key={src + i}
-              className={cn(
-                "relative shrink-0 snap-start bg-paper overflow-hidden",
-                ratio,
-                isTall ? "h-[70vh] max-h-[760px]" : "h-[60vh] max-h-[640px]"
-              )}
+              className={frameCls}
               style={{ width: "auto" }}
             >
               <Image

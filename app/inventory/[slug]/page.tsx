@@ -49,7 +49,7 @@ function SectionEyebrow({ label }: { label: string }) {
   return (
     <div className="mb-8 flex items-center gap-3">
       <span aria-hidden className="h-px w-8 bg-accent" />
-      <span className="font-accent text-[0.68rem] uppercase tracking-[0.28em] text-text-3">
+      <span className="font-accent text-[0.75rem] uppercase tracking-[0.24em] text-text-3">
         {label}
       </span>
     </div>
@@ -152,7 +152,7 @@ export default async function VehiclePage({ params }: Params) {
                     key={k}
                     className="flex items-baseline justify-between gap-6 border-b border-border py-4"
                   >
-                    <dt className="font-accent text-[0.62rem] uppercase tracking-[0.24em] text-text-3">
+                    <dt className="font-accent text-[0.875rem] uppercase tracking-[0.16em] text-text-2">
                       {k}
                     </dt>
                     <dd className="tabular-nums text-2xl md:text-[1.75rem] font-semibold tracking-[-0.01em] text-text-1">

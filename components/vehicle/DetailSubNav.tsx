@@ -50,7 +50,7 @@ export function DetailSubNav() {
               <a
                 href={`#${s.id}`}
                 className={cn(
-                  "relative block px-5 py-4 font-accent text-[0.7rem] uppercase tracking-[0.22em] transition-colors",
+                  "relative block px-5 py-4 font-accent text-[0.8125rem] uppercase tracking-[0.22em] transition-colors",
                   active === s.id
                     ? "text-text-1"
                     : "text-text-3 hover:text-text-1"
