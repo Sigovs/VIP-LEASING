@@ -42,6 +42,10 @@ export interface Vehicle {
   story: string; // 2–4 sentence editorial intro
   heroImage: string;
   gallery: string[];
+  /** An explicit Carfax report link, when the dealer has one for this car.
+   *  Optional: with it empty the link is derived from the VIN instead — see
+   *  carfaxReportUrl() in lib/vehicles.ts. */
+  carfaxUrl?: string;
   isSold: boolean;
   isFeatured: boolean;
   isSpotlight?: boolean; // marks the single hero car in the home Featured spotlight

@@ -56,6 +56,7 @@ This document is the bridge between the Next.js prototype in this repo and the W
 | `story`                  | Textarea         | `story`             | 2–4 sentence editorial intro |
 | `hero_image`             | Image            | `heroImage`         | Use full size; theme applies sizing |
 | `gallery`                | Gallery          | `gallery`           | 6–12 images |
+| `carfax_url`             | URL              | `carfaxUrl`         | **Optional.** Leave empty and the theme builds the link from the VIN (`carfax.com/VehicleHistory/p/Report.cfx?vin=…`). Fill it only when Carfax has given the dealer a specific report URL for that car. Never rendered on a sold vehicle. |
 | `is_sold`                | True/False       | `isSold`            | |
 | `is_featured`            | True/False       | `isFeatured`        | Drives homepage "Recent" selection |
 | `is_spotlight`           | True/False       | `isSpotlight`       | Optional. Marks the single hero car in the homepage Featured spotlight; first match wins. Falls back to first featured, then first active. |
@@ -69,6 +70,22 @@ This document is the bridge between the Next.js prototype in this repo and the W
 | &nbsp;&nbsp;`description`| Textarea         | `history[].description` | |
 
 The TypeScript types in `types/vehicle.ts` are the canonical contract — if a field is added, change both at once.
+
+### Carfax links
+
+The report link is **derived, not stored**, so there is no second copy of the
+VIN to fall out of step with the first: `carfaxReportUrl()` in
+`lib/vehicles.ts` returns `null` for a sold car, the `carfax_url` override when
+one is set, and otherwise `carfax.com/VehicleHistory/p/Report.cfx?vin=<vin>`.
+Port it as a template helper, not as a saved post meta field.
+
+⚠️ **The VINs in the demo data are placeholders** — they end in `XXX`, so every
+link currently resolves to Carfax's "no report for this VIN" page. They become
+real the moment real VINs are entered, with no code change. Nothing needs
+doing here except entering true VINs.
+
+Active inventory only, per the client: a history report is read on the way to
+a decision, and there is nothing left to decide on a car that has gone.
 
 ## 4. Animation port — GSAP
 

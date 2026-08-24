@@ -50,6 +50,31 @@ export function getSoldVehicles(): Vehicle[] {
   return vehicles.filter((v) => v.isSold);
 }
 
+// The Carfax report for a car, or null when it should not be offered.
+//
+// Derived from the VIN rather than stored, so there is no second copy of the
+// same fact to fall out of step with the first — the VIN is already printed on
+// the page, and the report is that VIN's history. A dealer who has been given a
+// specific report link can override it per car with `carfaxUrl`.
+//
+// Null for a sold car, because the client asked for the link on active
+// inventory only: a history report is something a buyer reads before deciding,
+// and there is nothing left to decide on a car that has gone.
+//
+// ⚠️ The VINs in data/vehicles.json are placeholders — they end in XXX. The
+// links this builds are therefore placeholders too, and resolve to Carfax's
+// "no report for this VIN" page. They become real the moment real VINs land,
+// with no code change. Nothing here is fabricated: the link is a function of
+// the data the page already shows.
+const CARFAX_REPORT = "https://www.carfax.com/VehicleHistory/p/Report.cfx?vin=";
+
+export function carfaxReportUrl(v: Vehicle): string | null {
+  if (v.isSold) return null;
+  if (v.carfaxUrl) return v.carfaxUrl;
+  if (!v.vin) return null;
+  return `${CARFAX_REPORT}${encodeURIComponent(v.vin)}`;
+}
+
 export function getVehicleBySlug(slug: string): Vehicle | undefined {
   return vehicles.find((v) => v.slug === slug);
 }

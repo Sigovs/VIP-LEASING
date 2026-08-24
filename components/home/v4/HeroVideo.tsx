@@ -182,8 +182,8 @@ export function HeroVideo({ poster }: { poster: string }) {
 
           <div className="flex w-full flex-col items-start gap-8 md:flex-row md:items-end md:justify-between md:gap-16">
             <p className="max-w-[46ch] text-[1rem] leading-relaxed text-white/85 [text-shadow:0_1px_10px_rgba(0,0,0,0.55)] md:text-[1.1rem]">
-              Luxury and exotic cars, delivered anywhere in Florida. Lease or
-              finance any of them — terms arranged through our lending partners.
+              Luxury and exotic cars, delivered nationwide. Lease or finance
+              any of them — terms arranged through our lending partners.
             </p>
 
             {/* Actions sit level with the copy on desktop and stack under it on

@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette } from "lucide-react";
+import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette, FileText, ArrowUpRight } from "lucide-react";
 import type { Vehicle } from "@/types/vehicle";
 import { formatMileage, formatPrice } from "@/lib/utils";
+import { carfaxReportUrl } from "@/lib/vehicles";
 import { cn } from "@/lib/utils";
 
 type Variant = "default" | "feature" | "compact" | "plate";
@@ -53,6 +54,7 @@ export function VehicleCard({
   // grid (mileage · drivetrain / exterior · interior). No stock#/fee clutter —
   // that lives on the detail page. Gold stays a verb (hover only), per DESIGN.md.
   if (isPlate) {
+    const carfax = carfaxReportUrl(vehicle);
     const photoCount = vehicle.gallery?.length ?? 0;
     const perfLine = [vehicle.engine, vehicle.horsepower ? `${vehicle.horsepower} hp` : null]
       .filter(Boolean)
@@ -100,6 +102,30 @@ export function VehicleCard({
 
     return (
       <article className="group relative flex flex-col overflow-hidden rounded-md bg-surface ring-1 ring-inset ring-white/[0.07] transition-colors duration-300 hover:ring-white/[0.16]">
+        {/* Carfax sits OUTSIDE the card's link, not inside it. The whole plate
+            is one anchor to the vehicle page, and an anchor inside an anchor is
+            invalid markup that breaks keyboard order — so this is a sibling,
+            lifted over the image by z-index.
+
+            Top right, opposite the SOLD chip, which is the corner dealer
+            listings have used for this for twenty years. Only ever present on
+            an active car: carfaxReportUrl returns null for a sold one, which is
+            what the client asked for. */}
+        {carfax && (
+          <a
+            href={carfax}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-pill border border-white/20 bg-black/55 px-2.5 py-1.5 font-accent text-[0.6rem] uppercase tracking-[0.18em] text-white/85 backdrop-blur-md transition-colors hover:border-white/40 hover:bg-black/75 hover:text-white"
+          >
+            <FileText className="h-3 w-3 shrink-0" strokeWidth={1.5} aria-hidden />
+            Carfax
+            <ArrowUpRight className="h-3 w-3 shrink-0" strokeWidth={1.75} aria-hidden />
+            <span className="sr-only">
+              report for this {fullName} (opens in a new tab)
+            </span>
+          </a>
+        )}
         <Link
           href={`/inventory/${vehicle.slug}`}
           className="flex flex-1 flex-col focus:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-accent"

@@ -5,12 +5,16 @@ import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { InquireButton } from "@/components/vehicle/InquireButton";
 import { SHOWROOM } from "@/lib/showroom";
+import { carfaxReportUrl } from "@/lib/vehicles";
 import { formatMileage, formatPrice } from "@/lib/utils";
+import { FileText, ArrowUpRight } from "lucide-react";
 
 // Product top: a large primary image beside a buy-panel (title, price, the key
 // specs a buyer scans, and the Inquire/Call CTAs). Exotics-Hunter density at our
 // restraint — no floating overlap tile, no duplicated spec snapshot downstream.
 export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
+  const carfax = carfaxReportUrl(vehicle);
+
   const specs: [string, string][] = [
     ["Mileage", formatMileage(vehicle.mileage)],
     ["Exterior", vehicle.exteriorColor],
@@ -94,6 +98,40 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
                 </div>
               ))}
             </dl>
+
+            {/* Vehicle history. It hangs off the bottom of the spec list
+                rather than joining the CTA row, because it is evidence, not an
+                action the house is asking for — a buyer reads it on the way to
+                deciding, and a third button beside Inquire and Call would rank
+                it as a third ask.
+
+                Active cars only (carfaxReportUrl returns null for a sold one),
+                and only when there is a report to point at.
+
+                Text, not the Carfax mark: reproducing another company's badge
+                without their asset or their permission is not ours to do, and a
+                plain line says the same thing. */}
+            {carfax && (
+              <a
+                href={carfax}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-5 inline-flex items-center gap-2.5 border-b border-border pb-4 font-accent text-[0.72rem] uppercase tracking-[0.2em] text-text-2 transition-colors hover:text-text-1"
+              >
+                <FileText
+                  className="h-4 w-4 shrink-0 transition-colors group-hover:text-mark"
+                  strokeWidth={1.5}
+                  aria-hidden
+                />
+                Carfax report
+                <ArrowUpRight
+                  className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
+                <span className="sr-only">(opens in a new tab)</span>
+              </a>
+            )}
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <InquireButton size="lg" className="w-full sm:flex-1" />
