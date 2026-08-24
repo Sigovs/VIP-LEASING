@@ -498,7 +498,7 @@ export function ClosingBrands() {
                   the moment it starts to leave, so it can never be a target
                   that is half faded out. */}
               <Link
-                href="/inventory"
+                href="/v4/inventory"
                 className="group mt-10 inline-flex rounded-pill items-center gap-3 border border-white/35 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:px-11"
               >
                 View the inventory
@@ -616,7 +616,7 @@ export function ClosingBrands() {
               {/* The resolution. Same pill the closing headline uses, so the
                   ending reads as one voice rather than a new component. */}
               <Link
-                href="/inventory"
+                href="/v4/inventory"
                 className="group mt-12 inline-flex rounded-pill items-center gap-3 border border-white/35 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:mt-16 md:px-11 md:text-[0.8rem]"
               >
                 Explore Inventory
@@ -688,7 +688,7 @@ export function ClosingBrands() {
 
         <div className="mt-16 text-center">
           <Link
-            href="/inventory"
+            href="/v4/inventory"
             className="group inline-flex rounded-pill items-center gap-3 border border-white/35 px-9 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:px-11 md:text-[0.8rem]"
           >
             Explore Inventory

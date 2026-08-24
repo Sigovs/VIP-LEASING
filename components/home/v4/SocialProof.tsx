@@ -110,7 +110,7 @@ export function SocialProof() {
             choose, and the terms are built to fit.
           </p>
           <Link
-            href="/about"
+            href="/v4/about"
             className="group mt-8 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.18em] text-text-1 transition-colors hover:text-accent"
           >
             Our story

@@ -51,10 +51,17 @@ export function Header() {
   // it impossible to miss. The older versions keep the old breakpoint because
   // they keep the short label and, more to the point, because they are frozen.
   const onV4 = pathname === "/v4" || pathname.startsWith("/v4/");
+
+  // v4 is a standalone mockup with its own copy of every page, so its nav must
+  // stay inside it: /v4/inventory, not /inventory. Home becomes /v4. Anything
+  // that escaped to a shared page would quietly put the visitor back on the
+  // build v4 exists to be different from.
   const nav = onV4
-    ? NAV.map((item) =>
-        item.href === "/sell" ? { ...item, label: "Consignment" } : item,
-      )
+    ? NAV.map((item) => ({
+        ...item,
+        href: item.href === "/" ? "/v4" : `/v4${item.href}`,
+        label: item.href === "/sell" ? "Consignment" : item.label,
+      }))
     : NAV;
 
   // Full literal strings on both sides: Tailwind only emits classes it can see
@@ -85,7 +92,9 @@ export function Header() {
   }, [open]);
 
   const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+    href === "/" || href === "/v4"
+      ? pathname === href
+      : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header
@@ -107,7 +116,7 @@ export function Header() {
       />
       <Container className="relative flex h-16 md:h-20 items-center justify-between gap-6">
         <Link
-          href="/"
+          href={onV4 ? "/v4" : "/"}
           aria-label="VIP Leasing — home"
           className="flex items-center shrink-0"
         >

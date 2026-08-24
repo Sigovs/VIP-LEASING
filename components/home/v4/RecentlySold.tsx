@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { Reveal } from "@/components/motion/Reveal";
-import { VehicleCard } from "@/components/vehicle/VehicleCard";
+import { VehicleCard } from "@/components/vehicle/v4/VehicleCard";
 import { getSoldVehicles } from "@/lib/vehicles";
 
 // Small "Recently Sold" strip. Renders nothing if there are no sold
@@ -30,7 +30,7 @@ export function RecentlySold() {
             Recently Sold
           </h2>
           <Link
-            href="/sold"
+            href="/v4/sold"
             className="group hidden sm:inline-flex items-center gap-2 pb-1 text-xs font-accent tracking-[0.16em] text-text-2 hover:text-accent transition-colors"
           >
             View Sold

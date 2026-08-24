@@ -21,8 +21,8 @@ import { asset } from "@/lib/asset";
 // and the eye travelling left-to-right along the copy arrives at the primary
 // last — the end of the sentence, not the middle of it.
 const HERO_CTAS: { label: string; href: string; primary?: boolean }[] = [
-  { label: "Sell Your Car", href: "/sell" },
-  { label: "View Inventory", href: "/inventory", primary: true },
+  { label: "Sell Your Car", href: "/v4/sell" },
+  { label: "View Inventory", href: "/v4/inventory", primary: true },
 ];
 
 const HERO_BUTTON_BASE =

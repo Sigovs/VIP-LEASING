@@ -95,7 +95,7 @@ export function ClosingMarques() {
 
           <Reveal delay={0.12} className="mt-14 md:mt-16">
             <Link
-              href="/inventory"
+              href="/v4/inventory"
               className="group inline-flex rounded-pill items-center gap-3 border border-white/30 px-8 py-3.5 font-accent text-[0.7rem] font-medium tracking-[0.22em] text-white transition-colors duration-300 hover:bg-white hover:text-chrome-bg md:px-9 md:text-[0.75rem]"
             >
               Explore Inventory

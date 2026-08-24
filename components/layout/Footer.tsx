@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { InstagramIcon } from "@/components/ui/icons/InstagramIcon";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/social";
@@ -38,6 +41,15 @@ const COLUMNS = [
 ];
 
 export function Footer() {
+  // v4 is a standalone mockup with its own copy of every page. Inside it the
+  // footer has to stay there too — a link out to /inventory would drop the
+  // visitor onto the shared build in the middle of the thing that exists to be
+  // different from it. Same rule as the header.
+  const pathname = usePathname();
+  const onV4 = pathname === "/v4" || pathname.startsWith("/v4/");
+  const to = (href: string) =>
+    !onV4 ? href : href === "/" ? "/v4" : `/v4${href}`;
+
   return (
     <footer className="border-t border-border bg-paper text-text-1">
       <Container className="py-16 md:py-24">
@@ -45,7 +57,7 @@ export function Footer() {
             dealerships and a leasing partner. This house is one brand with no
             named lender, so the row is the wordmark and the line beneath it. */}
         <div className="flex flex-col items-center gap-6 text-center">
-          <Link href="/" aria-label={`${BRAND.name} — home`} className="block">
+          <Link href={to("/")} aria-label={`${BRAND.name} — home`} className="block">
             <Image
               src="/logo.svg"
               alt={BRAND.name}
@@ -108,7 +120,7 @@ export function Footer() {
                 {col.links.map((l) => (
                   <li key={l.label}>
                     <Link
-                      href={l.href}
+                      href={to(l.href)}
                       className="text-sm text-text-1 transition-colors hover:text-accent"
                     >
                       {l.label}

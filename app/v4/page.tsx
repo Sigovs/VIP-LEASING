@@ -28,11 +28,11 @@ import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
-import { VehicleCard } from "@/components/vehicle/VehicleCard";
+import { VehicleCard } from "@/components/vehicle/v4/VehicleCard";
 import { getRecentlyAcquired, getSpotlightLineup } from "@/lib/vehicles";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/social";
 import { HAS_ADDRESS, SHOWROOM } from "@/lib/showroom";
-import { ShowroomMap } from "@/components/contact/ShowroomMap";
+import { ShowroomMap } from "@/components/contact/v4/ShowroomMap";
 
 // The hero is the client's clip and only the clip — video_resize.mp4, wired
 // inside HeroVideo. The poster below is not a photograph from the stills library
@@ -93,7 +93,7 @@ export default function HomeV4Page() {
                 Available Now
               </h2>
               <Link
-                href="/inventory"
+                href="/v4/inventory"
                 className="group hidden sm:inline-flex items-center gap-2 pb-1 font-accent text-xs tracking-[0.16em] text-text-1 transition-colors hover:text-mark"
               >
                 All Inventory
@@ -117,7 +117,7 @@ export default function HomeV4Page() {
             <div className="mt-14 border-t border-border pt-10 md:mt-20 md:pt-12">
               <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
                 <ButtonLink
-                  href="/financing"
+                  href="/v4/financing"
                   variant="outline"
                   size="lg"
                   withArrow
@@ -126,7 +126,7 @@ export default function HomeV4Page() {
                   Apply for Financing
                 </ButtonLink>
                 <ButtonLink
-                  href="/sell"
+                  href="/v4/sell"
                   variant="outline"
                   size="lg"
                   withArrow
@@ -278,7 +278,7 @@ export default function HomeV4Page() {
 
                 <div>
                   <Link
-                    href="/contact"
+                    href="/v4/contact"
                     className="group relative inline-flex rounded-pill items-center gap-3 px-9 md:px-11 py-4 md:py-[1.15rem] font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-text-1 border border-text-1/80 hover:bg-text-1 hover:text-bg transition-all duration-300"
                   >
                     Book a Viewing

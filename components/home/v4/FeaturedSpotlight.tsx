@@ -29,7 +29,7 @@ export function FeaturedSpotlight({ vehicles }: { vehicles: Vehicle[] }) {
 
   const step = (d: number) => setActive((i) => (i + d + count) % count);
   const car = vehicles[active];
-  const href = `/inventory/${car.slug}`;
+  const href = `/v4/inventory/${car.slug}`;
   const nameOf = (v: Vehicle) => `${v.year} ${v.make} ${v.model}`;
   const frameOf = (v: Vehicle) => v.gallery?.[0] ?? v.heroImage;
 
