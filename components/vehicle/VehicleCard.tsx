@@ -138,17 +138,11 @@ export function VehicleCard({
                 Sized the way dealer listings actually size it: ~24px of height,
                 which is about 101px wide at this artwork's 6:1.
 
-                No shadow, on Alex's call, and checked across all ten cards
-                afterwards: it costs nothing here. Every inventory photograph is
-                a studio shot on a light sweep, so the top-right corner the mark
-                sits in is pale on every one of them and the black boxes have
-                plenty to sit against.
-
-                The one condition that would bring the shadow back is a car
-                photographed on a dark ground — the wordmark is black boxes with
-                white letters, and against black its frame dissolves while only
-                the letters survive. If the client ever supplies night or garage
-                shots, look here. */}
+                No shadow, and the current mark does not want one: Carfax's
+                live logo sits inside its own white rounded plate, so it carries
+                its separation with it onto any ground, light or dark. The
+                version we had before was the older cut — loose letter boxes
+                with a grey X and no plate — which is why it needed help. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={asset("/brands/carfax.svg")}
