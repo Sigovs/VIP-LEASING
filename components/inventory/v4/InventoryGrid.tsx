@@ -12,8 +12,6 @@ import {
 import type { Vehicle } from "@/types/vehicle";
 import { VehicleCard } from "@/components/vehicle/v4/VehicleCard";
 import { Container } from "@/components/ui/Container";
-import { SelectShell } from "@/components/ui/SelectShell";
-import { optionCls } from "@/lib/formStyles";
 import { cn, formatNumber } from "@/lib/utils";
 
 type SortKey =
@@ -79,11 +77,126 @@ type FilterState = {
   sort: SortKey;
 };
 
-// The rail's own select: a box like the keyword field beside it, not the
-// underline the page forms use. In a panel this dense a hairline under a value
-// reads as a divider rather than as a field.
-const railSelectCls =
-  "w-full cursor-pointer appearance-none rounded-md border border-white/[0.14] bg-bg/60 px-3.5 py-2.5 pr-9 text-sm text-text-1 transition-colors focus:border-white/40 focus:outline-none";
+// A list of options inside a dropdown. Year and model were a <select> in here
+// at first, which is a dropdown inside a dropdown — two clicks and a native
+// menu to answer a question the panel was already open to answer.
+function OptionList({
+  options,
+  value,
+  onPick,
+  allLabel,
+  allCount,
+  counts,
+}: {
+  options: string[];
+  value: string;
+  onPick: (v: string) => void;
+  allLabel: string;
+  allCount?: number;
+  counts?: Map<string, number>;
+}) {
+  const row = (label: string, v: string, count?: number) => (
+    <li key={v || "__all"}>
+      <button
+        type="button"
+        onClick={(e) => {
+          // Close the menu on choosing. It used to stay open, and while it hung
+          // there the grid beneath it rebuilt — fewer cards, a shorter page, a
+          // sticky bar recalculating under an open panel. That is what read as
+          // the dropdown glitching; it was the page moving, not the menu.
+          (e.currentTarget.closest("details") as HTMLDetailsElement | null)?.removeAttribute("open");
+          onPick(v);
+        }}
+        className={cn(
+          "flex w-full items-baseline justify-between gap-4 py-1.5 text-left text-sm transition-colors",
+          value === v ? "text-mark-soft" : "text-text-2 hover:text-text-1"
+        )}
+      >
+        <span className="truncate">{label}</span>
+        {count != null && (
+          <span className="shrink-0 font-accent text-[0.75rem] tabular-nums text-text-3">
+            {count}
+          </span>
+        )}
+      </button>
+    </li>
+  );
+
+  return (
+    <ul className="max-h-64 space-y-1 overflow-y-auto">
+      {row(allLabel, "", allCount)}
+      {options.map((o) => row(o, o, counts?.get(o)))}
+    </ul>
+  );
+}
+
+// One filter, as a dropdown. The pattern Alex already uses on Prestige and
+// Vegas: a row of triggers, each opening its own panel, instead of a column
+// that grows.
+//
+// The column was the mistake. Opened, it ran past the fold, so the last filter
+// could only be reached by scrolling the page to its end — and capping it with
+// an internal scrollbar only moved the problem into the panel. A dropdown is
+// never tall, because only one is ever open and it floats over the page rather
+// than pushing it.
+function FilterDropdown({
+  label,
+  active,
+  children,
+  wide = false,
+}: {
+  label: string;
+  active?: boolean;
+  children: React.ReactNode;
+  wide?: boolean;
+}) {
+  // name= makes them exclusive: opening one closes the rest, natively and
+  // without a line of state. Click-outside and Escape are handled in the bar —
+  // see the effect in InventoryGrid.
+  return (
+    <details name="srp-filter" className="group relative">
+      <summary
+        className={cn(
+          // One width for every trigger, whatever the word inside it. They are a set of
+        // peers and a row of pills that each measure their own label reads as
+        // ragged — and it moves when a filter is chosen, which is worse.
+        "flex h-11 w-[9.5rem] cursor-pointer list-none items-center justify-between gap-2 rounded-pill border px-4 font-accent text-[0.8125rem] uppercase tracking-[0.12em] transition-colors",
+          active
+            ? "border-mark-soft/60 bg-mark-soft/10 text-mark-soft"
+            : "border-white/[0.14] text-text-2 hover:border-white/30 hover:text-text-1"
+        )}
+      >
+        {label}
+        <ChevronDown
+          size={14}
+          strokeWidth={1.75}
+          className="shrink-0 transition-transform duration-200 group-open:rotate-180"
+        />
+      </summary>
+      <div
+        className={cn(
+          "absolute left-0 top-[calc(100%+0.6rem)] z-50 rounded-md border border-white/[0.12] bg-[#1e2229] p-5 shadow-[0_28px_60px_-30px_rgba(0,0,0,0.95)]",
+          wide ? "w-72" : "w-60"
+        )}
+      >
+        {children}
+      </div>
+    </details>
+  );
+}
+
+// Price as bands rather than two empty boxes. Nobody arrives knowing they want
+// a car between $312,000 and $588,000 — they want "under three hundred" or
+// "over a million", and a range they can click is the question they actually
+// have. Bands that hold nothing are not offered, same rule as the year and
+// model lists.
+const PRICE_BANDS: { label: string; min: number | null; max: number | null }[] = [
+  { label: "Under $250K", min: null, max: 250_000 },
+  { label: "$250K – $400K", min: 250_000, max: 400_000 },
+  { label: "$400K – $600K", min: 400_000, max: 600_000 },
+  { label: "$600K – $1M", min: 600_000, max: 1_000_000 },
+  { label: "Over $1M", min: 1_000_000, max: null },
+];
 
 const EMPTY: FilterState = {
   q: "",
@@ -176,14 +289,31 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
     parseParams(new URLSearchParams(searchParams.toString()))
   );
   const [filtersOpen, setFiltersOpen] = useState(false);
-  // The rail was taller than the first two lots put together. Search and marque
-  // answer most of it; the rest folds away. Opens by itself when one of the
-  // folded filters is already set, so a filter can never be active and hidden
-  // at the same time.
-  const [moreOpen, setMoreOpen] = useState(
-    () => countDrawerFilters(parseParams(new URLSearchParams(searchParams.toString()))) > 0,
-  );
   const [sortOpen, setSortOpen] = useState(false);
+
+  // Dropdowns close themselves. name="srp-filter" already makes them mutually
+  // exclusive; this is the other half — a click anywhere else, or Escape,
+  // shuts whichever is open. Without it a panel stays up until you click its
+  // own trigger again, which is not how anyone expects a menu to behave.
+  const barRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const closeAll = () =>
+      barRef.current
+        ?.querySelectorAll<HTMLDetailsElement>("details[open]")
+        .forEach((d) => (d.open = false));
+    const onDown = (e: PointerEvent) => {
+      if (!barRef.current?.contains(e.target as Node)) closeAll();
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeAll();
+    };
+    document.addEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, []);
   const sortRef = useRef<HTMLDivElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
 
@@ -247,6 +377,32 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
     () => [...new Set(vehicles.map((v) => v.year))].sort((a, b) => b - a),
     [vehicles],
   );
+  const yearCounts = useMemo(() => {
+    const m = new Map<string, number>();
+    vehicles.forEach((v) => m.set(String(v.year), (m.get(String(v.year)) ?? 0) + 1));
+    return m;
+  }, [vehicles]);
+  const priceBands = useMemo(
+    () =>
+      PRICE_BANDS.map((b) => ({
+        ...b,
+        count: vehicles.filter(
+          (v) =>
+            (b.min == null || v.price >= b.min) &&
+            (b.max == null || v.price < b.max),
+        ).length,
+      })).filter((b) => b.count > 0),
+    [vehicles],
+  );
+
+  const modelCounts = useMemo(() => {
+    const m = new Map<string, number>();
+    const pool = state.makes.length
+      ? vehicles.filter((v) => state.makes.includes(v.make))
+      : vehicles;
+    pool.forEach((v) => m.set(v.model, (m.get(v.model) ?? 0) + 1));
+    return m;
+  }, [vehicles, state.makes]);
   const models = useMemo(() => {
     const pool = state.makes.length
       ? vehicles.filter((v) => state.makes.includes(v.make))
@@ -380,7 +536,7 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
       >
         Search by keyword
       </label>
-      <div className="flex items-center gap-2.5 rounded-md border border-white/[0.14] bg-bg/60 px-3.5 py-2.5 transition-colors focus-within:border-white/40">
+      <div className="flex h-11 items-center gap-2.5 rounded-md border border-white/[0.14] bg-bg/60 px-3.5 transition-colors focus-within:border-white/40">
         <Search size={15} strokeWidth={1.5} className="shrink-0 text-text-3" />
         <input
           id="inventory-search"
@@ -465,6 +621,75 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
   // that stands beside the catalogue on desktop, and the drawer that is still
   // the right answer on a phone. Declared inside the component so it closes
   // over state and the toggles rather than taking eleven props.
+  // The chosen filters, as removable tags. They used to render only inside the
+  // mobile bar, so on a desktop you could set a price and a drivetrain and the
+  // page would tell you nothing about what you had set — the trigger lit up,
+  // but not with what. Same list in both places now.
+  // The chosen filters, as removable tags. They used to render only inside the
+  // mobile bar, so on a desktop you could set a price and a drivetrain and the
+  // page would tell you nothing about what you had set — the trigger lit up,
+  // but not with what. Same list in both places now, and the triggers stay
+  // plain: a control says what it asks, a tag says what was answered.
+  const activeTags = (
+    <>
+      {activeMake && (
+        <ActiveChip label={activeMake} onRemove={() => selectMake(null)} />
+      )}
+      {state.model && (
+        <ActiveChip
+          label={state.model}
+          onRemove={() => setState((st) => ({ ...st, model: "" }))}
+        />
+      )}
+      {state.year != null && (
+        <ActiveChip
+          label={String(state.year)}
+          onRemove={() => setState((st) => ({ ...st, year: null }))}
+        />
+      )}
+  <>
+                {priceLabel && (
+                  <ActiveChip
+                    label={priceLabel}
+                    onRemove={() =>
+                      setState((s) => ({ ...s, minPrice: null, maxPrice: null }))
+                    }
+                  />
+                )}
+                {yearLabel && (
+                  <ActiveChip
+                    label={yearLabel}
+                    onRemove={() =>
+                      setState((s) => ({ ...s, minYear: null, maxYear: null }))
+                    }
+                  />
+                )}
+                {state.maxMileage != null && (
+                  <ActiveChip
+                    label={`≤ ${formatNumber(state.maxMileage)} mi`}
+                    onRemove={() => setState((s) => ({ ...s, maxMileage: null }))}
+                  />
+                )}
+                {state.transmissions.map((t) => (
+                  <ActiveChip key={`tr-${t}`} label={t} onRemove={() => toggleTrans(t)} />
+                ))}
+                {state.drivetrains.map((d) => (
+                  <ActiveChip key={`dr-${d}`} label={d} onRemove={() => toggleDrive(d)} />
+                ))}
+                <button
+                  type="button"
+                  // Clears everything, including make, model and year — the tags
+                  // beside it now cover all of them, so a "clear" that left
+                  // three of them standing would be lying about what it did.
+                  onClick={() => setState((st) => ({ ...EMPTY, sort: st.sort }))}
+                  className="ml-2 inline-flex items-center rounded-pill border border-white/20 px-3.5 py-1.5 font-accent text-[0.75rem] uppercase tracking-[0.12em] text-text-3 transition-colors hover:border-white/45 hover:text-text-1"
+                >
+                  Clear all
+                </button>
+              </>
+    </>
+  );
+
   const filterFields = (
     <>
           <FilterGroup label="Price">
@@ -480,21 +705,6 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
                 prefix="$"
                 value={state.maxPrice}
                 onChange={(n) => setState((s) => ({ ...s, maxPrice: n }))}
-              />
-            </div>
-          </FilterGroup>
-
-          <FilterGroup label="Year">
-            <div className="grid grid-cols-2 gap-3">
-              <RangeInput
-                placeholder="From"
-                value={state.minYear}
-                onChange={(n) => setState((s) => ({ ...s, minYear: n }))}
-              />
-              <RangeInput
-                placeholder="To"
-                value={state.maxYear}
-                onChange={(n) => setState((s) => ({ ...s, maxYear: n }))}
               />
             </div>
           </FilterGroup>
@@ -603,199 +813,195 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
           </div>
         </Container>
 
-        {/* Active drawer-filter chips (make is shown in the rail, not here). */}
-        {drawerCount > 0 && (
-          <Container className="flex flex-wrap items-center gap-2 pb-4">
-            {priceLabel && (
-              <ActiveChip
-                label={priceLabel}
-                onRemove={() =>
-                  setState((s) => ({ ...s, minPrice: null, maxPrice: null }))
-                }
-              />
-            )}
-            {yearLabel && (
-              <ActiveChip
-                label={yearLabel}
-                onRemove={() =>
-                  setState((s) => ({ ...s, minYear: null, maxYear: null }))
-                }
-              />
-            )}
-            {state.maxMileage != null && (
-              <ActiveChip
-                label={`≤ ${formatNumber(state.maxMileage)} mi`}
-                onRemove={() => setState((s) => ({ ...s, maxMileage: null }))}
-              />
-            )}
-            {state.transmissions.map((t) => (
-              <ActiveChip key={`tr-${t}`} label={t} onRemove={() => toggleTrans(t)} />
-            ))}
-            {state.drivetrains.map((d) => (
-              <ActiveChip key={`dr-${d}`} label={d} onRemove={() => toggleDrive(d)} />
-            ))}
-            <button
-              type="button"
-              onClick={() =>
-                setState((s) => ({
-                  ...EMPTY,
-                  q: s.q,
-                  makes: s.makes,
-                  sort: s.sort,
-                }))
-              }
-              className="ml-1 text-[0.65rem] font-accent uppercase tracking-[0.08em] text-text-3 hover:text-text-1 transition-colors"
-            >
-              Clear filters
-            </button>
-          </Container>
-        )}
+        {/* Active filter tags — same list the desktop panel shows. */}
+        <Container className="empty:hidden [&>*]:flex [&>*]:flex-wrap [&>*]:items-center [&>*]:gap-2 [&>*]:pb-4">
+          {activeTags}
+        </Container>
       </div>
 
       <Container className="py-10 md:py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* The rail. Everything the toolbar used to shout is here instead,
-              open and legible, in the order a buyer narrows: what marque, then
-              what it costs, then the rest. Nothing is hidden behind a button. */}
-          <aside className="hidden lg:col-span-3 lg:block">
-            <div className="lg:sticky lg:top-28">
-              {/* A panel, not a bare column. Contained, it reads as one
-                  instrument standing beside the catalogue rather than as loose
-                  controls floating next to it.
+          {/* The filter bar. One panel, its own shade, laid across the top
+              instead of down the side — the row of dropdowns Alex already uses
+              on Prestige and Vegas. Nothing in it can grow tall, so nothing
+              needs an inner scrollbar and no filter is ever below the fold. */}
+          {/* Sticky. On a catalogue this long the filters are the one thing you
+              reach for mid-scroll, and having to go back to the top to change a
+              make is the same fault as the rail that ran past the fold — just
+              in the other direction. It rides under the header, so top-24
+              rather than 0.
 
-                  It needs a real value step to be seen. The first pass used
-                  --surface on the page ground: #131417 against #0c0d0f, seven
-                  units per channel, which on a dark screen is nothing — Alex
-                  looked straight at it and asked where the card was. So the
-                  panel needed a shade of its own, not a stronger edge.
+              No band behind it. The first pass put a blurred full-width strip
+              under the sticky wrapper, which is wider than the panel — so the
+              moment it stuck, the panel appeared to stretch to the edges of the
+              screen. The panel carries its own ground; it needs nothing
+              underneath. */}
+          <div className="z-40 lg:sticky lg:top-24 lg:col-span-12">
+            <div
+              ref={barRef}
+              className="rounded-md border border-white/[0.10] bg-[#1e2229] p-5 shadow-[0_2px_0_rgba(255,255,255,0.045)_inset,0_28px_60px_-34px_rgba(0,0,0,0.95)]"
+            >
+              {/* Two labelled groups on one baseline: the labels line up, and so
+                  do the controls under them, because both are the same height.
+                  Before this the row of pills was centred against the whole
+                  search block and sat a few pixels low against nothing. */}
+              <div className="flex flex-col gap-5 xl:flex-row xl:items-start xl:gap-8">
+                <div className="xl:w-72 xl:shrink-0">{searchField}</div>
 
-                  #1e2229 is that shade: 1.22:1 against the page, where --surface
-                  managed 1.06 and chrome-surface-2 1.09 — both of which are the
-                  same colour as far as an eye is concerned. A literal value and
-                  not a token, because the system has no step this size between
-                  the page ground and a raised panel; if a second panel ever
-                  wants it, it becomes one. */}
-              <div className="rounded-md border border-white/[0.10] bg-[#1e2229] p-6 shadow-[0_2px_0_rgba(255,255,255,0.045)_inset,0_28px_60px_-34px_rgba(0,0,0,0.95)]">
-              {searchField}
-
-              {/* Year, Make, Model — the three questions a buyer actually
-                  arrives with, visible without opening anything. The vertical
-                  marque list they replace was six rows tall and answered only
-                  one of the three. */}
-              <div className="mt-7 space-y-5">
-                <label className="block">
-                  <span className="mb-2.5 block font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
-                    Year
-                  </span>
-                  <SelectShell>
-                    <select
-                      value={state.year ?? ""}
-                      onChange={(e) =>
-                        setState((st) => ({
-                          ...st,
-                          year: e.target.value ? Number(e.target.value) : null,
-                        }))
+                <div className="min-w-0">
+                  <p className="mb-3 font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
+                    Find your car
+                  </p>
+                  <div className="flex flex-wrap items-center gap-2.5">
+                  <FilterDropdown
+                    label="Year"
+                    active={state.year != null}
+                  >
+                    <OptionList
+                      options={years.map(String)}
+                      value={state.year ? String(state.year) : ""}
+                      onPick={(v) =>
+                        setState((st) => ({ ...st, year: v ? Number(v) : null }))
                       }
-                      className={railSelectCls}
-                    >
-                      <option value="" className={optionCls}>
-                        Any year
-                      </option>
-                      {years.map((y) => (
-                        <option key={y} value={y} className={optionCls}>
-                          {y}
-                        </option>
-                      ))}
-                    </select>
-                  </SelectShell>
-                </label>
+                      allLabel="Any year"
+                      allCount={vehicles.length}
+                      counts={yearCounts}
+                    />
+                  </FilterDropdown>
 
-                <label className="block">
-                  <span className="mb-2.5 block font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
-                    Make
-                  </span>
-                  <SelectShell>
-                    <select
-                      value={activeMake ?? ""}
-                      onChange={(e) => selectMake(e.target.value || null)}
-                      className={railSelectCls}
-                    >
-                      <option value="" className={optionCls}>
-                        All makes ({vehicles.length})
-                      </option>
+                  <FilterDropdown label="Make" active={!!activeMake} wide>
+                    <ul className="space-y-1">
+                      <li>
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            (e.currentTarget.closest("details") as HTMLDetailsElement | null)?.removeAttribute("open");
+                            selectMake(null);
+                          }}
+                          className={cn(
+                            "flex w-full items-baseline justify-between gap-4 py-1.5 text-left text-sm transition-colors",
+                            activeMake == null ? "text-mark-soft" : "text-text-2 hover:text-text-1"
+                          )}
+                        >
+                          <span>All makes</span>
+                          <span className="font-accent text-[0.75rem] tabular-nums text-text-3">
+                            {vehicles.length}
+                          </span>
+                        </button>
+                      </li>
                       {marques.map((m) => (
-                        <option key={m} value={m} className={optionCls}>
-                          {m} ({makeCounts.get(m) ?? 0})
-                        </option>
+                        <li key={m}>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              (e.currentTarget.closest("details") as HTMLDetailsElement | null)?.removeAttribute("open");
+                              selectMake(m);
+                            }}
+                            className={cn(
+                              "flex w-full items-baseline justify-between gap-4 py-1.5 text-left text-sm transition-colors",
+                              activeMake === m ? "text-mark-soft" : "text-text-2 hover:text-text-1"
+                            )}
+                          >
+                            <span className="truncate">{m}</span>
+                            <span className="shrink-0 font-accent text-[0.75rem] tabular-nums text-text-3">
+                              {makeCounts.get(m) ?? 0}
+                            </span>
+                          </button>
+                        </li>
                       ))}
-                    </select>
-                  </SelectShell>
-                </label>
+                    </ul>
+                  </FilterDropdown>
 
-                <label className="block">
-                  <span className="mb-2.5 block font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
-                    Model
-                  </span>
-                  <SelectShell>
-                    <select
+                  <FilterDropdown label="Model" active={!!state.model} wide>
+                    <OptionList
+                      options={models}
                       value={state.model}
-                      onChange={(e) =>
-                        setState((st) => ({ ...st, model: e.target.value }))
-                      }
-                      className={railSelectCls}
-                    >
-                      <option value="" className={optionCls}>
-                        All models
-                      </option>
-                      {models.map((m) => (
-                        <option key={m} value={m} className={optionCls}>
-                          {m}
-                        </option>
+                      onPick={(v) => setState((st) => ({ ...st, model: v }))}
+                      allLabel="All models"
+                      counts={modelCounts}
+                    />
+                  </FilterDropdown>
+
+                  <FilterDropdown
+                    label="Price"
+                    active={state.minPrice != null || state.maxPrice != null}
+                    wide
+                  >
+                    <ul className="space-y-1">
+                      {[{ label: "Any price", min: null, max: null, count: vehicles.length }, ...priceBands].map((b) => {
+                        const on =
+                          state.minPrice === b.min && state.maxPrice === b.max;
+                        return (
+                          <li key={b.label}>
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                (e.currentTarget.closest("details") as HTMLDetailsElement | null)?.removeAttribute("open");
+                                setState((st) => ({ ...st, minPrice: b.min, maxPrice: b.max }));
+                              }}
+                              className={cn(
+                                "flex w-full items-baseline justify-between gap-4 py-1.5 text-left text-sm transition-colors",
+                                on ? "text-mark-soft" : "text-text-2 hover:text-text-1"
+                              )}
+                            >
+                              <span className="truncate">{b.label}</span>
+                              <span className="shrink-0 font-accent text-[0.75rem] tabular-nums text-text-3">
+                                {b.count}
+                              </span>
+                            </button>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </FilterDropdown>
+
+                  <FilterDropdown label="Mileage" active={state.maxMileage != null}>
+                    <RangeInput placeholder="Max mileage" suffix="mi" value={state.maxMileage} onChange={(n) => setState((st) => ({ ...st, maxMileage: n }))} />
+                  </FilterDropdown>
+
+                  <FilterDropdown label="Transmission" active={state.transmissions.length > 0} wide>
+                    <ul className="flex flex-wrap gap-2">
+                      {TRANSMISSIONS.map((t) => (
+                        <li key={t}>
+                          <ChipButton active={state.transmissions.includes(t)} onClick={() => toggleTrans(t)}>
+                            {t}
+                          </ChipButton>
+                        </li>
                       ))}
-                    </select>
-                  </SelectShell>
-                </label>
+                    </ul>
+                  </FilterDropdown>
+
+                  <FilterDropdown label="Drivetrain" active={state.drivetrains.length > 0} wide>
+                    <ul className="flex flex-wrap gap-2">
+                      {DRIVETRAINS.map((d) => (
+                        <li key={d}>
+                          <ChipButton active={state.drivetrains.includes(d)} onClick={() => toggleDrive(d)}>
+                            {d}
+                          </ChipButton>
+                        </li>
+                      ))}
+                    </ul>
+                  </FilterDropdown>
+
+                    {/* No Reset here. There was one in this row and another in
+                        the tag row below — two controls doing one job, which
+                        TASTE.md's device budget says to solve by strengthening
+                        one and deleting the other. The one that survives lives
+                        with the tags, because that is where a person looks when
+                        they want to undo what they set. */}
+                  </div>
+                </div>
               </div>
 
-              {moreOpen && (
-                <div className="mt-8 space-y-8 border-t border-border pt-8">
-                  {filterFields}
+              {(drawerCount > 0 || activeMake || state.model || state.year != null) && (
+                <div className="mt-5 flex flex-wrap items-center gap-2 border-t border-white/10 pt-5">
+                  {activeTags}
                 </div>
               )}
-
-              <div className="mt-7 flex items-center justify-between gap-4 border-t border-border pt-5">
-                <button
-                  type="button"
-                  onClick={() => setMoreOpen((v) => !v)}
-                  aria-expanded={moreOpen}
-                  className="group inline-flex items-center gap-2 font-accent text-[0.8125rem] uppercase tracking-[0.14em] text-text-1 transition-colors hover:text-mark-soft"
-                >
-                  {moreOpen ? "Fewer options" : "More search options"}
-                  <ChevronDown
-                    size={15}
-                    strokeWidth={1.75}
-                    className={cn(
-                      "transition-transform duration-300",
-                      moreOpen && "rotate-180",
-                    )}
-                  />
-                </button>
-
-                {(drawerCount > 0 || activeMake || state.q) && (
-                  <button
-                    type="button"
-                    onClick={reset}
-                    className="shrink-0 font-accent text-[0.8125rem] uppercase tracking-[0.14em] text-text-3 transition-colors hover:text-text-1"
-                  >
-                    Reset
-                  </button>
-                )}
-              </div>
-              </div>
             </div>
-          </aside>
+          </div>
 
-          <div className="lg:col-span-9">
+          <div className="lg:col-span-12">
             {/* One quiet line above the catalogue: how many, and in what order. */}
             <div className="mb-10 hidden items-center justify-between gap-6 border-b border-border pb-4 lg:flex">
               <span className="font-accent text-[0.8125rem] uppercase tracking-[0.16em] text-text-3 tabular-nums">
@@ -823,10 +1029,12 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
           // No scroll-reveal here: the inventory grid is the page's primary
           // content and must paint in full on load — no opacity gating that
           // could leave cards blank on a slow/interrupted connection.
-          // Two across, not three, and the gap is air rather than a gutter
-          // between cards. See the "lot" variant in this fork's VehicleCard for
-          // why the whole page changed register.
-          <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-x-12 lg:gap-y-20">
+          // Three across. It was two while the filters stood in a rail down the
+          // side and the catalogue only had nine columns; with the filters in a
+          // bar across the top the page gives all twelve back, and three lots
+          // at this width are still larger than the four-column grid this
+          // replaced.
+          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8 lg:gap-y-16">
             {filtered.map((v, i) => (
               <VehicleCard key={v.slug} vehicle={v} variant="lot" priority={i < 2} />
             ))}
@@ -943,7 +1151,10 @@ function ActiveChip({ label, onRemove }: { label: string; onRemove: () => void }
     <button
       type="button"
       onClick={onRemove}
-      className="inline-flex rounded-pill items-center gap-2 text-[0.7rem] font-accent uppercase tracking-[0.08em] text-accent bg-accent-soft border border-accent/40 px-3 py-1.5 hover:bg-accent hover:text-bg transition-colors"
+      // The tag carries the accent because the tag is the state — what the
+      // catalogue is currently showing. Reset beside it stays neutral: it is
+      // the way out, not the thing to invite. Accent as a setting, not a flood.
+      className="group inline-flex items-center gap-2 rounded-pill border border-mark-soft/40 bg-mark-soft/10 px-3.5 py-1.5 font-accent text-[0.75rem] uppercase tracking-[0.12em] text-mark-soft transition-colors hover:border-mark-soft/70 hover:bg-mark-soft/20"
     >
       {label}
       <X size={12} strokeWidth={1.5} />
@@ -987,7 +1198,7 @@ function FilterGroup({
     <div>
       {/* In the accent, like every field label on the site — it is the one
           part of a control panel a person scans rather than reads. */}
-      <h4 className="mb-4 font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
+      <h4 className="mb-3 font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
         {label}
       </h4>
       {children}

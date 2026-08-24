@@ -181,7 +181,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
                       {...register("message")}
                       rows={4}
                       defaultValue={`Hello — I'd like to learn more about the ${vehicle.year} ${vehicle.make} ${vehicle.model}.`}
-                      className={`${inputCls} resize-none`}
+                      className={`${inputCls()} min-h-[9rem] resize-y leading-relaxed`}
                     />
                   </Field>
                   <Button

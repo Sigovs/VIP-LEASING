@@ -228,7 +228,7 @@ export function SellForm() {
             />
           </Field>
           <Field label="Anything else" className="md:col-span-2">
-            <textarea {...register("notes")} rows={3} className={`${inputCls} resize-none`} />
+            <textarea {...register("notes")} rows={3} className={`${inputCls()} min-h-[9rem] resize-y leading-relaxed`} />
           </Field>
         </div>
       </div>

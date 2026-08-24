@@ -449,3 +449,18 @@ html.lenis body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* The inquiry panel's entrance. Two frames, not a production: the ground fades
+   and the panel rises a few pixels into place. A dialog that asks four
+   questions should not announce itself like a page transition — and under
+   prefers-reduced-motion neither animation runs at all, because motion-safe:
+   is what applies them. */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(6px) scale(0.995); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

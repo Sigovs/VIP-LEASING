@@ -58,20 +58,12 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
 
   return (
     <>
-      {/* Floating CTA — desktop pill, mobile sticky bar */}
-      <div className="fixed bottom-6 right-6 z-40 hidden md:block">
-        <Button
-          variant="accent"
-          size="lg"
-          onClick={() => {
-            setSent(false);
-            setOpen(true);
-          }}
-          withArrow
-        >
-          Inquire
-        </Button>
-      </div>
+      {/* The desktop floating pill stood here and is gone. It existed because
+          the buy panel scrolled away at the top of the page; the panel is a
+          sticky rail now, so Inquire is on screen the whole way down and a
+          second copy of it hovering in the corner is one ask too many.
+
+          The mobile bar below stays — there is no rail at 390px. */}
       <div className="fixed inset-x-0 bottom-0 z-40 md:hidden border-t border-border bg-bg/95 backdrop-blur-md px-6 py-3 flex items-center justify-between gap-4">
         <p className="font-accent text-xs uppercase tracking-[0.18em] text-text-2">
           {formatPrice(vehicle.price)}
@@ -94,16 +86,26 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
           role="dialog"
           aria-modal="true"
           aria-label="Inquire about this vehicle"
-          className="fixed inset-0 z-[60] flex"
+          className="fixed inset-0 z-[60] flex items-center justify-center p-4 md:p-8"
         >
+          {/* A panel in the middle, not a drawer swung in from the edge.
+              A full-height sheet arriving from the side is a big gesture for
+              "tell us your name" — it takes the whole screen to ask four
+              questions. Centred and sized to its content, it reads as a
+              question rather than a departure.
+
+              Both halves fade; the panel also rises a little and settles.
+              Slower and gentler than the first pass — 520ms on a long ease-out
+              with 6px of travel, where it was 300ms and 12px and still landed
+              with a bump. A dialog should appear to have been there. */}
           <button
             type="button"
             aria-label="Close inquiry"
-            className="flex-1 bg-bg/70 backdrop-blur-sm"
             onClick={() => setOpen(false)}
+            className="absolute inset-0 bg-bg/80 backdrop-blur-sm motion-safe:animate-[fadeIn_420ms_ease-out]"
           />
-          <div className="w-full max-w-md bg-bg border-l border-border overflow-y-auto">
-            <div className="flex items-center justify-between px-8 py-6 border-b border-border">
+          <div className="relative max-h-full w-full max-w-lg overflow-y-auto rounded-md border border-border bg-bg shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] motion-safe:animate-[panelIn_520ms_cubic-bezier(0.16,1,0.3,1)]">
+            <div className="flex items-center justify-between border-b border-border px-8 py-6">
               <p className="font-accent text-xs uppercase tracking-[0.22em] text-text-3">
                 Inquire
               </p>
@@ -181,7 +183,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
                       {...register("message")}
                       rows={4}
                       defaultValue={`Hello — I'd like to learn more about the ${vehicle.year} ${vehicle.make} ${vehicle.model}.`}
-                      className={`${inputCls} resize-none`}
+                      className={`${inputCls()} min-h-[9rem] resize-y leading-relaxed`}
                     />
                   </Field>
                   <Button

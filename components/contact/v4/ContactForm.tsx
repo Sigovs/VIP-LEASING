@@ -95,7 +95,7 @@ export function ContactForm({
             <span className={labelCls}>
               Message
             </span>
-            <textarea {...register("message")} rows={5} className={`${inputCls} resize-none`} />
+            <textarea {...register("message")} rows={5} className={`${inputCls()} min-h-[9rem] resize-y leading-relaxed`} />
             {errors.message && (
               <span className="block mt-1.5 font-accent text-[0.7rem] uppercase tracking-[0.16em] text-text-2">
                 {errors.message.message}

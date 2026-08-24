@@ -118,17 +118,50 @@ export function VehicleCard({
               className="object-cover transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]"
             />
             {vehicle.isSold && (
-              <span className="absolute left-4 top-4 rounded-pill bg-signal px-3 py-1.5 font-accent text-[0.75rem] uppercase tracking-[0.24em] text-white">
+              <span className="absolute left-4 top-4 z-10 rounded-pill bg-signal px-3 py-1.5 font-accent text-[0.75rem] uppercase tracking-[0.24em] text-white">
                 Sold
               </span>
             )}
+
+            {/* Hover: the frame darkens and the action rises into the middle of
+                it. Two halves of one gesture — the scrim is what the label is
+                read against, so they share a duration and arrive together.
+
+                pointer-events-none throughout: the whole card is already the
+                link, and a button inside a link is a second target for the same
+                destination. This says what a click does; it is not the thing
+                that does it.
+
+                Reduced motion keeps the change and drops the travel: the label
+                still appears, it simply does not slide.
+
+                The transition names `translate`, not `transform`. Tailwind v4
+                compiles translate-y-* to the standalone `translate` property,
+                so a transition on `transform` animates nothing — the label was
+                appearing at its destination rather than travelling to it. */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-chrome-bg/0 transition-colors duration-500 group-hover:bg-chrome-bg/55"
+            />
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 flex items-center justify-center"
+            >
+              <span className="translate-y-8 rounded-pill border border-white/40 bg-white/[0.08] px-8 py-3.5 font-accent text-[0.75rem] uppercase tracking-[0.22em] text-white opacity-0 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-[translate,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none">
+                View Details
+              </span>
+            </div>
           </div>
 
           <div className="mt-6">
             {/* Name and price share a baseline. The price never wraps and never
                 shrinks — it is the one number on the card a buyer scans for. */}
             <div className="flex items-baseline justify-between gap-6">
-              <h3 className="font-title text-[1.6rem] font-bold leading-[1.1] tracking-[-0.015em] text-text-1 transition-colors group-hover:text-accent xl:text-[1.75rem]">
+              {/* Two lines' worth of height whether the name needs them or
+                  not. At three across some names wrap and some do not, and
+                  without a floor the pills and the colour plate under them sit
+                  at three different heights across one row. */}
+              <h3 className="font-title text-[1.5rem] font-bold leading-[1.15] tracking-[-0.015em] text-text-1 transition-colors group-hover:text-accent lg:min-h-[3.45rem] xl:text-[1.6rem]">
                 {fullName}
               </h3>
               <span className="shrink-0 tabular-nums text-lg font-semibold text-text-1 xl:text-xl">

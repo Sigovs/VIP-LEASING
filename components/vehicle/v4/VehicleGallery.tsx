@@ -1,15 +1,25 @@
 "use client";
 
-import { useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
-import { ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-// Horizontal scroll-snap gallery with varying aspect ratios for cinematic pacing.
+// One large frame with a strip of thumbnails under it.
 //
-// Drag to scroll. A horizontal rail that can only be moved with a trackpad gesture
-// or a scrollbar is a rail most desktop visitors never move — they see the first
-// two frames and leave. Grabbing it is the obvious thing to try, so it should work.
+// This has been three things. It began as a horizontal drag rail — the main
+// evidence about a car behind a gesture most desktop visitors never make. Then
+// it became a full-width stack in the reading column, which reached the
+// opposite fault: eight enormous frames in a row, each one pushing the specs
+// further down the page, none of them chosen.
+//
+// A main frame with thumbs is what a vehicle page has always wanted. The car is
+// large, the rest is available at a glance, and picking one costs a click
+// rather than a scroll. The strip scrolls sideways only when it has to.
+//
+// Empty slots are still slots, not filler: every gallery in the demo data holds
+// one image, so the rest say what they are (see the padding note below).
+
 export function VehicleGallery({
   images,
   alt,
@@ -17,148 +27,110 @@ export function VehicleGallery({
 }: {
   images: string[];
   alt: string;
-  /** Pad the rail out to this many frames with empty slots. Every car in the
-   *  demo data holds a single photograph, so the gallery was a rail with one
-   *  thing on it and nothing to scroll — you could not tell the component
-   *  worked, let alone judge it.
-   *
-   *  The slots are EMPTY ON PURPOSE. The obvious shortcut was to borrow
-   *  photographs of other cars sitting unused in /public/ilusso — an SVJ, a
-   *  Ford GT, a Revuelto — and drop them into whichever gallery needed filling.
-   *  That is putting one marque's car under another's name, which is the exact
-   *  fault DESIGN.md §9b was written about after it cost us a Carrera GT.
-   *  Cropping the car's own frame was the other candidate and the source is
-   *  767x512, so six crops of it would be six soft rectangles.
-   *
-   *  An empty slot says the true thing instead: this is where a photograph
-   *  goes, and the client owes us one. Set it to 0 to switch the padding off,
-   *  and it disappears on its own as real galleries arrive. */
+  /** Pad out to this many frames with empty slots. They are EMPTY on purpose —
+   *  borrowing another car's photograph to fill a gallery is the fault
+   *  DESIGN.md §9b exists to prevent. Disappears on its own once real galleries
+   *  arrive. */
   minFrames?: number;
 }) {
-  // Real frames first, then empty slots up to minFrames. null is a slot.
   const slots: (string | null)[] = [
     ...images,
     ...Array.from({ length: Math.max(0, minFrames - images.length) }, () => null),
   ];
+  const [active, setActive] = useState(0);
+  const current = slots[active] ?? null;
 
-  const ratios = ["aspect-[4/3]", "aspect-[16/10]", "aspect-[3/2]", "aspect-[2/3]", "aspect-[16/9]", "aspect-[1/1]"];
-
-  const rail = useRef<HTMLDivElement>(null);
-  const track = useRef<HTMLDivElement>(null);
-  const drag = useRef({ active: false, startX: 0, startScroll: 0, moved: 0 });
-
-  const onPointerDown = (e: React.PointerEvent) => {
-    // Touch already drags natively; hijacking it only breaks momentum scrolling.
-    if (e.pointerType === "touch") return;
-    const el = rail.current;
-    if (!el) return;
-    drag.current = {
-      active: true,
-      startX: e.clientX,
-      startScroll: el.scrollLeft,
-      moved: 0,
-    };
-    el.setPointerCapture(e.pointerId);
-    el.style.cursor = "grabbing";
-    // Snap fights the drag: the rail keeps yanking itself back to the nearest
-    // frame mid-gesture. Off while the hand is down, back on when it lifts — so
-    // a flick still settles on a frame, but a drag goes where it is taken.
-    if (track.current) track.current.style.scrollSnapType = "none";
-  };
-
-  const onPointerMove = (e: React.PointerEvent) => {
-    const d = drag.current;
-    const el = rail.current;
-    if (!d.active || !el) return;
-    const dx = e.clientX - d.startX;
-    d.moved = Math.max(d.moved, Math.abs(dx));
-    el.scrollLeft = d.startScroll - dx;
-  };
-
-  const endDrag = (e: React.PointerEvent) => {
-    const el = rail.current;
-    if (!el || !drag.current.active) return;
-    drag.current.active = false;
-    el.releasePointerCapture?.(e.pointerId);
-    el.style.cursor = "";
-    if (track.current) track.current.style.scrollSnapType = "";
-  };
-
-  // A drag that ends over a frame must not also count as a click on it.
-  const onClickCapture = (e: React.MouseEvent) => {
-    if (drag.current.moved > 6) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-  };
+  const step = (d: number) =>
+    setActive((i) => (i + d + slots.length) % slots.length);
 
   return (
-    <div
-      ref={rail}
-      className="scroll-gallery -mx-6 cursor-grab overflow-x-auto select-none md:-mx-12"
-      data-lenis-prevent
-      onPointerDown={onPointerDown}
-      onPointerMove={onPointerMove}
-      onPointerUp={endDrag}
-      onPointerCancel={endDrag}
-      onClickCapture={onClickCapture}
-    >
-      <div
-        ref={track}
-        className="flex snap-x snap-mandatory gap-4 px-6 md:gap-6 md:px-12"
-      >
-        {slots.map((src, i) => {
-          const ratio = ratios[i % ratios.length];
-          const isTall = ratio === "aspect-[2/3]";
-          const frameCls = cn(
-            "relative shrink-0 snap-start overflow-hidden bg-paper",
-            ratio,
-            isTall ? "h-[70vh] max-h-[760px]" : "h-[60vh] max-h-[640px]"
-          );
+    <div>
+      {/* The main frame */}
+      <div className="group relative aspect-[3/2] w-full overflow-hidden rounded-md bg-paper">
+        {current ? (
+          <Image
+            key={current}
+            src={current}
+            alt={`${alt} — image ${active + 1}`}
+            fill
+            sizes="(min-width: 1024px) 62vw, 100vw"
+            priority={active === 0}
+            className="object-cover"
+          />
+        ) : (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center ring-1 ring-inset ring-white/[0.07]">
+            <ImageIcon className="h-8 w-8 text-text-3/60" strokeWidth={1.25} aria-hidden />
+            <p className="font-accent text-[0.8125rem] uppercase tracking-[0.22em] text-text-3">
+              Frame {String(active + 1).padStart(2, "0")}
+            </p>
+            <p className="max-w-[24ch] text-sm leading-relaxed text-text-3">
+              Awaiting photography
+            </p>
+          </div>
+        )}
 
-          if (!src) {
-            return (
-              <div
-                key={`slot-${i}`}
-                className={cn(frameCls, "ring-1 ring-inset ring-white/[0.07]")}
-              >
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-                  <ImageIcon
-                    className="h-7 w-7 text-text-3/60"
-                    strokeWidth={1.25}
-                    aria-hidden
-                  />
-                  <p className="font-accent text-[0.8125rem] uppercase tracking-[0.22em] text-text-3">
-                    Frame {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <p className="max-w-[24ch] text-sm leading-relaxed text-text-3">
-                    Awaiting photography
-                  </p>
-                </div>
-              </div>
-            );
-          }
-
-          return (
-            <div
-              key={src + i}
-              className={frameCls}
-              style={{ width: "auto" }}
+        {slots.length > 1 && (
+          <>
+            {/* Arrows appear on hover — on a frame this size the thumbs below
+                are the primary control, and two permanent chevrons over the car
+                are furniture the photograph does not need. */}
+            <button
+              type="button"
+              aria-label="Previous image"
+              onClick={() => step(-1)}
+              className="absolute left-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-pill border border-white/25 bg-black/45 text-white opacity-0 backdrop-blur-md transition-opacity duration-300 hover:bg-black/70 focus-visible:opacity-100 group-hover:opacity-100"
             >
-              <Image
-                src={src}
-                alt={`${alt} — image ${i + 1}`}
-                fill
-                sizes="80vw"
-                // The browser's native image-drag would start a ghost drag the
-                // moment the pointer moves, and the rail would never see it.
-                draggable={false}
-                className="pointer-events-none object-cover"
-              />
-            </div>
-          );
-        })}
+              <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
+            </button>
+            <button
+              type="button"
+              aria-label="Next image"
+              onClick={() => step(1)}
+              className="absolute right-4 top-1/2 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-pill border border-white/25 bg-black/45 text-white opacity-0 backdrop-blur-md transition-opacity duration-300 hover:bg-black/70 focus-visible:opacity-100 group-hover:opacity-100"
+            >
+              <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
+            </button>
+
+            <span className="absolute bottom-4 right-4 rounded-pill bg-black/55 px-3 py-1.5 font-accent text-[0.75rem] tabular-nums tracking-[0.14em] text-white backdrop-blur-md">
+              {String(active + 1).padStart(2, "0")} / {String(slots.length).padStart(2, "0")}
+            </span>
+          </>
+        )}
       </div>
+
+      {/* The strip */}
+      <ul className="no-scrollbar mt-3 flex gap-3 overflow-x-auto md:mt-4">
+        {slots.map((src, i) => (
+          <li key={(src ?? "slot") + i} className="shrink-0">
+            <button
+              type="button"
+              onClick={() => setActive(i)}
+              aria-label={`Show image ${i + 1}`}
+              aria-current={i === active}
+              className={cn(
+                "relative block h-16 w-24 overflow-hidden rounded-md bg-paper transition-[opacity,box-shadow] duration-300 md:h-20 md:w-32",
+                i === active
+                  ? "opacity-100 ring-2 ring-inset ring-mark-soft"
+                  : "opacity-55 ring-1 ring-inset ring-white/[0.10] hover:opacity-90"
+              )}
+            >
+              {src ? (
+                <Image
+                  src={src}
+                  alt=""
+                  fill
+                  sizes="128px"
+                  className="object-cover"
+                />
+              ) : (
+                <span className="absolute inset-0 grid place-items-center">
+                  <ImageIcon className="h-4 w-4 text-text-3/60" strokeWidth={1.25} aria-hidden />
+                </span>
+              )}
+            </button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

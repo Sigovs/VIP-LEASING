@@ -172,15 +172,15 @@
     "acquiredDate": "2026-02-20"
   },
   {
-    "slug": "2021-ferrari-f8-tributo",
+    "slug": "2021-ferrari-f8-spider",
     "year": 2021,
     "make": "Ferrari",
-    "model": "F8 Tributo",
+    "model": "F8 Spider",
     "trim": "Carbon Package",
     "price": 329000,
     "mileage": 4120,
-    "exteriorColor": "Azzurro Dino",
-    "interiorColor": "Cuoio with Blue Stitching",
+    "exteriorColor": "Bianco Italia",
+    "interiorColor": "Rosso with Black Stitching",
     "vin": "ZFF92LLA7M0264XXX",
     "transmission": "7-Speed F1 DCT",
     "drivetrain": "Rear-Wheel Drive",
@@ -249,9 +249,15 @@
       }
     ],
     "story": "The last of the line — the final Ferrari to use the twin-turbo V8 that won International Engine of the Year four times running, before hybridisation changed the recipe for good. Finished in Azzurro Dino over Cuoio, which is the sort of spec you order when you have owned several and stopped ordering red.",
-    "heroImage": "/ilusso/ferrari-f8.jpg",
+    "heroImage": "/ilusso/f8/1.jpg",
     "gallery": [
-      "/ilusso/ferrari-f8.jpg"
+      "/ilusso/f8/1.jpg",
+      "/ilusso/f8/2.jpg",
+      "/ilusso/f8/3.jpg",
+      "/ilusso/f8/4.jpg",
+      "/ilusso/f8/5.jpg",
+      "/ilusso/f8/6.jpg",
+      "/ilusso/f8/7.jpg"
     ],
     "isSold": false,
     "isFeatured": true,
@@ -417,9 +423,16 @@
       }
     ],
     "story": "Forty-seven kilos lighter than the standard Urus, twenty millimetres lower, and fitted with a titanium exhaust that makes a two-and-a-half tonne SUV sound like it has a grudge. Nero Noctis over Nero Ade with red stitching — and it still holds the production SUV record at Pikes Peak.",
-    "heroImage": "/ilusso/urus-performante.jpg",
+    "heroImage": "/ilusso/urus/1.jpg",
     "gallery": [
-      "/ilusso/urus-performante.jpg"
+      "/ilusso/urus/1.jpg",
+      "/ilusso/urus/2.jpg",
+      "/ilusso/urus/3.jpg",
+      "/ilusso/urus/4.jpg",
+      "/ilusso/urus/5.jpg",
+      "/ilusso/urus/6.jpg",
+      "/ilusso/urus/7.jpg",
+      "/ilusso/urus/8.jpg"
     ],
     "isSold": false,
     "isFeatured": true,

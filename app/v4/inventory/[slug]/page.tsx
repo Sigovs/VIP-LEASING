@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Container } from "@/components/ui/Container";
 import { Section } from "@/components/ui/Section";
 import { ButtonLink } from "@/components/ui/Button";
 import { Reveal } from "@/components/motion/Reveal";
-import { VehicleHero } from "@/components/vehicle/v4/VehicleHero";
+import { VehicleBuyPanel } from "@/components/vehicle/v4/VehicleBuyPanel";
 import { VehicleGallery } from "@/components/vehicle/v4/VehicleGallery";
 import { SpecTable } from "@/components/vehicle/v4/SpecTable";
+import { PaymentEstimator } from "@/components/vehicle/v4/PaymentEstimator";
 import { OptionsList } from "@/components/vehicle/v4/OptionsList";
 import { InquireDrawer } from "@/components/vehicle/v4/InquireDrawer";
 import { InquireButton } from "@/components/vehicle/v4/InquireButton";
-import { DetailSubNav } from "@/components/vehicle/v4/DetailSubNav";
 import { VehicleCard } from "@/components/vehicle/v4/VehicleCard";
 import {
   getAllVehicles,
@@ -134,68 +135,87 @@ export default async function VehiclePage({ params }: Params) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <VehicleHero vehicle={vehicle} />
-      <DetailSubNav />
+      {/* Two columns, top to bottom: the car on the left, the panel that sells
+          it on the right, riding along.
 
-      {/* Overview — the written story + performance highlights */}
-      <Section id="overview" spacing="tight">
+          What this replaces is the reference build's opening — one hero image
+          beside a panel, a sticky sub-nav of tabs under it, and the sections in
+          a stack below. That arrangement is on every exotic dealer site there
+          is, and it is what made this page recognisable.
+
+          What it fixes, besides the resemblance: the panel used to scroll away
+          with the hero, so the page carried a floating Inquire button and a tab
+          rail to get you back to it. Both are gone — nothing to get back to
+          when the price never left. */}
+      <Section className="pt-24 md:pt-32" spacing="tight">
         <Container>
-          <Reveal>
-            <SectionEyebrow label="Overview" />
-          </Reveal>
+          <nav
+            aria-label="Breadcrumb"
+            className="mb-8 flex items-center gap-2 font-accent text-[0.75rem] uppercase tracking-[0.2em] text-text-3"
+          >
+            <Link href="/v4/inventory" className="transition-colors hover:text-accent">
+              Inventory
+            </Link>
+            <span aria-hidden>/</span>
+            <span className="truncate text-text-2">
+              {vehicle.year} {vehicle.make} {vehicle.model}
+            </span>
+          </nav>
+
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-7">
-              <p className="max-w-[56ch] text-lg md:text-xl leading-relaxed text-text-2">
-                {vehicle.story}
-              </p>
-            </Reveal>
-            <Reveal className="lg:col-span-5" delay={0.1}>
-              <dl className="border-t border-border">
-                {[
-                  ["Horsepower", `${formatNumber(vehicle.horsepower)} hp`],
-                  ["0–60 mph", `${vehicle.zeroToSixty.toFixed(1)} s`],
-                  ["Top speed", `${formatNumber(vehicle.topSpeed)} mph`],
-                ].map(([k, v]) => (
-                  <div
-                    key={k}
-                    className="flex items-baseline justify-between gap-6 border-b border-border py-4"
-                  >
-                    <dt className="font-accent text-[0.875rem] uppercase tracking-[0.16em] text-text-2">
-                      {k}
-                    </dt>
-                    <dd className="tabular-nums text-2xl md:text-[1.75rem] font-semibold tracking-[-0.01em] text-text-1">
-                      {v}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
-            </Reveal>
+            <div className="lg:col-span-8">
+              {/* The photographs are the spine. They used to be a horizontal
+                  drag rail buried as the fourth section — the main evidence
+                  about a car, behind a gesture most desktop visitors never
+                  make. Stacked in the reading column they are simply there. */}
+              <VehicleGallery
+                images={vehicle.gallery}
+                alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
+              />
+
+              <div className="mt-16 md:mt-20">
+                <SectionEyebrow label="Overview" />
+                <p className="max-w-[62ch] text-lg leading-relaxed text-text-2 md:text-xl">
+                  {vehicle.story}
+                </p>
+
+                <dl className="mt-12 grid grid-cols-1 gap-x-10 border-t border-border sm:grid-cols-3">
+                  {[
+                    ["Horsepower", `${formatNumber(vehicle.horsepower)} hp`],
+                    ["0–60 mph", `${vehicle.zeroToSixty.toFixed(1)} s`],
+                    ["Top speed", `${formatNumber(vehicle.topSpeed)} mph`],
+                  ].map(([k, v]) => (
+                    <div key={k} className="border-b border-border py-5">
+                      <dt className="font-accent text-[0.875rem] uppercase tracking-[0.16em] text-text-2">
+                        {k}
+                      </dt>
+                      <dd className="mt-2 text-2xl font-semibold tracking-[-0.01em] tabular-nums text-text-1 md:text-[1.75rem]">
+                        {v}
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <div className="mt-16 md:mt-20">
+                <SectionEyebrow label="Specifications" />
+                <SpecTable vehicle={vehicle} />
+              </div>
+
+              {/* The payment estimator, borrowed from Prestige and Vegas. It
+                  quotes nothing — see the header of PaymentEstimator. */}
+              {!vehicle.isSold && (
+                <div className="mt-16 md:mt-20">
+                  <SectionEyebrow label="Estimate a Payment" />
+                  <PaymentEstimator price={vehicle.price} />
+                </div>
+              )}
+            </div>
+
+            <div className="lg:col-span-4">
+              <VehicleBuyPanel vehicle={vehicle} />
+            </div>
           </div>
-        </Container>
-      </Section>
-
-      {/* Gallery */}
-      <Section id="gallery" spacing="tight">
-        <Container>
-          <Reveal>
-            <SectionEyebrow label="Gallery" />
-          </Reveal>
-        </Container>
-        <VehicleGallery
-          images={vehicle.gallery}
-          alt={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
-        />
-      </Section>
-
-      {/* Specifications */}
-      <Section id="specifications" spacing="tight">
-        <Container>
-          <Reveal>
-            <SectionEyebrow label="Specifications" />
-          </Reveal>
-          <Reveal>
-            <SpecTable vehicle={vehicle} />
-          </Reveal>
         </Container>
       </Section>
 
