@@ -69,13 +69,15 @@ export function VehicleCard({
   // catalogue does not need a button telling you it can be opened.
   if (isLot) {
     const carfax = carfaxReportUrl(vehicle);
-    const perfLine = [
+    // Facts as pills rather than one dot-separated line. Pills are this site's
+    // control idiom (DESIGN.md §3b — actions are soft), and three separate
+    // objects are read as three separate facts, where a run of text joined by
+    // interpuncts is read as one sentence and skimmed as one.
+    const facts = [
       formatMileage(vehicle.mileage),
       shortDrivetrain(vehicle.drivetrain),
       vehicle.horsepower ? `${vehicle.horsepower} hp` : null,
-    ]
-      .filter(Boolean)
-      .join("  ·  ");
+    ].filter(Boolean) as string[];
 
     return (
       <article className="group relative">
@@ -138,9 +140,16 @@ export function VehicleCard({
               <p className="mt-1.5 text-sm text-text-2">{vehicle.trim}</p>
             )}
 
-            <p className="mt-4 font-accent text-[0.8125rem] uppercase tracking-[0.16em] text-text-3">
-              {perfLine}
-            </p>
+            <ul className="mt-5 flex flex-wrap gap-2">
+              {facts.map((f) => (
+                <li
+                  key={f}
+                  className="rounded-pill border border-border px-3.5 py-1.5 font-accent text-[0.75rem] uppercase tracking-[0.14em] text-text-2"
+                >
+                  {f}
+                </li>
+              ))}
+            </ul>
 
             {/* The plate. Colours get their own row each — on an exotic the
                 colour name is the spec the buyer came for, and it does not fit
