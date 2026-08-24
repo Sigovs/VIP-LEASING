@@ -7,7 +7,8 @@ import { InquireButton } from "@/components/vehicle/InquireButton";
 import { SHOWROOM } from "@/lib/showroom";
 import { carfaxReportUrl } from "@/lib/vehicles";
 import { formatMileage, formatPrice } from "@/lib/utils";
-import { FileText, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import { asset } from "@/lib/asset";
 
 // Product top: a large primary image beside a buy-panel (title, price, the key
 // specs a buyer scans, and the Inquire/Call CTAs). Exotics-Hunter density at our
@@ -118,12 +119,16 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
                 rel="noopener noreferrer"
                 className="group mt-5 inline-flex items-center gap-2.5 border-b border-border pb-4 font-accent text-[0.72rem] uppercase tracking-[0.2em] text-text-2 transition-colors hover:text-text-1"
               >
-                <FileText
-                  className="h-4 w-4 shrink-0 transition-colors group-hover:text-mark"
-                  strokeWidth={1.5}
-                  aria-hidden
+                {/* Same cropped wordmark as the listing chip — the tagline
+                    under the full lockup needs about 40px of height to be
+                    words rather than mud, and nothing here is that tall. */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={asset("/brands/carfax.svg")}
+                  alt="Carfax"
+                  className="block h-[18px] w-auto"
                 />
-                Carfax report
+                <span>report</span>
                 <ArrowUpRight
                   className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
                   strokeWidth={1.75}

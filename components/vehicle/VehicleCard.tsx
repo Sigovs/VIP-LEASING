@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette, FileText, ArrowUpRight } from "lucide-react";
+import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette, ArrowUpRight } from "lucide-react";
 import type { Vehicle } from "@/types/vehicle";
 import { formatMileage, formatPrice } from "@/lib/utils";
 import { carfaxReportUrl } from "@/lib/vehicles";
+import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 
 type Variant = "default" | "feature" | "compact" | "plate";
@@ -116,13 +117,22 @@ export function VehicleCard({
             href={carfax}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-3 top-3 z-10 inline-flex items-center gap-1.5 rounded-pill border border-white/20 bg-black/55 px-2.5 py-1.5 font-accent text-[0.6rem] uppercase tracking-[0.18em] text-white/85 backdrop-blur-md transition-colors hover:border-white/40 hover:bg-black/75 hover:text-white"
+            className="absolute right-3 top-3 z-10 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-black/55 px-2.5 py-1.5 text-white/85 backdrop-blur-md transition-colors hover:border-white/40 hover:bg-black/75 hover:text-white"
           >
-            <FileText className="h-3 w-3 shrink-0" strokeWidth={1.5} aria-hidden />
-            Carfax
+            {/* The real mark. Cropped to the boxed wordmark: the full lockup
+                carries "VEHICLE HISTORY REPORTS" under it, which at chip height
+                renders about three pixels tall and reads as grey mud rather
+                than as words. eslint-disable because next/image has nothing to
+                optimise on an SVG. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={asset("/brands/carfax.svg")}
+              alt="Carfax"
+              className="block h-[13px] w-auto"
+            />
             <ArrowUpRight className="h-3 w-3 shrink-0" strokeWidth={1.75} aria-hidden />
             <span className="sr-only">
-              report for this {fullName} (opens in a new tab)
+              vehicle history report for this {fullName} (opens in a new tab)
             </span>
           </a>
         )}
