@@ -127,10 +127,10 @@ export default function FinancingPage() {
 
             <Reveal delay={0.18} y={22}>
               <Link
-                href="/contact?intent=financing"
+                href="/financing/apply"
                 className="group mt-9 inline-flex rounded-pill h-14 w-fit items-center gap-3 border border-accent/50 px-9 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] text-accent-on-chrome transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-bg"
               >
-                Start the conversation
+                Start your application
                 <ChevronRight
                   className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                   strokeWidth={1.5}
@@ -217,10 +217,10 @@ export default function FinancingPage() {
                   like these, across all makes and models.
                 </p>
                 <Link
-                  href="/contact?intent=financing"
+                  href="/financing/apply"
                   className="group mt-7 inline-flex items-center gap-2 font-accent text-xs tracking-[0.18em] text-white transition-colors hover:text-accent-on-chrome"
                 >
-                  Start the conversation
+                  Start your application
                   <ChevronRight
                     className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                     strokeWidth={1.5}
@@ -362,10 +362,10 @@ export default function FinancingPage() {
             <Reveal delay={0.12} y={22}>
               <div className="mt-9 flex flex-col items-center gap-5 sm:flex-row">
                 <Link
-                  href="/contact?intent=financing"
+                  href="/financing/apply"
                   className="group inline-flex rounded-pill w-fit items-center gap-3.5 border border-white/25 bg-white/[0.06] px-8 py-4 font-accent text-[0.75rem] font-medium tracking-[0.22em] md:text-[0.8rem] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] backdrop-blur-md transition-colors duration-300 hover:bg-white/[0.12]"
                 >
-                  Start the conversation
+                  Start your application
                   <ChevronRight
                     className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                     strokeWidth={1.75}

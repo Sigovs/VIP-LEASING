@@ -140,6 +140,41 @@ Framer Motion is used in two places only — `PageTransition` and the inquire dr
 - In WP, wire each form to Gravity/Fluent Forms with email notifications to the sales team alias.
 - Vehicle inquiry form should auto-populate the vehicle slug + display name from the page context.
 
+### The credit application — read this before wiring it
+
+`/financing/apply` is a **mockup**. `CreditApplication.tsx` submits to a
+`console.log` like every other form here, and that is currently the only reason
+the page is safe to have published.
+
+**Two things must be true before it goes live:**
+
+1. **A real, encrypted transport.** The brief says "completed form can be sent
+   to sales@thevipleasing.com". That cannot be a `mailto:` or a form-to-email
+   relay. The form carries a date of birth, a home address history and income —
+   plain SMTP is not a channel for it. Post to an endpoint over TLS, store or
+   forward it somewhere access-controlled, and notify sales@ that something
+   arrived rather than mailing the contents.
+2. **sales@thevipleasing.com has to exist.** The client said it does not yet. It
+   lives in `lib/showroom.ts`; nothing else needs editing when it does.
+
+**No SSN field, deliberately.** A real application asks for one. This one asks
+for everything else and says so on the page: *"We never ask for a social
+security number on this page. If a lender needs one, they will ask you directly
+over their own secure channel."* A number typed into a preview that posts
+nowhere is a real SSN sitting in a real browser's autofill for nothing. If the
+lender flow genuinely needs it collected here, it comes after point 1, not
+before.
+
+**The Regulation B line is not decoration.** *"Alimony, child support, or
+separate maintenance income need not be revealed…"* sits under the income
+fields because an applicant may not be required to disclose it. Do not drop it
+in the port.
+
+**Nothing on the page may imply the house lends.** It arranges terms through
+outside lenders and makes no credit decision — no rates, no terms, no
+approvals. The authorization checkbox says so explicitly and must keep saying
+so.
+
 ## 6. Image handling
 
 - Dev uses Unsplash CDN URLs. AAN: replace with WP media library. The `next.config.ts` `remotePatterns` block can be deleted; the WP theme uses native `wp_get_attachment_image()`.

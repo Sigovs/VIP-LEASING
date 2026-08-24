@@ -34,7 +34,11 @@ export const SHOWROOM = {
   market: "Miami",
   phoneDisplay: "(305) 321-0349",
   phoneHref: "tel:+13053210349",
-  email: "thevipleasing@gmail.com",
+  // The client's address on 24 Aug 2026. It does not exist yet — they said so
+  // when they gave it — so nothing on the site will reach anyone until it is
+  // created. Everything that shows an email or posts a form reads this one
+  // constant, so the day it goes live there is nothing further to change.
+  email: "sales@thevipleasing.com",
   hours: [
     ["Mon – Fri", "10am – 7pm"],
     ["Saturday", "11am – 5pm"],
