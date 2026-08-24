@@ -7,7 +7,6 @@ import { InquireButton } from "@/components/vehicle/InquireButton";
 import { SHOWROOM } from "@/lib/showroom";
 import { carfaxReportUrl } from "@/lib/vehicles";
 import { formatMileage, formatPrice } from "@/lib/utils";
-import { ArrowUpRight } from "lucide-react";
 import { asset } from "@/lib/asset";
 
 // Product top: a large primary image beside a buy-panel (title, price, the key
@@ -117,24 +116,26 @@ export function VehicleHero({ vehicle }: { vehicle: Vehicle }) {
                 href={carfax}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group mt-5 inline-flex items-center gap-2.5 border-b border-border pb-4 font-accent text-[0.72rem] uppercase tracking-[0.2em] text-text-2 transition-colors hover:text-text-1"
+                className="mt-7 block w-fit transition-opacity duration-300 hover:opacity-80"
               >
-                {/* Same cropped wordmark as the listing chip — the tagline
-                    under the full lockup needs about 40px of height to be
-                    words rather than mud, and nothing here is that tall. */}
+                {/* The mark alone, at the size a buy panel gives it — no arrow,
+                    no label. It is the most recognised badge in the trade; a
+                    chevron beside it explains nothing and a word beside it
+                    repeats what the letters already say.
+
+                    No rule under it either. The link is w-fit, so a border on
+                    it ran 152px and stopped — a stub under a full-width spec
+                    list, which reads as a mistake rather than as a divider.
+                    The VIN row above already closes the list. */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={asset("/brands/carfax.svg")}
                   alt="Carfax"
-                  className="block h-[18px] w-auto"
+                  className="block h-9 w-auto"
                 />
-                <span>report</span>
-                <ArrowUpRight
-                  className="h-3.5 w-3.5 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-                  strokeWidth={1.75}
-                  aria-hidden
-                />
-                <span className="sr-only">(opens in a new tab)</span>
+                <span className="sr-only">
+                  vehicle history report (opens in a new tab)
+                </span>
               </a>
             )}
 

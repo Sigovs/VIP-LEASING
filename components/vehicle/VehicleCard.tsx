@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette, ArrowUpRight } from "lucide-react";
+import { ChevronRight, Armchair, Camera, Cog, Gauge, Palette } from "lucide-react";
 import type { Vehicle } from "@/types/vehicle";
 import { formatMileage, formatPrice } from "@/lib/utils";
 import { carfaxReportUrl } from "@/lib/vehicles";
@@ -117,20 +117,24 @@ export function VehicleCard({
             href={carfax}
             target="_blank"
             rel="noopener noreferrer"
-            className="absolute right-3 top-3 z-10 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-black/55 px-2.5 py-1.5 text-white/85 backdrop-blur-md transition-colors hover:border-white/40 hover:bg-black/75 hover:text-white"
+            className="absolute right-4 top-4 z-10 block transition-opacity duration-300 hover:opacity-80"
           >
-            {/* The real mark. Cropped to the boxed wordmark: the full lockup
-                carries "VEHICLE HISTORY REPORTS" under it, which at chip height
-                renders about three pixels tall and reads as grey mud rather
-                than as words. eslint-disable because next/image has nothing to
-                optimise on an SVG. */}
+            {/* No pill and no arrow. The mark is a known object — people
+                recognise it at a glance and do not need it introduced by a
+                chip or explained by an icon, and both were only ever there to
+                prop up a logo too small to carry itself.
+
+                Sized the way dealer listings actually size it: ~24px of height,
+                which is about 145px wide at this artwork's 6:1. The shadow does
+                what the pill was doing — the wordmark is black boxes with white
+                letters, and on a dark photograph the boxes have nothing to sit
+                against without it. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={asset("/brands/carfax.svg")}
               alt="Carfax"
-              className="block h-[13px] w-auto"
+              className="block h-6 w-auto [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.55))_drop-shadow(0_0_14px_rgba(0,0,0,0.45))]"
             />
-            <ArrowUpRight className="h-3 w-3 shrink-0" strokeWidth={1.75} aria-hidden />
             <span className="sr-only">
               vehicle history report for this {fullName} (opens in a new tab)
             </span>
