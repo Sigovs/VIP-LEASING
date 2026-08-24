@@ -4,6 +4,7 @@ import type { Vehicle } from "@/types/vehicle";
 import { Container } from "@/components/ui/Container";
 import { ButtonLink } from "@/components/ui/Button";
 import { InquireButton } from "@/components/vehicle/v4/InquireButton";
+import { VehicleActions } from "@/components/vehicle/v4/VehicleActions";
 import { SHOWROOM } from "@/lib/showroom";
 import { carfaxReportUrl } from "@/lib/vehicles";
 import { formatMileage, formatPrice } from "@/lib/utils";
@@ -129,7 +130,12 @@ export function VehicleBuyPanel({ vehicle }: { vehicle: Vehicle }) {
                 Call
               </ButtonLink>
             </div>
-          </aside>
+    
+        <VehicleActions
+          slug={vehicle.slug}
+          label={`${vehicle.year} ${vehicle.make} ${vehicle.model}`}
+        />
+      </aside>
     </div>
   );
 }

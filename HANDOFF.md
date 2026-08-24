@@ -175,6 +175,32 @@ outside lenders and makes no credit decision — no rates, no terms, no
 approvals. The authorization checkbox says so explicitly and must keep saying
 so.
 
+### Text to phone — the fourth form, and the only one that needs a vendor
+
+`VehicleActions.tsx` on the VDP offers **Save · Share · Text to phone**. Save is
+`localStorage` and Share is `navigator.share` / clipboard — both are real and
+need nothing. **Text to phone is the mockup:** it takes a mobile number, says
+"On its way", and posts nowhere.
+
+Making it real needs two things the other forms do not:
+
+1. **An SMS gateway** — Twilio, MessageBird, or whatever the dealer's CRM
+   already carries. A form-to-email relay cannot send a text.
+2. **A number the dealer owns and has registered.** US A2P 10DLC registration is
+   mandatory for application-to-person messaging; unregistered traffic is
+   filtered by the carriers, so the messages simply do not arrive and nothing
+   reports an error. Budget days, not minutes, for this.
+
+The message body is the vehicle's canonical URL and its name — nothing else.
+Add the STOP/HELP language the gateway requires; do not send a second message
+to a number that has not asked for one.
+
+**If the dealer will not carry a gateway, delete the control.** A button that
+collects a phone number and does nothing with it is worse than an absent
+feature — it takes a real number and gives back a promise. Removing it is one
+`<Action>` and one dialog block in `components/vehicle/v4/VehicleActions.tsx`;
+Save and Share are independent and stay.
+
 ## 6. Image handling
 
 - Dev uses Unsplash CDN URLs. AAN: replace with WP media library. The `next.config.ts` `remotePatterns` block can be deleted; the WP theme uses native `wp_get_attachment_image()`.

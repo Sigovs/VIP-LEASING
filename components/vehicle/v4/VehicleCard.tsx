@@ -4,6 +4,7 @@ import { ChevronRight, Armchair, Cog, Gauge, Palette } from "lucide-react";
 import type { Vehicle } from "@/types/vehicle";
 import { formatMileage, formatPrice } from "@/lib/utils";
 import { carfaxReportUrl } from "@/lib/vehicles";
+import { SaveButton } from "@/components/vehicle/v4/SaveButton";
 import { asset } from "@/lib/asset";
 import { cn } from "@/lib/utils";
 
@@ -81,6 +82,17 @@ export function VehicleCard({
 
     return (
       <article className="group relative">
+        {/* Save sits opposite Carfax, and outside the card's link for the same
+            reason: a button inside an anchor is invalid and unreachable by
+            keyboard in the right order. */}
+        {!vehicle.isSold && (
+          <SaveButton
+            slug={vehicle.slug}
+            label={fullName}
+            className="absolute left-4 top-4 z-10 rounded-pill border border-white/25 backdrop-blur-md"
+          />
+        )}
+
         {carfax && (
           <a
             href={carfax}
