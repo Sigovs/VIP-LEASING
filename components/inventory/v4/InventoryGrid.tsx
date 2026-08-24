@@ -160,6 +160,13 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
     parseParams(new URLSearchParams(searchParams.toString()))
   );
   const [filtersOpen, setFiltersOpen] = useState(false);
+  // The rail was taller than the first two lots put together. Search and marque
+  // answer most of it; the rest folds away. Opens by itself when one of the
+  // folded filters is already set, so a filter can never be active and hidden
+  // at the same time.
+  const [moreOpen, setMoreOpen] = useState(
+    () => countDrawerFilters(parseParams(new URLSearchParams(searchParams.toString()))) > 0,
+  );
   const [sortOpen, setSortOpen] = useState(false);
   const sortRef = useRef<HTMLDivElement>(null);
   const drawerCloseRef = useRef<HTMLButtonElement>(null);
@@ -606,10 +613,14 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
               what it costs, then the rest. Nothing is hidden behind a button. */}
           <aside className="hidden lg:col-span-3 lg:block">
             <div className="lg:sticky lg:top-28">
+              {/* A panel, not a bare column. Contained, it reads as one
+                  instrument standing beside the catalogue rather than as loose
+                  controls floating next to it. */}
+              <div className="rounded-md border border-border bg-surface p-6">
               {searchField}
 
-              <nav aria-label="Filter by make" className="mt-9">
-                <p className="border-b border-border pb-3 font-accent text-[0.8125rem] uppercase tracking-[0.24em] text-text-1">
+              <nav aria-label="Filter by make" className="mt-8">
+                <p className="mb-4 font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
                   Marque
                 </p>
                 <ul className="mt-4 space-y-1">
@@ -634,17 +645,41 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
                 </ul>
               </nav>
 
-              <div className="mt-10 space-y-10">
-                {filterFields}
-              </div>
+              {moreOpen && (
+                <div className="mt-8 space-y-8 border-t border-border pt-8">
+                  {filterFields}
+                </div>
+              )}
 
-              <button
-                type="button"
-                onClick={reset}
-                className="mt-10 font-accent text-[0.8125rem] uppercase tracking-[0.16em] text-text-3 transition-colors hover:text-text-1"
-              >
-                Reset all
-              </button>
+              <div className="mt-7 flex items-center justify-between gap-4 border-t border-border pt-5">
+                <button
+                  type="button"
+                  onClick={() => setMoreOpen((v) => !v)}
+                  aria-expanded={moreOpen}
+                  className="group inline-flex items-center gap-2 font-accent text-[0.8125rem] uppercase tracking-[0.14em] text-text-1 transition-colors hover:text-mark-soft"
+                >
+                  {moreOpen ? "Fewer options" : "More search options"}
+                  <ChevronDown
+                    size={15}
+                    strokeWidth={1.75}
+                    className={cn(
+                      "transition-transform duration-300",
+                      moreOpen && "rotate-180",
+                    )}
+                  />
+                </button>
+
+                {(drawerCount > 0 || activeMake || state.q) && (
+                  <button
+                    type="button"
+                    onClick={reset}
+                    className="shrink-0 font-accent text-[0.8125rem] uppercase tracking-[0.14em] text-text-3 transition-colors hover:text-text-1"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+              </div>
             </div>
           </aside>
 
@@ -871,7 +906,9 @@ function FilterGroup({
 }) {
   return (
     <div>
-      <h4 className="text-[0.72rem] font-semibold font-accent uppercase tracking-[0.06em] text-text-2 mb-5">
+      {/* In the accent, like every field label on the site — it is the one
+          part of a control panel a person scans rather than reads. */}
+      <h4 className="mb-4 font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
         {label}
       </h4>
       {children}
