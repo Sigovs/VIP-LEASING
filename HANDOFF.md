@@ -92,6 +92,12 @@ the current US corporate wordmark, taken from what carfax.com serves in its own
 header, pointing at the public VIN lookup. That is a defensible placeholder and
 it is not the finished thing:
 
+0. **The file itself is fine to hold.** Wikimedia Commons carries the same
+   generation of the mark under **PD-textlogo** — simple shapes, below the
+   threshold of copyright — which settles any question about shipping the SVG.
+   It settles nothing about *using* it; that is trademark, and the points below
+   still stand. The Commons copy also has no ®, which is why the file here comes
+   from carfax.com's own header instead.
 1. **The badge should come from the dealer portal**, not from us. US dealers are
    issued their own assets — "SHOW ME THE CARFAX" and per-vehicle badges — and
    the mark is licensed to subscribers. `carfaxonline.com` /
