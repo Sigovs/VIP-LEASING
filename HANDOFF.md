@@ -87,6 +87,29 @@ doing here except entering true VINs.
 Active inventory only, per the client: a history report is read on the way to
 a decision, and there is nothing left to decide on a car that has gone.
 
+**⚠️ NEEDED FROM THE CLIENT — their CARFAX dealer account.** What ships today is
+the current US corporate wordmark, taken from what carfax.com serves in its own
+header, pointing at the public VIN lookup. That is a defensible placeholder and
+it is not the finished thing:
+
+1. **The badge should come from the dealer portal**, not from us. US dealers are
+   issued their own assets — "SHOW ME THE CARFAX" and per-vehicle badges — and
+   the mark is licensed to subscribers. `carfaxonline.com` /
+   `carfaxfordealers.com` is where they live; both are behind a login, so the
+   usage guide could not be read from outside and the rules below are inference,
+   not quotation.
+2. **The link should be the dealer's own report URL**, not the public
+   `Report.cfx?vin=` lookup. A subscriber's link opens the report they have paid
+   for; ours opens a sales page.
+3. **Per-vehicle badges are per-vehicle.** "CARFAX 1-Owner" and "No Accidents
+   Reported" are findings about one car, from that car's report. Several of the
+   SVGs sitting in other projects on this machine carry those panels baked in —
+   using one of those across an inventory asserts things nobody has checked.
+   Only the plain wordmark is safe to apply uniformly.
+
+Until the account exists, leave it as it is. Everything above is a swap of one
+file and one URL builder (`carfaxReportUrl` in `lib/vehicles.ts`).
+
 ## 4. Animation port — GSAP
 
 All scroll-triggered animation is implemented as vanilla GSAP timelines (registered with ScrollTrigger). The React-specific wrapper around them is thin and exists only to call `gsap.registerPlugin` + scope the elements via refs.
