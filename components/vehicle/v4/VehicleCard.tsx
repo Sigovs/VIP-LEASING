@@ -386,45 +386,51 @@ export function VehicleCard({
         />
       </div>
 
-      <div
-        className={cn(
-          "pt-5 flex justify-between gap-6",
-          showPrice ? "items-baseline" : "items-center",
-          isFeature && "pt-7"
-        )}
-      >
-        <div className="min-w-0">
+      {/* Same language as the catalogue lot on /v4/inventory: the name in the
+          display face, the facts as pills, and no chevron. The homepage is
+          where most people meet a car first, and meeting it in one typography
+          and then again in another on the listing page is how a site starts to
+          feel assembled rather than designed. */}
+      <div className={cn("pt-5", isFeature && "pt-7")}>
+        <div className="flex items-baseline justify-between gap-5">
           <h3
             className={cn(
-              "font-semibold tracking-[-0.018em] text-text-1 group-hover:text-accent transition-colors truncate",
-              isFeature ? "text-2xl md:text-3xl" : "text-lg md:text-xl"
+              "min-w-0 truncate font-title font-bold leading-[1.1] tracking-[-0.015em] text-text-1 transition-colors group-hover:text-accent",
+              isFeature ? "text-[1.75rem] md:text-[2rem]" : "text-xl md:text-2xl"
             )}
           >
             {vehicle.year} {vehicle.make} {vehicle.model}
           </h3>
-          {vehicle.trim && (
-            <p className="text-sm text-text-2 mt-1.5 truncate">{vehicle.trim}</p>
-          )}
-          {acquired && (
-            <p className="mt-2 text-[0.8125rem] text-text-3">Acquired {acquired}</p>
+          {showPrice && (
+            <span className="shrink-0 tabular-nums text-base font-semibold text-text-1 md:text-lg">
+              {formatPrice(vehicle.price)}
+            </span>
           )}
         </div>
-        {showPrice ? (
-          <div className="text-right shrink-0">
-            <p className="tabular-nums text-base md:text-lg font-semibold tracking-[-0.01em] text-text-1">
-              {formatPrice(vehicle.price)}
-            </p>
-            <p className="mt-1.5 tabular-nums text-[0.8125rem] text-text-2">
-              {formatMileage(vehicle.mileage)}
-            </p>
-          </div>
-        ) : (
-          <ChevronRight
-            aria-hidden
-            className="h-5 w-5 shrink-0 text-text-3 transition-all duration-300 group-hover:text-mark group-hover:translate-x-1"
-            strokeWidth={1.5}
-          />
+
+        {vehicle.trim && (
+          <p className="mt-1.5 truncate text-sm text-text-2">{vehicle.trim}</p>
         )}
+        {acquired && (
+          <p className="mt-2 text-[0.8125rem] text-text-3">Acquired {acquired}</p>
+        )}
+
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {[
+            formatMileage(vehicle.mileage),
+            shortDrivetrain(vehicle.drivetrain),
+            vehicle.horsepower ? `${vehicle.horsepower} hp` : null,
+          ]
+            .filter(Boolean)
+            .map((f) => (
+              <li
+                key={f as string}
+                className="rounded-pill border border-border px-3 py-1 font-accent text-[0.75rem] uppercase tracking-[0.14em] text-text-2"
+              >
+                {f}
+              </li>
+            ))}
+        </ul>
       </div>
     </Link>
   );
