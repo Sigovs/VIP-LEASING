@@ -12,6 +12,8 @@ import {
 import type { Vehicle } from "@/types/vehicle";
 import { VehicleCard } from "@/components/vehicle/v4/VehicleCard";
 import { Container } from "@/components/ui/Container";
+import { SelectShell } from "@/components/ui/SelectShell";
+import { optionCls } from "@/lib/formStyles";
 import { cn, formatNumber } from "@/lib/utils";
 
 type SortKey =
@@ -65,6 +67,8 @@ function matchesDrivetrain(v: Vehicle, bucket: DrivetrainBucket): boolean {
 type FilterState = {
   q: string;
   makes: string[];
+  model: string;
+  year: number | null;
   minPrice: number | null;
   maxPrice: number | null;
   minYear: number | null;
@@ -75,9 +79,17 @@ type FilterState = {
   sort: SortKey;
 };
 
+// The rail's own select: a box like the keyword field beside it, not the
+// underline the page forms use. In a panel this dense a hairline under a value
+// reads as a divider rather than as a field.
+const railSelectCls =
+  "w-full cursor-pointer appearance-none rounded-md border border-white/[0.14] bg-bg/60 px-3.5 py-2.5 pr-9 text-sm text-text-1 transition-colors focus:border-white/40 focus:outline-none";
+
 const EMPTY: FilterState = {
   q: "",
   makes: [],
+  model: "",
+  year: null,
   minPrice: null,
   maxPrice: null,
   minYear: null,
@@ -104,6 +116,8 @@ function parseParams(sp: URLSearchParams): FilterState {
   return {
     q: sp.get("q") ?? "",
     makes: list("make"),
+    model: sp.get("model") ?? "",
+    year: num("year"),
     minPrice: num("minPrice"),
     maxPrice: num("maxPrice"),
     minYear: num("minYear"),
@@ -123,6 +137,8 @@ function serializeState(s: FilterState): string {
   const p = new URLSearchParams();
   if (s.q) p.set("q", s.q);
   if (s.makes.length) p.set("make", s.makes.join(","));
+  if (s.model) p.set("model", s.model);
+  if (s.year != null) p.set("year", String(s.year));
   if (s.minPrice != null) p.set("minPrice", String(s.minPrice));
   if (s.maxPrice != null) p.set("maxPrice", String(s.maxPrice));
   if (s.minYear != null) p.set("minYear", String(s.minYear));
@@ -223,6 +239,21 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
     };
   }, [filtersOpen]);
 
+  // Year and model options, from the inventory itself rather than a generic
+  // list — a filter offering a year nobody has is a dead end with a number on
+  // it. Models narrow to the chosen make, because "296 GTS" under Lamborghini
+  // is the same dead end.
+  const years = useMemo(
+    () => [...new Set(vehicles.map((v) => v.year))].sort((a, b) => b - a),
+    [vehicles],
+  );
+  const models = useMemo(() => {
+    const pool = state.makes.length
+      ? vehicles.filter((v) => state.makes.includes(v.make))
+      : vehicles;
+    return [...new Set(pool.map((v) => v.model))].sort();
+  }, [vehicles, state.makes]);
+
   // Static per-make tallies for the marque rail (whole inventory, not the
   // current result set), ordered by count then name.
   const makeCounts = useMemo(() => {
@@ -247,6 +278,8 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
         if (!tokens.every((t) => hay.includes(t))) return false;
       }
       if (state.makes.length && !state.makes.includes(v.make)) return false;
+      if (state.model && v.model !== state.model) return false;
+      if (state.year != null && v.year !== state.year) return false;
       if (state.minPrice != null && v.price < state.minPrice) return false;
       if (state.maxPrice != null && v.price > state.maxPrice) return false;
       if (state.minYear != null && v.year < state.minYear) return false;
@@ -335,28 +368,41 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
           ? `≤ ${state.maxYear}`
           : null;
 
+  // A field with four sides, not a line under some text. Alex's note: as an
+  // underline it read as decoration and nobody could tell it was a place to
+  // type. Labelled too — "Search by keyword" above the box says what it does
+  // better than grey placeholder text that vanishes the moment you use it.
   const searchField = (
-  <div className="flex items-center gap-2 w-full sm:flex-1 sm:min-w-0 sm:max-w-md border-b border-border focus-within:border-accent transition-colors">
-    <Search size={15} strokeWidth={1.5} className="text-text-3 shrink-0" />
-    <input
-      type="search"
-      value={state.q}
-      onChange={(e) => setState((s) => ({ ...s, q: e.target.value }))}
-      placeholder="Search by year, make, model"
-      aria-label="Search inventory"
-      className="w-full bg-transparent py-2 text-sm text-text-1 placeholder:text-text-3 focus:outline-none focus-visible:outline-none tracking-[0.04em] [&::-webkit-search-cancel-button]:appearance-none"
-    />
-    {state.q && (
-      <button
-        type="button"
-        aria-label="Clear search"
-        onClick={() => setState((s) => ({ ...s, q: "" }))}
-        className="text-text-3 hover:text-text-1"
+    <div>
+      <label
+        htmlFor="inventory-search"
+        className="mb-3 block font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft"
       >
-        <X size={14} strokeWidth={1.5} />
-      </button>
-    )}
-  </div>
+        Search by keyword
+      </label>
+      <div className="flex items-center gap-2.5 rounded-md border border-white/[0.14] bg-bg/60 px-3.5 py-2.5 transition-colors focus-within:border-white/40">
+        <Search size={15} strokeWidth={1.5} className="shrink-0 text-text-3" />
+        <input
+          id="inventory-search"
+          type="search"
+          value={state.q}
+          onChange={(e) => setState((s) => ({ ...s, q: e.target.value }))}
+          placeholder="Year, make, model"
+          aria-label="Search inventory"
+          className="w-full bg-transparent text-sm text-text-1 placeholder:text-text-3 focus:outline-none [&::-webkit-search-cancel-button]:appearance-none"
+        />
+        {state.q && (
+          <button
+            type="button"
+            aria-label="Clear search"
+            onClick={() => setState((s) => ({ ...s, q: "" }))}
+            className="shrink-0 text-text-3 transition-colors hover:text-text-1"
+          >
+            <X size={14} strokeWidth={1.5} />
+          </button>
+        )}
+      </div>
+    </div>
   );
 
   const sortMenu = (
@@ -621,38 +667,95 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
                   --surface on the page ground: #131417 against #0c0d0f, seven
                   units per channel, which on a dark screen is nothing — Alex
                   looked straight at it and asked where the card was. So the
-                  panel sits on chrome-surface-2 with a white hairline and a
-                  line of light along its top edge, the same recipe that made
-                  the offer card read over a photograph. A border alone does
-                  not lift anything; the ground has to move. */}
-              <div className="rounded-md border border-white/[0.12] bg-chrome-surface-2 p-6 shadow-[0_2px_0_rgba(255,255,255,0.05)_inset,0_28px_60px_-34px_rgba(0,0,0,0.95)]">
+                  panel needed a shade of its own, not a stronger edge.
+
+                  #1e2229 is that shade: 1.22:1 against the page, where --surface
+                  managed 1.06 and chrome-surface-2 1.09 — both of which are the
+                  same colour as far as an eye is concerned. A literal value and
+                  not a token, because the system has no step this size between
+                  the page ground and a raised panel; if a second panel ever
+                  wants it, it becomes one. */}
+              <div className="rounded-md border border-white/[0.10] bg-[#1e2229] p-6 shadow-[0_2px_0_rgba(255,255,255,0.045)_inset,0_28px_60px_-34px_rgba(0,0,0,0.95)]">
               {searchField}
 
-              <nav aria-label="Filter by make" className="mt-8">
-                <p className="mb-4 font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
-                  Marque
-                </p>
-                <ul className="mt-4 space-y-1">
-                  <li>
-                    <RailRow
-                      active={activeMake == null}
-                      onClick={() => selectMake(null)}
-                      label="All"
-                      count={vehicles.length}
-                    />
-                  </li>
-                  {marques.map((m) => (
-                    <li key={m}>
-                      <RailRow
-                        active={activeMake === m}
-                        onClick={() => selectMake(m)}
-                        label={m}
-                        count={makeCounts.get(m) ?? 0}
-                      />
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              {/* Year, Make, Model — the three questions a buyer actually
+                  arrives with, visible without opening anything. The vertical
+                  marque list they replace was six rows tall and answered only
+                  one of the three. */}
+              <div className="mt-7 space-y-5">
+                <label className="block">
+                  <span className="mb-2.5 block font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
+                    Year
+                  </span>
+                  <SelectShell>
+                    <select
+                      value={state.year ?? ""}
+                      onChange={(e) =>
+                        setState((st) => ({
+                          ...st,
+                          year: e.target.value ? Number(e.target.value) : null,
+                        }))
+                      }
+                      className={railSelectCls}
+                    >
+                      <option value="" className={optionCls}>
+                        Any year
+                      </option>
+                      {years.map((y) => (
+                        <option key={y} value={y} className={optionCls}>
+                          {y}
+                        </option>
+                      ))}
+                    </select>
+                  </SelectShell>
+                </label>
+
+                <label className="block">
+                  <span className="mb-2.5 block font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
+                    Make
+                  </span>
+                  <SelectShell>
+                    <select
+                      value={activeMake ?? ""}
+                      onChange={(e) => selectMake(e.target.value || null)}
+                      className={railSelectCls}
+                    >
+                      <option value="" className={optionCls}>
+                        All makes ({vehicles.length})
+                      </option>
+                      {marques.map((m) => (
+                        <option key={m} value={m} className={optionCls}>
+                          {m} ({makeCounts.get(m) ?? 0})
+                        </option>
+                      ))}
+                    </select>
+                  </SelectShell>
+                </label>
+
+                <label className="block">
+                  <span className="mb-2.5 block font-accent text-[0.8125rem] font-semibold uppercase tracking-[0.14em] text-mark-soft">
+                    Model
+                  </span>
+                  <SelectShell>
+                    <select
+                      value={state.model}
+                      onChange={(e) =>
+                        setState((st) => ({ ...st, model: e.target.value }))
+                      }
+                      className={railSelectCls}
+                    >
+                      <option value="" className={optionCls}>
+                        All models
+                      </option>
+                      {models.map((m) => (
+                        <option key={m} value={m} className={optionCls}>
+                          {m}
+                        </option>
+                      ))}
+                    </select>
+                  </SelectShell>
+                </label>
+              </div>
 
               {moreOpen && (
                 <div className="mt-8 space-y-8 border-t border-border pt-8">
@@ -789,39 +892,6 @@ export function InventoryGrid({ vehicles }: { vehicles: Vehicle[] }) {
         </div>
       )}
     </>
-  );
-}
-
-// A marque in the rail. Not a pill — the pills belong to the mobile bar, where
-// a horizontal row of them is the only thing that fits. In a vertical list a
-// filled pill per row would be a stack of buttons; here the row is text, and
-// the current marque is marked by the accent and its own weight.
-function RailRow({
-  active,
-  onClick,
-  label,
-  count,
-}: {
-  active: boolean;
-  onClick: () => void;
-  label: string;
-  count: number;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-pressed={active}
-      className={cn(
-        "flex w-full items-baseline justify-between gap-4 py-1.5 text-left text-sm transition-colors",
-        active ? "text-mark-soft" : "text-text-2 hover:text-text-1"
-      )}
-    >
-      <span className={cn("truncate", active && "font-semibold")}>{label}</span>
-      <span className="shrink-0 font-accent text-[0.75rem] tabular-nums text-text-3">
-        {count}
-      </span>
-    </button>
   );
 }
 
