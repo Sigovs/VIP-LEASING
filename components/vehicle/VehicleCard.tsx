@@ -125,15 +125,24 @@ export function VehicleCard({
                 prop up a logo too small to carry itself.
 
                 Sized the way dealer listings actually size it: ~24px of height,
-                which is about 145px wide at this artwork's 6:1. The shadow does
-                what the pill was doing — the wordmark is black boxes with white
-                letters, and on a dark photograph the boxes have nothing to sit
-                against without it. */}
+                which is about 101px wide at this artwork's 6:1.
+
+                No shadow, on Alex's call, and checked across all ten cards
+                afterwards: it costs nothing here. Every inventory photograph is
+                a studio shot on a light sweep, so the top-right corner the mark
+                sits in is pale on every one of them and the black boxes have
+                plenty to sit against.
+
+                The one condition that would bring the shadow back is a car
+                photographed on a dark ground — the wordmark is black boxes with
+                white letters, and against black its frame dissolves while only
+                the letters survive. If the client ever supplies night or garage
+                shots, look here. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={asset("/brands/carfax.svg")}
               alt="Carfax"
-              className="block h-6 w-auto [filter:drop-shadow(0_1px_3px_rgba(0,0,0,0.55))_drop-shadow(0_0_14px_rgba(0,0,0,0.45))]"
+              className="block h-6 w-auto"
             />
             <span className="sr-only">
               vehicle history report for this {fullName} (opens in a new tab)
