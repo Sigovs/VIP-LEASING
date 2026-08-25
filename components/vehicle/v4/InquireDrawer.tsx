@@ -123,7 +123,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
               <p className={labelCls}>
                 {vehicle.year}
               </p>
-              <h3 className="text-3xl font-semibold tracking-[-0.02em] text-text-1 mb-1">
+              <h3 className="mb-1 font-title text-3xl font-bold leading-[1.06] tracking-[-0.02em] text-text-1">
                 {vehicle.make} {vehicle.model}
               </h3>
               {vehicle.trim && (
@@ -137,7 +137,7 @@ export function InquireDrawer({ vehicle }: { vehicle: Vehicle }) {
 
               {sent ? (
                 <div className="space-y-4">
-                  <p className="text-2xl font-semibold tracking-[-0.015em] text-text-1">
+                  <p className="font-title text-2xl font-bold leading-[1.1] tracking-[-0.015em] text-text-1">
                     Thank you.
                   </p>
                   <p className="text-text-2 leading-relaxed">

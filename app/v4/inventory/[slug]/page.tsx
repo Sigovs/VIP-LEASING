@@ -254,7 +254,7 @@ export default async function VehiclePage({ params }: Params) {
             <div className="flex flex-col items-start gap-8 border border-border bg-surface px-8 py-12 md:flex-row md:items-center md:justify-between md:px-14 md:py-14">
               <div>
                 <SectionEyebrow label="Inquire" />
-                <p className="max-w-[22ch] text-2xl md:text-3xl font-semibold tracking-[-0.015em] text-text-1">
+                <p className="max-w-[22ch] font-title text-2xl font-bold leading-[1.1] tracking-[-0.015em] text-text-1 md:text-3xl">
                   Interested in this {vehicle.make} {vehicle.model}?
                 </p>
                 <p className="mt-3 max-w-[46ch] text-text-2 leading-relaxed">
