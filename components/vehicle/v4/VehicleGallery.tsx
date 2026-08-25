@@ -17,26 +17,27 @@ import { cn } from "@/lib/utils";
 // large, the rest is available at a glance, and picking one costs a click
 // rather than a scroll. The strip scrolls sideways only when it has to.
 //
-// Empty slots are still slots, not filler: every gallery in the demo data holds
-// one image, so the rest say what they are (see the padding note below).
+// The gallery shows the photographs that exist and does not invent slots for
+// the ones that do not. It used to pad every car out to six frames with
+// "Awaiting photography" boxes, which read as a broken page rather than an
+// honest one — five grey squares under a Ferrari look like something failed to
+// load, not like a note to the dealer.
+//
+// Two cars have real galleries (F8, Urus). The rest carry one press photograph
+// each, and one photograph gets one frame: no strip, no counter, no arrows.
+// When the client's photographer delivers, the strip returns on its own.
 
 export function VehicleGallery({
   images,
   alt,
-  minFrames = 6,
 }: {
   images: string[];
   alt: string;
-  /** Pad out to this many frames with empty slots. They are EMPTY on purpose —
-   *  borrowing another car's photograph to fill a gallery is the fault
-   *  DESIGN.md §9b exists to prevent. Disappears on its own once real galleries
-   *  arrive. */
-  minFrames?: number;
 }) {
-  const slots: (string | null)[] = [
-    ...images,
-    ...Array.from({ length: Math.max(0, minFrames - images.length) }, () => null),
-  ];
+  // No padding. Borrowing another car's photograph to fill a gallery is the
+  // fault DESIGN.md §9b exists to prevent, and a row of empty boxes is the
+  // other way to fail the same test.
+  const slots: (string | null)[] = images.length > 0 ? images : [null];
   const [active, setActive] = useState(0);
   const current = slots[active] ?? null;
 
@@ -98,7 +99,8 @@ export function VehicleGallery({
         )}
       </div>
 
-      {/* The strip */}
+      {/* The strip — only when there is something to choose between. */}
+      {slots.length > 1 && (
       <ul className="no-scrollbar mt-3 flex gap-3 overflow-x-auto md:mt-4">
         {slots.map((src, i) => (
           <li key={(src ?? "slot") + i} className="shrink-0">
@@ -131,6 +133,7 @@ export function VehicleGallery({
           </li>
         ))}
       </ul>
+      )}
     </div>
   );
 }
