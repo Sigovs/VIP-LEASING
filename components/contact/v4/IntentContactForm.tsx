@@ -25,6 +25,14 @@ const INTENTS: Record<string, { heading: string; message: string }> = {
     message:
       "I'd like to talk lease and finance options. The car I have in mind: ",
   },
+  // Service links land pre-framed. The template is the point: a service desk
+  // cannot answer "get in touch", and asking for the car, the work and a date
+  // up front saves the round trip that would otherwise be the first reply.
+  service: {
+    heading: "Book the car in.",
+    message:
+      "Car: \nService needed: \nPreferred date: \nDrop-off or collection: ",
+  },
 };
 
 export function IntentContactForm() {
