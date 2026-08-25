@@ -290,6 +290,36 @@ body::after {
   );
 }
 
+/* A third weather, for the vehicle pages. The home page atmospheres are the two
+   ends of the logo gradient — brand blue on the left, its purple on the right —
+   and both are saturated enough to be read as brand. A vehicle page should not
+   be: the car is the only thing on it allowed to have a colour, and photography
+   sits in nearly every section.
+
+   So this one is a DIRTY blue — the hue pulled towards steel and the saturation
+   taken most of the way out, which is the colour a cold room already has rather
+   than a wash laid over one. It is also weaker: 0.13 against the home pages
+   0.16, because it has to survive sitting behind a photograph.
+
+   The two stops are deliberately not a mirrored pair. Same-size blooms at 16%
+   and 84% read as a frame around the content; these differ in size, height and
+   falloff, so the page has weather rather than a border. */
+.atmosphere-steel::before {
+  background:
+    radial-gradient(
+      104% 46% at 12% 18%,
+      rgba(86, 122, 148, 0.13) 0%,
+      rgba(86, 122, 148, 0.05) 36%,
+      rgba(86, 122, 148, 0) 68%
+    ),
+    radial-gradient(
+      72% 88% at 91% 73%,
+      rgba(74, 106, 132, 0.1) 0%,
+      rgba(74, 106, 132, 0.035) 44%,
+      rgba(74, 106, 132, 0) 78%
+    );
+}
+
 /* The marque constellation. Below md the marks flow as a staggered two-column
    list — scattering ten logos across a phone is just overlap. From md the field
    becomes a positioned canvas and every mark jumps to its own point.

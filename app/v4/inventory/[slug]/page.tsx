@@ -147,7 +147,7 @@ export default async function VehiclePage({ params }: Params) {
           with the hero, so the page carried a floating Inquire button and a tab
           rail to get you back to it. Both are gone — nothing to get back to
           when the price never left. */}
-      <Section className="pt-24 md:pt-32" spacing="tight">
+      <Section className="atmosphere atmosphere-steel pt-24 md:pt-32" spacing="tight">
         <Container>
           <nav
             aria-label="Breadcrumb"
@@ -248,7 +248,7 @@ export default async function VehiclePage({ params }: Params) {
       )}
 
       {/* Inquire — closing CTA */}
-      <Section id="inquire" spacing="tight">
+      <Section id="inquire" spacing="tight" className="atmosphere atmosphere-steel">
         <Container>
           <Reveal>
             <div className="flex flex-col items-start gap-8 border border-border bg-surface px-8 py-12 md:flex-row md:items-center md:justify-between md:px-14 md:py-14">

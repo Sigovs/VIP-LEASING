@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
+import { ChevronLeft, ChevronRight, ImageIcon, Maximize2 } from "lucide-react";
+import { Lightbox } from "@/components/ui/Lightbox";
 import { cn } from "@/lib/utils";
 
 // One large frame with a strip of thumbnails under it.
@@ -39,6 +40,7 @@ export function VehicleGallery({
   // other way to fail the same test.
   const slots: (string | null)[] = images.length > 0 ? images : [null];
   const [active, setActive] = useState(0);
+  const [full, setFull] = useState(false);
   const current = slots[active] ?? null;
 
   const step = (d: number) =>
@@ -92,12 +94,44 @@ export function VehicleGallery({
               <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
             </button>
 
-            <span className="absolute bottom-4 right-4 rounded-pill bg-black/55 px-3 py-1.5 font-accent text-[0.75rem] tabular-nums tracking-[0.14em] text-white backdrop-blur-md">
+            <span className="pointer-events-none absolute bottom-4 right-4 rounded-pill bg-black/55 px-3 py-1.5 font-accent text-[0.75rem] tabular-nums tracking-[0.14em] text-white backdrop-blur-md">
               {String(active + 1).padStart(2, "0")} / {String(slots.length).padStart(2, "0")}
             </span>
           </>
         )}
+
+        {/* The way out of the frame. It sits opposite the counter in the same
+            pill language, and unlike the arrows it does NOT wait for a hover:
+            the arrows are a convenience for a control the thumbs already
+            provide, while this is the only route to the photographs at full
+            size, and a route nobody can see is not a route.
+
+            The label tells the truth about what is behind it. With one
+            photograph there is no gallery to open, so it says Enlarge — the
+            same reason this component refuses to pad a car out to six frames
+            it does not have. */}
+        {current && (
+          <button
+            type="button"
+            onClick={() => setFull(true)}
+            className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-pill border border-white/25 bg-black/55 px-3.5 py-1.5 font-accent text-[0.75rem] uppercase tracking-[0.14em] text-white backdrop-blur-md transition-colors hover:bg-black/75"
+          >
+            <Maximize2 className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
+            {slots.length > 1 ? "Full gallery" : "Enlarge"}
+          </button>
+        )}
       </div>
+
+      {full && current && (
+        <Lightbox
+          images={slots.filter(Boolean) as string[]}
+          alt={alt}
+          title={alt}
+          index={active}
+          onIndex={setActive}
+          onClose={() => setFull(false)}
+        />
+      )}
 
       {/* The strip — only when there is something to choose between. */}
       {slots.length > 1 && (
