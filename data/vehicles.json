@@ -7,8 +7,8 @@
     "trim": "Assetto Fiorano",
     "price": 749000,
     "mileage": 1180,
-    "exteriorColor": "Bianco Avus with Giallo Modena Stripe",
-    "interiorColor": "Nero Alcantara with Yellow Stitching",
+    "exteriorColor": "Bianco Avus",
+    "interiorColor": "Nero with Rosso Stitching",
     "vin": "ZFF95NLA9R0300XXX",
     "transmission": "8-Speed F1 DCT",
     "drivetrain": "All-Wheel Drive",
@@ -76,10 +76,16 @@
         "description": "Single owner, garage kept, never tracked. Books, tools, both keys and the original window sticker are present."
       }
     ],
-    "story": "Ferrari's first series-production plug-in hybrid, and still the most powerful road car they have ever built. This one is Assetto Fiorano — the lightweight package with Multimatic dampers and titanium springs — finished in Bianco Avus with the Giallo Modena racing stripe. The retractable hardtop drops in fourteen seconds without costing a single horsepower.",
-    "heroImage": "/ilusso/sf90-spider.jpg",
+    "story": "Ferrari's first series-production plug-in hybrid, and still the most powerful road car they have ever built. This one is Assetto Fiorano — the lightweight package with Multimatic dampers and titanium springs — finished in Bianco Avus over Nero. The retractable hardtop drops in fourteen seconds without costing a single horsepower.",
+    "heroImage": "/ilusso/sf90-spider/1.webp",
     "gallery": [
-      "/ilusso/sf90-spider.jpg"
+      "/ilusso/sf90-spider/1.webp",
+      "/ilusso/sf90-spider/2.webp",
+      "/ilusso/sf90-spider/3.webp",
+      "/ilusso/sf90-spider/4.webp",
+      "/ilusso/sf90-spider/5.webp",
+      "/ilusso/sf90-spider/6.webp",
+      "/ilusso/sf90-spider/7.webp"
     ],
     "isSold": false,
     "isFeatured": true,
@@ -93,7 +99,7 @@
     "trim": "Assetto Fiorano",
     "price": 459000,
     "mileage": 2340,
-    "exteriorColor": "Bianco Cervino",
+    "exteriorColor": "Rosso Corsa",
     "interiorColor": "Nero with Rosso Stitching",
     "vin": "ZFF01SMA5S0305XXX",
     "transmission": "8-Speed F1 DCT",
@@ -162,10 +168,15 @@
         "description": "Two-owner car, both known to us. Complete with tools, both keys, and the factory car cover."
       }
     ],
-    "story": "The V6 that convinced the purists. Ferrari's 120-degree twin-turbo six, hybridised to 819 horsepower, in the open-top GTS body with the Assetto Fiorano package. Bianco Cervino over Nero — the quiet spec, on the loudest mid-engined Ferrari of the decade.",
-    "heroImage": "/ilusso/ferrari-296-gts.jpg",
+    "story": "The V6 that convinced the purists. Ferrari's 120-degree twin-turbo six, hybridised to 819 horsepower, in the open-top GTS body with the Assetto Fiorano package. Bianco Cervino over Nero — the obvious spec, on the loudest mid-engined Ferrari of the decade.",
+    "heroImage": "/ilusso/296-gts/1.webp",
     "gallery": [
-      "/ilusso/ferrari-296-gts.jpg"
+      "/ilusso/296-gts/1.webp",
+      "/ilusso/296-gts/2.webp",
+      "/ilusso/296-gts/3.webp",
+      "/ilusso/296-gts/4.webp",
+      "/ilusso/296-gts/5.webp",
+      "/ilusso/296-gts/6.webp"
     ],
     "isSold": false,
     "isFeatured": true,
@@ -271,8 +282,8 @@
     "trim": "Coupe",
     "price": 289000,
     "mileage": 3260,
-    "exteriorColor": "Onyx Black",
-    "interiorColor": "Obsidian Black with Bronze Stitching",
+    "exteriorColor": "China Grey",
+    "interiorColor": "Obsidian Black",
     "vin": "SCFRMFAW8RGL05XXX",
     "transmission": "8-Speed ZF Automatic",
     "drivetrain": "Rear-Wheel Drive",
@@ -339,9 +350,15 @@
       }
     ],
     "story": "Aston Martin call it a super tourer, and for once the marketing is honest: 671 horsepower, a chassis stiffened seven per cent over the DB11, and an interior that finally answers the one complaint anybody ever had. Onyx Black on bronze wheels — the spec that makes it look like it is doing 90 standing still.",
-    "heroImage": "/ilusso/db12.jpg",
+    "heroImage": "/ilusso/db12/1.webp",
     "gallery": [
-      "/ilusso/db12.jpg"
+      "/ilusso/db12/1.webp",
+      "/ilusso/db12/2.webp",
+      "/ilusso/db12/3.webp",
+      "/ilusso/db12/4.webp",
+      "/ilusso/db12/5.webp",
+      "/ilusso/db12/6.webp",
+      "/ilusso/db12/7.webp"
     ],
     "isSold": false,
     "isFeatured": true,
@@ -447,7 +464,7 @@
     "price": 429000,
     "mileage": 3980,
     "exteriorColor": "White",
-    "interiorColor": "Black Alcantara with Red Accents",
+    "interiorColor": "Black with Red Accents",
     "vin": "WP0AE2A96KS185XXX",
     "transmission": "7-Speed PDK",
     "drivetrain": "Rear-Wheel Drive",
@@ -514,9 +531,14 @@
       }
     ],
     "story": "The widowmaker, rehabilitated: 700 horsepower through the rear wheels, a Nürburgring record when it launched, and the Weissach Package's magnesium wheels to shave the last of the weight. White over black Alcantara, gold wheels — the way the factory photographed it.",
-    "heroImage": "/ilusso/porsche-gt2-rs.jpg",
+    "heroImage": "/ilusso/gt2-rs/1.webp",
     "gallery": [
-      "/ilusso/porsche-gt2-rs.jpg"
+      "/ilusso/gt2-rs/1.webp",
+      "/ilusso/gt2-rs/2.webp",
+      "/ilusso/gt2-rs/3.webp",
+      "/ilusso/gt2-rs/4.webp",
+      "/ilusso/gt2-rs/5.webp",
+      "/ilusso/gt2-rs/6.webp"
     ],
     "isSold": false,
     "isFeatured": false,
@@ -530,8 +552,8 @@
     "trim": "Weissach Package",
     "price": 359000,
     "mileage": 1240,
-    "exteriorColor": "Black",
-    "interiorColor": "Black Race-Tex with Red Stitching",
+    "exteriorColor": "White",
+    "interiorColor": "Black with Guards Red",
     "vin": "WP0AF2A92PS280XXX",
     "transmission": "7-Speed PDK",
     "drivetrain": "Rear-Wheel Drive",
@@ -600,9 +622,14 @@
       }
     ],
     "story": "A road car with a DRS wing. The 992 GT3 RS moved the goalposts so far that Porsche had to explain the aerodynamics in a press briefing — 860 kilos of downforce at 177 mph, and a naturally aspirated flat-six that revs to 9,000. Black on gold magnesium wheels, Weissach spec.",
-    "heroImage": "/ilusso/porsche-gt3-rs.jpg",
+    "heroImage": "/ilusso/gt3-rs/1.webp",
     "gallery": [
-      "/ilusso/porsche-gt3-rs.jpg"
+      "/ilusso/gt3-rs/1.webp",
+      "/ilusso/gt3-rs/2.webp",
+      "/ilusso/gt3-rs/3.webp",
+      "/ilusso/gt3-rs/4.webp",
+      "/ilusso/gt3-rs/5.webp",
+      "/ilusso/gt3-rs/6.webp"
     ],
     "isSold": false,
     "isFeatured": false,
@@ -616,8 +643,8 @@
     "trim": "Coupe",
     "price": 379000,
     "mileage": 5620,
-    "exteriorColor": "Bianco Icarus",
-    "interiorColor": "Nero Ade with Carbon Fiber Trim",
+    "exteriorColor": "Blu Aegir",
+    "interiorColor": "Nero Ade with Blu Stitching",
     "vin": "ZHWUC4ZD1JLA07XXX",
     "transmission": "7-Speed ISR",
     "drivetrain": "All-Wheel Drive",
@@ -685,9 +712,14 @@
       }
     ],
     "story": "Six and a half litres, twelve cylinders, no turbochargers and no apology. The S brought rear-wheel steering and the EGO drive mode to the Aventador, and it remains one of the last naturally aspirated V12s anyone will sell you. Bianco Icarus with the full carbon exterior package.",
-    "heroImage": "/ilusso/aventador-s.jpg",
+    "heroImage": "/ilusso/aventador-s/1.webp",
     "gallery": [
-      "/ilusso/aventador-s.jpg"
+      "/ilusso/aventador-s/1.webp",
+      "/ilusso/aventador-s/2.webp",
+      "/ilusso/aventador-s/3.webp",
+      "/ilusso/aventador-s/4.webp",
+      "/ilusso/aventador-s/5.webp",
+      "/ilusso/aventador-s/6.webp"
     ],
     "isSold": false,
     "isFeatured": false,
@@ -701,8 +733,8 @@
     "trim": "Carbon Package",
     "price": 279000,
     "mileage": 8940,
-    "exteriorColor": "Rosso Corsa",
-    "interiorColor": "Nero with Rosso Stitching",
+    "exteriorColor": "Grigio Silverstone",
+    "interiorColor": "Nero",
     "vin": "ZFF79ALA5G0219XXX",
     "transmission": "7-Speed F1 DCT",
     "drivetrain": "Rear-Wheel Drive",
@@ -767,10 +799,15 @@
         "description": "Three owners, complete Ferrari service history, books, tools and both keys present."
       }
     ],
-    "story": "The car that proved a turbocharged Ferrari could still be a Ferrari. 661 horsepower, a throttle map that hides the turbos so well the engine feels naturally aspirated all the way to 8,000 rpm, and the classic answer to the classic question: Rosso Corsa over Nero.",
-    "heroImage": "/ilusso/ferrari-488-gtb.jpg",
+    "story": "The car that proved a turbocharged Ferrari could still be a Ferrari. 661 horsepower, a throttle map that hides the turbos so well the engine feels naturally aspirated all the way to 8,000 rpm, and the classic answer to the classic question: Grigio Silverstone over Nero.",
+    "heroImage": "/ilusso/488-gtb/1.webp",
     "gallery": [
-      "/ilusso/ferrari-488-gtb.jpg"
+      "/ilusso/488-gtb/1.webp",
+      "/ilusso/488-gtb/2.webp",
+      "/ilusso/488-gtb/3.webp",
+      "/ilusso/488-gtb/4.webp",
+      "/ilusso/488-gtb/5.webp",
+      "/ilusso/488-gtb/6.webp"
     ],
     "isSold": false,
     "isFeatured": false,
@@ -784,8 +821,8 @@
     "trim": "Series II Bespoke",
     "price": 459000,
     "mileage": 890,
-    "exteriorColor": "Tempest Grey Bespoke",
-    "interiorColor": "Charles Blue and Arctic White",
+    "exteriorColor": "Salamanca Blue",
+    "interiorColor": "Cobalto Blue",
     "vin": "SLA6R2C0XSUX20XXX",
     "transmission": "8-Speed Automatic",
     "drivetrain": "All-Wheel Drive",
@@ -846,10 +883,16 @@
         "description": "Effectively a new car — under a thousand miles, full bespoke documentation, both keys and all delivery accessories."
       }
     ],
-    "story": "Bespoke through and through: a Series II Cullinan commissioned in Tempest Grey with a coachbuilt widebody treatment and whitewall tires, on a car that already weighs as much as two 911s. The 6.75-litre V12 does not so much accelerate as relocate you.",
-    "heroImage": "/ilusso/cullinan.jpg",
+    "story": "Bespoke through and through: a Series II Cullinan commissioned in Salamanca Blue over Cobalto Blue, on a car that already weighs as much as two 911s. The 6.75-litre V12 does not so much accelerate as relocate you.",
+    "heroImage": "/ilusso/cullinan/1.webp",
     "gallery": [
-      "/ilusso/cullinan.jpg"
+      "/ilusso/cullinan/1.webp",
+      "/ilusso/cullinan/2.webp",
+      "/ilusso/cullinan/3.webp",
+      "/ilusso/cullinan/4.webp",
+      "/ilusso/cullinan/5.webp",
+      "/ilusso/cullinan/6.webp",
+      "/ilusso/cullinan/7.webp"
     ],
     "isSold": false,
     "isFeatured": false,
@@ -864,8 +907,8 @@
     "trim": "Coupe",
     "price": 269000,
     "mileage": 12400,
-    "exteriorColor": "Blu Tour de France",
-    "interiorColor": "Cuoio with Blue Stitching",
+    "exteriorColor": "Rosso Corsa",
+    "interiorColor": "Nero",
     "vin": "ZFF67NFA0F0210XXX",
     "transmission": "7-Speed F1 DCT",
     "drivetrain": "Rear-Wheel Drive",
@@ -928,10 +971,15 @@
         "description": "Sold to a collector in Atlanta, Georgia."
       }
     ],
-    "story": "The last naturally aspirated mid-engined V8 Ferrari, and the reason values have only gone one direction. 9,000 rpm, no turbochargers, and a spec — Blu Tour de France over Cuoio — that looks better every year that passes.",
-    "heroImage": "/ilusso/458-italia.jpg",
+    "story": "The last naturally aspirated mid-engined V8 Ferrari, and the reason values have only gone one direction. 9,000 rpm, no turbochargers, and a spec — Rosso Corsa over Nero — that looks better every year that passes.",
+    "heroImage": "/ilusso/458-italia/1.webp",
     "gallery": [
-      "/ilusso/458-italia.jpg"
+      "/ilusso/458-italia/1.webp",
+      "/ilusso/458-italia/2.webp",
+      "/ilusso/458-italia/3.webp",
+      "/ilusso/458-italia/4.webp",
+      "/ilusso/458-italia/5.webp",
+      "/ilusso/458-italia/6.webp"
     ],
     "isSold": true,
     "isFeatured": false,
@@ -945,8 +993,8 @@
     "trim": "Handling Speciale",
     "price": 139000,
     "mileage": 18600,
-    "exteriorColor": "Nero Daytona",
-    "interiorColor": "Cuoio with Nero Stitching",
+    "exteriorColor": "Bianco Avus",
+    "interiorColor": "Cuoio",
     "vin": "ZFF77XJA1G0217XXX",
     "transmission": "7-Speed F1 DCT",
     "drivetrain": "Rear-Wheel Drive",
@@ -1010,10 +1058,15 @@
         "description": "Sold to a returning client in Miami."
       }
     ],
-    "story": "The one you actually drive. Retractable hardtop, 553 horsepower, and the Handling Speciale package to sharpen the dampers and shorten the shift times — a genuine grand tourer that happens to run to 196 mph. Nero Daytona over Cuoio.",
-    "heroImage": "/ilusso/california.jpg",
+    "story": "The one you actually drive. Retractable hardtop, 553 horsepower, and the Handling Speciale package to sharpen the dampers and shorten the shift times — a genuine grand tourer that happens to run to 196 mph. Bianco Avus over Cuoio.",
+    "heroImage": "/ilusso/california-t/1.webp",
     "gallery": [
-      "/ilusso/california.jpg"
+      "/ilusso/california-t/1.webp",
+      "/ilusso/california-t/2.webp",
+      "/ilusso/california-t/3.webp",
+      "/ilusso/california-t/4.webp",
+      "/ilusso/california-t/5.webp",
+      "/ilusso/california-t/6.webp"
     ],
     "isSold": true,
     "isFeatured": false,
@@ -1027,8 +1080,8 @@
     "trim": "Coupe-Convertible",
     "price": 239000,
     "mileage": 5140,
-    "exteriorColor": "Rosso Portofino",
-    "interiorColor": "Beige Tradizione with Rosso Stitching",
+    "exteriorColor": "Rosso Corsa",
+    "interiorColor": "Beige Tradizione",
     "vin": "ZFF89FPA9P0290XXX",
     "transmission": "8-Speed F1 DCT",
     "drivetrain": "Rear-Wheel Drive",
@@ -1093,9 +1146,15 @@
       }
     ],
     "story": "M for Modificata: an eight-speed gearbox, a five-position manettino with a genuine Race mode, and 612 horsepower under a folding hardtop. The Portofino M is the Ferrari you can use on a Tuesday, and this one is in the colour it was named after.",
-    "heroImage": "/ilusso/portofino.jpg",
+    "heroImage": "/ilusso/portofino/1.webp",
     "gallery": [
-      "/ilusso/portofino.jpg"
+      "/ilusso/portofino/1.webp",
+      "/ilusso/portofino/2.webp",
+      "/ilusso/portofino/3.webp",
+      "/ilusso/portofino/4.webp",
+      "/ilusso/portofino/5.webp",
+      "/ilusso/portofino/6.webp",
+      "/ilusso/portofino/7.webp"
     ],
     "isSold": true,
     "isFeatured": false,
