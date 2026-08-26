@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[22016,["/VIP-LEASING/_next/static/chunks/0vz1nw-btvmmc.js","/VIP-LEASING/_next/static/chunks/0qfzjgzj-4gqt.js","/VIP-LEASING/_next/static/chunks/14h2o2xvyceg8.js","/VIP-LEASING/_next/static/chunks/04xui0pxt.et1.js","/VIP-LEASING/_next/static/chunks/0qxa38r12-98v.js"],""]
+3:I[97367,["/VIP-LEASING/_next/static/chunks/01xlw8hd842-c.js","/VIP-LEASING/_next/static/chunks/0d3shmwh5_nmn.js"],"OutletBoundary"]
+4:"$Sreact.suspense"
+0:{"rsc":["$","$1","c",{"children":[["$","div",null,{"className":"mx-auto w-full max-w-[1600px] px-6 md:px-12 min-h-[60vh] flex flex-col justify-center py-32","children":[["$","span",null,{"className":"font-accent text-[0.75rem] tracking-[0.22em] text-text-3","children":"404"}],["$","h1",null,{"className":"font-bold font-title text-display-2 leading-[1.04] mt-4 max-w-[18ch]","children":"The page you're looking for has moved on."}],["$","$L2",null,{"href":"/","className":"mt-10 font-accent text-xs uppercase tracking-[0.22em] text-text-1 hover:text-text-2 inline-flex items-center gap-2","children":"Return home →"}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"FHk9oDK36gEAPq8oD4ci3"}
+5:null
