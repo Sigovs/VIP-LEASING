@@ -136,15 +136,21 @@ export default function SellPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
+              {/* The client clicked the Consignment tab, landed here and read
+                  an outright-purchase pitch — two different deals, one page.
+                  The hero now says what the tab says. SCOPE: the hero only, at
+                  Alex's instruction; the rest of the page is still written for
+                  a buy-outright and is flagged in the report. */}
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
-                Sell Your Car
+                Consignment
               </h1>
             </Reveal>
 
             <Reveal delay={0.1} y={22}>
               <p className="mt-6 max-w-[48ch] text-pretty text-[1.05rem] leading-relaxed text-white/85 md:text-[1.15rem]">
-                We buy collector and exotic cars outright — one fair offer, a
-                discreet close, and payment direct to you.
+                We sell collector and exotic cars on behalf of their owners —
+                presented from our showroom, priced to the live market, and the
+                car stays yours until it sells.
               </p>
             </Reveal>
 
@@ -153,7 +159,7 @@ export default function SellPage() {
                 href="#offer-form"
                 className="group mt-9 inline-flex rounded-pill h-14 w-fit items-center gap-3 border border-accent/50 px-9 font-accent text-[0.75rem] font-medium uppercase tracking-[0.22em] md:text-[0.8rem] text-accent-on-chrome transition-colors duration-300 hover:border-accent hover:bg-accent hover:text-bg"
               >
-                Start an offer
+                Start a consignment
                 <ChevronRight
                   className="h-4 w-4 transition-[transform,color] duration-300 group-hover:translate-x-1 group-hover:text-mark"
                   strokeWidth={1.5}
