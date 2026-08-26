@@ -10,9 +10,9 @@ import { SellForm } from "@/components/sell/v4/SellForm";
 import { SHOWROOM } from "@/lib/showroom";
 
 export const metadata: Metadata = {
-  title: "Sell Your Car",
+  title: "Consignment",
   description:
-    "We buy collector and exotic cars outright — one fair offer, a discreet close, payment direct to you.",
+    "We sell collector and exotic cars on behalf of their owners — presented from our showroom, priced to the live market, and yours until they sell.",
 };
 
 // Carrera GT frames, art-directed per role. Hero desktop: rear three-quarter
@@ -26,64 +26,75 @@ const HERO_IMAGE_MOBILE = "/site/smoke-mclaren.jpg";
 const PROCESS_IMAGE = "/site/service-handover.jpg";
 const DETAIL_IMAGE = "/site/studio-white.jpg";
 
+// The three beats of a consignment, in the order the owner lives them. The
+// middle one changed most: on an outright sale it is an offer to accept, and
+// here it is terms to agree — what the car is asked for, and what happens when
+// it sells.
 const STEPS = [
   {
     title: "Tell us the car",
     body: "Year, miles, condition, and anything we should know — the form below takes two minutes. A VIN helps but isn't required to start.",
   },
   {
-    title: "Get a real number",
-    body: "We value the car against the live market and come back with one fair offer — usually within a few hours on business days. No lowball to negotiate up from.",
+    title: "Agree the terms",
+    body: "We walk the live market with you and settle on what the car is asked for, in writing, before it moves. Nothing is committed until you have seen it.",
   },
   {
-    title: "Paid, done",
-    body: "We buy the car ourselves — no listing, no waiting on a buyer. Funds go direct to you or your payoff, and we arrange pickup anywhere in the country.",
+    title: "We sell it for you",
+    body: "Photographed properly and presented from the showroom floor, in front of buyers who came for cars like yours. You are paid out of the sale when it closes.",
   },
 ];
 
-// Why sell to us — one scannable line each: we buy outright, price to the live
-// market, collect the car anywhere, and settle any payoff ourselves.
+// Why consign here. The first line answers what every consignor actually asks
+// (what happens to my car and my title while it stands), the last answers the
+// one that otherwise stops the conversation (there is a loan on it).
 const REASONS = [
   {
-    title: "Bought outright",
-    body: "We buy with our own funds — no fee off the top, no waiting on a buyer.",
+    title: "The car stays yours",
+    body: "Title and ownership remain with you. Nothing changes hands until there is a buyer.",
   },
   {
-    title: "One fair number",
-    body: "Priced to live-market comps and recent sales. One honest offer, no lowball.",
+    title: "Priced to the market",
+    body: "Asked against live comps and recent sales — a number that sells, not one that flatters the listing.",
   },
   {
-    title: "Pickup anywhere",
-    body: "Enclosed transport nationwide — the car never leaves your driveway until it's sold.",
+    title: "Presented properly",
+    body: "Photographed and shown from the showroom floor, in front of buyers who came for cars like yours.",
   },
   {
-    title: "Payoff settled",
-    body: "Still financing or leasing? We settle the payoff and send you the difference.",
+    title: "Payoff handled",
+    body: "Still financing or leasing? The payoff is settled out of the sale and the balance comes to you.",
   },
 ];
 
-// FAQ — objection handling. The four buyers we studied all answer the same
-// worries: open loans, timing, transport, what they'll take, honest condition.
+// FAQ — objection handling, and consignment raises different objections from a
+// buy-outright. The worry stops being "is this a fair offer" and becomes "where
+// is my car, whose is it, and when do I actually see money".
+//
+// Deliberately silent on the commission, on how long a car takes to sell, on any
+// minimum value, and on who insures it while it stands. Those are the client's
+// terms and none have been given — a number invented here is how a mockup turns
+// into a promise nobody at the showroom agreed to.
 const FAQS = [
   {
-    q: "Do you buy cars that still have a loan or lease?",
-    a: "Yes. We settle the payoff directly with your lender or leasing company and send you whatever equity is left over.",
+    q: "Can I consign a car that still has a loan or lease?",
+    a: "Yes. We confirm the payoff with your lender before the car is listed, settle it out of the sale, and the balance comes to you.",
   },
   {
-    q: "How soon do I get paid?",
-    a: "Once we've agreed on a number and seen the car and title, funds are typically wired the same or next business day.",
+    q: "When do I get paid?",
+    a: "When the car sells and the title transfers. We will tell you honestly what comparable cars have been taking rather than promise a date we cannot hold.",
   },
   {
-    q: "Do I have to bring the car to you?",
-    a: "No. We arrange enclosed transport and collect the car anywhere in the country — it never has to leave your driveway until it's ours.",
+    q: "Where does the car sit while it is for sale?",
+    a: "With us, on the showroom floor where buyers can see it. We arrange enclosed transport to bring it in from anywhere in the country.",
   },
   {
-    q: "What kind of cars are you looking for?",
+    q: "What kind of cars do you take?",
     a: "Modern exotics, collector, and performance cars — Porsche, Ferrari, Lamborghini, McLaren, and the like. If it's exceptional, we want to hear about it.",
   },
   {
     q: "What if the car has stories or needs work?",
-    a: "Tell us up front and it won't cost you the deal. We'd rather price it honestly than surprise anyone later.",
+    a: "Tell us up front. We would rather set the asking price honestly than have it surface in front of a buyer with the car already on the floor.",
   },
 ];
 
@@ -136,11 +147,10 @@ export default function SellPage() {
         <Container className="relative w-full pb-16 pt-32 md:pb-24 lg:pb-28">
           <div className="max-w-[44rem]">
             <Reveal y={18}>
-              {/* The client clicked the Consignment tab, landed here and read
-                  an outright-purchase pitch — two different deals, one page.
-                  The hero now says what the tab says. SCOPE: the hero only, at
-                  Alex's instruction; the rest of the page is still written for
-                  a buy-outright and is flagged in the report. */}
+              {/* The client clicked the Consignment tab and read a buy-outright
+                  pitch — two opposite deals on one page. It speaks one deal now,
+                  hero to FAQ. The FORM is untouched by design: what it asks for
+                  — car, miles, condition, VIN, asking — is the same either way. */}
               <h1 className="title-mark mt-7 font-title text-6xl font-bold leading-[0.98] text-chrome-text-1 md:text-8xl">
                 Consignment
               </h1>
@@ -249,8 +259,8 @@ export default function SellPage() {
                 Start with the Details
               </h2>
               <p className="mt-6 max-w-[46ch] text-[1.05rem] leading-relaxed text-text-2">
-                The more we know, the sharper the number. Prefer to talk it
-                through first? Call the showroom and ask for acquisitions.
+                The more we know, the sharper the asking price. Prefer to talk
+                it through first? Call the showroom and ask for consignments.
               </p>
               <p className="mt-7 font-mono text-[0.95rem] leading-relaxed">
                 <a
@@ -294,7 +304,7 @@ export default function SellPage() {
           two beats don't read the same. */}
       <Section spacing="tight" className="border-t border-border">
         <Container>
-          <SectionHeader title="Why Sell to Us" />
+          <SectionHeader title="Why Consign with Us" />
 
           <div className="grid grid-cols-1 gap-x-14 gap-y-12 sm:grid-cols-2 lg:gap-x-20">
             {REASONS.map((r, i) => (
